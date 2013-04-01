@@ -1,0 +1,193 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-02-24
+
+    Adapt for new core API
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-26
+
+    set prctls to allow us to attach gdb to ourselves and get a backtrace.
+    
+    For security reasons[1][2] some distros have disabled the ability to ptrace ()
+    any arbitary process that a user owns since it allows a remote attacker to use
+    a debugger to examine the memory contents of any process a user owns and
+    collect sensitive data (and set variables to exploit the stack frame, fool
+    policykit etc etc etc all sorts of nasty things).
+    
+    This breaks the ability to spawn a gdb session to attach to compiz and grab
+    a backtrace when we crash, so we need to set the appropriate prctls to let
+    us do this. Note that we only set the prctl in the signal handler _itself_
+    when we need the backtrace and not when compiz starts (as such is a security
+    risk)
+    
+    [1] https://lists.ubuntu.com/archives/ubuntu-devel/2010-May/030797.html
+    [2] https://wiki.ubuntu.com/SecurityTeam/Roadmap/KernelHardening#ptrace Protection
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-01
+
+    We need to catch crashes in composite, opengl and decor, so the usecase for loading after them is quite small
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-24
+
+    Load after decor plugin to prevent windows moving after plugin load
+
+Merge: e58d392 1eb28af
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-13
+
+    Merge branch 'master' of git+ssh://smspillaz@git.compiz.org/git/compiz/plugins/crashhandler
+    
+    Conflicts:
+crashhandler.xml.in           
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-13
+
+    Load after composite and opengl to prevent crash in newer versions of libdri
+    
+    Also, it looks ugly if we don't since there is mass redirection/unredirection
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-13
+
+    Load after composite and opengl plugins to avoid a sudden unredirect/redirect since it looks visually unappealing.
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-03-16
+
+    Track core changes.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-03-14
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2009-02-02
+
+    Options are now in the <options> tag.
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-01-12
+
+    Fixed linking to other plugins.
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2008-12-24
+
+    Inital compiz++ port
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Simon Danner <simon@danner-urloffen.de>	2008-02-07
+
+    remove unneeded string.h
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-02-05
+
+    Remove dummy file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Track core changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-30
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-27
+
+    Set directory hint.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-27
+
+    Added option to set crashhandler's dump directory.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-27
+
+    Adjust indention.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-06
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-16
+
+    Remove obsolete deps/features from vtable
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-05
+
+    Compiz indent style.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-01
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    Actually rename xml -> xml.in
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    xml -> xml.in
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-28
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Makefile update.
+
+Merge: 3c7b67c 0b92971
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Merge branch 'master' of git+ssh://git.beryl-project.org/git/compcomm/plugins/crashhandler
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Updated Makefile
+
+Danny Baumann <dannybaumann@web.de>	2007-06-11
+
+    Move to utility section.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-21
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-17
+
+    initial commit
+
+compiz <compiz@de35.org>	2007-05-17
+
+    Dummy commit

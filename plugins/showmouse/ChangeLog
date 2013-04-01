@@ -1,0 +1,143 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Scott Moreau <oreaus@gmail.com>	2010-07-01
+
+    Enable glPaintOutput so the effect is rendered.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-01
+
+    Simplify serialization interface
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-06-12
+
+    Added serialization interface and necessary changes
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Load after decor plugin to prevent windows moving after plugin load
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-05-06
+
+    Fix further use of uninitialized var
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-05-06
+
+    Fix conditional jump or move being based on uninitialized var
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Use C++ bool in header file too
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Remove commented-out fprintfs
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Use C++ bool
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Ensure loading after required plugins
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Shut up compiler
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Fix warnings
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-10-18
+
+    Execute code in wrappable functions only when necessary
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-10-18
+
+    Yank broken particle system
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-09-06
+
+    Fix variable shadowing and don't depend on the non-existant particlesystem plugin
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-22
+
+    Use internal particlesystem. Drawing is still broken
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-22
+
+    Removed dummy
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-22
+
+    Dummy commit
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-22
+
+    Initial C++ port. Drawing is broken to some extent, although this may because of differences to the particlesystem ABI in firepaint and showmouse
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2008-09-26
+
+    Added button and edge initiate actions.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-02-05
+
+    Dummy
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Check for header changes
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-01-21
+
+    Fix typos and improve descriptions.
+
+Danny Baumann <dannybaumann@web.de>	2008-01-21
+
+    Use wording already present in translation.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-21
+
+    Translate group names.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-18
+
+    initial commit.
+
+compiz <compiz@opencompositing.org>	2008-01-18
+
+    Dummy commit

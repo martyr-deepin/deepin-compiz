@@ -1,0 +1,320 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-03-15
+
+    Update for new core API
+
+Scott Moreau <oreaus@gmail.com>	2010-09-28
+
+    Don't require composite since opengl already does.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-05
+
+    Interface ::damageRect correctly, previous behaviour would damage the entire window region and not the miniaturized one
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Load after decor plugin to prevent windows moving after plugin load
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Use C++ bool
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Ensure loading after required plugins
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-01-18
+
+    Remove unused variables
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-01-18
+
+    Fix IPW configuring
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-12-07
+
+    Fix input shaping
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-15
+
+    Remove dummy
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-15
+
+    Dummy commit
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-15
+
+    Initial C++ port. Window Shape restore and IPW adjustment are currently broken for reasons I cannot determine.
+
+Danny Baumann <dannybaumann@web.de>	2008-09-01
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2008-05-20
+
+    Damage fix.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-15
+
+    ActivateWindow is now wrappable.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Danny Baumann <dannybaumann@web.de>	2008-02-13
+
+    Cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-12
+
+    Minor cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-12
+
+    Implicitly obey click_to_focus policy by relaying IPW window enter events to its main window.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-12
+
+    Force IPW to be stacked under its main window.
+    We don't need to check for the frame window, as the cost of core stacking the frame between main window and IPW is only one restack. We gain much cleaner code for that.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-12
+
+    Fix IPW blocking input from other windows.
+    For some reason, ButtonPress events are blocked from other windows if override_redirect windows are stacked directly under those windows.
+    Stacking the IPW under the window we want to block input from anyway works around this.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-12
+
+    We don't translate by the border side, we translate by the amount the border became smaller through scaling.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-12
+
+    Keep upper left corner at the same point.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-12
+
+    Fix damage handling.
+
+Kristian Lyngstol <kristian@bohemians.org>	2008-02-12
+
+    Properly damage when the shelf scale cahnges, even when going to 1.0f.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-12
+
+    Load after wall.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-12
+
+    Wrap into paint output and properly flag transformed windows.
+
+Merge: 68789a5 1181800
+Danny Baumann <dannybaumann@web.de>	2008-02-12
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/plugins/shelf
+
+Danny Baumann <dannybaumann@web.de>	2008-02-12
+
+    Abort search if we found the window to remove.
+    Hopefully should fix rare crash.
+
+Kristian Lyngstol <kristian@bohemians.org>	2008-02-12
+
+    Add a reset binding
+
+Danny Baumann <dannybaumann@web.de>	2008-02-12
+
+    Use linked list for doing window-id-for-ipw check.
+    Initialize grabbedWindow.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-12
+
+    Raise window on click.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-12
+
+    Use linked list to always keep IPW stacked right above its window.
+    Not currently working yet, intermediate checkin.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-12
+
+    Save shelfed windows in a linked list.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-12
+
+    Correctly save and restore window and frame input shape.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-12
+
+    Loads of hack fixes and coding style fixes.
+    - Don't use static variables when unnecessary.
+    - Remove unuse variables.
+    - Use Compiz coding style.
+    - Added FIXMEs.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-08
+
+    Dummy commit.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Kristian Lyngstol <kristian@bohemians.org>	2008-01-18
+
+    Improve move correctness - still not quite there
+
+Kristian Lyngstol <kristian@bohemians.org>	2008-01-18
+
+    Binding to scale to a 1/2, 1/3 or a 1/6th of the screen.
+
+Kristian Lyngstol <kristian@bohemians.org>	2008-01-11
+
+    Rudementary window movement support
+
+Kristian Lyngstol <kristian@bohemians.org>	2008-01-11
+
+    Listen for windowMoveNotify events and shape "correctly"
+
+Kristian Lyngstol <kristian@bohemians.org>	2008-01-01
+
+    HandleEvent to pass off focus to the shelfed window.
+    
+    More to come for movement and similar. Cleanup needed.
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-12-31
+
+    Add a basic input prevention window
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-12-24
+
+    Add a minimum size for target scaling
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-12-24
+
+    Comment update
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-12-23
+
+    Smoother end of animation
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-12-23
+
+    Reasonable default and max values in XML data
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-12-23
+
+    Ignore Desktop and Dock type windows
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-12-23
+
+    Move the setting of scale to a seperate function
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-12-23
+
+    Proper name in xml
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-12-22
+
+    Adjust the minimum animation step
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-12-22
+
+    Animate the scaling
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-12-19
+
+    Set the Window Management category
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-12-19
+
+    Adjust by multiplying/dividng with the interval, not adding and subtracting
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-12-19
+
+    Floating binding
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-12-12
+
+    Shape a frame window too
+    
+    Fixes an issue where the frame still had input outside the visible area.
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-12-12
+
+    Check for the pressence of the XShape extension
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-12-11
+
+    Shape input
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-12-10
+
+    Comments
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-12-10
+
+    Further style cleanups
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-12-10
+
+    Style cleanups
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-12-10
+
+    Rename variablenames to shelf
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-12-09
+
+    Add *Fini functions to clean up (no longer crash on unload)
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-12-09
+
+    Rename plugin to shelf
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-12-09
+
+    Remove unused stuff, damage hack
+    
+    Ideally we should not damge the screen, as FIXME says.
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-12-08
+
+    Working scaling, just sticks the window at 0,0. Lots of work needed.
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-12-08
+
+    Skeleton based on Maximumize
+
+kristian <kristian@opencompositing.org>	2007-12-08
+
+    Dummy commit

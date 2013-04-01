@@ -1,0 +1,58 @@
+set (COMPIZ_CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
+set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${COMPIZ_CMAKE_MODULE_PATH})
+include (CompizDefaults)
+include (CompizCommon)
+
+set (COMPIZ_FOUND "true")
+
+add_definitions ( -DHAVE_CONFIG_H)
+
+include_directories( 
+  ${CMAKE_CURRENT_SOURCE_DIR}/../include
+  
+  ${CMAKE_CURRENT_SOURCE_DIR}/../src
+  ${CMAKE_CURRENT_SOURCE_DIR}/../src/timer/include
+  ${CMAKE_CURRENT_SOURCE_DIR}/../src/string/include
+  ${CMAKE_CURRENT_SOURCE_DIR}/../src/pluginclasshandler/include
+  ${CMAKE_CURRENT_SOURCE_DIR}/../src/point/include
+  ${CMAKE_CURRENT_SOURCE_DIR}/../src/rect/include
+  ${CMAKE_CURRENT_SOURCE_DIR}/../src/servergrab/include
+  ${CMAKE_CURRENT_SOURCE_DIR}/../src/region/include
+  ${CMAKE_CURRENT_SOURCE_DIR}/../src/window/geometry/include
+  ${CMAKE_CURRENT_SOURCE_DIR}/../src/window/geometry-saver/include
+  ${CMAKE_CURRENT_SOURCE_DIR}/../src/window/extents/include
+  ${CMAKE_CURRENT_SOURCE_DIR}/../src/window/constrainment/include
+  ${CMAKE_CURRENT_SOURCE_DIR}/../logmessage/include
+)
+
+# temporarily disable plugins that aren't ported yed
+set (COMPIZ_DISABLE_PLUGIN_ANIMATIONADDON ON)
+set (COMPIZ_DISABLE_PLUGIN_BICUBIC ON)
+set (COMPIZ_DISABLE_PLUGIN_BLUR ON)
+set (COMPIZ_DISABLE_PLUGIN_COLORFILTER ON)
+set (COMPIZ_DISABLE_PLUGIN_CUBEADDON ON)
+set (COMPIZ_DISABLE_PLUGIN_GEARS ON)
+set (COMPIZ_DISABLE_PLUGIN_GROUP ON)
+set (COMPIZ_DISABLE_PLUGIN_LOGINOUT ON)
+set (COMPIZ_DISABLE_PLUGIN_REFLEX ON)
+set (COMPIZ_DISABLE_PLUGIN_THUMBNAIL ON)
+set (COMPIZ_DISABLE_PLUGIN_STACKSWITCH ON)
+set (COMPIZ_DISABLE_PLUGIN_WALLPAPER ON)
+set (COMPIZ_DISABLE_PLUGIN_TRIP ON)
+
+# disable plugins which won't work on ES2 builds
+if (BUILD_GLES)
+
+    set (COMPIZ_DISABLE_PLUGIN_TD ON)
+    set (COMPIZ_DISABLE_PLUGIN_COLORFILTER ON)
+    set (COMPIZ_DISABLE_PLUGIN_MBLUR ON)
+    set (COMPIZ_DISABLE_PLUGIN_BENCH ON)
+    set (COMPIZ_DISABLE_PLUGIN_FIREPAINT ON)
+    set (COMPIZ_DISABLE_PLUGIN_SHOWREPAINT ON)
+    set (COMPIZ_DISABLE_PLUGIN_WIDGET ON)
+    set (COMPIZ_DISABLE_PLUGIN_SHOWMOUSE ON)
+    set (COMPIZ_DISABLE_PLUGIN_SPLASH ON)
+
+endif (BUILD_GLES)
+
+compiz_add_plugins_in_folder (${CMAKE_CURRENT_SOURCE_DIR})

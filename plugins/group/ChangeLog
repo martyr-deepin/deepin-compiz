@@ -1,0 +1,1966 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-03-14
+
+    Update for new core API
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2010-11-22
+
+    Add some documentation and also handle when another plugin wants to register
+    matches on our windows
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2010-11-22
+
+    Add a simple matching system (group=1) to grouped windows.
+    
+    Specify group=1 to a window match property on another plugin (for example,
+    animation) and it will match all windows that are in a group. You can also
+    combine that with other things (eg group=1 & type=Dialog) to specify
+    which windows to match if they are grouped.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-05
+
+    Check functions in ::select and ::deselect rather than ::checkFunctions since the last approach misses windows that are part of the window group but not in the initial selection
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-05
+
+    Don't hide tab bars on window restack
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-05
+
+    Don't restore tabbed state if the top id is no longer in the group
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-05
+
+    Store results better - also we can access mTabBar directly
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-05
+
+    Fix bug where compiz would eat all the system memory (since stl hates negative numbers)
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-05
+
+    Fix damage bounds in selection rect
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-05
+
+    Fix damage issues on tab select
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-05
+
+    Remove debug message and do perspective transform on rotate animation (so there's no weirdness with combined rotate and cube)
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-30
+
+    Fix grouped raise/lower and remove debug message
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-30
+
+    Don't need to repeat the ::isGroupWindow check twice
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-30
+
+    Don't auto-group windows if they aren't supposed to be a group window.
+    
+    The auto-grouping code would use ::select, which ignores if the window is supposed
+    to be a group window because it was already done by ::checkWindow in the normal
+    selection path. This moves the checks into the ::select function.
+    
+    The old behavior could cause strange apps that have two X windows but one "user window"
+    to behave strangely when tabbed - eg showing the tab bar but not actually allowing the user
+    to grab the tab, etc.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-27
+
+    Fix crash
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-25
+
+    Remove debug message
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-25
+
+    fix weirdness and crash when using autotab
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-25
+
+    Fix wrong symbol
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Cleanup (static analysis)
+
+Merge: cb98003 89b8f3a
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Merge branch 'master' of git+ssh://git.compiz.org/git/compiz/plugins/group
+    
+    Conflicts:
+group.xml.in           
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Don't push the group to the front in the constructor.
+    
+    It's generally bad practise to do this, since it is possible for the group to be free'd when going out of scope, causing all sorts of trouble. Also it messes up serialization
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Drop the identifier stuff.
+    
+    We don't need it anymore since our groups are rebuild automatically after reserialization
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Better API usage and remove debug message
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Fix selection layer not showing (because it was 100% transparent)
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Use PluginStateWriter in order to achieve group state save/restore
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Specifiying an initial identifier now for the group is a bit useless, so dont.
+    
+    This was basically just left over from when we had to add windows to NULL groups.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    We've changed the way groups are created now (no longer in addWindowToGroup) so it doesn't make sense to be adding the first window separately to the rest
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Remove useless braces
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Remove Debug Message
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Fix comment and fix typo which caused preparePaint not to be enabled while we are changing tabs when checkFunctions () is called. (caused windows to "pause" the tab change animation halfway through under certain circumstances
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Add windows by selecting them and then turning that selection into a group. The old API of adding windows to a NULL group was confusing and didn't make any sense.
+    Also prevent a condition where the change tab animation would attempt to read from the tab bar if we were both changing tabs and untabbing the group (since mTopTab is now NULL)
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Don't call an action in order to group windows, use the appropriate API here
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Move code that actually groups windows out of GroupScreen and into Selection::toGroup (makes sense from an API POV)
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Don't copy a list
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Fix a comment
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Clean up loop to check if we need PAINT_SCREEN_WITH_TRANSFORMED_WINDOWS_MASK
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Fix tab bar text not updating on hover unless the screen was damaged elsewhere.
+    
+    We don't seem to trigger a damage of the screen on hover, so do that and remember to enable our functions too
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-22
+
+    Remove debug message
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-22
+
+    Dynamically enable and disable preparePaint and donePaint
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-21
+
+    Only require screen level gl paint functions as required. Also check for mTabBar's existence when hovering over another group without one to prevent a crash
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-21
+
+    Re-enable functions on option changes
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-21
+
+    Fix windows not getting their glow instantly
+    
+    Also only enable resize/move/maximize/minimize functions when needed
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-21
+
+    1) Only toggle damageRect when needed
+    2) Dont keep toggling functions in donePaint (), instead move the toggles
+    into the locations  of preparePaint ()
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-21
+
+    Remove useless bools
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-21
+
+    Use a mask
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-20
+
+    Dynamically toggle window paint functions
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-19
+
+    End the malloc madness
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-19
+
+    Post cleanup fixing
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-19
+
+    General cleanup
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-18
+
+    Get rid of unused UnmapNotify
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-18
+
+    Add ability to define lists of windows to automatically group
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-15
+
+    - Update Copyrights
+    - Move close/minimize/etc handling into windowNotify
+    TODO: queue in order to handle wrapped functions
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-12
+
+    Cleanup code a little bit, use centerX () where appropriate
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-12
+
+    Remove some redundant code
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-12
+
+    Remove redundant rebuild
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-12
+
+    Add a factory method to CompText for simplicity. Also pass by reference
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-11
+
+    Add terminology
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-11
+
+    Finalize comments for painting and tabbing
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-06
+
+    Add more comments to the code explaining how things work in this plugin
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-04
+
+    Fix typo
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-04
+
+    Add a few comments to cairo related functions and most group management related functions
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-03
+
+    Move glow painting and calculation into glow.cpp
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-03
+
+    Move some glow related things to glow.cpp
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-03
+
+    Move Tab Bar related defines into tabbar.h
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-03
+
+    Move glow related classes and structs into glow.h
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-03
+
+    Rearrange header file, rename textAvailable to use global prefix
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-03
+
+    Move GroupResizeInfo to GroupSelection
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-03
+
+    Move Tab bar related classes to tabbar.h
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-03
+
+    Move handleTabBarAnimation to BackgroundLayer
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-03
+
+    Move Background Animation parameters into BgLayer
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-03
+
+    Move queues structs into GroupWindow.
+    
+    (also had to move GroupScreen below GroupWindow since there was a
+     cross-referencing of defined members issue)
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-03
+
+    Move GroupWindowHideInfo to GroupWindow
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-03
+
+    Move AnimationType into BackgroundLayer.
+    
+    Animation info should go there too in the future
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-03
+
+    Move ChangeTabAnimationDirection to GroupTabBar
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-03
+
+    Move TabChangeState to GroupTabBar
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-03
+
+    Move TabbingState to GroupSelection
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-02
+
+    Move GroupUngroupState to GroupSelection
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-02
+
+    Move GroupScreenGrabState to GroupScreen
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-02
+
+    Move GroupWindowState to GroupWindow
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-02
+
+    End the "group" function prefix madness
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-02
+
+    End the XRegion, REGION, BoxRec, Box, BoxPtr, XPoint etc madness
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-02
+
+    Fix crash when moving the last tab out of one group to another group
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-02
+
+    Cleanup paintTabBar a bit, kill the switch statement in the for loop.
+    
+    Everything is now moved into layers now, so painting a particular layer
+    is really quite clean (just call ((GLLayer *) layer)->paint)
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-02
+
+    Make GroupTabBarSlot a layer (and improve const correctness)
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-02
+
+    Add layers.h and add a new GLLayer, which we will use for making tabs
+    and TabBars into layers
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-02
+
+    Move layers classes into their own header file (layers.h)
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-02
+
+    Move text rendering functions into TextLayer
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-02
+
+    Nuke generic layer painting bits
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-02
+
+    Move text painting functions to TextLayer
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-02
+
+    Move Selection Layer painting into SelectionLayer
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-02
+
+    Move paint function for background layer into BackgroundLayer
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-02
+
+    Move render functions into layers (polymorphism)
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-02
+
+    Create BackgroundLayer and SelectionLayer classes, with their own functions.
+    
+    We need this so that each can have a separate vtable for polymorphic
+    painting and rendering
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-02
+
+    Move cairo layer construction into CairoLayer contructor
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-02
+
+    Fix text fade
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-02
+
+    Move some layer paint functions into Layer::
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-02
+
+    Beautify tab painting function, make it more consistent with layer painting
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-02
+
+    Make text fade in/out hover detection use MousePoller
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-01
+
+    Move clear, rebuild, etc to CairoLayer
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-01
+
+    Fix text not drawing
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-01
+
+    Rework tab bar drawing slightly, create a generic "layer" object, in the future all drawable elements will be based on this class
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-01
+
+    Move Tab Bar related variables to GroupTabBAr
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-30
+
+    Move forces and speeds functions into GroupTabBar
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-30
+
+    Fix potential crash-on-load and move getDrawOffset to GroupTabBarSlot
+
+Scott Moreau <oreaus@gmail.com>	2010-09-28
+
+    Don't require composite since opengl already does.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-29
+
+    Add slot control mechanisms to GroupTabBar
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-29
+
+    Move position calculation to GroupTabBar
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-29
+
+    Move Tab Bar region handling code to GroupTabBar
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-29
+
+    Move Tab Bar damage methods to GroupTabBar
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-29
+
+    Move Tab Bar animation code into GroupTabBar
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-29
+
+    Move Tab Bar painting functions to GroupTabBar
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-28
+
+    Move IPW handling to TabBar
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-28
+
+    Move Tab Bar render code into TabBar
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-28
+
+    Make pointer NULL after destruction
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-28
+
+    Move GroupSelection init code into constructor
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-28
+
+    Move initTabBar/deleteTabBar into constructors / destructors
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-28
+
+    Move Init/Delete TabBar functions to GroupSelection
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-28
+
+    Move slot forces/creation to groupSelection
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-28
+
+    Move GroupTabBarSlot management code into GroupSelection
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-28
+
+    Move more tab bar related functions to GroupSelection including region relocation and animation code
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-27
+
+    Move other related tabbing management related functions to TabBar
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-27
+
+    Move tab bar drawing functions to GroupSelection
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-27
+
+    Move setVisibility to GroupSelection
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-27
+
+    Move constraining to GroupSelection
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-27
+
+    Move paint functions to GroupSelection
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-27
+
+    Move render code to group
+
+Merge: 6446942 fc7ad64
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-27
+
+    Merge branch 'group2' of git+ssh://git.compiz.org/git/compiz/plugins/group into group2
+    
+    Also adds prepareResizeWindows, which makes windows in a group appear stretched
+    while resizing (resizeWindows is to 'commit' the resize)
+    
+    Conflicts:
+src/group.cpp           
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-27
+
+    Move mResizeInfo to GroupSelection
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-27
+
+    Move maximize functions into GroupSelection
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-27
+
+    Move resize funcs to GroupSelection
+    
+    TODO: Make more generic
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-27
+
+    Add a moveWindows function to GroupSelection
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-27
+
+    Move groupDeleteGroup to GroupSelection
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-27
+
+    Move IPW handling functions into GroupSelection
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-27
+
+    Move raise/minimize/shade to GroupSelection
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-27
+
+    Correctly fix untab crash and move untab funcs to GroupSelection
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-27
+
+    Revert "Move untab methods to GroupSelection, fix crash on tab-removal"
+    
+    This reverts commit b5ca18f97e614ed92479f47a75cd8f4bef734914.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-27
+
+    Move untab methods to GroupSelection, fix crash on tab-removal
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-27
+
+    Move tabGroup into GroupSelection
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-27
+
+    Use mousepoll
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-27
+
+    Fix ungroup crash and move selection related methods into selection class
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-27
+
+    Fix initial grouping bugs and use stl lists for tabs (doubly linked list remains implemented because we need quick access to previous and next tabs)
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-27
+
+    Use CompWindowList
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-26
+
+    Use std::list<GroupSelection *> rather than pointer-arrays
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-26
+
+    Use C++ bool, fix typo
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-26
+
+    Remove XRegion usage, replace with CompRegion.
+    
+    Fix inf. loop on selecting already grouped windows
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-22
+
+    Remove XRectangle usage and replace with CompRect.
+    
+    Also fix selection bugs, window non-movement after grouped move and a few others.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-19
+
+    Use mPrefixing
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-19
+
+    remove dummy
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-19
+
+    dummy commit
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-19
+
+    Group port take two: Use mPrefixing, change as little as possible (for now)
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-24
+
+    Load after decor plugin to prevent windows moving after plugin load
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-05-17
+
+    Require mousepoll
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-14
+
+    Fix windows not being able to be moved when tabbed
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-14
+
+    Remove an ugly looking bit of code
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Use C++ bool
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Ensure loading after required plugins
+
+Sam <smspillaz@gmail.com>	2010-04-05
+
+    Fix invalid reads / writes and conditional jumps on unitialized variables
+
+Sam <smspillaz@gmail.com>	2010-04-05
+
+    We already destroy the group when all windows are removed so don't destroy it again
+
+Sam <smspillaz@gmail.com>	2010-04-05
+
+    Fix trying to allocated negative sizes
+
+Sam <smspillaz@gmail.com>	2010-04-05
+
+    Damage window on selection
+
+Merge: df26dd6 e4dc8af
+Danny Baumann <dannybaumann@web.de>	2010-02-07
+
+    Merge branch 'master' of git+ssh://git.compiz.org/git/compiz/plugins/group
+
+Danny Baumann <dannybaumann@web.de>	2010-02-07
+
+    Remove temporary file.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-07
+
+    Groups get destroyed in ~GroupWindow () when they are emptied of their windows. There is no point re-destroying them in ~GroupScreen ()
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-07
+
+    Don't use array new[] directly.
+    
+    There are bugs when conducting operators within the array [] syntax for new
+    so precalculate the desired size first and then call array new[]
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-07
+
+    Cleanup and fix crashes
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-07
+
+    Code cleanup
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-06
+
+    Move tab bar drawing code into tabBar and fix drawing issues.
+    
+    Additionally, rework the cairo layer rebuild system
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-06
+
+    Move TabBar drawing code into CairoLayer
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-06
+
+    Don't destroy the class on rebuild and move selectionLayer drawing code into CairoLayer
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-06
+
+    Move text rendering to textLayer
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-06
+
+    Move layer drawing code into layer->draw
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-06
+
+    Make constructors private and create an overridable draw function
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-06
+
+    Some header file cleanup
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-06
+
+    Use TabList
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-06
+
+    Fix damage extents issue
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Remove unnecessary function
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Move the rest of the tabbing vars to TabBar
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Move topTab, prevTopTab, nextTopTab, lastTopTab, nextDirection to TabBar
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Initialize action options by reference
+
+Merge: 89cd772 c81fb8c
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Merge branch 'compiz++' of ../group into compiz++
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Add ability to change color
+
+Merge: 3e476e5 fd3f9cf
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Merge branch 'compiz++' of ../group into compiz++
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Fix warnings
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2010-02-04
+
+    Fixed glow.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-03
+
+    Kill a swapfile that shouldn't have been there
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-03
+
+    Kill a swapfile that shouldn't have been there
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-01-31
+
+    Shameless paedantic everything-must-be-80-lines commit
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-01-31
+
+    File header cleanup
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-01-31
+
+    Changes to get text drawing working
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-01-29
+
+    Remove dummy
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-01-29
+
+    Dummy commit
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-01-29
+
+    Initial C++ port:
+     * Glow is broken due to some obscure bug in the vertex stage
+     * Text usage is not done yet
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-12-09
+
+    Port selection logic
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-10-05
+
+    Fix crash.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-09-01
+
+    Fix possible segfault due to not terminating va_list and (for 64-bit arch.) passing 0 to va_list and retrieving it as pointer.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-15
+
+    Convert Bool to timeout handle, remove it at termination.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-15
+
+    Remove timers at termination.
+
+Danny Baumann <dannybaumann@web.de>	2009-05-14
+
+    Fix size of displayed text.
+
+Danny Baumann <dannybaumann@web.de>	2009-02-05
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2009-01-11
+
+    Adapt for text plugin interface changes.
+
+Danny Baumann <dannybaumann@web.de>	2008-10-09
+
+    Fixed window activation behaviour.
+    Some cleanups.
+
+Danny Baumann <dannybaumann@web.de>	2008-09-01
+
+    Track core changes.
+
+Merge: 1fd27f4 4abb3dd
+Danny Baumann <dannybaumann@web.de>	2008-07-17
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/plugins/group
+
+Danny Baumann <dannybaumann@web.de>	2008-07-17
+
+    Fix damage issues for tab switch animation time of 0.
+
+Danny Baumann <dannybaumann@web.de>	2008-07-17
+
+    Fix typo.
+
+Danny Baumann <dannybaumann@web.de>	2008-07-17
+
+    Fix nasty pixmap leak.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-06-18
+
+    Track core changes
+
+Danny Baumann <dannybaumann@web.de>	2008-06-08
+
+    Fix memory leak.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-17
+
+    Don't show tar bar if the screen is grabbed.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-17
+
+    Send out sync request when changing window size.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-15
+
+    ActivateWindow is now wrappable.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Patrick Niklaus <marex@opencompositing.org>	2008-03-07
+
+    Added bright inner outline to increase contrast
+
+Patrick Niklaus <marex@opencompositing.org>	2008-03-07
+
+    Fixed pulse animation
+
+Danny Baumann <dannybaumann@web.de>	2008-02-10
+
+    Plug minor potential memleak.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Check for header changes
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Patrick Niklaus <marex@opencompositing.org>	2007-12-27
+
+    Fixed bug where the group property was reseted
+
+Danny Baumann <dannybaumann@web.de>	2007-11-05
+
+    Whitespace fix.
+
+Roland Baer <roland@Vista.(none)>	2007-11-05
+
+    Added missing NULL checks
+
+Danny Baumann <dannybaumann@web.de>	2007-11-03
+
+    Use window parameter.
+    Minor cleanups.
+
+Merge: bc44561 4a2c4a9
+Danny Baumann <dannybaumann@web.de>	2007-10-04
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/plugins/group
+
+Danny Baumann <dannybaumann@web.de>	2007-10-04
+
+    Use central function to determine if a window should be groupable or not.
+    Filter out desktop and override_redirect windows.
+
+Danny Baumann <dannybaumann@web.de>	2007-10-01
+
+    Don't try to raise input prevention window if it isn't mapped.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-13
+
+    Synchronize the old and new top tabs on the actual tab change instead of keeping them centered together all the time.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-11
+
+    Another (simpler) attempt at fixing tabbed window movement.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-11
+
+    Next attempt at fixing move logic.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-11
+
+    Fix dragging tabbed windows to another viewport.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-11
+
+    Fix movement of tabbed windows to other workspaces.
+    Made the movement dequeueing sync the window position only once per window. If multiple movement requests are enqueued for a window, this significantly reduces processing time.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-11
+
+    Prevent tab position desynchronization on movements not initiated by the move plugin.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-11
+
+    Fix tabbed windows not being centered together when the top tab is moved.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-10
+
+    Compiz indention style.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-02
+
+    Check for text plugin availability.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-02
+
+    Track text plugin changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-31
+
+    Use correct header file.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-30
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-28
+
+    Added sanity check.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-27
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-27
+
+    More cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-27
+
+    More minor cleanups.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-27
+
+    Preserve tabbed windows being centered on top tab resize.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-27
+
+    Minor cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-27
+
+    Cleanups.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-27
+
+    Prevent setting up tab change animations if there is no window to animate with.
+
+Merge: a13bbd0 797499c
+Danny Baumann <dannybaumann@web.de>	2007-08-26
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/plugins/group
+
+Danny Baumann <dannybaumann@web.de>	2007-08-26
+
+    Fixed damaging of tab bars without slots.
+    Cleanups.
+
+Patrick Niklaus <marex@opencompositing.org>	2007-08-26
+
+    Better look for the selection rectangle
+
+Danny Baumann <dannybaumann@web.de>	2007-08-26
+
+    Remove unused code.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-26
+
+    Got rid of oldTopTabCenterX/Y variables.
+    Just move tabbed windows like every other window.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-26
+
+    Fix grouping of groups.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-26
+
+    Completely remove window from group on unmap.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-26
+
+    Cleanups.
+
+Roland Bär <roland@Vista.(none)>	2007-08-22
+
+    Plug minor memleak.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-22
+
+    Cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-22
+
+    Minor cleanup.
+    Factored out finishing of tabbing animation to another function.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-22
+
+    Minor cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-22
+
+    Remove 'Spring model on move' option.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-22
+
+    Clean up selection code.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-22
+
+    Remove unneeded macros.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-22
+
+    Use macros for determining window center.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-22
+
+    Try to keep the original window position when moving windows between tabbed groups.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-22
+
+    Signal tabbing to the animation plugin.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-22
+
+    Minor cleanup.
+
+Merge: 76f5c07 2ec6fe5
+Danny Baumann <dannybaumann@web.de>	2007-08-22
+
+    Merge branch 'master' into tabbing-code-overhaul
+
+Roland Bär <roland@Vista.(none)>	2007-08-22
+
+    Fix handling of XShapeGetRectangles return values.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-22
+
+    Remove unnecessary check.
+    Some more bautification.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-22
+
+    Beautification & minor cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-22
+
+    Factor out cairo stuff in separate code file.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-22
+
+    Remove function that only was called once.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-22
+
+    Remove unused function.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-22
+
+    Minor beautification and typo fixes.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-22
+
+    Remove trailing whitespace.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-22
+
+    Remove window from old group from button release handler.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-21
+
+    Got rid of another preparePaintScreen hook which was only called once.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-21
+
+    Adjust comment.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-21
+
+    Only call tab change animation handler when necessary.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-21
+
+    Fixed multiple tab switching (switching to next tab while change animation is running).
+
+Danny Baumann <dannybaumann@web.de>	2007-08-21
+
+    Fixed tab change animation.
+    Got rid of another preparePaintScreen hook.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-21
+
+    Move code that moves the window to the top tab center to central place.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-21
+
+    Split functionality of groupDeleteGroupWindow.
+    groupDeleteGroupWindow now just deletes the references to this window in the group.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-21
+
+    Some beautification. Also added some FIXMEs.
+
+Merge: 1541c72 3d676cb
+Danny Baumann <dannybaumann@web.de>	2007-08-21
+
+    Merge branch 'master' into tabbing-code-overhaul
+
+Danny Baumann <dannybaumann@web.de>	2007-08-20
+
+    Get rid of changeTab variable.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-20
+
+    New action system
+
+Danny Baumann <dannybaumann@web.de>	2007-08-19
+
+    More condition checks at caller instead of called function.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-19
+
+    Save jumps by checking the conditions in the caller instead of the called function.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-19
+
+    Minor beautification.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-19
+
+    Use meaningful enums for the tab change and tabbing states.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-19
+
+    End single ungrouping directly on tabbing end.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-19
+
+    Fix typo.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-19
+
+    Get rid of gw->ungroup variable.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-18
+
+    Constraining should never touch the original position.
+    
+    This position should always remain the position before untabbing, otherwise the animation will be broken.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-18
+
+    Get rid of doTabbing variable.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-18
+
+    Cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-17
+
+    Cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-17
+
+    Minor beautification.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-17
+
+    Function parameter cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-17
+
+    Revert "Cleanups."
+    
+    This reverts commit 478462ea60321ad01db5510d77325c35baf77c7a.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-17
+
+    Revert "Crash fix."
+    
+    This reverts commit e5f71375bcb5e6281ea0c1eaaea76b6b736bf9da.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-17
+
+    Crash fix.
+
+Merge: eb0eec8 478462e
+Danny Baumann <dannybaumann@web.de>	2007-08-17
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/plugins/group
+
+Danny Baumann <dannybaumann@web.de>	2007-08-17
+
+    Don't care about override_redirect window restacking.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-17
+
+    Cleanups.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-17
+
+    Minor cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-17
+
+    Make sure windows are visible after ungrouping them.
+
+Merge: e7ffc57 3daa7f6
+Danny Baumann <dannybaumann@web.de>	2007-08-17
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/plugins/group
+
+Danny Baumann <dannybaumann@web.de>	2007-08-17
+
+    Coding style adjustments.
+
+Roland Baer <roland@Vista.(none)>	2007-08-17
+
+    Added necessary checks on return value of XCreateRegion()
+
+Roland Bär <roland@verifysoft.net>	2007-08-16
+
+    Earlier check for newRegion
+
+Merge: 622d3e8 6e648e0
+Danny Baumann <dannybaumann@web.de>	2007-08-15
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/plugins/group
+
+Roland Baer <roland@Vista.(none)>	2007-08-15
+
+    Simplified code: calloc(NULL, is equivalent to malloc(
+
+Patrick Niklaus <marex@opencompositing.org>	2007-08-13
+
+    Removed another unused variable
+
+Roland Bär <roland@verifysoft.net>	2007-08-13
+
+    Removed unused vars and useless code
+
+Danny Baumann <dannybaumann@web.de>	2007-08-11
+
+    Replace dequeue calls from preparePaintScreen with a timer which also checks the queues when necessary.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-11
+
+    Handle stuff which needs to be called once with a one-shot timer instead of checking it from PreparePaintScreen.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-07
+
+    Fix tab bar being drawn one slot too thin after slot drag.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-06
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-01
+
+    Fix compiler warning.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-01
+
+    Fix crash when dragging slots off the tab bar.
+    Also solved some animation weirdnesses for this case.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-31
+
+    Fixed windows being placed incorrectly under certain conditions.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-30
+
+    Fix damage problem in grouped resize occuring when shrinking windows after enlarging them.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-30
+
+    width and height are unsigned, so we need to avoid setting them to a value less than 0.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-29
+
+    Fix damage problems in grouped resizing.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-29
+
+    Coding style adjustment.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-29
+
+    Do grouped (un)maximization in state change notify rather than in resize notify.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-29
+
+    Restructure grouped resize.
+    Instead of immediately applying each window size change, listen to the resize plugin's change notification and draw the windows stretched until ungrab.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-28
+
+    Some fixes to tabbing animation logic.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-26
+
+    Remove useless code.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-25
+
+    Fixed memory corruption.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-25
+
+    Initialize variables correctly.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-24
+
+    Remove unused function.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-24
+
+    Fixed windows sometimes being placed incorrectly during tabbing.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-23
+
+    Fixed sanity checks.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-22
+
+    Fix fade in of non-toptabs.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-22
+
+    Code simplification.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-22
+
+    Preserve window stacking order in group while doing group raise.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-22
+
+    Apply animation translation before scaling.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-22
+
+    Some cleanup & some minor beautification.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-22
+
+    Morph tabbed windows to/from top tab size during tabbing animation.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-22
+
+    Remove unused variables.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-22
+
+    Do tabbing animation by translating the painting instead of moving the window.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-21
+
+    Apply group raising on restacking instead of focus events.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-20
+
+    Remove some useless code.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-20
+
+    Minor beautification.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-16
+
+    Remove obsolete deps/features from vtable
+
+Roi Cohen <roico@roico-desktop.(none)>	2007-07-15
+
+    fix fade of tab-bar after DnD
+
+Patrick Niklaus <marex@opencompositing.org>	2007-07-14
+
+    Move the groupRenderTabBarBackground call to a better position
+
+Patrick Niklaus <marex@opencompositing.org>	2007-07-14
+
+    Fixed a tab bar painting issue after DnD where the tab bar goes white
+
+Danny Baumann <dannybaumann@web.de>	2007-07-14
+
+    Fix tab bar fading (again).
+
+Danny Baumann <dannybaumann@web.de>	2007-07-14
+
+    We need PAINT_WINDOW_TRANSFORMED_MASK to get a good texture filter.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-14
+
+    Cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-14
+
+    Minor cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-14
+
+    Little cleanup.
+
+Patrick Niklaus <marex@opencompositing.org>	2007-07-14
+
+    Added a little fix which doesn't let the tab bar recreate the context
+    on each resize
+
+Patrick Niklaus <marex@opencompositing.org>	2007-07-14
+
+    Fixed bad stack corruption
+
+Danny Baumann <dannybaumann@web.de>	2007-07-13
+
+    Even more cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-13
+
+    More cleanup & beautification.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-13
+
+    Optimization. Prevent calloc() call with 0 size.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-13
+
+    Fix crash when closing a window that is tabbed and the only window in the group.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-13
+
+    Cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-13
+
+    Fix typo.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-13
+
+    Cleanup & beautification.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-12
+
+    Track selected windows per-screen and not per-display.
+    This makes sure all windows in a group are on the same screen.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-04
+
+    Fix typo.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-04
+
+    Fix tab bar fading.
+
+Merge: 11139b5 18b2714
+Patrick Niklaus <marex@opencompositing.org>	2007-07-03
+
+    Merge with git+ssh://marex@git.beryl-project.org/git/fusion/plugins/group
+
+Patrick Niklaus <marex@opencompositing.org>	2007-07-03
+
+    Fixed stupid crash with bad layer pointer and added some better debugging
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-03
+
+    Makefile update.
+
+Patrick Niklaus <marex@opencompositing.org>	2007-07-03
+
+    Clean up a bit. We have this code anyway in the commit log.
+
+Patrick Niklaus <marex@opencompositing.org>	2007-07-03
+
+    Switch from pixmap back to image buffer for now.
+    Pixmaps caused flickering when using compiz with --loose-bindings
+
+Danny Baumann <dannybaumann@web.de>	2007-07-03
+
+    Fix headers.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-03
+
+    Cleanups and beautification.
+    Should not contain any functional changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-02
+
+    Furtherly optimize window paint routine and do not reference local variables outside their scope.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-02
+
+    Optimize window paint routine.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-02
+
+    Improve tab bar painting code.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-01
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    xml -> xml.in
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    Beautification.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    Fixed window title change handling.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-28
+
+    Makefile update.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-26
+
+    Scale z by 1 instead of 0.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-26
+
+    Fix windows losing their tab bar when autotabbing is enabled, auto-ungrouping is enabled and a window is dragged of the tab bar so only one window is remaining.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-22
+
+    Rename displayPrivateIndex -> groupDisplayPrivateIndex to prevent symbol conflicts.
+
+Patrick Niklaus <marex@opencompositing.org>	2007-06-20
+
+    Changed the pulse effect to don't take too much time
+
+Patrick Niklaus <marex@opencompositing.org>	2007-06-20
+
+    Fixed murrina tab bar style painting when tab bar width < height
+
+Patrick Niklaus <marex@opencompositing.org>	2007-06-20
+
+    Make use of the animation option
+
+Patrick Niklaus <marex@opencompositing.org>	2007-06-20
+
+    Added pulse animation to DnD window activation
+
+Patrick Niklaus <marex@opencompositing.org>	2007-06-20
+
+    Made reflex with dependent on the number of slots
+
+Patrick Niklaus <marex@opencompositing.org>	2007-06-20
+
+    Added a work-a-round for the damage problem when dragging a slot,
+    shouldn't be too expensive.
+
+Patrick Niklaus <marex@opencompositing.org>	2007-06-18
+
+    Added option for tab bar animations
+
+Patrick Niklaus <marex@opencompositing.org>	2007-06-18
+
+    Improved relfex effect
+
+Patrick Niklaus <marex@opencompositing.org>	2007-06-18
+
+    Fixed damage problem with tab bar animation
+
+Patrick Niklaus <marex@opencompositing.org>	2007-06-18
+
+    Use reflex animation on tab bar fade in => damage problem again oO
+
+Patrick Niklaus <marex@opencompositing.org>	2007-06-18
+
+    Remove relative_distance option, was almost useless and calculation was
+    wrong anyway.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    do not include group.h
+
+Merge: 1cdc0c7 d956004
+Danny Baumann <dannybaumann@web.de>	2007-06-11
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/compcomm/plugins/group
+
+Danny Baumann <dannybaumann@web.de>	2007-06-11
+
+    Rename group.h to group-internal.h.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-11
+
+    Use text plugin package.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-11
+
+    Correct dependencies.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Updated Makefile
+
+Merge: 46e4c62 efc21eb
+Roi Cohen <roico@roico-desktop.(none)>	2007-06-10
+
+    Merge branch 'master' of git+ssh://git.beryl-project.org/git/compcomm/plugins/group
+
+Roi Cohen <roico@roico-desktop.(none)>	2007-06-10
+
+    revert damage changes done in previous commit - the extra buffer was needed
+
+Roi Cohen <roico@roico-desktop.(none)>	2007-06-10
+
+    - some general clean ups
+    - fix some nidentions
+    - damage only needed region
+    - fix a small leak
+
+Danny Baumann <dannybaumann@web.de>	2007-06-10
+
+    Adjust default value for thumb spacing.
+    We need less spacing now as the complete thumb is inside the slot region.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-10
+
+    printf -> compLogMessage
+
+Danny Baumann <dannybaumann@web.de>	2007-06-10
+
+    Finally really fix w->output calculation.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-10
+
+    Fix glow size calculation.
+
+Roi Cohen <roico@roico-desktop.(none)>	2007-06-10
+
+    more indention fixes in switch
+
+Roi Cohen <roico@roico-desktop.(none)>	2007-06-10
+
+    fix indention in switches
+
+Roi Cohen <roico@roico-desktop.(none)>	2007-06-10
+
+    some more trailing white spaces - i should stick with a good editor :P
+
+Roi Cohen <roico@roico-desktop.(none)>	2007-06-10
+
+    - small damage clean up
+    - added a FIXME comment
+    - fix thumbnail painting - sorry maniac
+
+Roi Cohen <roico@roico-desktop.(none)>	2007-06-09
+
+    small indention fixes
+
+Roi Cohen <roico@roico-desktop.(none)>	2007-06-09
+
+    better random numbers generation
+
+Roi Cohen <roico@roico-desktop.(none)>	2007-06-09
+
+    fix selection - stupid mistake
+
+Roi Cohen <roico@roico-desktop.(none)>	2007-06-09
+
+    simpler thumbnail transformation
+
+Roi Cohen <roico@roico-desktop.(none)>	2007-06-09
+
+    - remove some unnecessary screen-damages, and use window damages instead
+    - small coding style cleanups
+
+Roi Cohen <roico@roico-desktop.(none)>	2007-06-09
+
+    fix weird indention in selection.c
+
+Roi Cohen <roico@roico-desktop.(none)>	2007-06-09
+
+    another very small clean up
+
+Roi Cohen <roico@roico-desktop.(none)>	2007-06-09
+
+    very small and not important clean-ups.
+
+Roi Cohen <roico@roico-desktop.(none)>	2007-06-09
+
+    remove lots of trailing white spaces
+
+Danny Baumann <dannybaumann@web.de>	2007-06-09
+
+    More damage fixes.
+    - correctly calculate damage region for tab bars
+    - reflect decoration size in thumbnail painting
+
+Danny Baumann <dannybaumann@web.de>	2007-06-08
+
+    Fix crash when dropping slots on another tab bar.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-08
+
+    Fix slot damaging for slots dragged to another viewport.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-08
+
+    Improve the damage handling for tab bars.
+    Previously, tab bars were always damaged when they were used, leading to an excessive amount of CPU usage. Now, the tab bars are only damaged when needed.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-07
+
+    Better fix for the 'hang on slot drop' problem.
+    The initial problem was that we got (unexpected) enter notifications for the previously unmapped input prevention window. We now use a variable to track the mapping state internally.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-07
+
+    Fix hang after slot DnD caused by massive calls to groupShowDelayTimeout.
+    Really fixes #6.
+
+Patrick Niklaus <marex@opencompositing.org>	2007-06-07
+
+    Fix a nasty bug with DnD, closes #6
+
+Danny Baumann <dannybaumann@web.de>	2007-06-07
+
+    Fix maximum value for tab bar spring friction.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-07
+
+    Fix typo.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-07
+
+    Properly use core's screenTexEnvMode function.
+
+Patrick Niklaus <marex@opencompositing.org>	2007-06-07
+
+    Fixed cairo tab bar drawing
+
+Danny Baumann <dannybaumann@web.de>	2007-06-07
+
+    Remove rotation check.
+    This is unneeded now as we hide the tab bar when there is an active screen grab anyway.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-01
+
+    Applied lastest core changes
+
+Danny Baumann <dannybaumann@web.de>	2007-05-25
+
+    Revert "Only bind tab bar layers to texture when they're actually drawn.".
+
+Danny Baumann <dannybaumann@web.de>	2007-05-25
+
+    Revert "Use windowAddNotify for applying autotabbing".
+
+Merge: f6cdbfe bfd8e0b
+Danny Baumann <dannybaumann@web.de>	2007-05-25
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/compcomm/plugins/group
+
+Danny Baumann <dannybaumann@web.de>	2007-05-25
+
+    Only bind tab bar layers to texture when they're actually drawn.
+    Also check if cairo layers are really available when using them.
+
+marex <marex@beryl-project.org>	2007-05-24
+
+    Prevent a crash when doing DnD
+
+Merge: a2f3616 55be8b4
+marex <marex@beryl-project.org>	2007-05-23
+
+    Merge with git+ssh://marex@git.beryl-project.org/git/compcomm/plugins/group
+
+marex <marex@beryl-project.org>	2007-05-23
+
+    Added support for tab bar animations, we need to find usecases for
+    them ;-)
+
+Danny Baumann <daba@mobilrechner.localdomain>	2007-05-22
+
+    Use the window add notify to apply autotabbing.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-21
+
+    Allow assigning a key binding to the 'Change glow color' action.
+
+Merge: bf2492c 4321ce2
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-21
+
+    Merge branch 'master' of git+ssh://git.beryl-project.org/git/compcomm/plugins/group
+
+Roi Cohen <roico@roico-desktop.(none)>	2007-05-21
+
+    added a size transformation to the tab switching animation. Idea by: Daniel Bessler <danielb@kiba-dock.org>
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-21
+
+    Makefile update
+
+marex <marex@beryl-project.org>	2007-05-20
+
+    Cleaned up painting code a bit
+
+Danny Baumann <dannybaumann@web.de>	2007-05-18
+
+    Fix unsetting the ignore mode.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-18
+
+    Almost get rid of screenGrabExist. Make grouped moves depend on the grab mask instead of the screen grab name.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-18
+
+    Process grouped resizing before core.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-17
+
+    added the files
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-17
+
+    initial commit
+
+compiz <compiz@de35.org>	2007-05-17
+
+    Dummy commit

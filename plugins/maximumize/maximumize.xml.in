@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<compiz>
+    <plugin name="maximumize" useBcop="true">
+	<_short>Maximumize</_short>
+	<_long>Maximumizes windows (resize them to fit the available screenspace).</_long>
+	<category>Window Management</category>
+	<deps>
+	    <relation type="before">
+		<plugin>decor</plugin>
+	    </relation>
+	    <relation type="after">
+		<plugin>composite</plugin>
+		<plugin>opengl</plugin>
+	    </relation>
+	</deps>
+	<options>
+	    <group>
+		<_short>Options</_short>
+		<option name="ignore_sticky" type="bool">
+		    <_short>Ignore sticky windows in the calculations</_short>
+		    <_long>Treat sticky windows as non-existant when calculating space to use for the maximumize window.</_long>
+		    <default>true</default>
+		</option>
+		<option name="ignore_overlapping" type="bool">
+		    <_short>Ignore already overlapping windows in the calculations</_short>
+		    <_long>Treat windows that are already overlapping with the current window as non-existant when calculating space to use for the maximumize window.</_long>
+		    <default>false</default>
+		</option>
+		<option name="allow_shrink" type="bool">
+		    <_short>Permit windows to shrink during maximumize</_short>
+		    <_long>This allows a window to change it's shape to fit in an area even when the new shape might be smaller than it's current size with regards to area</_long>
+		    <default>true</default>
+		</option>
+		<option name="maximumize_left" type="bool">
+		    <_short>Maximumize to left.</_short>
+		    <_long>When maximumizing, allow the window to grow to the left.</_long>
+		    <default>true</default>
+		</option>
+		<option name="maximumize_right" type="bool">
+		    <_short>Maximumize to right.</_short>
+		    <_long>When maximumizing, allow the window to grow to the right.</_long>
+		    <default>true</default>
+		</option>
+		<option name="maximumize_up" type="bool">
+		    <_short>Maximumize to up.</_short>
+		    <_long>When maximumizing, allow the window to grow upwards.</_long>
+		    <default>true</default>
+		</option>
+		<option name="maximumize_down" type="bool">
+		    <_short>Maximumize to down.</_short>
+		    <_long>When maximumizing, allow the window to grow downwards.</_long>
+		    <default>true</default>
+		</option>
+	    </group>
+	    
+	    <group>
+		<_short>Bindings</_short>
+		<subgroup>
+		    <_short>Maximumize Bindings</_short>
+		    <option name="trigger_max_key" type="key">
+			<_short>Maximumize</_short>
+			<_long>Trigger a resize of the window currently focused so it fits as much of the available screenspae as possible.</_long>
+			<default>&lt;Super&gt;M</default>
+		    </option>
+		    <option name="trigger_max_left" type="key">
+			<_short>Left-only maximumize</_short>
+			<_long>Grow the window leftwards as much as possible.</_long>
+		    </option>
+		    <option name="trigger_max_right" type="key">
+			<_short>Right-only maximumize</_short>
+			<_long>Grow the window rightwards as much as possible.</_long>
+		    </option>
+		    <option name="trigger_max_up" type="key">
+			<_short>Up-only maximumize</_short>
+			<_long>Grow the window upwards as much as possible.</_long>
+		    </option>
+		    <option name="trigger_max_down" type="key">
+			<_short>Down-only maximumize</_short>
+			<_long>Grow the window downwards as much as possible.</_long>
+		    </option>
+		    <option name="trigger_max_horizontally" type="key">
+			<_short>Horizontal-only maximumize</_short>
+			<_long>Grow the window horizontally as much as possible.</_long>
+		    </option>
+		    <option name="trigger_max_vertically" type="key">
+			<_short>Vertical-only maximumize</_short>
+			<_long>Grow the window vertically as much as possible.</_long>
+		    </option>
+		    <option name="trigger_max_up_left" type="key">
+			<_short>Top left maximumize</_short>
+			<_long>Grow upper left corner of a window as much as possible.</_long>
+		    </option>
+		    <option name="trigger_max_up_right" type="key">
+			<_short>Top right maximumize</_short>
+			<_long>Grow upper right corner of a window as much as possible.</_long>
+		    </option>
+		    <option name="trigger_max_down_left" type="key">
+			<_short>Lower left maximumize</_short>
+			<_long>Grow lower left corner of a window as much as possible.</_long>
+		    </option>
+		    <option name="trigger_max_down_right" type="key">
+			<_short>Lower right maximumize</_short>
+			<_long>Grow lower right corner of a window as much as possible.</_long>
+		    </option>
+		</subgroup>
+		<subgroup>
+		    <_short>Minimumize Bindings</_short>
+		    <option name="trigger_min_key" type="key">
+			<_short>Minimumize</_short>
+			<_long>Trigger a resize of the window currently focused so it resizes to 1/4 size.</_long>
+		    <default>&lt;Super&gt;&lt;Shift&gt;M</default>
+		    </option>
+		    <option name="trigger_min_left" type="key">
+			<_short>Left-only minimumize</_short>
+			<_long>Shrink the window leftwards.</_long>
+		    </option>
+		    <option name="trigger_min_right" type="key">
+			<_short>Right-only minimumize</_short>
+			<_long>Shrink the window rightwards.</_long>
+		    </option>
+		    <option name="trigger_min_up" type="key">
+			<_short>Up-only minimumize</_short>
+			<_long>Shrink the window upwards.</_long>
+		    </option>
+		    <option name="trigger_min_down" type="key">
+			<_short>Down-only minimumize</_short>
+			<_long>Shrink the window downwards.</_long>
+		    </option>
+		    <option name="trigger_min_horizontally" type="key">
+			<_short>Horizontal-only minimumize</_short>
+			<_long>Shrink the window horizontally.</_long>
+		    </option>
+		    <option name="trigger_min_vertically" type="key">
+			<_short>Vertical-only minimumize</_short>
+			<_long>Shrink the window vertically.</_long>
+		    </option>
+		    <option name="trigger_min_up_left" type="key">
+			<_short>Top left minimumize</_short>
+			<_long>Shrink upper left corner of a the window.</_long>
+		    </option>
+		    <option name="trigger_min_up_right" type="key">
+			<_short>Top right minimumize</_short>
+			<_long>Shrink upper right corner of a the window.</_long>
+		    </option>
+		    <option name="trigger_min_down_left" type="key">
+			<_short>Lower left minimumize</_short>
+			<_long>Shrink lower left corner of a the window.</_long>
+		    </option>
+		    <option name="trigger_min_down_right" type="key">
+			<_short>Lower right minimumize</_short>
+			<_long>Shrink lower right corner of a the window.</_long>
+		    </option>
+		</subgroup>
+	    </group>
+	</options>
+    </plugin>
+</compiz>

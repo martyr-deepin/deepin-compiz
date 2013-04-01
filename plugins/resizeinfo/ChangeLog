@@ -1,0 +1,288 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Scott Moreau <oreaus@gmail.com>	2010-09-28
+
+    Don't require composite since opengl already does.
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Load after decor plugin to prevent windows moving after plugin load
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Ensure that we load after composite and opengl
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-03-16
+
+    Track core changes.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-03-14
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2009-02-02
+
+    Options are in the <options> tag now.
+
+Danny Baumann <dannybaumann@web.de>	2009-02-02
+
+    Proper formatting.
+
+Danny Baumann <dannybaumann@web.de>	2009-01-30
+
+    Minor fixes, stylistic improvements.
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-01-30
+
+    Added missing Makefile.
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-01-30
+
+    Initial C++ port.
+
+Danny Baumann <dannybaumann@web.de>	2008-11-24
+
+    Improve fade handling if a window is grabbed/ungrabbed during fade.
+
+Danny Baumann <dannybaumann@web.de>	2008-09-01
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-08
+
+    Get rid of unneeded heap allocation.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-08
+
+    Plug memory leak.
+
+Danny Baumann <dannybaumann@web.de>	2008-05-20
+
+    Improve damage behaviour.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Danny Baumann <dannybaumann@web.de>	2008-02-19
+
+    Make sure InfoLayer is initialized correctly.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Robert Noland <rnoland@rnoland-ibm.acs.internap.com>	2007-09-19
+
+    Make window large enough to display 4 digit by 4 digit geometry.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-30
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-25
+
+    Adjust header.
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-25
+
+    * Fix copyright & license
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-06
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-05
+
+    Compiz indention and cleanups.
+
+Travis Watkins <amaranth@ubuntu.com>	2007-07-28
+
+    Avoid crash by making sure the cairo context exists.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-25
+
+    Initialize variables correctly.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-16
+
+    Remove obsolete deps/features from vtable
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-01
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    xml -> xml.in
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-28
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-24
+
+    prepareXCoords -> transformToScreenSpace
+
+Danny Baumann <dannybaumann@web.de>	2007-06-14
+
+    Fix size calculation for windows without size increment hint.
+
+Merge: 161fcc5 e65d0d1
+Danny Baumann <dannybaumann@web.de>	2007-06-11
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/compcomm/plugins/resizeinfo
+
+Danny Baumann <dannybaumann@web.de>	2007-06-11
+
+    Fix dependencies.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Updated Makefile
+
+Danny Baumann <dannybaumann@web.de>	2007-06-11
+
+    Move to utility section.
+
+Robert Carr <racarr@gorbie.(none)>	2007-06-10
+
+    Indentation
+
+Robert Carr <racarr@gorbie.(none)>	2007-06-10
+
+    Remove useless info shown when 'resizing' maximized window
+
+Robert Carr <racarr@gorbie.(none)>	2007-06-10
+
+    Fix calculation
+
+Danny Baumann <dannybaumann@web.de>	2007-06-10
+
+    printf -> compLogMessage
+
+Danny Baumann <dannybaumann@web.de>	2007-06-02
+
+    Track the first grabbed window, not the last one.
+    The old behaviour could cause problems while resizing grouped windows.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-01
+
+    Applied lastest core changes
+
+Danny Baumann <dannybaumann@web.de>	2007-05-24
+
+    Crash fix.
+    Next time I will actually try to run the code before committing, I promise.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-24
+
+    Build fix.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-24
+
+    Use Compiz' resize notify message to determine the current window size.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-24
+
+    Whitespace & formatting improvements.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-24
+
+    Load resizeinfo after resize.
+    This makes sure the info box is drawn above the resize rectangle.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-21
+
+    Makefile update
+
+Danny Baumann <dannybaumann@web.de>	2007-05-20
+
+    Fix description.
+
+Merge: 1d8926a 88baa0a
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-16
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/compcomm/plugins/resizeinfo
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-16
+
+    fixed category name
+
+Danny Baumann <dannybaumann@web.de>	2007-05-15
+
+    Fixed fading code.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-15
+
+    Fix row/column count calculation.
+
+Robert Carr <racarr@gorbie.(none)>	2007-05-14
+
+    Add a...few options.
+
+Robert Carr <racarr@gorbie.(none)>	2007-05-14
+
+    What schemea and options.[ch] in the repo?
+
+Robert Carr <racarr@gorbie.(none)>	2007-05-14
+
+    BCOPify.
+
+Robert Carr <racarr@gorbie.(none)>	2007-05-14
+
+    Fix new makefile...
+
+Robert Carr <racarr@gorbie.(none)>	2007-05-14
+
+    Update Makefile.
+
+Robert Carr <racarr@gorbie.(none)>	2007-05-14
+
+    Fix very small leak.
+
+Robert Carr <racarr@gorbie.(none)>	2007-05-14
+
+    Initial commit.
+
+racarr <racarr@de35.org>	2007-05-14
+
+    Dummy commit

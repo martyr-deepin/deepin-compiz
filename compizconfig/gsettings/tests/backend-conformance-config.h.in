@@ -1,0 +1,1 @@
+#define BACKEND_BINARY_PATH "@CMAKE_BINARY_DIR@/compizconfig/gsettings"

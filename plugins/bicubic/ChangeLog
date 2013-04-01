@@ -1,0 +1,87 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Scott Moreau <oreaus@gmail.com>	2010-09-30
+
+    Use CompString to avoid using deprecated methods. Silences warnings.
+
+Scott Moreau <oreaus@gmail.com>	2010-09-28
+
+    Don't require composite since opengl already does.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Ensure loading after required plugins
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Fix warning
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-08-30
+
+    Remove dummy
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-08-30
+
+    Add files in C++ port
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-08-30
+
+    Dummy commit
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-08-30
+
+    Initial C++ port
+
+Danny Baumann <dannybaumann@web.de>	2008-09-01
+
+    Track core changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-15
+
+    Prevent texture fetch indirections, caused by the compiz fragment interface.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Guillaume Seguin <guillaume@segu.in>	2008-04-01
+
+    * Dummy commit
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-19
+
+    Fixed generic private defines.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-05
+
+    Don't interpolate lookup texture values.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-04
+
+    Calculate texture dimensions correctly.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-04
+
+    Initial commit.
+
+compiz <compiz@opencompositing.org>	2008-03-04
+
+    Dummy commit

@@ -1,0 +1,31 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-04
+
+    Remove build dependency on compiztoolbox
+
+Scott Moreau <oreaus@gmail.com>	2010-07-01
+
+    Add serialization interface changes.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-07-15
+
+    Initial C++ port.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-05-20
+
+    Initial commit.
+
+compiz <compiz@opencompositing.org>	2008-05-20
+
+    Dummy commit

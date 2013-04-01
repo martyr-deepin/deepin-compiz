@@ -1,0 +1,1930 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-03-14
+
+    Don't try to delay the unreparent event and also use new core API
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-02-24
+
+    Revert "Set fx if were animating towards the left"
+    
+    This reverts commit 2cf4ee07185da6c1b873c3df783e10509dbc8187.
+    
+    There is probably a better way to do this, but it needs to be looked into
+    later. For now just let the compiler spew at us
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-02-24
+
+    Set fx if were animating towards the left
+
+Merge: b167f70 cfa722a
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/compiz/plugins/animation
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Cleanup (static analysis)
+
+Scott Moreau <oreaus@gmail.com>	2010-09-28
+
+    Don't require composite since opengl already does.
+
+Jay Catherwood <jay.catherwood@gmail.com>	2010-08-24
+
+    Make grid methods public for MultiAnim
+
+Jay Catherwood <jay.catherwood@gmail.com>	2010-08-23
+
+    Only call drawGeometry on current animation
+
+Jay Catherwood <jay.catherwood@gmail.com>	2010-08-22
+
+    Revert "Don't call drawGeometry multiple times"
+    
+    This reverts commit 4a65645bd389914ce6f319f5d3214f6ed2be343d.
+
+Jay Catherwood <jay.catherwood@gmail.com>	2010-08-22
+
+    Don't call drawGeometry multiple times
+    
+    in a MultiAnim. The window is already drawn n times by
+    different paintWindow calls.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-18
+
+    Add re-entry guards
+
+Danny Baumann <dannybaumann@web.de>	2010-08-17
+
+    Change to "window_animation" event
+
+Danny Baumann <dannybaumann@web.de>	2010-08-17
+
+    Don't fill in fields if no animation is running
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-17
+
+    Add window_animation compiz event, so other plugins can track animations to windows
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-17
+
+    Revert "Remove PAINT_WINDOW_NO_CORE_INSTANCE_MASK bit if we are animating a window"
+    
+    This reverts commit 55f2578b907349e361cf3b485787d912cf2f6592.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-17
+
+    Remove PAINT_WINDOW_NO_CORE_INSTANCE_MASK bit if we are animating a window
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-17
+
+    Fixup multianim code, only increment unmap count on BeforeUnmap notification and include multi.h
+
+Jay Catherwood <jay.catherwood@gmail.com>	2010-08-14
+
+    Correct number of animations
+
+Merge: a05c7cb ef1e50b
+Jay Catherwood <jay.catherwood@gmail.com>	2010-08-11
+
+    Merge branch 'master' of git://anongit.compiz.org/compiz/plugins/animation
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-12
+
+    Split animation.h into files
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-12
+
+    Add MultiAnim class, this class allows animations to draw multiple
+    copies of a window
+    
+    The class is a template class, so to use it you'll need to create
+    a class which represents a single copy of your window which you
+    want to animate, and then create a new animation class which inherits:
+    
+        public MultiAnim <YourAnim, numberOfCopies>
+    
+    The class automatically hands off virtual function calls to your
+    animation's class. In order to determine which copy of the window
+    you are animating, you can call:
+    
+        MultiAnim <YourAnim, numberOfCopies>::getCurrAnimationNumber (AnimWindow *);
+
+Jay Catherwood <jay.catherwood@gmail.com>	2010-07-22
+
+    Fix animations not firing at times.
+    
+    A porting bug had the animation plugin checking for currently active
+    window plugins and effects in the screen section, which would cause
+    animations to sometimes not initiate. This puts the check into the
+    correct place
+
+Jay Catherwood <jay.catherwood@gmail.com>	2010-07-22
+
+    Initialize pw->mPluginActive correctly
+
+Merge: 422f3ad 56f0c23
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Merge branch 'master' of git+ssh://git.compiz.org/git/compiz/plugins/animation
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-11
+
+    Fix possible crash
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-13
+
+    Don't animate windows during kdecompat slide effect.
+    
+    Forward port of 67255a1e933f44d85c86cb877bc21378a709a33f to master
+
+Erkin Bahceci <erkinbah@gmail.com>	2010-02-06
+
+    Don't animate notify-osd.
+
+Erkin Bahceci <erkinbah@gmail.com>	2010-02-06
+
+    Fix close animations.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-25
+
+    Fix rare crash on animation start.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-24
+
+    Add some Point and Point3d operators.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-24
+
+    Disable error message for now.
+    
+    (since it's unnecessarily printed at startup when
+    an option string is used).
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-16
+
+    Fix invisible dropdown menu when it's reopened while it's still closing.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-14
+
+    Fix an issue with closing minimized windows.
+    
+    Minimized windows wouldn't get destroyed fully and removed from
+    screen's window list if a close animation was selected.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-06
+
+    Fix animation artifacts.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-11-28
+
+    Fix crash.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-11-28
+
+    Various extension-related changes.
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-11-18
+
+    Track core changes.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-11-17
+
+    Fix deceleration direction for zoom, glide, magic lamp, and sidekick.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-11-15
+
+    Fix typo.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-11-14
+
+    Fix crash when a window closes during focus animation.
+    
+    Partial forward-port of d6ec1392b04de16420593f65c1a4d957a570f0e6.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-11-14
+
+    Prevent focus animation also when ring, shift, scale ends.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-11-13
+
+    Prevent focus animation after switching windows, by waiting longer.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-11-07
+
+    Add max grid size param.
+    
+    Not used yet.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-11-05
+
+    Revert part of the last commit.
+    
+    This fixes the issue with ccsm dialogs.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-10-19
+
+    Fix some issues with closing windows.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-10-18
+
+    Fix uninitialized variable.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-27
+
+    Fix uninitialized variables.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-22
+
+    Increase start countdown to avoid open anim. for already opened windows.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-22
+
+    Fix uninitialized member variables.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-12
+
+    Disable painting functions when not needed.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-12
+
+    Make destructor virtual.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-12
+
+    Remove allocation of unused char array.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-11
+
+    Fix another dodge crash.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-11
+
+    Fix crash on going fullscreen in evince with dodge selected.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-02
+
+    Fix sign warnings.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-02
+
+    decoration -> decor
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-07-30
+
+    Add library linker flag.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-07-24
+
+    Various minor optimizations.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-07-18
+
+    Clean up.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-07-18
+
+    Fix freeze when unshading during shade animation.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-07-18
+
+    Fix lack of animations with all-default settings.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-07-17
+
+    Improve magic lamp performance (reduce damaged area).
+    
+    The difference can be seen by using the showrepaint plugin.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-07-16
+
+    Optimize magic lamp, dream, rollup, wave, curved/hor. fold.
+    
+    These grid-model based effects have two grid objects per grid row,
+    which have the same computed y coordinates. This commit makes
+    the right-hand side object copy over those values from the
+    left-hand side object on the same row instead of recomputing
+    the same values.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-07-15
+
+    Speed up bounding box calculation for magic lamp.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-07-14
+
+    Various code safety improvements.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-07-14
+
+    Fix lack of focus animation.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-07-13
+
+    Fix crash.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-07-13
+
+    Initial C++ port. Dodge and magic lamp changes.
+    
+    - New dodge mode: all windows moving (made the default).
+    - Fixed dodge artifacts/weirdness showing up in certain situations.
+    - Magic Lamp renamed to Magic Lamp Wavy.
+    - Vacuum renamed to Magic Lamp, allowed for minimize (made the default).
+    - Separated restack stuff (dodge and focus-fade) from animation core.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-07-13
+
+    Initial setup for compiz++ port.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-04-18
+
+    Prevent (un)minimize anim. for hidden (switcher) windows.
+
+Kristian Lyngstol <kristian@bohemians.org>	2009-02-07
+
+    Fix warning CORRECTLY
+
+Kristian Lyngstol <kristian@bohemians.org>	2009-02-07
+
+    Fix warning (int != void... sigh).
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-02-06
+
+    Remove unused variables.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-12-21
+
+    Allow model engine use in extensions. Expose more functions.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-11-25
+
+    Fix occasional crash with dodge (bug 1080).
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-11-07
+
+    Fix artifacts with non-animated closing windows.
+
+Danny Baumann <dannybaumann@web.de>	2008-11-06
+
+    Fix memory leak.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-10-02
+
+    Dodge closer.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-10-02
+
+    Don't focus-fade or dodge if only shadows overlap.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-10-02
+
+    Fix minimize/restore inconsistency with skip-taskbar windows (bug 1049).
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-09-24
+
+    Don't damage window region at the end of close/minimize/shade.
+    
+    Slightly improves performance by not damaging the full window region
+    at the end of close, minimize, and shade animations.
+
+Merge: 21e18d3 4fa639c
+Erkin Bahceci <erkinbah@gmail.com>	2008-09-21
+
+    Merge branch 'master' of git+ssh://cornelius@git.opencompositing.org/git/fusion/plugins/animation
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-09-21
+
+    Improve performance with some animations.
+    
+    This change mainly improves (on minimize) curved/horiz.fold, dream, glide, and
+    (on open/close/minimize) zoom and sidekick, by damaging a smaller region.
+    The damage region was being computed as the bounding box of the current and
+    the last drawing boxes. This was unnecessary as we just need the union of
+    those two boxes. This change implements that.
+
+Danny Baumann <dannybaumann@web.de>	2008-09-17
+
+    Fix potential memleak.
+
+Danny Baumann <dannybaumann@web.de>	2008-09-17
+
+    Prevent animations for switcher window by default.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-09-16
+
+    Track libcompizconfig changes.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-09-09
+
+    Reorder groups and subgroups in metadata.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-09-07
+
+    Remove unused attribute.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-09-06
+
+    Remove unnecessary includes.
+
+Merge: 89f0827 bcaa862
+Erkin Bahceci <erkinbah@gmail.com>	2008-09-01
+
+    Merge branch 'master' of git+ssh://cornelius@git.opencompositing.org/git/fusion/plugins/animation
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-09-01
+
+    Fix potential crash with wave/curved/horiz.fold.
+
+Merge: 9dc5ca4 3e8d7df
+Danny Baumann <dannybaumann@web.de>	2008-09-01
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/plugins/animation
+
+Danny Baumann <dannybaumann@web.de>	2008-09-01
+
+    Track core changes.
+
+Merge: 63b5597 b62f74d
+Danny Baumann <dannybaumann@web.de>	2008-09-01
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/plugins/animation
+
+Danny Baumann <dannybaumann@web.de>	2008-08-31
+
+    Fini display options properly.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-08-29
+
+    Fix crash when extension is disabled during animation.
+    
+    This happened with animations provided by extension plugins.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-08-28
+
+    Fix dodge regression.
+
+Danny Baumann <dannybaumann@web.de>	2008-08-28
+
+    Fix typo in animation name.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-08-26
+
+    Allow extensions. Move some effects to animationaddon.
+    
+    * Change effect and random effect options from int to string.
+    
+    * Allow other plugins to extend the animation plugin to provide new
+      animation effects.
+    
+    * Remove particle and polygon engines, along with the effects
+      airplane, beamup, burn, domino, explode, fold, leafspread, and skewer.
+      These are now provided by the new animationaddon plugin.
+    
+    * Simplify some option-related code and remove CompScreen parameter
+      where there is also a CompWindow parameter.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-08-21
+
+    Fix multiple output problem in curved/horiz.fold/wave.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-08-17
+
+    Rearrange some code in focusfade.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-08-17
+
+    Fix wrong opacity during focusfade with trailfocus.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-08-06
+
+    Fix blur/reflex/neg conflicts with wave/dream/horizfold/curvedfold.
+    
+    * Modifications for wave, dream, horizfold, curvedfold to avoid using
+    the Q texture coordinate, which was causing conflicts with blur/reflex/neg.
+    
+    * Amplitude option changes for these effects due to their new implementations.
+    
+    * Plus some code refactoring.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-07-18
+
+    Fix a crash during focus fade.
+    
+    Specifically while a window that was in a "focus chain" was being "finished",
+    it was still being left in the chain. This commit fixes that.
+
+Danny Baumann <dannybaumann@web.de>	2008-07-18
+
+    Always return TRUE after sucessfully processing screen option changes.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-07-16
+
+    Reduce CPU use in magiclamp, dream, wave, rollup, horiz/curvedfold.
+    
+    This commit optimizes these animations to avoid doing the same things
+    over and over again for every model object.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-07-15
+
+    Remove unnecessary parameter.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-07-15
+
+    Reduce CPU usage in non-dodge/focusfade animations.
+    
+    The walker interface is only necessary for dodge and focus fade animations,
+    but it was being used for all of them. This commit fixes that.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-06-30
+
+    Damage window region if it's killed during animation.
+    
+    This probably fixes the occasional gksu artifacts (bug 949).
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-06-21
+
+    Plug mem leak.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-06-12
+
+    Fix excess damaging in burn/beamup.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-09
+
+    Use icon geometry stored in CompWindow struct.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-08
+
+    Plug mem leak.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-07
+
+    Plug mem leaks.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-05-09
+
+    Fix crash during magic lamp animation (bug 932).
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-05-04
+
+    Prevent dodging of nonmatching windows (like toolbars).
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-04-29
+
+    Restore shade model (bug 919).
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-04-29
+
+    Use more realistic lighting in animations.
+    
+    For animations like explode, leaf spread, etc., side faces of polygon objects
+    were being painted with the same shade as the front face. This changeset
+    enables more accurate lighting in those animations using correct side face
+    normals. Also we now allow polygon objects with 0 thickness. Airplane normals
+    are removed as side face normals are not necessary for 0-thickness objects.
+
+Danny Baumann <dannybaumann@web.de>	2008-04-22
+
+    Optimizations.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-04-21
+
+    Fix all possible freezes for good.
+    
+    This adds a cycle check so that a cycle doesn't happen anymore during
+    focus animations, which was the source of all the freezes. Specifically
+    there was still a freeze that happened in some cases with gobby with
+    dodge set as the focus animation, and this is fixed now.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-04-21
+
+    Simplify the last commit.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-04-21
+
+    Fix freeze (bug 906).
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-03-29
+
+    Fix artifacts in Rollup animation.
+
+Merge: 25f20f4 4d561a9
+Erkin Bahceci <erkinbah@gmail.com>	2008-03-16
+
+    Merge branch 'master' of git+ssh://cornelius@git.opencompositing.org/git/fusion/plugins/animation
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-03-16
+
+    Fix 1st unminimize anim. after compiz (re)start.
+    
+    Windows that were in minimized state when compiz is (re)started are being
+    animated with the open animation instead of the unminimize animation when
+    unminimized the first time. This fixes that bug, so that unminimize
+    animation is played for such windows on the first unminimize.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Merge: a95ae39 762e18c
+Erkin Bahceci <erkinbah@gmail.com>	2008-03-14
+
+    Merge branch 'master' of git+ssh://cornelius@git.opencompositing.org/git/fusion/plugins/animation
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-03-14
+
+    Fix crash due to last commit (e.g. with razr).
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-03-12
+
+    Use core changes in Animation. Refactor some code.
+    
+    Also take multiple texture units into account and add more comments.
+
+Merge: ed1c60b bea31b8
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/plugins/animation
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-03-11
+
+    Use better gksu/logout window match.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-03-08
+
+    Cancel focus fade properly on no overlap.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-03-08
+
+    Prevent focus fade when windows don't overlap.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-03-08
+
+    Clean up.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-03-08
+
+    Remove unused variable.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-03-08
+
+    Refactor code.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-03-08
+
+    Fix slight jump in the middle of magic lamp anim.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-03-08
+
+    Use regex for logout window.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-02-27
+
+    Remove unnecessary switcher window workaround.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-02-26
+
+    Group utility with tooltip, remove from minimize matches.
+    
+    Utility windows should be distinguished from normal windows by default.
+    It's more suitable to group them together with tooltips and notifications.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-02-24
+
+    Make sidekick symmetric.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-02-23
+
+    Fix crash by mismatch in anim selection (bug 761).
+    
+    3 columns in "Animation Selection" were already being checked for mismatch.
+    This adds a check for the 4th column "options" and updates the error message.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-19
+
+    Damage bounding box only if not finishing.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-02-10
+
+    Fix broken focus fade / dodge for dialogs.
+    
+    Fixes broken focus animations for child windows like dialog, utility, ...
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-02-10
+
+    Safety measure against circular focus chains.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-02-10
+
+    Fix focus freeze with xine setup window.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-02-07
+
+    Fix animation artifacts.
+    
+    Fixes damage problems with razr/domino by taking the rotation axis offset
+    into consideration, and possibly with other effects by removing unnecessary
+    ending lastBB update.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-02-05
+
+    Clarification.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-01-27
+
+    Fix bug 381: Dark decoration textures in 3D effects.
+    
+    This fixes the problem of dark window decoration textures in
+    airplane, domino, explode, fold, leaf spread, razr, and skewer effects.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-01-25
+
+    Fix possible freeze.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-01-25
+
+    Remove unnecessary return value and code.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-01-24
+
+    Always make animations progress.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-01-24
+
+    Properly abort failed animation.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-01-23
+
+    Fix an occassional freeze.
+    
+    Resets stacking related info (for focus effects) upon open, close,
+    (un)minimize events. Lack of this was the likely cause of a rare freeze
+    with focus fade effect.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-01-23
+
+    Refactor and add a pixmap check for close event.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-01-23
+
+    Fix finite freeze w/ superkaramba after monitor standby.
+    
+    Some system monitor applications like superkaramba widgets
+    (create and) destroy an (invisible) window every second, which
+    was triggering an unnecessary addWindowDamage in Animation
+    plugin for those windows. When the monitor is in stand-by mode,
+    compiz doesn't redraw the screen, causing these (potential)
+    closing animations to be delayed until the user returns
+    leading to high cpu usage or a (finite) freeze at that time.
+    This fix prevents the problem by not calling addWindowDamage
+    for such windows.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-01-11
+
+    Remove unnecessary variable.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-01-10
+
+    Optimize Burn and Beamup.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-01-09
+
+    Fix possible crash (bug 714).
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-12-25
+
+    Fix drawing of polygon effects only on current cube side.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-12-25
+
+    Don't draw burn/beamup particles on all cube sides.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-12-23
+
+    Fix freeze after Switcher usage (bug 705).
+    
+    Fixes the freeze by properly cleaning all stacking related variables after
+    Switcher is used to restack windows.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-12-10
+
+    Fix crash on cleanup. Should fix bug 671.
+
+Merge: f5e33cd f112f5f
+Erkin Bahceci <erkinbah@gmail.com>	2007-12-09
+
+    Merge branch 'master' of git+ssh://cornelius@git.opencompositing.org/git/fusion/plugins/animation
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-12-09
+
+    Handle possible null pointer. Should fix bug 667.
+
+Merge: da88cf5 47b445c
+Danny Baumann <dannybaumann@web.de>	2007-10-27
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/plugins/animation
+    
+    Conflicts:
+    
+animation.c           
+
+Danny Baumann <dannybaumann@web.de>	2007-10-24
+
+    Use CompVector.
+
+Danny Baumann <dannybaumann@web.de>	2007-10-24
+
+    Correct arguments.
+
+Danny Baumann <dannybaumann@web.de>	2007-10-24
+
+    resetToIdentity is no longer present.
+
+Danny Baumann <dannybaumann@web.de>	2007-10-24
+
+    Complete using core matrix functions.
+
+Danny Baumann <dannybaumann@web.de>	2007-10-24
+
+    Use core's matrix functions.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-10-22
+
+    Make sure dodging windows get one last damage.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-10-22
+
+    Fix focus anim freeze when quickly alternating focus.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-10-22
+
+    Cleanup, indent.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-10-22
+
+    Fix focus fade with multiple utility windows (e.g. gobby).
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-10-22
+
+    Walker interface for focus effects.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-10-13
+
+    Prevent focus anim after Switcher when zoom is low.
+    
+    This prevents the unintended focus animation that happens right after
+    Switcher is done, when Switcher's zoom option value is close to 0.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-19
+
+    Initialize as->output to a valid output structure.
+    This prevents a crash in the first preparePaintScreen call because as->output is assigned in paintOutput.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-09-15
+
+    Multi-monitor: Optimize damaging and fix perspective.
+    
+    Now the damaged region should be minimal on multiple monitors too.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-09-13
+
+    Fix polygon-based glide damaging with multiple monitors.
+    Polygon perspective correction on multiple monitors need to be fixed
+    for a more proper solution.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Track core changes.
+
+Jigish Gohil <cyberorg@prime.cyberorg.info>	2007-09-06
+
+    typo correction, thanks Excentrik
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-09-03
+
+    Play better with bs (focus effects). Small optimization.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-09-03
+
+    Further optimize dodge.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-09-02
+
+    Fix crash (Avoid possibly creating damage box with negative size).
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-09-02
+
+    Quick fix for multi-monitor damaging (should be further optimized).
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-09-02
+
+    Fix glide transform (and damaging).
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-09-01
+
+    Fully damage window for magic lamp with menus.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-09-01
+
+    Fix 1 pixel line artifact.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-09-01
+
+    Correct wave direction.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-09-01
+
+    Equalize dream duration with others. Move constants.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-09-01
+
+    Remove unnecessary variable.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-09-01
+
+    Fix initial damage of dodging windows.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-09-01
+
+    Do shadow damaging for future polygon-based focus effects.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-09-01
+
+    Fix dodge damaging.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-08-31
+
+    Initialize variable.
+
+Merge: 6925ab6 24f4fdd
+Erkin Bahceci <erkinbah@gmail.com>	2007-08-31
+
+    Merge branch 'master' of git+ssh://cornelius@git.opencompositing.org/git/fusion/plugins/animation
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-08-31
+
+    Fix explode tessellation.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-08-31
+
+    Reduce animation cpu/gpu usage by damaging minimally.
+    
+    At each animation step, damage only the parts of the screen that should
+    be updated instead of the whole screen. The smaller the animated window
+    and the larger the screen resolution, the higher the performance improvement
+    will be (especially tooltip and menu animations will benefit significantly).
+    This changeset affects all animation effects except Airplane.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-30
+
+    Fix typo.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-30
+
+    Revert accidential change.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-30
+
+    Track core changes.
+
+Merge: ed8489f 0d046f7
+Erkin Bahceci <erkinbah@gmail.com>	2007-08-20
+
+    Merge branch 'master' of git+ssh://cornelius@git.opencompositing.org/git/fusion/plugins/animation
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-20
+
+    const char*
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-08-19
+
+    Remove unused variables.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-08-18
+
+    Remove unused code.
+
+Roland Baer <roland@verifysoft.net>	2007-08-15
+
+    Fix missing check on animEnsureModel().
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-08-11
+
+    Make perceived durations same across all effects.
+    (Adjusts domino, razr, explode, and leafspread duration multiplier).
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-08-11
+
+    Set default Fold direction to Out.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-08-07
+
+    Fix gnome 2.19.X shutdown dialog & dimming layer handling.
+    (Animate shutdown dialog, but not dimming layer).
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-08-07
+
+    Make airplane follow pointer during close animation.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-07
+
+    Fix some compiler warnings.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-06
+
+    Makefile update.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-08-06
+
+    Fix Airplane path end point.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-08-05
+
+    Better error message.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-08-05
+
+    Update first-effect-setting constant.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-08-05
+
+    Tweak Skewer defaults.
+
+Carlo Palma <carlopalma@salug.it>	2007-08-05
+
+    New effect: Airplane
+
+Tomasz Kolodziejski <tkolodziejski@gmail.com>	2007-08-05
+
+    New effects: Fold & Skewer
+
+Danny Baumann <dannybaumann@web.de>	2007-07-31
+
+    Use event name from structure rather than a hardcoded one for comparison.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-29
+
+    Clean up.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-29
+
+    Some polygon engine additions for complex effects.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-29
+
+    Clean up commented code.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-29
+
+    Fix screen lock window handling after workaround changes.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-29
+
+    Fix KDE menus.
+    Please do more testing before removing stuff ;)
+
+Danny Baumann <dannybaumann@web.de>	2007-07-28
+
+    Remove animation workarounds (handled by workarounds plugin).
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-28
+
+    Don't animate during Shift. Get rid of code repetition.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-27
+
+    Get rid of a constant.
+
+Roland Baer <roland@verifysoft.net>	2007-07-27
+
+    Minor memory leak fixes.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-27
+
+    Set min explode thickness to 1. Fix descriptions.
+    This prevents the flashing when thickness is small.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-25
+
+    Fix crash on (un)shading during focus effect.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-25
+
+    Fix overflow in "no window above when lowering" case.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-25
+
+    Fix freeing after event order change.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-25
+
+    Fixed memory corruption.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-25
+
+    Re-enable gksudo darkening layer anim prevention.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-24
+
+    Implement options string for anim selection lists.
+    These are comma separated lists of option value assignments to
+    override effect settings, such as:
+    fire_color=#0080ffff, fire_particles=700, fire_smoke=1
+    Only the options in the "Effect Settings" group can be used here.
+    An html documentation of all options can be generated with optionDocGen.xslt
+    under the Documentation project in git by doing
+    xsltproc -o animationDoc.html optionDocGen.xslt /usr/share/compiz/animation.xml
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-23
+
+    Fix dodge.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-22
+
+    Switch durations to ms because of gconf. Rename options.
+    Switching to integer millisecond durations, since gconf apparently
+    doesn't support float lists.
+    Renaming effect, duration, match options to plurals (which make
+    more sense anyway) to prevent any problems related to this duration
+    change and the recent switch to multiple effect selection.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-22
+
+    Minor code reorganization.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-22
+
+    Plug the memory leak.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-22
+
+    Fix lack of focus animations after using switcher.
+
+Merge: b8171dd 6d5e713
+Danny Baumann <dannybaumann@web.de>	2007-07-21
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/plugins/animation
+
+Danny Baumann <dannybaumann@web.de>	2007-07-21
+
+    Minor cleanup.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-21
+
+    Add window-centered perspective correction to polygon engine.
+
+Roland Baer <roland@Vista.(none)>	2007-07-18
+
+    animation unused vars
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-16
+
+    Put empty descriptions for now.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-16
+
+    Remove obsolete deps/features from vtable
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-15
+
+    Correct notification-daemon window type.
+
+Merge: acbd508 70b1628
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-14
+
+    Merge branch 'master' of git+ssh://cornelius@git.opencompositing.org/git/fusion/plugins/animation
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-14
+
+    Implement multiple effect selection. Rename create -> open.
+    And a little cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-13
+
+    Properly handle out-of-memory conditions when updating the client list copy.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-13
+
+    Properly initialize variables for the client list storage.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-12
+
+    Replace simple matchEvals with strcmp.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-12
+
+    Simplify match strings by handling workarounds in code.
+    getActualWinType should be eventually moved to the Workarounds plugin when
+    it is included and enabled by default in plugins-main.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-11
+
+    Fix lack of focus animation in some cases.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-11
+
+    Hopefully fix the occasional focus anim crash.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-10
+
+    Fix Qt3 menu anim interrupt on 1st opening. Pass on resize notify.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-10
+
+    Fix Qt3 and Qt4 tooltip animations (Regexp plugin should be enabled).
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-10
+
+    Little cleanup.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-09
+
+    Fix lack of menu animations in Qt4 applications.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-09
+
+    Change subgroup title.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-09
+
+    Change group title.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-09
+
+    Improve a few descriptions.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-09
+
+    Allow some more time for zoom.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-08
+
+    Fix crash when closing gobby.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-08
+
+    Fix focusfade hang: focus win A, B, then A, before 1st anim is done.
+    (where A is not focused initially and A & B are overlapping).
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-08
+
+    Fix changing window opacity during focus fade.
+    Shadows will still suffer though. And windows with alpha
+    (with translucent regions) are not touched,
+    as this would make them even more opaque during animation.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-08
+
+    Change zoom behavior when springiness is 0 to have no bump.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-08
+
+    Avoid conflict with FadeDesktop.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-08
+
+    Apply Compiz indentation.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-08
+
+    Make curved fold amplitude depend on window height.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-08
+
+    Fix KDE secondary windows (they are all treated as drop-down menu now).
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-06
+
+    Apply curve change to shade mode too.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-06
+
+    Curvier curved fold.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-06
+
+    Fix zoom springiness.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-06
+
+    Prevent animation of gnome-screensaver black screen.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-06
+
+    Improve movement in magic lamp & vacuum.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-06
+
+    Add magic lamp moving end option (default on). Rename vacuum.
+    Remove unnecessary options from vacuum.
+
+Danny Baumann <maniac@opencompositing.org>	2007-07-05
+
+    Fix missing anim with transparent cube in magic lamp, dream, folds.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-05
+
+    Move xine, xpdf, gitk, etc. from Open/Close 2 to 1.
+    (including all unknown windows)
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-05
+
+    Prevent gksudo darkening layer animation.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-03
+
+    Makefile update.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-03
+
+    Add "zoom to taskbar on minimize" and "sidekick zoom from center" options.
+
+Merge: fded361 e9c33a7
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-03
+
+    Merge branch 'master' of git+ssh://cornelius@git.opencompositing.org/git/fusion/plugins/animation
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-03
+
+    Make animations minimize to taskbar. Make RollUp duration consistent.
+    Improve curved/horizontal fold animations' open/close behavior.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-03
+
+    Move some code between files.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-02
+
+    Added NULL pointer check.
+    Patch by Roland Bär.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-02
+
+    Check return value.
+    Catched by Roland Bär.
+
+Merge: 281163a ec7e8a8
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-01
+
+    Merge branch 'master' of git+ssh://cornelius@git.opencompositing.org/git/fusion/plugins/animation
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-01
+
+    Emit "activate" event to inform plugins that an animation is in progress.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-01
+
+    Makefile update.
+
+Merge: 0291252 c0d2a8e
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-01
+
+    Merge branch 'master' of git+ssh://cornelius@git.opencompositing.org/git/fusion/plugins/animation
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-01
+
+    Zoom/Sidekick: Improve motion, set default springiness to 0.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-01
+
+    Glide: Fix lack of drawing of window's back.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    xml -> xml.in
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-29
+
+    Fix lack of focus/minimize/shade anim of xine, xterm & some other apps
+    like gitk, xpdf, xdvi, xvncviewer, xfontsel, ... by adding "unknown"
+    to match strings.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-29
+
+    Get rid of Switcher window opening animation.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-29
+
+    Fix lack of open & focus anim. for some windows
+    (e.g. NetworkManager "create new wireless..." dialog).
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-29
+
+    Fix BeamUp opacity bug (when the 2 time-step values are different). Remove some unused code.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-28
+
+    Put back sigmoid motion to RollUp.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-28
+
+    Get rid of unnecessary subEffectNo.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-28
+
+    Remove left over header file.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-28
+
+    Simplify and speed up most remaining effects.
+    Namely curvedfold, dodge, domino, dream, explode3d, horizontalfold,
+    leafspread, magiclamp, razr, rollup, and wave.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-28
+
+    Simplify and speed up glide (use CompTransform).
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-28
+
+    Simplify and speed up sidekick and zoom (use CompTransform).
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-28
+
+    Makefile update.
+
+Merge: edf5d2f 9e06ab7
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-28
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/fusion/plugins/animation
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-28
+
+    Make Coverity happy ;-)
+
+Danny Baumann <dannybaumann@web.de>	2007-06-28
+
+    Fix some possible NULL pointer dereferences.
+    Thanks to Roland Bär for catching those.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-23
+
+    dded comments noting that the NUM_EFFECT macros and the actual list size never should become out of sync.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-23
+
+    Add prefix to display private index variable to prevent symbol conflicts.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-23
+
+    Function and variable scope cleanup.
+    Sort prototypes in header files and get rid of the tiny source-file specific header files.
+    Move polygon and particle set specific functions to polygon.c / particle.c.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-22
+
+    Fix max-dodge-amount update while moving win. Fix going through dialogs when they only intersects during dodge.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-22
+
+    Get rid of remaining warnings.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-22
+
+    Update Makefile. Get rid of some warnings. Add license note to files.
+
+Merge: 4f493bc 1d60062
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-22
+
+    Merge branch 'master' of git+ssh://cornelius@git.opencompositing.org/git/compcomm/plugins/animation
+
+Robert Carr <racarr@gorbie.(none)>	2007-06-22
+
+    Working split in to files! thanks maniac.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-22
+
+    Dodge support for apps with open dialog/utility windows (file, find dialogs, gobby, etc.).
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-22
+
+    Fix flashing in focus animation with utility windows.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-22
+
+    Allow focus animations on shaded windows.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Updated Makefile
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-10
+
+    Fix indentation.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-10
+
+    Reordered some options. Fixed some options.
+
+Merge: 7f97b2a 9397678
+Danny Baumann <dannybaumann@web.de>	2007-06-10
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/compcomm/plugins/animation
+
+Danny Baumann <dannybaumann@web.de>	2007-06-10
+
+    printf -> compLogMessage
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-10
+
+    Prevent dodging panels when apps are switching from fullscreen.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-08
+
+    Don't do a fade animation while scale is active.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-07
+
+    Fix Explode.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-07
+
+    Correct indentation.
+
+Trevi�o <trevi55@gmail.com>	2007-06-08
+
+    Set right animations for Java apps by default. Hello git! :)
+
+Danny Baumann <dannybaumann@web.de>	2007-06-03
+
+    Use int options and int descriptions for the animation type options.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-02
+
+    Avoid crash when using dodge with ring switcher
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-02
+
+    Fix fade focus and dodge problem when used after switcher
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-02
+
+    Consistent indentation in xml
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-02
+
+    Get rid of compile warnings
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-02
+
+    Add some Makefile options
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-02
+
+    * commit msg test: (a), d.e. a / b
+    * a
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-02
+
+    push test /
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-02
+
+    * New focus effect: Dodge  (idea from Dennis Kasprzyk)
+    * Dodge Gap Ratio option
+    * Fix focus stacking (lowering case with 2 windows)
+    * Allow animations with CompTransform
+    * Allow modelless animations, i.e. using only CompTransform, WindowPaintAttrib
+    * Remove duplicate functions
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-02
+
+    * push test
+    * case correction
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-02
+
+    test commit
+
+Merge: 200ef55 badae01
+Erkin Bahceci <erkinbah@gmail.com>	2007-05-31
+
+    Merge branch 'master' of git+ssh://cornelius@git.opencompositing.org/git/compcomm/plugins/animation
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-01
+
+    Applied lastest core changes
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-05-29
+
+    Rename function and little clean-up.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-05-29
+
+    Variable relocation.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-21
+
+    Fix basic metadata for former string options.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-21
+
+    Begin to convert animation to use int descriptions.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-21
+
+    Makefile update
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-05-18
+
+    Reduce duration option precisions.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-05-18
+
+    Springy Zoom and Sidekick (with springiness options).
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-16
+
+    added new dependency rules
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-05-15
+
+    Disabled setting of 0 wave amplitude in magic lamp.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-15
+
+    disabled setting of 0 waves in magic lamp with modified metadata
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-05-12
+
+    Fix focus-fade flashing problem when Group plugin forms a tabbed window group.
+
+marex <marex@beryl-project.org>	2007-05-12
+
+    Grouped the options in the metadata
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-05-12
+
+    Fix typo.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-05-12
+
+    Fix fade-focus conflict with Group's tab change animation.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-05-12
+
+    Avoid division by zero.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-05-11
+
+    Fix missing AnimEffectProperties.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-05-11
+
+    Fix effect count bug, and minor typo.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-10
+
+    Syntax fix.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-10
+
+    Fix some of the most weird indentations.
+    Still some more work to do. Sue automatic indentation :-/
+
+Danny Baumann <dannybaumann@web.de>	2007-05-10
+
+    Some minor cleanup.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-05-09
+
+    Fix explode tessellation default.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-05-09
+
+    Fix "empty random effect list" behavior.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-05-09
+
+    Fix explode tessellation option.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-05-09
+
+    Fix random effects.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-05-09
+
+    Fix horizontal folds option.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-09
+
+    fake commit to move animation to the merged repo
+    removed animation.schema (the Makefile generates one from the xml file)
+
+Merge: b8a9f57 a8b2ca0
+marex <marex@beryl-project.org>	2007-05-09
+
+    Merge with git+ssh://marex@git.beryl-project.org/git/compcomm/plugins/animation
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-09
+
+    Makefile update
+
+marex <marex@beryl-project.org>	2007-05-09
+
+    Fixed metadata category
+
+Danny Baumann <dannybaumann@web.de>	2007-05-09
+
+    Revert accidential change.
+
+Merge: 8a1d66d 92c6e0b
+Danny Baumann <dannybaumann@web.de>	2007-05-09
+
+    Merge branch 'master' of git+ssh://maniac@git.beryl-project.org/git/compcomm/plugins/animation
+
+Danny Baumann <dannybaumann@web.de>	2007-05-09
+
+    Remove Beryl leftover.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-09
+
+    Make animation plugin use the new metadata system.
+
+Roi Cohen <roico@roico-desktop.(none)>	2007-05-08
+
+    fix a typo in makefile
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-05-08
+
+    Avoid "switcher minimization" problem by dropping minimize triggering on "no window icon geometry" cases (no window list applet case).
+
+Merge: 22ce758 d370696
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-07
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/compcomm/plugins/animation
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-07
+
+    updated Makefile
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-05-06
+
+    metadata: Added categories.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-06
+
+    updated makefile
+
+Guillaume Seguin <ixce@ed3n-m.(none)>	2007-05-06
+
+    Fix Makefile typo
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-06
+
+    updated Makefile
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-06
+
+    updated Makefile
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-05-04
+
+    Complete updating animation.xml for latest changes to animation options.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-04
+
+    Adapt animation for latest Compiz git.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-05-02
+
+    Avoid "focus fading" shaded windows.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-05-02
+
+    Fix "minimize all" behavior.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-05-02
+
+    Avoid Roll Up decoration texture problem.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-05-02
+
+    Updated default match strings (to be more accurate for menus of Mozilla apps)
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-05-02
+
+    * Merged Magic Lamp 1/2
+    * Corrected explode tessellation default
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-05-01
+
+    Merged minimize/unminimize and shade/unshade options, to make effect options more concise and easier to change.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-05-01
+
+    Use the new override_redirect matching.
+
+Bellegarde Cedric <gnumdk@gmail.com>	2007-04-21
+
+    Use compiz matching interface
+
+Danny Baumann <daba@rechenknecht.peppercon.de>	2007-04-18
+
+    Remove now unneeded blurfx IPCS interface.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-04-04
+
+    test commit 2
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-04-04
+
+    test commit
+
+Erkin Bahceci <erkin@flux.(none)>	2007-04-04
+
+    Fixed a crash! (when closing certain windows)
+
+Erkin Bahceci <erkin@flux.(none)>	2007-04-03
+
+    Fixed memory leak when using Burn and Beam Up
+
+Erkin Bahceci <erkin@flux.(none)>	2007-04-03
+
+    Fixed missing hexagon tiles problem in Explode
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-04-03
+
+    Updated for option function changes
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-04-02
+
+    Fixed flashing of a minimized window when unminimizing another window
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-04-01
+
+    Fixed a crash! (with hexagonal tessellation)
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-04-01
+
+    Slightly improved explode effect
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-04-01
+
+    Fixed focus wave
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-04-01
+
+    Added plugin order dependency for Fade plugin.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-03-31
+
+    Updated authors section
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-03-30
+
+    Tessellation type is now selectable (rectangular/hexagonal) for Explode
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-03-30
+
+    Hexagon tessellation function (by tehpola)
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-03-30
+
+    Temporary menu fix for mozilla apps (until mozilla bug is fixed).
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-03-30
+
+    Updated author email.
+
+Erkin Bahceci <erkin@flux.(none)>	2007-03-30
+
+    Fixed schema beginning & ending.
+
+David Reveman <davidr@novell.com>	2007-03-30
+
+    Initial commit.

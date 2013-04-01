@@ -1,0 +1,97 @@
+WINDOW UNREDIRECTION TESTS
+===========================
+Daniel van Vugt <daniel.van.vugt@canonical.com>
+
+
+Browser unredirect with context menus
+-------------------------------------
+Setup:
+#. Install Chromium or Chrome browser.
+ 
+Actions:
+#. Open Chrome/Chromium and hit F11 to go full screen.
+#. Right click on the web page to open a context menu.
+#. Left click on the web page to close the context menu.
+#. Right click on the web page to open a context menu.
+#. Left click on the web page to close the context menu.
+#. Press F11 to exit from full screen.
+
+Expected Result:
+  Every time you right-clicked, the context menu should be visible.
+
+
+Video unredirect with window menu
+---------------------------------
+Setup:
+#. Install mplayer.
+#. Get a video file you can play in mplayer.
+  
+Actions:
+#. Open the video in mplayer.
+#. Hit F to go fullscreen.
+#. Hit Alt+Space to open the window menu.
+#. Hit Escape to close the window menu.
+#. Hit Alt+Space to open the window menu.
+#. Hit Escape to close the window menu.
+#. Hit Escape to close the video.
+
+Expected Result:
+  Every time you hit Alt+Space the window menu should have appeared and the
+  video should still be playing behind it.
+
+
+Video unredirect with transformed screen
+----------------------------------------
+Setup:
+#. Install mplayer.
+#. Get a video file you can play in mplayer.
+  
+Actions:
+#. Open the video in mplayer.
+#. Hit F to go fullscreen.
+#. Trigger expo mode (Super+E or mouse to top-left corner)
+#. Leave expo mode (click on the full screen video)
+#. Trigger expo mode again.
+#. Leave expo mode (click on the full screen video)
+#. Hit Escape to close the video.
+
+Expected Result:
+  Every time you triggered expo mode, expo mode should have become visible and
+  you should see the video still playing in the expo view.
+
+
+Unredirect cancelation by alpha windows on top (LP: #1046661)
+-------------------------------------------------------------
+Setup:
+#. Install Chromium or Chrome browser.
+ 
+Actions:
+#. Open a Chrome/Chromium window.
+#. Open a gnome-terminal window (Ctrl+Alt+T)
+#. Move the gnome-terminal to the centre of the screen, above the Chrome
+   window.
+#. Click on the Chrome window and make it fullscreen (F11).
+#. Alt+Tab to the gnome-terminal window.
+
+Expected Result:
+  The gnome-terminal window should be visible on top.
+
+
+Unredirect cancelation by transformed windows (LP: #1047168)
+-------------------------------------------------------------
+Setup:
+#. Install Chromium or Chrome browser.
+#. Run ccsm and ensure the Scale plugin is loaded and "Initiate Window Picker"
+   is bound to Shift+Alt+Up.
+ 
+Actions:
+#. Open a Chrome/Chromium window.
+#. Open a gnome-terminal window (Ctrl+Alt+T)
+#. Move the gnome-terminal to the centre of the screen, above the Chrome
+   window.
+#. Click on the Chrome window and make it fullscreen (F11).
+#. Hold Shift+Alt and tap Up to engage scale mode. Keep holding Shift+Alt
+   for a few seconds.
+
+Expected Result:
+  Windows get scaled and you can see both the Chrome and Terminal windows.

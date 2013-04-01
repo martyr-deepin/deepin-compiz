@@ -1,0 +1,12 @@
+prefix=@CMAKE_CURRENT_BINARY_DIR@/src/
+exec_prefix=@CMAKE_CURRENT_BINARY_DIR@/src/
+libdir=@CMAKE_CURRENT_BINARY_DIR@/src/
+includedir=@CMAKE_CURRENT_SOURCE_DIR@/include
+
+Name: libcompizconfig_internal
+Description: Compiz configuration system (internal)
+Version: @VERSION@
+
+Libs: -L@CMAKE_CURRENT_BINARY_DIR@/src/ -lcompizconfig
+Cflags: -I@CMAKE_CURRENT_SOURCE_DIR@/include
+

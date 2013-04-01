@@ -1,0 +1,15 @@
+libcompizconfig uses out-of-tree builds with cmake, in order to generate the Makefiles for compiz use:
+
+	$ mkdir build
+	$ cd build
+	$ cmake ..
+
+After that, standard build procedures apply:
+
+	$ make
+	# make install
+
+In order to build other backends, you will need to install the compizconfig cmake set
+
+	# make findcompizconfig_install
+

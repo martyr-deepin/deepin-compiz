@@ -1,0 +1,339 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-03-14
+
+    Update for new core API
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2010-11-27
+
+    Hook up put_put with the right action callback
+
+Jay Catherwood <jay.catherwood@gmail.com>	2010-10-30
+
+    Activate remaining keybindings
+    
+    This should fix "Restore Position", "Put Pointer",
+    "Put To Next Output", and "Put To Adjacent Viewport"
+
+Scott Moreau <oreaus@gmail.com>	2010-09-28
+
+    Don't require composite since opengl already does.
+
+Jay Catherwood <jay.catherwood@gmail.com>	2010-06-11
+
+    [PATCH]: fix put to viewport
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Fix typo which caused offset put bottom
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Load after decor plugin to prevent windows moving after plugin load
+
+Merge: f8c4369 786a70b
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Merge branch 'master' of git+ssh://smspillaz@git.compiz.org/git/compiz/plugins/put
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Use C++ bool
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Ensure that we load after composite and opengl
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-03
+
+    Border macros should replace all instances of input dimention checking
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-03
+
+    Handle windows that have server border set properly.
+    
+dc097d85952f82b101ea897d33958582db2fa010 to master        Forward port of    
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-03
+
+    Fix possible segfault on 64 bit arch
+
+Danny Baumann <dannybaumann@web.de>	2009-03-20
+
+    Use inputRect.
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-03-16
+
+    Track core changes.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-03-14
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2009-03-11
+
+    Track core changes, use CompRect, improve coding style.
+
+Eduardo Gurgel Pinho <eduardo@mad4.(none)>	2009-02-25
+
+    composite plugin requirement added
+
+Eduardo Gurgel Pinho <eduardo@mad4.(none)>	2009-02-25
+
+    Indent properly
+
+Eduardo Gurgel Pinho <eduardo@mad4.(none)>	2009-02-19
+
+    Removing useless include and debug message
+
+Eduardo Gurgel Pinho <eduardo@mad4.(none)>	2009-02-19
+
+    Removing some xml default values
+
+Eduardo Gurgel Pinho <eduardo@mad4.Chagas>	2009-02-16
+
+    Compiz++ port.
+
+Eduardo Gurgel Pinho <eduardo@mad4.Chagas>	2009-02-16
+
+    Compiz++ port
+
+Danny Baumann <dannybaumann@web.de>	2008-12-28
+
+    Always respect move action.
+
+Danny Baumann <dannybaumann@web.de>	2008-12-28
+
+    Don't constrain fullscreen windows to work area.
+
+Danny Baumann <dannybaumann@web.de>	2008-12-28
+
+    Correctly reflect output during animation.
+
+Danny Baumann <dannybaumann@web.de>	2008-12-28
+
+    Only retain focus for focussed window.
+
+Danny Baumann <dannybaumann@web.de>	2008-12-28
+
+    Use moveWindow / syncWindowPosition again.
+    When not doing so, we'd have to deal with X protocol asynchronities.
+
+Danny Baumann <dannybaumann@web.de>	2008-12-28
+
+    Add functionality for putting a window to the next output.
+
+Danny Baumann <dannybaumann@web.de>	2008-12-28
+
+    Factor out window movement ending into separate function and only update
+    window attributes if needed.
+
+Danny Baumann <dannybaumann@web.de>	2008-12-28
+
+    Fix typo.
+
+Danny Baumann <dannybaumann@web.de>	2008-12-28
+
+    Whitespace fix.
+
+Danny Baumann <dannybaumann@web.de>	2008-12-28
+
+    Factor out movement code into separate function and clean up option
+    naming for consistency ("viewport" instead of "face" and "output" instead of "head").
+
+Danny Baumann <dannybaumann@web.de>	2008-12-02
+
+    Never move windows without move action and don't keep screen grab around
+    when bailing out.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Danny Baumann <dannybaumann@web.de>	2008-02-11
+
+    Account for translation.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-11
+
+    Don't apply "Avoid offscreen" to full viewport movements.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-11
+
+    Coding style fix.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-11
+
+    Use internal animation geometry instead of server geometry for head determination while the animation is running.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-11
+
+    Fix typo.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-11
+
+    Build fix.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-11
+
+    Add relative movement mode.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-11
+
+    Rename exact to absolute.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-11
+
+    Use case-insensitive matching.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-11
+
+    Use putToViewport, which validates the face parameter.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-11
+
+    Replace "Put exact" option by a versatile "Put" option which can take a string that gives the type of put.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-11
+
+    Save a lot of duplicated code by not transferring the put type via the option structure.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-10
+
+    Use window's head instead of current head.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-10
+
+    Prevent moved window losing focus if click-to-focus is disabled and the pointer leaves the window during animation.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-10
+
+    Update window attributes after moving so that maximized windows do not get weird sizes.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-10
+
+    Use screen work area for put-to-corner if user double-tapped the corresponding key.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-10-29
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-30
+
+    Track core changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-20
+
+    New action system
+
+Roland Baer <roland@Vista.(none)>	2007-08-16
+
+    [PATCH] Sanity check on return value of XQueryPointer()
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-06
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-05
+
+    Do moving animation by translating the painting.
+    Cleanups.
+
+Sam Spilsbury <mailto:SmSpillaz@gmail.com>	2007-08-05
+
+    Fix some copy'n'paste mistakes in descriptions.
+    Allow button bindings for put-to-screen-corner bindings.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-16
+
+    Remove obsolete deps/features from vtable
+
+Danny Baumann <dannybaumann@web.de>	2007-07-06
+
+    Compiz indention style.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-06
+
+    Indention fixes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-03
+
+    Makefile update.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-02
+
+    Fix the 1 pixel jump just before reaching target.
+
+Pierpaolo Follia <pfollia@gmail.com>	2007-07-02
+
+    Make put respect target position.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-01
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    xml -> xml.in
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-28
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Updated Makefile
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-01
+
+    Applied lastest core changes
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-21
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-17
+
+    initial commit
+
+compiz <compiz@de35.org>	2007-05-17
+
+    Dummy commit

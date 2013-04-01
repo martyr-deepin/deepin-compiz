@@ -1,0 +1,9 @@
+[Desktop Entry]
+_Name=CompizConfig Settings Manager
+_Comment=Configure Compiz with CompizConfig
+Icon=ccsm
+Exec=ccsm
+Terminal=false
+Type=Application
+Categories=Settings;DesktopSettings;
+StartupNotify=true

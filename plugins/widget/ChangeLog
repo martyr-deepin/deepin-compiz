@@ -1,0 +1,308 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2010-12-02
+
+    Fix windows not unampping
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2010-12-02
+
+    Wrap ::managed () and return false if the window is a widget
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2010-11-22
+
+    Fix widget window matching
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-26
+
+    In setWidgetLayerMapState we need to iterate through a copy of the window list
+    since it is possible that  screen->windows () could be modified (hence breaking iterators)
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-26
+
+    Only terminate on Button1 and also don't end the widget mode of the window that was unmapped wasn't a widget
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-25
+
+    Don't attempt to hide and show windows after the window has been destroyed.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-25
+
+    Make sure we always have handleEvent enabled.
+    
+    We need it to automatically hide widget windows on creation, and we also need it to exit widget mode accordingly
+
+Scott Moreau <oreaus@gmail.com>	2010-09-28
+
+    Don't require composite since opengl already does.
+
+Merge: 1c26fb9 491499e
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Merge branch 'master' of git+ssh://git.compiz.org/git/compiz/plugins/widget
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Load after decor plugin to prevent windows moving after plugin load
+
+Danny Baumann <dannybaumann@web.de>	2010-05-02
+
+    Use core functions to show/hide windows instead of self-cooked versions.
+
+Danny Baumann <dannybaumann@web.de>	2010-05-02
+
+    Cleanup.
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Use member variable prefixing and drop local prefixing to work around shadowing
+
+Merge: aa58c06 d609e38
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Merge branch 'master' of git+ssh://git.compiz.org/git/compiz/plugins/widget
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Use C++ bool
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Ensure loading after required plugins
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-11-14
+
+    Fix use of incorrect tag
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-09
+
+    Only run paint functions when needed
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-09
+
+    Fix painting
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-04
+
+    Fix long standing compiler error to do with a missing ';' after class definition
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-02
+
+    Remove grab only when grab index is valid.
+    
+    Pull of 14fcf8aab7e521e62191e58f7e509b69369fe0f8 into compiz++.
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-05-30
+
+    Only end widget mode if a closed window really was a widget. Pull of 9355319cff2d5d3f8b0699a1e20e729b0e618f74 into compiz++
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-05-30
+
+    Remove dummy
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-05-30
+
+    Dummy commit
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-05-30
+
+    Remove backups
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-05-30
+
+    Add files
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-05-30
+
+    Initiatal C++ port. Doesn't compile yet due to an error with the COMPIZ_PLUGIN_20091315 macro that shouldn't occur.
+
+Danny Baumann <dannybaumann@web.de>	2008-10-16
+
+    Update widget status on map and also look at oldManaged variable (for windows currently in the widget layer) when determining whether a window is managed or not.
+
+Danny Baumann <dannybaumann@web.de>	2008-10-07
+
+    - End widget mode when last widget was closed
+    - Don't include unmanaged windows on widget layer
+    - Fix tree status update.
+
+Danny Baumann <dannybaumann@web.de>	2008-10-07
+
+    Remove "Focus widget layer" option and make it the default.
+
+Danny Baumann <dannybaumann@web.de>	2008-10-07
+
+    Hook into focusWindow and prevent focus of non-widget layer windows while widget layer is active.
+
+Danny Baumann <dannybaumann@web.de>	2008-09-17
+
+    Fix potential memleak.
+
+Danny Baumann <dannybaumann@web.de>	2008-09-16
+
+    Allow panels to be in the widget layer again.
+    Obviously there are quite a number of people out there who want their panels in the widget layer. The original reason for forbidding that (bug 1012) was fixed inside of ccsm.
+
+Danny Baumann <dannybaumann@web.de>	2008-07-26
+
+    Exclude dock, desktop and override_redirect windows from widget layer.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-06-18
+
+    Track core changes
+
+Danny Baumann <dannybaumann@web.de>	2008-06-07
+
+    Only call matchExpHandlerChanged when not shutting down.
+
+Danny Baumann <dannybaumann@web.de>	2008-04-07
+
+    Added option to focus the widget layer upon invocation.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Danny Baumann <dannybaumann@web.de>	2008-02-14
+
+    Save managed state.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-28
+
+    Always read widget property as 32 bit value.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-11
+
+    Properly initialize property state.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-10
+
+    Wrap into matchExpHandlerChanged again.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Don't wrap into matchExpHandlerChanged for the moment.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-30
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-28
+
+    Don't try to evaluate matches in InitWindow.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-23
+
+    Fixed widgets staying at the desktop if toggling widget mode fast.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-20
+
+    New action system
+
+Danny Baumann <dannybaumann@web.de>	2007-08-16
+
+    Load widget before animation.
+    This solves annoying flashing when focus fading between widgets and normal windows.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-15
+
+    Made end-widget-mode-with-click behaviour optional.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-15
+
+    Properly include widget child windows into widget layer.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-15
+
+    Fix handling of _COMPIZ_WIDGET property change notifications.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-13
+
+    Don't raise widgets above all windows.
+    Use core function to determine the highest possible stack position.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-13
+
+    Don't overwrite already existing timers.
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-12
+
+    Dummy commit
+
+Danny Baumann <dannybaumann@web.de>	2007-08-12
+
+    Crash fix on plugin unload.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-12
+
+    Fix match handler behaviour for widget=0 matches.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-11
+
+    Notify other plugins whenever the widget match status changed.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-10
+
+    Put into desktop category.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-10
+
+    Map widget windows raised.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-10
+
+    Properly initialize WidgetWindow variables.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-10
+
+    Remove widget opacity fade.
+    This should be handled by the animation plugin, if desired.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-10
+
+    Unmap at beginning of fade.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-10
+
+    Initial import.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-10
+
+    Remove dummy.
+
+maniac <maniac@opencompositing.org>	2007-08-10
+
+    Dummy commit

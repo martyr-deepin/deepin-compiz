@@ -1,0 +1,259 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-03-15
+
+    Update for new core API
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-13
+
+    s/decoration/decor/ and ensure loading after composite and opengl so as not to freak them out
+
+Danny Baumann <dannybaumann@web.de>	2009-03-20
+
+    Track more core changes.
+
+Danny Baumann <dannybaumann@web.de>	2009-03-20
+
+    Use inputRect.
+
+Danny Baumann <dannybaumann@web.de>	2009-03-20
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2009-03-17
+
+    Fix CMake file.
+
+Danny Baumann <dannybaumann@web.de>	2009-03-10
+
+    Minor cleanup.
+
+Eduardo Gurgel Pinho <eduardo@mad4.(none)>	2009-03-09
+
+    Track core changes
+
+Eduardo Gurgel Pinho <eduardo@mad4.Chagas>	2009-03-01
+
+    Revert "Inline functions must be defined into a header file."
+    
+    This reverts commit f9874a5adf40718c0a0a01abf4c03edfc3fbe358.
+
+Eduardo Gurgel Pinho <eduardo@mad4.Chagas>	2009-03-01
+
+    Inline functions must be defined into a header file.
+
+Danny Baumann <dannybaumann@web.de>	2009-02-28
+
+    Improve C++ object usage and coding style.
+
+Eduardo Gurgel Pinho <eduardo@mad4.(none)>	2009-02-28
+
+    Region replaced by CompRegion and XRectangle replaced by CompRect
+
+Eduardo Gurgel Pinho <eduardo@mad4.(none)>	2009-02-28
+
+    Indention fix
+
+Eduardo Gurgel Pinho <eduardo@mad4.(none)>	2009-02-15
+
+    Compiz++ port
+
+Kristian Lyngstol <kristian@linpro.no>	2008-11-22
+
+    Allow shrinking during maximumize - Easier to fit to weird places :)
+
+Kristian Lyngstol <kristian@linpro.no>	2008-11-22
+
+    Reduce code duplication
+
+Kristian Lyngstol <kristian@linpro.no>	2008-11-19
+
+    ... Remove box-shrinking. Auto-minimumize on maximumize takes care of this.
+
+Kristian Lyngstol <kristian@linpro.no>	2008-11-19
+
+    Cleanups - Split out box-shrinking.
+
+Kristian Lyngstol <kristian@linpro.no>	2008-11-19
+
+    Split out unmaximize
+
+Eduardo Gurgel Pinho <eduardo@mad4.Chagas>	2008-11-18
+
+    Minimumize implementation complete. Key triggers added
+
+Kristian Lyngstol <kristian@linpro.no>	2008-11-19
+
+    Adjust the metadata language and reset-defaults
+
+Kristian Lyngstol <kristian@linpro.no>	2008-11-18
+
+    Implement minimumize
+    
+    Still no bindings for it, and this should be more configurable. Right now,
+    the plugin will minimumize before it maximumizes. In other words: Better
+    handeling of overlapping windows.
+
+Kristian Lyngstol <kristian@linpro.no>	2008-11-18
+
+    Further split up the maximumize algorithm
+    
+    Increases readability and code duplication.
+
+Kristian Lyngstol <kristian@linpro.no>	2008-11-18
+
+    Split and clean the core algorithm
+
+Kristian Lyngstol <kristian@linpro.no>	2008-11-18
+
+    Don't grab the screen, just check if someone else has a grab
+
+Kristian Lyngstol <kristian@linpro.no>	2008-11-18
+
+    Style cleanups
+
+Kristian Lyngstol <kristian@linpro.no>	2008-11-18
+
+    Introduce MaxSet - Contains left/right/up/down
+
+Eduardo Gurgel Pinho <edgurgel@gmail.com>	2008-11-17
+
+    Massive import from maximumizeplus
+    
+    - Push and check screengrabs to avoid collisions with, say, put.
+    - Enable directional maximumize.
+
+Thomas Jaeger <thjaeger@gmail.com>	2008-08-12
+
+    Remove bad union - fixes overlapping
+
+Kristian Lyngstol <kristian@yoda.lyngstol.net>	2008-05-20
+
+    Ignore Docks except the struts
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Thomas Jaeger <thjaeger@gmail.com>	2008-03-28
+
+    Add option to ignore windows overlapping too much.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Danny Baumann <dannybaumann@web.de>	2008-02-08
+
+    Put in window management category.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-08
+
+    Dummy commit.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-12-16
+
+    Option to ignore sticky windows
+    
+    This is also checked against Dock windows (ie: panels), so they are NOT ignored.
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-12-13
+
+    Allow minor overlaps
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-12-10
+
+    Header/comment adjustment
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-11-04
+
+    Splel fix!
+
+Danny Baumann <dannybaumann@web.de>	2007-11-04
+
+    Simplify region code.
+
+Danny Baumann <dannybaumann@web.de>	2007-11-03
+
+    Exclude window passed to function from region init instead of the active window.
+    At the moment, the passed window will always be the active window, but it's better to be on the safe side for the future.
+
+Danny Baumann <dannybaumann@web.de>	2007-11-03
+
+    Use passed window parameter.
+
+Danny Baumann <dannybaumann@web.de>	2007-11-03
+
+    Cleanups, coding style fixes.
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-11-02
+
+    Cleanup, memory checks, comments
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-11-02
+
+    Adjust the "free space" region so it takes decorations into consideration
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-11-02
+
+    Simplify and improve, still needs work
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-11-02
+
+    Initial working algorithm
+    
+    Still needs polish.
+    
+    A lot of polish.
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-11-01
+
+    Basic code for doing the maximumize job
+    
+    This does not work and does include debug code
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-10-31
+
+    Skeleton (based on addhelper)
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-10-31
+
+    Remove ezoom skeleton
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-10-31
+
+    Add ezoon as a skeleton
+
+Kristian Lyngstol <kristian@bohemians.org>	2007-10-31
+
+    Initial build files
+
+kristian <kristian@opencompositing.org>	2007-10-31
+
+    Dummy commit

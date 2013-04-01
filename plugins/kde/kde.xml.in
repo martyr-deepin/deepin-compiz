@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<compiz>
+    <plugin name="kde">
+	<_short>KDE/Qt Event Loop</_short>
+	<_long>Integrates the KDE/Qt event loop into Compiz</_long>
+	<category>General</category>
+	<deps>
+	    <relation type="after">
+		<plugin>composite</plugin>
+		<plugin>opengl</plugin>
+		<plugin>decor</plugin>
+	    </relation>
+	</deps>
+    </plugin>
+</compiz>

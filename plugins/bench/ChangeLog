@@ -1,0 +1,155 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Scott Moreau <oreaus@gmail.com>	2010-09-28
+
+    Don't require composite since opengl already does.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-04
+
+    Remove build dependency on compiztoolbox
+
+Scott Moreau <oreaus@gmail.com>	2010-07-02
+
+    Add serialization interface changes.
+
+Scott Moreau <oreaus@gmail.com>	2010-06-14
+
+    Initialize variables.
+
+Scott Moreau <oreaus@gmail.com>	2010-05-30
+
+    Fix fade in/out.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-05-03
+
+    Add <deps> tag
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Ensure loading after required plugins
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-02
+
+    Fix sign warning.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-07-29
+
+    Track core changes. Add FPS limiter mode option.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-07-24
+
+    Initial C++ port.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-02-05
+
+    Removed dummy file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-17
+
+    Remove unneeded includes.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Track core changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-30
+
+    Track core changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-20
+
+    New action system
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-06
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-16
+
+    Remove obsolete deps/features from vtable
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-05
+
+    Compiz indent style.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-01
+
+    Makefile update.
+
+Guillaume Seguin <guillaume@segu.in>	2007-06-30
+
+    * Fix option description (who cares about Beryl? ;))
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    Actually rename xml -> xml.in
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    xml -> xml.in
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-28
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Updated Makefile
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-01
+
+    Applied lastest core changes
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-21
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-17
+
+    initial commit
+
+compiz <compiz@de35.org>	2007-05-17
+
+    Dummy commit

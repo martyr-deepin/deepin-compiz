@@ -1,0 +1,95 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Load after decor plugin to prevent windows moving after plugin load
+
+= <=>	2010-05-13
+
+    Add missing <deps> tags.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-13
+
+    Load after composite and opengl plugins to avoid a sudden unredirect/redirect since it looks visually unappealing.
+
+Merge: b1b545d 27085a3
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Merge branch 'compiz++' of ../titleinfo into compiz++
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Enable addSupportedAtoms
+
+Merge: 6ead49e eee6047
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Merge branch 'compiz++' of ../titleinfo into compiz++
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Eliminate debug message
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Fix wrong dangling pointer
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Remove dummy
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Dummy commit
+
+Merge: a5c375b 84b91b7
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Merge branch 'compiz++' of ../titleinfo
+    
+    Conflicts:
+titleinfo.c           
+titleinfo.xml.in           
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Initial C++ port
+
+Danny Baumann <dannybaumann@web.de>	2009-10-03
+
+    Another dummy commit.
+
+Danny Baumann <dannybaumann@web.de>	2009-10-03
+
+    Dummy commit.
+
+Danny Baumann <dannybaumann@web.de>	2009-06-24
+
+    Advertise support for _NET_WM_VISIBLE_NAME and _NET_WM_PID.
+
+Danny Baumann <dannybaumann@web.de>	2009-04-20
+
+    /proc/<pid>/exe does not exist on BSD, better use the directory itself
+    for owner check.
+
+Danny Baumann <dannybaumann@web.de>	2009-04-20
+
+    Fix potential segfault.
+
+Danny Baumann <dannybaumann@web.de>	2009-04-20
+
+    Initial commit.
+
+maniac <maniac@opencompositing.org>	2009-04-20
+
+    Dummy commit

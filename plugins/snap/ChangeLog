@@ -1,0 +1,227 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-03-15
+
+    Update for new core API
+
+Jay Catherwood <jay.catherwood@gmail.com>	2010-08-17
+
+    Revert "Add slight padding forleft edge"
+    
+    This reverts commit 956c98d0a2f459ca26d5414bbfbdecc757216566.
+    No longer needed due to core "Don't give all windows struts".
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-06-19
+
+    Add slight padding forleft edge
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-13
+
+    Load after composite and opengl plugins to avoid a sudden unredirect/redirect since it looks visually unappealing.
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-11-18
+
+    Load after "decor" not "decoration"
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-07-28
+
+    Revert "Intial commit"
+    
+    This reverts commit 1203709daaaba3a0da330d607e8e07a1ce878dd1.
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-07-28
+
+    Revert "Add relevant files"
+    
+    This reverts commit fe2550ac263dad43df74da2b89f564690d602c25.
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-07-28
+
+    Revert "Remove backup and build files"
+    
+    This reverts commit d5e25c8e891c9d0a05e80c18cbb923fd8a7a587a.
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-07-28
+
+    Revert "add .xml"
+    
+    This reverts commit 02229ee69166f13b230ebdfb822542745605864d.
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-07-28
+
+    add .xml
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-07-28
+
+    Remove backup and build files
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-07-28
+
+    Add relevant files
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-07-28
+
+    Intial commit
+
+Danny Baumann <dannybaumann@web.de>	2009-03-20
+
+    Use inputRect.
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-03-16
+
+    Track core changes.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-03-14
+
+    Track core changes.
+
+Merge: a6f0ee4 3d5c6b1
+Danny Baumann <dannybaumann@web.de>	2009-03-11
+
+    Merge branch 'compiz++' of git+ssh://maniac@git.compiz-fusion.org/git/fusion/plugins/snap into compiz++
+
+Danny Baumann <dannybaumann@web.de>	2009-03-11
+
+    Track core changes.
+
+Eduardo Gurgel Pinho <eduardo@mad4.Chagas>	2009-03-10
+
+    Track core changes
+
+Danny Baumann <dannybaumann@web.de>	2009-02-02
+
+    Indent properly.
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-01-22
+
+    Fixed snapping.
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-01-22
+
+    Fixed infinite loop.
+
+Merge: 8b06a03 0cfa4b3
+Danny Baumann <dannybaumann@web.de>	2009-01-21
+
+    Merge branch 'compiz++' of git+ssh://maniac@git.opencompositing.org/git/fusion/plugins/snap into compiz++
+    
+    Conflicts:
+snap.cpp           
+
+Danny Baumann <dannybaumann@web.de>	2009-01-21
+
+    Some obvious memory leak, infinite loop and variable shadowing fixes.
+
+Travis Watkins <amaranth@ubuntu.com>	2009-01-21
+
+    fix infinite loop
+
+Travis Watkins <amaranth@ubuntu.com>	2009-01-21
+
+    fix commented out bits, make window wraps work
+
+Travis Watkins <amaranth@ubuntu.com>	2009-01-21
+
+    compiles, loads, doesn't do anything
+
+Travis Watkins <amaranth@ubuntu.com>	2009-01-20
+
+    fix metadata
+
+Travis Watkins <travis@ronin.(none)>	2009-01-20
+
+    initial setup for compiz++ port
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Track core changes.
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-31
+
+    * Reorder code
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-30
+
+    * Track core changes
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-06
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-16
+
+    Remove obsolete deps/features from vtable
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-01
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    xml -> xml.in
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-28
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Updated Makefile
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Updated Makefile
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-21
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-17
+
+    initial commit
+
+compiz <compiz@de35.org>	2007-05-17
+
+    Dummy commit

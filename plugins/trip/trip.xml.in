@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<compiz>
+    <plugin name="trip" useBcop="true">
+	<_short>Trip</_short>
+	<_long>Trips out desktops</_long>
+	<category>Effects</category>
+	<deps>
+	    <relation type="after">
+		<plugin>composite</plugin>
+		<plugin>opengl</plugin>
+		<plugin>cube</plugin>
+		<plugin>decor</plugin>
+	    </relation>
+	    <requirement>
+		<plugin>opengl</plugin>
+	    </requirement>
+	</deps>
+	<options>
+	    <group>
+		<_short>Bindings</_short>
+		<option name="take_hit" type="key">
+		    <_short>Take Hit</_short>
+		    <_long>Take another hit</_long>
+		    <default>&lt;Super&gt;&lt;Alt&gt;h</default>
+		</option>
+		<option name="decrease_intensity" type="key">
+		    <_short>Decrease intensity</_short>
+		    <_long>Come down some</_long>
+		    <default>&lt;Super&gt;&lt;Alt&gt;d</default>
+		</option>
+		<option name="increase_intensity" type="button">
+		    <_short>Increase effect</_short>
+		    <_long>Increase intensity of effect</_long>
+		    <default>&lt;Super&gt;&lt;Alt&gt;Button4</default>
+		</option>
+		<option name="sober_key" type="key">
+		    <_short>Stop effect</_short>
+		    <_long>Stops tripping</_long>
+		    <default>&lt;Super&gt;&lt;Alt&gt;s</default>
+		</option>
+		<option name="sober_button" type="button">
+		    <_short>Stop effect</_short>
+		    <_long>Stops tripping</_long>
+		    <default>&lt;Super&gt;&lt;Alt&gt;Button5</default>
+		</option>
+	    </group>
+	    <group>
+	    <_short>General</_short>
+		<subgroup>
+		<_short>Effect Settings</_short>
+		    <option name="max_radius" type="int">
+			    <_short>Radius</_short>
+			    <_long>Radius of the magnification area.</_long>
+			    <default>225</default>
+			    <min>100</min>
+			    <max>1000</max>
+		    </option>
+		    <option name="max_ripples" type="int">
+			    <_short>Ripples</_short>
+			    <_long>Maximum number of ripples on screen at any given time.</_long>
+			    <default>40</default>
+			    <min>1</min>
+			    <max>100</max>
+		    </option>
+		    <option name="max_duration" type="int">
+			    <_short>Duration</_short>
+			    <_long>Maximum length of time in seconds for a given ripple.</_long>
+			    <default>8</default>
+			    <min>3</min>
+			    <max>30</max>
+		    </option>
+		</subgroup>
+		<subgroup>
+		<_short>Internal Settings</_short>
+		    <option name="zoom_factor" type="float">
+			    <_short>Zoom</_short>
+			    <_long>Zoom factor for keyboard initiated magnifier.</_long>
+			    <default>2.0</default>
+			    <min>1.1</min>
+			    <max>32.0</max>
+			    <precision>0.1</precision>
+		    </option>
+		    <option name="speed" type="float">
+			    <_short>Speed</_short>
+			    <_long>Zoom Speed</_long>
+			    <default>1.5</default>
+			    <min>0.1</min>
+			    <max>50</max>
+			    <precision>0.1</precision>
+		    </option>
+		    <option name="timestep" type="float">
+			    <_short>Timestep</_short>
+			    <_long>Zoom Timestep</_long>
+			    <default>1.2</default>
+			    <min>0.1</min>
+			    <max>50</max>
+			    <precision>0.1</precision>
+		    </option>
+		</subgroup>
+	    </group>
+	</options>
+    </plugin>
+</compiz>

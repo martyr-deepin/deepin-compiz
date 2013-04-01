@@ -1,0 +1,640 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-13
+
+    Add VERSION
+
+Travis Watkins <travis.watkins@linaro.org>	2011-05-13
+
+    add no slide default option
+    
+    Bring the 0.8.x no slide match option default to 0.9, makes desktops and
+    sticky windows stop sliding again.
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-03-15
+
+    Revert "Update for new core API"
+    
+    This reverts commit 9bf34ec73982e2d8b6fa7deedb3c5b9a375a04b5.
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-03-15
+
+    Update for new core API
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-12-23
+
+    Add signals on viewport change begin / end
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2010-11-11
+
+    Don't update edge regions on every poll. Instead only do them on screen size change
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2010-11-11
+
+    Be a little bit smarter about dynamically enabling and disabling edge actions
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2010-11-11
+
+    Remove ugly hack and instead use the new CompScreen API to query if we are grabbed
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2010-11-11
+
+    Remove debugging messages too
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2010-11-11
+
+    Try to detect when we don't need the edge action windows and disable them.
+    
+    Note that this employs a few hacks to make it happen - a few that would be
+    quite desirable to change if possible.
+    
+    1) We can only test if we need the edge window once we are actually inside the edge window (since we need to keep the edge windows around in order to get xdnd flip events there). Of course this means that if you have an edge timeout, it's just not going to work, which sucks.
+    2) We have to poll the mouse in order to see if we're not in any edge windows
+    3) We have to grab and ungrab the pointer to check for pointer grabs (and not remove the edge windows if that's the case since we can re-enter the edge windows and *suprise suprise* not get an EnterNotify, which sucks, but that's life).
+
+Merge: 5fa0b50 3cbf1fe
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/compiz/plugins/wall
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Cleanup (static analysis)
+
+Scott Moreau <oreaus@gmail.com>	2010-09-28
+
+    Don't require composite since opengl already does.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-30
+
+    Set window interface handler so that ::activate () will be called
+
+Merge: 1af7d21 168a561
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-09
+
+    Merge branch 'master' of git+ssh://smspillaz@git.compiz.org/git/compiz/plugins/wall
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-09
+
+    Destroy the entire cairo context, re-create it, clear it and then draw on it.
+    
+    Previously we were only clearing the cairo context. But for some reason, further
+    drawing operations on the context wouldn't apply anyways (not even the clear operation) after cairo_save () had been called.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Ensure that we load after composite and opengl
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Fix warnings
+
+Merge: 9723c1f 8699ac1
+Sam Spilsbury <smspillaz@gmail.com>	2009-11-18
+
+    Merge branch 'master' of git+ssh://smspillaz@git.compiz.org/git/compiz/plugins/wall
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-11-18
+
+    Fix typo
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-11-06
+
+    libcairo.so symlink is only available if the dev package is installed.
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-11-05
+
+    Keep libcairo loaded to prevent crashes in XCloseDisplay.
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-09-05
+
+    Dont convert a negative integer to unsigned int in WallScreen::checkAmount
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-03-16
+
+    Track core changes.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-03-14
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2009-03-09
+
+    Use output region and some cleanups.
+
+Danny Baumann <dannybaumann@web.de>	2009-03-09
+
+    Add missing paint () method, wrap into GLWindow and some cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2009-03-09
+
+    Cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2009-02-02
+
+    Coding style, warning fixes, optimizations.
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-01-21
+
+    Fix window movement calculation.
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-01-21
+
+    Fixed viewport changing with window.
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-01-16
+
+    Fixes.
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-01-16
+
+    Simplify action handling.
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-01-16
+
+    Fixed metadata.
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-01-16
+
+    Addedn opengl and composite plugin build dependency.
+
+Travis Watkins <travis@ronin.(none)>	2009-01-15
+
+    compiles, doesn't load
+
+Danny Baumann <dannybaumann@web.de>	2008-12-17
+
+    Fix rounding issues during drawing.
+
+Danny Baumann <dannybaumann@web.de>	2008-12-17
+
+    Minor coding style improvements.
+
+Danny Baumann <dannybaumann@web.de>	2008-12-17
+
+    Improve rounding correctness.
+
+Merge: 5f9dd8e 4125706
+Danny Baumann <dannybaumann@web.de>	2008-12-16
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/plugins/wall
+    
+    Conflicts:
+wall.c           
+
+Danny Baumann <dannybaumann@web.de>	2008-12-16
+
+    Added "no sliding windows" match.
+    Windows specified there will be kept static during wall slides.
+
+Danny Baumann <dannybaumann@web.de>	2008-12-14
+
+    Determine direction angle at beginning of movement and keep it until
+    movement is terminated or a new movement is started.
+
+Danny Baumann <dannybaumann@web.de>	2008-12-10
+
+    Solve some weirdnesses with preview_timeout = 0 (such as preview not
+    being kept while holding modifier keys).
+    Keep direction display while keeping modifiers pressed.
+
+Danny Baumann <dannybaumann@web.de>	2008-11-20
+
+    Accept "change viewport" client messages while changing viewports.
+
+Danny Baumann <dannybaumann@web.de>	2008-10-15
+
+    Make sure focusDefault always defaults to TRUE, not only when called from bindings.
+
+Kristian Lyngstol <kristian@bohemians.org>	2008-09-22
+
+    Minor scope fixes in miniScreen (live preview) iteration
+
+Danny Baumann <dannybaumann@web.de>	2008-09-09
+
+    Do not focus default window if viewport change was initiated due to window activation.
+
+Danny Baumann <dannybaumann@web.de>	2008-09-01
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2008-08-28
+
+    Properly invoke next and prev actions.
+    Hold grab as long as a button or key is held down to get that working.
+
+Merge: 05ce5b1 063930b
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2008-08-26
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/fusion/plugins/wall
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2008-08-26
+
+    Fixed live preview calculations.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-25
+
+    Only focus default window if switcher is not active.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-25
+
+    Revert "Only focus default window when not activating a window."
+    
+    This reverts commit 059dec3a56a80070189333a1c7c40496e10a86f5.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-19
+
+    Only focus default window when not activating a window.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-16
+
+    Don't allow wall initiation when scale is active.
+    Cleaned up wallMoveViewport routine.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-09
+
+    Properly initialize variables.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-05
+
+    Allow DnD for wall's flip edges.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-05-05
+
+    Handle clear mask correctly.
+
+Danny Baumann <dannybaumann@web.de>	2008-05-05
+
+    Also activate sliding when switcher is active.
+
+Danny Baumann <dannybaumann@web.de>	2008-04-29
+
+    Issue screengrab during sliding to make sure core ignores EnterNotify events happening during viewport change.
+
+Patrick Niklaus <marex@opencompositing.org>	2008-04-19
+
+    Added option to configure border width
+
+Patrick Niklaus <marex@opencompositing.org>	2008-04-19
+
+    Added option to configure the switcher preview size
+
+Patrick Niklaus <marex@opencompositing.org>	2008-04-19
+
+    Cleaned up preview painting code
+
+Danny Baumann <dannybaumann@web.de>	2008-04-18
+
+    Allow viewport switching without any sliding animation.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Travis Watkins <amaranth@ubuntu.com>	2008-03-20
+
+    remove prev/next keybinding defaults, they interfere with gtk+ stuff
+
+Danny Baumann <dannybaumann@web.de>	2008-03-15
+
+    Add nodelay hint to flip edges.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-15
+
+    Switch to window viewport on window activation rather than focus change.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Danny Baumann <dannybaumann@web.de>	2008-03-07
+
+    Don't follow scale's window activations.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-03
+
+    Don't switch viewports when a window requests to get focus.
+    Instead, switch when the window actually got focus as its focus might have been prevented by focus stealing prevention, in which case the viewport change would be unexpected by the user.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-10
+
+    Remove useless code.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-11-10
+
+    Show preview window as long as the initiating key/button is pressed.
+
+Danny Baumann <dannybaumann@web.de>	2007-10-29
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-10-11
+
+    Always use the output device the mouse pointer is on for displaying the switcher box.
+
+Danny Baumann <dannybaumann@web.de>	2007-10-11
+
+    moveWindowToViewportPosition moves the window already, no need for a second move.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-10-08
+
+    Use new core API instead of moveScreenViewport.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-21
+
+    Grab translation calculation code from plane plugin.
+    This has two advantages:
+    - The slide time is not calculated per-viewport, but per full movement.
+    - Slides when pressing e.g. Right-Down are much smoother.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-21
+
+    Optimizations.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-21
+
+    Indention fix.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-21
+
+    Using matrixTranslate instead of ScreenPaintAttrib.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-17
+
+    Fix default key binding.
+
+Jigish Gohil <cyberorg@prime.cyberorg.info>	2007-09-07
+
+    typo correction handeled, thanks Excentrik
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-30
+
+    Revert accidential change.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-30
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-28
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-23
+
+    Meaningful grouping for actions.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-20
+
+    New action system
+
+Danny Baumann <dannybaumann@web.de>	2007-08-17
+
+    Honour wrap around setting on edge flipping.
+
+Merge: 495cf16 a04aeb3
+Danny Baumann <dannybaumann@web.de>	2007-08-14
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/plugins/wall
+
+Danny Baumann <dannybaumann@web.de>	2007-08-14
+
+    Fix spelling.
+
+Roland Baer <roland@Vista.(none)>	2007-08-13
+
+    [PATCH] Nuked effectivly unused variables and useless code
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-06
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-03
+
+    Actually use ARROW_SIZE constant.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-03
+
+    Remove stuff commited accidentially (again).
+    Note: git commit -a is evil.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-03
+
+    Get rid of screenGrabExist.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-03
+
+    Revert stuff commited by accident.
+
+Merge: 88537b2 50c2d3a
+Danny Baumann <dannybaumann@web.de>	2007-08-03
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/plugins/wall
+
+Danny Baumann <dannybaumann@web.de>	2007-08-03
+
+    Indention fix.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-03
+
+    Factor out quad drawing to a function.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-03
+
+    Remove more dead code.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-03
+
+    Factor out cairo layer clearing to a function.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-03
+
+    Remove more dead code.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-03
+
+    Factor out context creation to a function.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-03
+
+    Remove dead code.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-03
+
+    Compiz indention style.
+
+Patrick Niklaus <marex@opencompositing.org>	2007-08-01
+
+    Made arrow color adjustable
+
+Patrick Niklaus <marex@opencompositing.org>	2007-08-01
+
+    Now use the outline color for the arrow as well
+
+Patrick Niklaus <marex@opencompositing.org>	2007-07-28
+
+    Regroup appearance options
+
+Patrick Niklaus <marex@opencompositing.org>	2007-07-28
+
+    Added options for highlight gradient color
+
+Patrick Niklaus <marex@opencompositing.org>	2007-07-28
+
+    Added option for thumb gradient colors
+
+Patrick Niklaus <marex@opencompositing.org>	2007-07-28
+
+    Added option for outline color
+
+Patrick Niklaus <marex@opencompositing.org>	2007-07-28
+
+    Added option for rounded edge radius
+
+Danny Baumann <dannybaumann@web.de>	2007-07-28
+
+    Added fade dependency.
+
+Patrick Niklaus <marex@opencompositing.org>	2007-07-23
+
+    Make wall's switcher window colors adjustable
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-16
+
+    Remove obsolete deps/features from vtable
+
+Danny Baumann <dannybaumann@web.de>	2007-07-12
+
+    Also allow DnD for flip edges.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-01
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    xml -> xml.in
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-28
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-25
+
+    Don't show switcher on other screengrab.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-24
+
+    prepareXCoords -> transformToScreenSpace.
+
+Merge: d344ee5 da7c673
+Robert Carr <racarr@gorbie.(none)>	2007-06-20
+
+    Fix merge...
+
+Robert Carr <racarr@gorbie.(none)>	2007-06-20
+
+    Remove mousewheel stuff from wall, it is now in vpswitch
+
+Robert Carr <racarr@gorbie.(none)>	2007-06-19
+
+    Fix indentation
+
+Guillaume Seguin <guillaume@segu.in>	2007-06-11
+
+    * Fix typo that prevented switcher background to be regenerated on hsize change
+
+Merge: 101629c 2e99f91
+Danny Baumann <dannybaumann@web.de>	2007-06-11
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/compcomm/plugins/wall
+
+Danny Baumann <dannybaumann@web.de>	2007-06-11
+
+    Fix dependencies.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Updated Makefile
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Updated Makefile
+
+Danny Baumann <dannybaumann@web.de>	2007-06-10
+
+    printf -> compLogMessage
+
+Danny Baumann <dannybaumann@web.de>	2007-06-08
+
+    Re-sort some options.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-08
+
+    Fix indentation.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-04
+
+    Minor cleanup.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-04
+
+    Added better multimonitor handling
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-01
+
+    Applied lastest core changes
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-21
+
+    Makefile update
+
+Danny Baumann <dannybaumann@web.de>	2007-05-20
+
+    Wall should be loaded before wobbly.
+    Otherwise live previews will look weird when dragging a window above viewport borders.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-16
+
+    added new dependency rules
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-09
+
+    Wall without expo mode
+
+compiz <compiz@de35.org>	2007-05-09
+
+    Dummy commit

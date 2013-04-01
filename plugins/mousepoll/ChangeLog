@@ -1,0 +1,157 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Load after decor plugin to prevent windwos from moving after plugin load
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-13
+
+    Add missing <deps> tag which causes load rules not to work
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-13
+
+    Load after composite and opengl plugins to avoid a sudden unredirect/redirect
+    since it looks visually unappealing.
+
+Merge: 5a1d68b 933579a
+Sam Spilsbury <Sam@XPS-SUSE.site>	2009-03-16
+
+    Merge branch 'compiz++' of git+ssh://smspillaz@git.compiz-fusion.org/git/fusion/plugins/mousepoll into compiz++
+    
+    Conflicts:
+    
+src/mousepoll.cpp           
+
+Sam Spilsbury <Sam@XPS-SUSE.site>	2009-03-16
+
+    Handle change in list size due to callback
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-03-16
+
+    Track core changes.
+
+Sam Spilsbury <Sam@XPS-SUSE.site>	2009-03-15
+
+    Check to see if we have already stopped the poller
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-03-14
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2009-03-14
+
+    Minor coding style improvements.
+
+Danny Baumann <dannybaumann@web.de>	2009-03-14
+
+    Check for empty callback correctly and fix timeout usage.
+
+Sam Spilsbury <Sam@XPS-SUSE.site>	2009-03-13
+
+    CompTimer and Mousepoller namespaces do not conflict.
+
+Sam Spilsbury <Sam@XPS-SUSE.site>	2009-03-13
+
+    Set mCallback to NULL on constructor
+
+Sam Spilsbury <Sam@XPS-SUSE.site>	2009-03-13
+
+    Safety check
+
+Sam Spilsbury <Sam@XPS-SUSE.site>	2009-03-12
+
+    Check to see if we are active before setting the callback and stop and start if we are
+
+Sam Spilsbury <Sam@XPS-SUSE.site>	2009-03-12
+
+    Define function
+
+Sam Spilsbury <Sam@XPS-SUSE.site>	2009-02-28
+
+    Fix makefile
+
+Sam Spilsbury <Sam@XPS-SUSE.site>	2009-02-28
+
+    Store plugin ABI in screen
+
+Sam Spilsbury <Sam@XPS-SUSE.site>	2009-02-28
+
+    Added 'active' getter
+
+Sam Spilsbury <Sam@XPS-SUSE.site>	2009-02-27
+
+    Fix Makefile and pkgconfig file to allow mousepoll.h to install correctly
+
+Danny Baumann <dannybaumann@web.de>	2009-02-02
+
+    Use correct tag and remove useless group.
+
+Danny Baumann <dannybaumann@web.de>	2009-02-02
+
+    Indent properly.
+
+Danny Baumann <dannybaumann@web.de>	2009-02-02
+
+    Improve API & coding style.
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-02-02
+
+    Initial C++ port.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-06-18
+
+    Track core changes
+
+Kristian Lyngstol <kristian@bohemians.org>	2008-05-22
+
+    Allow removal of mousepoll clients during client handeling
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    Initialize variable.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    Cmake file for new generic CMake build system.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-02-05
+
+    Dummy
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-18
+
+    Initial commit.
+
+compiz <compiz@opencompositing.org>	2008-01-18
+
+    Dummy commit

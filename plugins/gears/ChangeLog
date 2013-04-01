@@ -1,0 +1,139 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Scott Moreau <oreaus@gmail.com>	2010-09-28
+
+    Don't require composite since opengl already does.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Ensure loading after required plugins
+
+Eduardo Gurgel Pinho <eduardo@mad4.Chagas>	2009-11-16
+
+    Initial C++ port.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-25
+
+    Fix uninitialized variable.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Check for header changes
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-12-19
+
+    Rotate scene correctly in inside cube mode.
+
+Roland Baer <roland@Vista.(none)>	2007-08-31
+
+    Removed unused stuff
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Track core changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-30
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-30
+
+    Use core utility functions to retrieve ABI and display index.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-06
+
+    Makefile update.
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-27
+
+    * Fix i18n and indent
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-27
+
+    * xml => xml.in
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-16
+
+    Remove obsolete deps/features from vtable
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-09
+
+    Multimonitor rotation fix
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-09
+
+    Handle rotation correctly.
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-07
+
+    * Yes, that's a dummy commit
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-05
+
+    Compiz indent style.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-01
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-28
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-26
+
+    Properly push matrix before manipulating it.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-21
+
+    Pop saved attribs correctly
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-21
+
+    Fixed lighting.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-21
+
+    Initial release.
+
+compiz <compiz@opencompositing.fr.nf>	2007-06-21
+
+    Dummy commit

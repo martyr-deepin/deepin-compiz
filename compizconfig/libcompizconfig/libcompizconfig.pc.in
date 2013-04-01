@@ -1,0 +1,13 @@
+prefix=@libcompizconfig_prefix@
+exec_prefix=@libcompizconfig_exec_prefix@
+libdir=@libcompizconfig_libdir@
+includedir=@libcompizconfig_includedir@
+
+Name: libcompizconfig
+Description: Compiz configuration system
+Version: @VERSION@
+
+Requires: compiz
+Libs: -L@libcompizconfig_libdir@ -lcompizconfig
+Cflags: -I@libcompizconfig_includedir@
+

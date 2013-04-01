@@ -1,0 +1,25 @@
+/* Define to 1 if Metacity support is enabled */
+#cmakedefine USE_METACITY 1
+
+/* Define to 1 if Gconf support is enabled */
+#cmakedefine USE_GCONF 1
+
+/* Define to 1 if you have the `wnck_window_has_name' function. */
+#cmakedefine HAVE_WNCK_WINDOW_HAS_NAME 1
+
+/* Define to 1 if libwnck version >= 2_18_1 */
+#cmakedefine HAVE_LIBWNCK_2_18_1 1
+
+/* Define to 1 if libwnck version >= 2_19_4 */
+#cmakedefine HAVE_LIBWNCK_2_19_4 1
+
+/* Define to 1 if metacity version >= 2.15.21 */
+#cmakedefine HAVE_METACITY_2_15_21 1
+
+/* Define to 1 if metacity version >= 2.17.0 */
+#cmakedefine HAVE_METACITY_2_17_0 1
+
+/* Define to 1 if metacity version >= 2.23.2 */
+#cmakedefine HAVE_METACITY_2_23_2 1
+
+#define GETTEXT_PACKAGE "${GETTEXT_PACKAGE}"

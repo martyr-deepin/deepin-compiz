@@ -1,0 +1,205 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-03-14
+
+    Adapt for new core API
+
+Merge: 0715980 12a0610
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/compiz/plugins/showdesktop
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Cleanup (static analysis)
+
+Scott Moreau <oreaus@gmail.com>	2010-09-28
+
+    Don't require composite since opengl already does.
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Load after decor plugin to prevent windwos from moving after plugin load
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Ensure loading after required plugins
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-11
+
+    Remove dummy
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-11
+
+    Dummy commit
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-11
+
+    Coding style fixes
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-11
+
+    C++ port of the showdesktop plugin
+
+Danny Baumann <dannybaumann@web.de>	2008-10-24
+
+    Also fix setting window state.
+
+Danny Baumann <dannybaumann@web.de>	2008-10-24
+
+    Fix restoring window state.
+
+Danny Baumann <dannybaumann@web.de>	2008-08-19
+
+    Clear out movement variables correctly.
+
+Danny Baumann <dannybaumann@web.de>	2008-08-19
+
+    Load showdesktop after fade.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-17
+
+    Core now recalculates window actions on state changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Danny Baumann <dannybaumann@web.de>	2008-02-15
+
+    Don't showdesktop grabbed windows.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-11-01
+
+    Don't showdesktop dock windows.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-14
+
+    Do not set opacity to opaque while moving.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-14
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-30
+
+    Track core changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-06
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-05
+
+    Cleanups.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-31
+
+    Added variable tracking if we sent the window to showdesktop mode.
+    w->inShowDesktopMode is not enough as it might be set by core on windows we didn't handle.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-30
+
+    Don't make focusWindow think showdesktop'ed windows are not managed.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-16
+
+    Remove obsolete deps/features from vtable
+
+Danny Baumann <dannybaumann@web.de>	2007-07-05
+
+    Compiz indent style and minor cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-05
+
+    Set showdesktop'ed windows to unmanaged so they aren't handled by updateWindowAttributes and friends.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-05
+
+    Use less hacky way to prevent moving/resizing of showdesktop'ed windows.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-01
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    xml -> xml.in
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-28
+
+    Makefile update.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-26
+
+    Scale z by 1 instead of 0.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Updated Makefile
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Updated Makefile
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-01
+
+    Applied lastest core changes
+
+Guillaume Seguin <guillaume@segu.in>	2007-05-21
+
+    dummy commit
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-21
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-17
+
+    initial commit
+
+compiz <compiz@de35.org>	2007-05-17
+
+    Dummy commit

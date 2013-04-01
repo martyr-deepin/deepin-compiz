@@ -1,0 +1,64 @@
+Notes on Graphics Drivers
+=========================
+
+Please amend this file as you discover undocumented behaviour in various
+graphics drivers as it will assist other developers who may face similar
+problems in future.
+
+fglrx
+=====
+
+ 1. fglrx is currently detecting the binary name "compiz" and forcing
+    indirect mode rendering. This causes certain opengl functionality
+    such as GLSL, framebuffer objects and vertex buffer objects to
+    not work correctly even if they are advertised.
+
+ RESOLVED. WORKAROUND: Distributions should change the binary name
+ to something other than "compiz", either at ship time or execution time.
+
+nvidia
+======
+
+ 1. nvidia does not permit vertex array client states and vertex buffer
+    objects to be active at the same time. Eg, the following code has
+    undefined behaviour and will crash.
+
+    glEnableClientState (GL_VERTEX_ARRAY);
+    ...
+    glBindBufferARB (GL_ARRAY_BUFFER_ARB, vertexBuffer);
+    glDrawArrays (GL_TRIANGLES, 0, vertexBufferSize);
+
+ 2. nvidia does not permit mixing of extension and core functionality
+    tokens with extension entry points and core functionality entry
+    points. The following is undefined:
+
+    glBindFramebufferEXT (GL_FRAMEBUFFER, fboId);
+
+mesa
+====
+
+ 1. Mesa does not advertise GLX_BIND_TO_MIPMAP_TEXTURE_EXT even though
+    mipmap storage for GLXPixmaps are supported.
+
+ RESOLVED. WORKAROUND: Until this bug is fixed, detect when a Mesa driver
+ is running and force the usage of GLX_BIND_TO_MIPMAP_TEXTURE on all
+ 24 and 32 bit depth fbconfigs
+
+llvmpipe
+========
+
+ 1. llvmpipe does not support using glXSwapBuffers and glXCopySubBufferMESA
+    on the same front buffer
+
+ RESOLVED. WORKAROUND: detect when llvmpipe is active and force the usage
+ of glXSwapBuffers on every frame
+
+virtualbox
+==========
+
+ 1. vboxdrv may open a new X Server connection on the first call to
+    glXBindTexImageEXT. If compiz has a server grab during this time
+    (see the GLX_EXT_texture_from_pixmap spec s. 5) then compiz
+    will deadlock
+
+ RESOLVED. WORKAROUND: don't implement this part of the spec for now

@@ -1,0 +1,1132 @@
+Release 0.9.8.6 (2012-11-20 Daniel van Vugt <daniel.van.vugt@canonical.com>)
+============================================================================
+
+Bugs fixed (https://launchpad.net/compiz/+milestone/0.9.8.6)
+
+   1048855 - [grid] Gedit, Nautilus will not snap/semi-maximize with the mouse
+   1056615 - CompizConfigPython.test_* fail with SEGFAULT
+   1057955 - Removed schema keys still used in keybindings and automated tests
+   1058577 - CCSGNOMEMediaKeys/CCSGNOMEIntegrationTestWriteIntegratedMediaKeys.
+             TestWriteIntegratedMediaKey/* fail in jenkins
+   1060171 - gtk-window-decorator crashed with SIGSEGV in
+             g_hash_table_lookup_node() from g_hash_table_remove_internal()
+             from event_filter_func() from gdk_event_apply_filters()
+   1063690 - Unredirect fullscreen windows should be the default for optimal
+             performance
+   1065815 - compiz crashes with SIGSEGV in startup: ./bin/compiz (core) -
+             Fatal: Private index value "15CompositeScreen_index_5" already
+             stored in screen.
+   1067812 - Gedit, blocked window at the corners with compiz grid plugin
+   1068518 - resize: Resize rectangle flickers between light and dark
+   1071689 - Grid: Window management - resize preview does not show when
+             moving a window from the semi-maximised state to the maximised
+             state in a single action
+   1076884 - Revert show desktop bug fix from unity 6.0 and compiz 0.9.8
+
+
+Release 0.9.8.4 (2012-09-27 Daniel van Vugt <daniel.van.vugt@canonical.com>)
+============================================================================
+
+Highlights
+
+  * Fixed a few crashes affecting a lot of people. Especially users of VMs and
+    LLVMpipe.
+  * Significant improvements to "Unredirect Fullscreen Windows" mode, which
+    is particularly useful for fullscreen gaming performance.
+    - Flickering is mostly fixed.
+    - Multi-monitor unredirect is dramatically faster than previous versions.
+    - Fixed automatic redirect/unredirect entry/exit bugs.
+    To try it out, enable: CCSM > Composite > Unredirect Fullscreen Windows.
+    The option is not enabled by default yet because there are some issues
+    with driver stability, particularly with nouveau and intel.
+  * Major gsettings/compizconfig bug fixes and refactoring with lots more
+    test cases.
+
+Bugs Fixed (https://launchpad.net/compiz/+milestone/0.9.8.4)
+
+      92599 - Incorrect (low/stuttering) refresh rate with NVIDIA driver
+              (regressed in compiz 0.9.8 series)
+     927168 - compiz crashed with SIGSEGV in memmove() from
+              drisw_update_tex_buffer() from dri_set_tex_buffer2() from
+              drisw_bind_tex_image() from __glXBindTexImageEXT() from
+              TfpTexture::enable() from
+              enableFragmentOperationsAndDrawGeometry()
+     944653 - compiz crashed on startup with SIGSEGV in strstr() from
+              GLScreen::GLScreen()
+    1004336 - _itoa_word() from window.cpp:1989: Use of uninitialised value of
+              size 8
+    1030891 - Compiz r3275 breaks VirtualBox Guest Additions: black screen or
+              just wallpaper
+    1035261 - Port compiz to gsettings and consequently remove unity-2d
+    1037142 - Week33 - Grid highlight window appears while switching between
+              workspaces
+    1037411 - [regression][DRI] SubBuffer rendering is much slower in compiz
+              0.9.8.0 than it was in 0.9.7
+    1039406 - Benchmark default placement overlaps (damages) Unity launcher
+              and panel, resulting in artificially low benchmark results
+    1041535 - compiz crashed with SIGSEGV in __strcasestr_ia32() from
+              ccsStringToModifiers(binding=NULL)
+    1042041 - 1:0.9.8+bzr3319-0ubuntu1 regression: keeps setting gsettings
+              keys to wrong values
+    1042537 - ccsm crashed with SIGSEGV in ccsContextNew
+    1042552 - Paint List is often full of 1x1 offscreen windows from
+              gtk-window-decorator
+    1045127 - Close from spread is unreliable
+    1046664 - Unredirected fullscreen windows flicker briefly when another
+              window (like a menu) opens above them
+    1046701 - Random test failures in CCSGSettingsBackendConcept
+    1047168 - scale mode is not visible if a fullscreen window is unredirected
+    1048551 - multiple GObject warnings if gtk-window-decorator is started
+              without org.gnome.mutter being installed
+    1048964 - cmake fails on python 2.6 as sys.version_info does not contain
+              major_version or minor_version
+    1049100 - Build failure if COMPIZ_DISABLE_PLUGIN_RESIZE=ON
+    1049169 - [valgrind] Up to 520,000 bytes lost when runningi
+              CCSGSettingsBackendConceptTest
+    1050704 - Unity 6.6: panel shadow is always on top of the active window
+    1050749 - Unredirecting a fullscreen window on a secondary monitor causes
+              that monitor to flicker
+    1050752 - opacify plugin toggling by default doesn't work
+    1050757 - opacify plugin: opacity isn't reset after switching window
+    1050796 - Double shortcuts conflict with gnome-control-center ones
+    1051286 - [performance] glXSwapIntervalEXT called every frame, which is
+              very slow on Nvidia.
+    1051885 - Unredirect Fullscreen Windows makes multi-monitor rendering much
+              slower
+    1052838 - compiz.fix_927168 broke ARM building
+    1053902 - Maximized window gets unredirected when it's not fullscreen
+    1054724 - [fglrx] compiz crashed with SIGSEGV in glXDestroyContext()
+              [/usr/lib/fglrx/libGL.so.1] from GLScreen::~GLScreen()
+    1050610 - gtk-window-decorator leaking window handles. Window operations
+              become sluggish after a few days of usage
+    1056645 - ARM build broken with 'swapInterval' is not a member of 'GL'
+    1057263 - gtk-window-decorator leaks large numbers of pixmaps and pixmap
+              memory
+    1057421 - FTBFS with -DCOMPIZ_BUILD_TESTING=OFF if libgtest-dev is not
+              installed
+
+
+Release 0.9.8.2 (2012-09-10 Daniel van Vugt <daniel.van.vugt@canonical.com>)
+============================================================================
+
+Highlights
+
+  * gtk-window-decorator has been fully ported from GConf to GSettings.
+  * Gamers rejoice! CCSM > Composite > "Unredirect Fullscreen Windows" now
+    works more reliably, with a few bugs remaining. If you turn it on then
+    fullscreen windows like games will get direct rendering access and won't
+    be slowed by Compiz (or Unity) any more.
+
+Bugs Fixed (https://launchpad.net/compiz/+milestone/0.9.8.2)
+
+     956986 - compiz crashed with SIGSEGV when imgsvg is loaded, in
+              getCompPluginVTable20090315_imgsvg() from dlloaderLoadPlugin()
+              from CompPlugin::load()
+     974242 - Compiz is moving windows against my will
+     976032 - Place plugin problem with panel in fullscreen and gnome classic
+     980663 - Compiz won't start if "unredirect fullscreen windows" is enabled
+    1014986 - [performance] compiz is wasting CPU responding to repaint
+              requests for offscreen windows
+    1024214 - Tests can disappear from make test when CMake regenerates
+              CTestTestfile.cmake
+    1040081 - [regression] Week 34: Ctrl+Alt+T shortcut (open terminal) fails
+              to work
+    1040455 - Setting the UnMinimize animation is ignored (default animation
+              still used)
+    1041047 - Unredirect Fullscreen Windows stay on top (unredirected) even
+              when they're not on top any more (or the output is transformed)
+    1041066 - Unredirect Fullscreen Windows sometimes fails to unredirect
+              fullscreen windows at all
+    1041310 - compiz 0.9.8.0 rev3321 fails to build on kde4-window-decorator
+    1042095 - AUTHORS is out of date in compiz-0.9.8.0. Needs to be updated
+              from the bzr log.
+    1043143 - Unresolved symbols in plugins are not detected at build time,
+              instead cause cryptic crashes in COMPIZ_PLUGIN_20090315()
+    1045191 - compiz crashed with SIGABRT in assert from
+              boost::shared_ptr<CompRect>::operator-> from
+              ResizeLogic::enableOrDisableVerticalMaximization() from
+              ResizeLogic::handleMotionEvent()
+    1045235 - Compiz crashed with SIGFPE in addQuads()
+              [plugins/opengl/src/paint.cpp:839]
+    1045652 - UnMinimize should be spelled "Unminimize"
+    1045665 - CMake Error at cmake/EnableCoverageReport.cmake:69
+              (SET_TARGET_PROPERTIES): set_target_properties Can not find
+              target to add properties to:
+              compizconfig_ccs_settings_upgrade_internal
+    1046184 - __pyx_f_12compizconfing_ListToStringList defined but not used
+    1046190 - Migration to gsettings doesn't migrate compiz/unity configurable
+              keys to g-c-c and those keys doesn't work
+    1046199 - Changing a key to org.compiz.integrated schema doesn't impact
+              the current profile
+    1046212 - show-hud integration does not work
+    1046661 - Unredirect Fullscreen Windows stay on top (unredirected) even
+              when an RGBA window is stacked above it
+
+
+Release 0.9.8.0 (2012-08-23 Daniel van Vugt <daniel.van.vugt@canonical.com>)
+============================================================================
+
+Major New Features
+  
+  * Single source tree: All plugins/libraries are in lp:compiz now
+  * OpenGL|ES support (e.g. for ARM platforms)
+  * GSettings support, as a backend for storing compizconfig
+  * Buffer swapping on every frame: allowing compiz to take advantage of
+    driver features such as page flipping and triple/quad buffering. This
+    results in noticeably higher physical frame rates, and smoother graphics.
+
+Disabled Features
+
+  In order to complete support for OpenGL|ES, some plugins were not (yet)
+  ported and have been disabled for now. Those are: animationaddon, bicubic,
+  blur, colorfilter, cubeaddon, gears, group, loginout, reflex, thumbnail,
+  stackswitch, wallpaper, trip. However, those are only 13 out of 84 plugins.
+  We welcome patches to revive the disabled plugins.
+
+Bugs Fixed (https://launchpad.net/compiz/+milestone/0.9.8.0)
+
+    201342 - Tearing on secondary monitors even when "Sync To VBlank" is
+             turned on.
+    454218 - Loss of window border (white flash) when using compiz resize
+             plugin, option=normal
+    755842 - Non-maximized windows which sit on the border of a workspace move
+             when called
+    770283 - [fglrx] Title bar does not update on non-maximized windows
+    803296 - [regression] Compiz Resize plugin: When "Default Resize Mode" =
+             Normal, resizing is extremely slow and CPU intensive
+    862430 - window flicker for a short time after switching workspaces
+    886605 - Desktop, Launcher and menu bar still visible when screen locked
+    892012 - Window management - When a semi-maximised a window is maximised
+             and then restored, the window position jumps and window size
+             changes so the the window title bar is sometimes hidden
+             underneath the top bar
+    901097 - Add option to use glXSwapBuffers on every frame, not just
+             full-screen redraws.
+    904205 - Desktop wall: Bindings for next/previous don't wrap to the next
+             row
+    929989 - compiz (decor) - Warn: failed to bind pixmap to texture
+    930783 - mouse poll is jerky at the default setting of 40ms
+    932520 - Some windows on start up don't show full window
+    933776 - [regression] scale/spread: "Initiate Window Picker for All
+             Windows" does not show all windows. It shows only windows from
+             curent workspace.
+    946388 - Some apps (like Remmina) can't full-screen under Compiz (or Unity)
+    955035 - Super-W shows vanishing windows the first time you hit it. Windows
+             fly off the screen instead of spreading.
+    960652 - Switcher remains open after super+tab has been used.
+    963794 - gtk-window-decorator crashed with SIGFPE in
+             _decor_blend_horz_border_picture()
+    972519 - Compiz-core fails to compile with gcc-4.7 -
+             'cc1plus: all warnings being treated as errors'
+    976467 - [regression] Compiz 0.9.7.6: Menus often have no shadows at all
+    978900 - Menu shadow clipping flickers while switching menubar
+             items/indicators
+    980026 - Compiz should not move windows to workspace 0,0 when restarted
+    981703 - regression / unable to interact with window-titlebar (window
+             decoration) after minimizing/unminimizing gnome-terminal
+    987639 - [0.9.8 r3110 regression] Windows lose decorations during "scale"
+             (window spread)
+    987647 - Mouse pointer doesn't change when dragging windows in expo
+    988684 - [regression] Starting a second instance of compiz (without
+             --replace) causes the existing instance to shut down (gracefully)
+    989545 - [regression] compiz --replace fails to start
+    990690 - Get libcompizconfig under test
+    993608 - CMake Error at FindCompiz.cmake:84 (include): include could not
+             find load file: CompizDefaults
+    994841 - 'make test' fails lots of test cases if you don't have Xvfb
+             installed
+    996901 - regression / gtk-window-decorator crashes / doesn't start
+             properly -> rev3131 is culprit
+    999019 - [regression] Bug 994841 ('make test' fails lots of test cases)
+             regressed in lp:compiz-core r3133
+   1002602 - [nvidia] [0.9.8 r3110 regression] With bug fix 862430 unfocussed
+             windows are displayed white
+   1002606 - [0.9.8 r3110 regression] 2nd un-maxed window often opens
+             overlapping adjacent workspace
+   1002715 - [regression] Misspelled plugins are silently ignored
+   1002721 - [regression] compiz fails to load plugins from LD_LIBRARY_PATH
+   1004251 - Animations aren't smooth when sync to vblank is enabled
+   1004335 - wall.cpp:588: Conditional jump or move depends on uninitialised
+             value(s)
+   1004338 - screen.cpp:4364,4372: Conditional jump or move depends on
+             uninitialised value(s)
+   1004848 - CompizConfigPython.test_plugin test fails when opengl isn't
+             enabled
+   1005008 - Can't disable building ccp plugin
+   1005009 - Can't disable building grid plugin
+   1005176 - libcompizconfig headers still don't install in the right place
+   1005177 - Compizconfig-python still doesn't respect DESTDIR when not
+             exported
+   1005569 - [callgrind] compiz spends ~25% of its time
+             constructing/destructing strings in
+             PrivateScreen::handleActionEvent
+   1006335 - [callgrind] compiz spends ~7% of its time inserting into and
+             destructing the events list in PrivateScreen::processEvents()
+   1007299 - Compiz frame rate decreases if application frame rates are too
+             high (unthrottled)
+   1007754 - gtk-window-decorator crashed with SIGSEGV in
+             meta_get_decoration_geometry
+   1008020 - New windows can be stacked above panels if they are created just
+             after an override redirect window is created
+   1009320 - Benchmark key is not consumed by compiz. It gets passed to the
+             underlying window.
+   1009338 - composite refresh rate falls back to 50Hz, which is wrong in most
+             cases
+   1012205 - [needs-packaging] Wishlist: Missing plug-In: Stackswitch
+             (Stack Window Switcher)
+   1012956 - Unintended shadows are rendered for the Unity Launcher and Panel
+   1014461 - decor fails to start any window decorator by default (option
+             "command" is blank upstream)
+   1015151 - [BNR] Compiz crash in movementWindowOnScreen (caused by fix
+             755842)
+   1015422 - compiz is wasting memory leaving a shell running:
+             /bin/sh -c /usr/bin/compiz-decorator
+   1015593 - crash in gtk-windows-decorator meta_get_button_position
+   1015898 - No decorator is started if compiz is run without any path prefix
+   1016366 - Potential cases where textures can become invalid where plugins
+             need the image for animations
+   1016367 - Potential race condition where X commands haven't finished
+             processing when we bind a texture and generate mipmaps
+   1018302 - [regression] main.cpp:222,225: Conditional jump or move depends
+             on uninitialised value(s)
+   1018602 - [gsettings] Invalid write of size 4 in readOption
+   1018730 - [gsettings] Lots of warnings about key names >31 characters,
+             which also causes CCSM crashes.
+   1018916 - ccsm and compizconfig python files don't get installed
+   1019337 - gtk-window-decorator crashes with BadWindow (invalid Window
+             parameter), from XGetWindowProperty() from get_frame_type()
+   1021104 - Severe damage artefacts and flickering when using LLVMpipe
+   1021139 - make ExperimentalMemCheck; fails CompTimerTestCallback.TimerOrder
+   1023738 - make -j3 randomly fails with
+             sed: -e expression #1, char 6: unterminated `s' command
+   1023742 - make -j2 randomly fails with
+             /bin/sh: 1: _intltool_update-NOTFOUND: not found
+   1024179 - make install in unity fails to install
+             org.compiz.unity*.gschema.xml
+   1029383 - Make fails with:
+             /bin/sh: 1: cannot open g': No such file (when attempting to
+             build Unity)
+   1030473 - Error-reports cppcheck
+     (http://sourceforge.net/apps/mediawiki/cppcheck/index.php?title=Main_Page)
+   1033085 - Typo in "Commands" plugin description: "bundings" -> "bindings"
+   1033531 - Single click inside the Workspace Switcher should always return
+             to a workspace
+   1036490 - [regression] compiz crashed with SIGSEGV in
+             g_main_context_iteration() from ... from CcpScreen::timeout()
+   1036542 - [regression] Clicking launcher icons in expo mode now exits expo
+             mode
+   1036739 - Window management - decouple window minimise and restore/maximise
+             animation timings
+   1037710 - Tearing at top of laptop screen
+   1039482 - imgsvg build failure on quantal
+   1039834 - paralell builds can fail on resize_logic
+   1039843 - make fails if librsvg-2.0 < 2.36.2
+
+
+Release 0.9.7.6 (2012-04-06 Sam Spilsbury <sam.spilsbury@canonical.com>)
+========================================================================
+
+Bugs fixed (https://launchpad.net/compiz-core/+milestone/0.9.7.6)
+
+    968985 - Memory leak in dlloaderListPlugins
+    969102 - priv->invisible is not updated when the window is mapped
+    919139 - window management, multi-monitor - In multi-monitor
+             environment, windows should spread on the
+             monitor in which they reside
+    931883 - Improve performace of the shadow clipping code
+    969101 - DecorWindow::computeShadowRegion called way too much
+
+Use gtest_add_tests for more detailed testing output
+
+
+Release 0.9.7.4 (2012-04-02 Daniel van Vugt <daniel.van.vugt@canonical.com>)
+============================================================================
+
+Bugs fixed (https://launchpad.net/compiz-core/+milestone/0.9.7.4)
+
+    833729 - compiz crashed with SIGSEGV in
+             CompositeScreen::compositingActive()
+    888704 - Window management - Closing one window sends others to the
+             background
+    953089 - Unity 5.6: key bindings (such as Super) don't work on empty
+             workspace or on slow/loaded systems
+    953839 - [regression] Invisible resize border is now only 1px wide
+    957572 - Coverity REVERSE_INULL - CID 10888
+    960831 - Unity dash opens and immediately closes if you tap Super+A quickly
+    962085 - [0.9.7.2] gtk-window-decorator receives BadWindow errors 
+    963093 - Unity 5.8: Flickering and corruption on Unity UI elements
+    963264 - We are using 1 bad hack for compiz hanging on startup
+    963465 - Unity 5.8: Can't login to Unity since upgrade to 5.8
+    963470 - [regression] Unity 5.8+Compiz 0.9.7.2: Pressing Super+Tab or
+             Super+W works, but unity does not respond to when Super is
+             released.
+    963633 - Unity 5.8: Login to blank screen (all black or just wallpaper)
+    964248 - Tests do not build when libgtest-dev is installed but libgtest
+             isn't 
+
+
+Fixes REMOVED for stability reasons:
+
+    682788 - Global menu is not ergonomical on large screens 
+    806255 - Unity/compiz intercepts Super and Alt keypresses from grabbed
+             windows like VMs. 
+    931245 - Finish the implementation of the locally integrated menubars
+
+
+Release 0.9.7.2 (2012-03-19 Daniel van Vugt <daniel.van.vugt@canonical.com>)
+============================================================================
+
+Bugs fixed (https://launchpad.net/compiz-core/+milestone/0.9.7.2)
+
+    806255 - Unity/compiz intercepts keystrokes from grabbed windows.
+    808007 - compiz crashed with signal 5 in Glib::exception_handlers_invoke()
+    682788 - Global menu is not ergonomical on large screens
+    931245 - Finish the implementation of the locally integrated menubars
+    938417 - lp:compiz-core fails parallel builds (make -jN)
+    943194 - [regression] Pressing alt doesn't show the menu title bar in top
+             panel
+    943612 - Alt+Right arrow key trigger a kind of Alt + Tab
+    943851 - [unity 5.6] Pressing Alts steals focus from current widget,
+             cannot compose characters with AltGr
+    944979 - Quicklist are not showing if right-clicking a launcher icon in
+             Expo mode if triggered by Super + S
+    945373 - Regression: ALT + Drag doesn't behave how it should
+    945816 - [regression] Changing the HUD shortcut disables all Alt-based
+             combinations
+    946118 - screen.cpp:3281: virtual bool
+             CompScreenImpl::addAction(CompAction*): Assertion
+             `priv->initialized' failed.
+    953089 - Unity 5.6: key bindings (such as Super) don't work on empty
+             workspace or on slow/loaded systems
+
+
+Release 0.9.7.0 ( 2012-03-02 smspillaz <sam.spilsbury@canonical.com> ) 
+=======================================================================
+Release version 0.9.7.0
+
+Bugs Fixed (https://launchpad.net/compiz-core/+milestone/0.9.7.0)
+
+     92599 - Incorrect (low/stuttering) refresh rate with NVIDIA driver
+    254561 - Benchmark window slows the system and degrades graphics resources
+    684731 - Windows that hide themselves when closed don't appear in any
+             "this workspace" switcher
+    690239 - hang in g_spawn_sync and select()
+    694169 - word misspelled - bunding
+    716521 - sometimes, restored window placed too high.
+    720679 - Compiz clears the root window in the installer session
+    724093 - unity-window-decorator: When switching between windows, Orca does
+             not speak the title of the focused window.
+    732997 - Cannot open a window that starts iconified
+    737125 - Minimize animation flickr when for maximized apps
+    740258 - Pixmap memory leak in gtk-window-decorator
+    748840 - Windows should not automatically be focused when opened if the
+             focus is on another application
+    755841 - [sandybridge] Graphics tearing when playing video
+    758398 - Bitcoin top-level window unmapped
+    763005 - Compiz's "Sync to Vblank" makes display stutter/slow with fglrx
+    764330 - [regression] Moving windows lags behind the mouse by 1-2 seconds;
+             appear to freeze when dragging.
+    764673 - Launcher - Spread should not affect the state of window
+    780505 - Untranslated strings in gtk-window-decorator
+    790565 - Clicking on a tweet/message link sometimes does not work
+    795065 - scrolling on top of a close animation switches viewports
+    796594 - Window behaviour - pressing the 'restore' window indicator on a
+             semi-maximised window should return it to the restored state
+    798868 - unity video tearing when moving windows in oneiric with
+             nvidia-current
+    812711 - dialogs really slow to be displayed since the compiz update
+    837252 - It is possible to stack windows relative to windows that are
+             destroyed
+    841727 - Should keep list of windows last sent to server and last recv
+             from server
+    845719 - compiz and X can disagree on the stacking order
+    847967 - A minimized window 'remains' behind on the desktop if
+             /apps/compiz-1/plugins/unityshell/screen0/options/
+             show_minimized_windows is set to true
+    853734 - maximized windows fail to update their input extents when
+             undecorated
+    854725 - resizing bugs with xterm
+    856015 - crash on closing a window
+    857201 - Java application windows cut-off/truncated/not displayed properly
+    857487 - compiz crashed with SIGSEGV in CompScreen::insertServerWindow()
+    857738 - compiz crashed with SIGABRT in raise()
+    858625 - Applications which create multiple windows that are transients of
+             each other can be given invalid stack positions
+    858629 - Windows move to 0,0 on compiz restarts
+    859431 - Crash when selecting Evolution in alt-tab
+    860286 - invisible window when a window is mapped but not yet drawn on by
+             the process mapping it
+    860304 - race condition in configureXWindow causes unpredicatable window
+             geometry changes
+    860306 - windows that are decorated while resizing can cause incorrect
+             resize results
+    860309 - Moving a window while it is being resized by core caused
+             unpredictable movement
+    860397 - Windows which are marked transients of docks should be treated
+             like docks
+    861341 - can't maximize windows on second monitor and Qt windows displayed
+             in wrong place
+    861909 - compiz crashed with SIGSEGV in PrivateWindow::configureFrame()
+    862719 - closing a window gives focus to last minimized window
+    863328 - Launcher - If a spread contains minimised windows, when the
+             spread exits, the minimised windows momentarily appear on the
+             desktop before disappearing
+    864478 - Window shading is broken
+    865696 - Windows from other workspaces missing decorations in window
+             spread
+    865863 - Opening mumble can cause it to be stacked above the dash if you
+             open the dash at the same time
+    866752 - Sometimes configure events are missed and windows move slow as a
+             result
+    869759 - screen edge trigger does not work until manually restarting unity
+    869919 - Click-dragging a window that's stacked above a fullscreen window
+             will cause it to go underneath the fullscreen window
+    871801 - window management, alt-tab - After using 'show desktop' to
+             minimise all windows, opening any new window also incorrectly
+             restores all the minimised windows
+    873344 - compiz.desktop is not installed where GNOME2 libraries are not
+             available
+    873364 - Drop GNOME2 Support
+    873379 - Disable lighting by default
+    873384 - Use smart placement by default
+    873389 - Compiz should read DESKTOP_AUTOSTART_ID when being started by the
+             session manager
+    874004 - When a window is minimized on another workspace it doesn't appear
+             in the spread
+    874854 - Add hooks for the workarounds plugin to change variables prior to
+             and after GLXContext init to work around bugs in broken drivers
+    876575 - Moving windows between workspaces causes them to "jitter" /
+             jump around
+    877920 - Some windows and all decorations become translucent when the
+             "Resize Info" plugin activates.
+    878934 - Menu selection is wrong in Java apps
+    880707 - [regression] Compiz: Visible tearing is worse in 11.10 than
+             11.04, even when "Sync To VBlank" is enabled, but only when Unity
+             is active.
+    882527 - Allow the scale plugin to be triggered over all viewports
+    882531 - Allow plugins to selectively track damage in real time
+    885440 - Add unit tests for CompOption
+    886935 - Invalid read on GLWindow::glDrawGeometry
+    886978 - compiz crashes with SIGSEGV in PrivateWindow::configure
+    890947 - Unity sends initial GDK_CONFIGURE event with position as (0,0)
+    891744 - Dragging windows stutter during and after grid animation
+    893995 - POTFILES is breaking the build
+    893998 - Fix warnings in CompTimer
+    894639 - Hook up Xig tests to compiz' CTest system
+    896591 - Plugins that get initialized before screen initialization is done
+             can not have their actions added
+    896762 - Switching viewports with ctrl-alt-(left/right/up/down) does not
+             give the highest window on the target viewport focus
+    897045 - compiz spins in CompTimeoutSource::callback, stops responding and
+             starves other timers if CompTimer::setTimes(0).
+    908042 - Test timer-callbacks suffers from a race condition
+    911530 - Fix uninitialized read in paintBackground
+    913823 - Remove unecessary hacks from core in order to work around broken
+             drivers on startup
+    915186 - make install: Files missing from include/compiz/core
+    915950 - Tests required for window placement in dead areas for multimonitor
+    917210 - compiz+unity3d generates > 50 wakeups a second on idle system
+    917571 - compiz-core (currently version 0.9.5) is actually newer than the
+             existing releases versioned 0.9.6
+    918554 - Some plugins no longer build due to undefined DEG2RAD
+    918762 - Compiz crashes with SIGSEGV in PrivateWindow::configure
+    919920 - lp:compiz-core (r2930) does not build
+    919922 - compiz-core ABI is broken / out of sync
+    919940 - 'make install' no longer installs 'bin/compiz' (seriously)
+    919948 - 'make install' installs redundant static libraries (now part of
+             core)
+    919970 - compiz-core contains duplicate conflicting class definitions
+    920847 - point.h and rect.h being installed to the wrong place
+    921406 - lp:compiz-core r2961 fails to build with glib 2.30 (seems to
+             require 2.31)
+    921451 - compiz::X11::PendingConfigureEvent::dump(): Conditional jump or
+             move depends on uninitialised value(s) / Use of uninitialised
+             value of size 8
+    922450 - 'make install' installs unwanted files
+             libcompiz_place_constrain_to_workarea.a,
+             libcompiz_place_screen_size_change.a
+    923572 - Merge (overwrite?) lp:compiz-*-plugin back into
+             lp:compiz-plugins-{main,extra}
+    923583 - lp:compiz-core r2968 fails to build
+    923662 - [regression] lp:compiz-core r2968 broke direct rendering
+    923683 - [regression] window movement is erratic and buggy (briefly on
+             startup)
+    924691 - [regression] XSynchronize is always enabled (shouldn't be, and
+             wasn't in oneiric)
+    924736 - [gtk-window-decorator] Semi-maximized windows have no shadow or
+             frame
+    925293 - Plugins can't tell the difference between a modifier key-tap, and
+             a modifier key-release (after being used to modify other keys)
+    925979 - [regression] compiz fails to pass through <modifier>+<key> events
+             to apps if a plugin is bound to just <modifier>
+    928044 - [regression] lp:compiz-plugins-main r16 fails to build with
+             lp:compiz-core r2982
+    928173 - [regression] Window resizing jitters/flashing is worse in
+             lp:compiz-core than oneiric
+    928655 - [regression] Vsync is lost (constant graphics tearing) after
+             plugins render effects
+    929443 - lp:ubuntu/libcompizconfig (r59) fails to build with the latest
+             lp:compiz-core (r2990)
+    929446 - lp:compiz-plugins-main (r18) fails to build with the latest
+             lp:compiz-core (r2990)
+    929449 - lp:compiz-plugins-extra (r9) fails to build with the latest
+             lp:compiz-core (r2990)
+    930071 - gtk-window-decorator can crash in active_window_changed upon
+             demaximizing a window
+    930412 - [regression] no core keybindings work any more
+    931283 - compiz crashed with SIGSEGV on shutdown
+    931473 - Menus don't fully appear
+    931500 - post 0.9.7 snapshot: FTBFS on armel
+    931927 - [regression] Customized shortcuts don't work in compiz
+             1:0.9.7.0~bzr2995-0ubuntu1
+    931958 - 0.9.7: impossible to click on keyring dialog since the upgrade
+    932087 - Initialize the _NET_WM_STATE_FOCUSED
+    933226 - compiz-core r3001 (and 3002) ftbfs
+    934058 - [regression] Launcher, top panel and keyboard un-responsive after
+             using any Super-x shortcut
+    936487 - compiz crashed with SIGSEGV in XDefineCursor()
+    936675 - Windows can end up stacked at the very top of the stack if no
+             other windows and nautilus on the desktop are not open
+    936774 - Maximized windows do not get shadows at all
+    936778 - Quickly demaximized windows can receive maximized window
+             decorations if they were initially maximized
+    936781 - No draggable border if mutter isn't installed
+    938478 - Unresolved symbols in plugins cause compiz to exit (looks like a
+             crash)
+    940066 - decor_match_pixmap (decoration.c:423): Conditional jump or move
+             depends on uninitialised value(s)
+    940115 - Memory leak at DecorWindow::updateSwitcher() (decor.cpp:2258)
+    940139 - [callgrind] compiz spends about 51% of its CPU time in CompRegion
+             construction/destruction
+    942890 - "Svg" and "Png" should be "SVG and "PNG"
+    
+Added Unit Tests
+Switched to Google Test for Unit Tests
+Added Xig Integration Tests
+
+
+Release 0.9.5.92.1 ( 2011-08-20 Sam Spilsbury <sam.spilsbury@canonical.com> ) 
+==============================================================================
+Release (0.9.5.92.1)
+
+Fix failure to build from source due to merge failure on the last release
+
+Release 0.9.5.92 ( 2011-08-20 Sam Spilsbury <sam.spilsbury@canonical.com> ) 
+============================================================================
+Development Release (0.9.5.92)
+
+Added GSettings schema generation
+Revised libdecoration interface
+Fixed crashes on shutdown
+Don't unredirect overlay windows until they have been shaped
+
+Release 0.9.5.0 ( 2011-07-14 Sam Spilsbury <sam.spilsbury@canonical.com> ) 
+===========================================================================
+Development Release (0.9.5.0)
+
+Added new CMake commands to simplify releases
+
+Added unit tests
+
+Fixed a number of reparenting and stacking bugs
+
+Changed decoration interface. Now decorators can specify multiple decorations
+for a single window allowing compiz to cache decorations as needed
+
+Release 0.9.4 (2010-02-24 Sam Spilsbury <sam.spilsbury@canonical.com>)
+========================================================================
+Development Release.
+
+Main loop implementation now replaced by the GLib main loop, use custom
+event sources and event dispatch synchronisation. Allows better integration
+with plugins that require tight timing with GLib timers
+
+Moved image and data generation into buildsystem extensions, and installation
+of such data into namespaced areas on the filesystem so plugins can't
+overwrite other plugin's data
+
+Intelligently clip window shadows in decor
+
+Fixed a number of 2D decoration issues
+
+Fixed a number of reparenting, stacking and focus issues
+
+Support different frame types in gtk-window-decorator
+
+
+Release 0.9.2.1 (2010-11-06 Sam Spilsbury <sam.spilsbury@canonical.com>)
+========================================================================
+Bugfix release.
+
+
+Release 0.9.2 (2010-10-24 Sam Spilsbury <smspillaz@gmail.com>)
+==============================================================
+Development release.
+
+Made minimization functions wrappable
+
+Decorators now get shadow settings from window properties on the root
+window and not through gconf, kconfig or dbus
+
+Allow resizing from the center of the window
+
+Clean up gtk-window-decorator
+
+Fixed a number of reparenting bugs
+
+Release 0.9.0 (2010-07-03 Sam Spilsbury <smspillaz@gmail.com>)
+==============================================================
+Development release.
+
+Rewritten core in C++.
+
+Rewritten plugin APIs.
+
+Rewritten buildsystem in CMake, supports option code autogeneration,
+plugin build dependency handling, amongst other things.
+
+Smart wrappable functions, enables saving on otherwise useless CPU cycles.
+
+Reparenting window decorations.
+
+Support for tiled textures and screen sizes larger than max_texture_size
+through the use of the copytex plugin.
+
+Composite and OpenGL based rendering dropped from core, split into the
+opengl and composite plugins, which represent a step towards pluggable
+rendering backends.
+
+Ability to run in non composited mode added to gtk-window-decorator
+and kde4-window-decorator.
+
+kde-window-decorator dropped.
+
+Added KDE plugin to integrate with the QT main loop and create a KApplication
+for KCrash support on KDE.
+
+dbus plugin now uses screen number to identify compiz instance.
+
+Dropped multi-screen mode, launch compiz on individual screens instead.
+
+Shape drawing mode added to annotate plugin.
+
+Fixed screen updates issue in annotate plugin.
+
+Added serialization interface, which allows plugins to save/restore activity
+states between plugin and compiz reloads. Serialization info is stored in
+X11 window properties and is automatically dropped by the X Server when
+the window is destroyed.
+
+Added compiztoolbox library plugin used by switchers and screenshot, which
+provide a simple interface for accessing XDG and drawing thumbnails.
+
+Release 0.8.6 (2010-03-28 Danny Baumann <dannybaumann@web.de>)
+==============================================================
+Maintenance release.
+
+Various focus and window placement fixes.
+
+Fixed handling of windows that have a (server-drawn) border.
+
+Fixed handling of window icons that have a colour depth of 1 bit.
+
+Added KDE 4.4 support to KDE4 window decorator.
+
+Release 0.8.4 (2009-10-14 Erkin Bahceci <erkinbah@gmail.com>)
+=============================================================
+Maintenance release.
+
+Fixed many crashes (including doPoll/eventLoop ones).
+
+Various memory leak fixes.
+
+Fixed lost window issues with windows that are visible on all workspaces.
+
+Fixed lost window issue when reducing the number of workspaces.
+
+Fixed placing of dialogs (e.g. PolicyKit) behind currently focused window.
+
+Fixed placing of new windows behind fullscreen window.
+
+Fixed and improved screen resolution change handling (Compiz now remembers
+original window size and position).
+
+Lowering a window now activates the topmost window when click-to-focus is on.
+
+Fixed wobbly title bar hiding and bouncing near panel edges.
+
+Screenshot plugin now saves to the correct desktop directory by default.
+
+Fixed inconsistent icon sizes in switcher plugin.
+
+Improved constraining of window size and position in move, resize, and wobbly.
+
+Ported KDE4 window decorator to KDE 4.3.
+
+Added support for _NET_REQUEST_FRAME_EXTENTS and _NET_SUPPORT_FULL_PLACEMENT
+EWMH hints.
+
+Release 0.8.2 (2009-03-01 Danny Baumann <dannybaumann@web.de>)
+==============================================================
+Maintenance release.
+
+Fixed issue in strut handling that could lead to struts being ignored
+for certain monitor configurations.
+
+Fixed window position constraining logic.
+
+Fixed kconfig xslt files missing from 0.8.0 tarball.
+
+Release 0.8.0 (2009-02-20 Danny Baumann <dannybaumann@web.de>)
+==============================================================
+Fourth stable release of compiz.
+
+New plugin "commands" that handles the bindings for arbitrary commands that
+previously were handled in core. In addition to the previously present key
+bindings button and edge bindings were added as well.
+
+New plugin "gnomecompat" which handles bindings that are exclusively used
+in the Gnome desktop environment and removed the corresponding bindings
+from core. This change fixes main menu and run dialog bindings for KDE users
+as those previously were conflicting between compiz and KDE. Gnome users
+upgrading should make sure to enable this plugin.
+
+Added support for _NET_WM_FULLSCREEN_MONITORS EWMH hint.
+
+Added support for reading the icon hint from the WM_HINTS property if
+_NET_WM_ICON is not available.
+
+Update Gnome support for Gnome 2.24.
+
+Added options to scale plugin that allow "toggle type" behaviour for
+key and button bindings.
+
+Several memory leak fixes.
+
+Adjusted gtk-window-decorator for newer libmetacity-private versions.
+
+Fixed gtk-window-decorator display for RTL languages.
+
+Adjusted kde4-window-decorator for KDE 4.2 API.
+
+Large number of minor bug fixes, especially in resize handling and
+stacking code.
+
+Translation updates
+
+Release 0.7.8 (2008-09-17 Danny Baumann <dannybaumann@web.de>)
+==============================================================
+Development release.
+
+New plugin "obs" that handles opacity, brightness and saturation bindings
+and matches.
+
+Put unresponsive window greyout, including options to configure it, to
+fade plugin.
+
+Add "constant fade time" fade mode to fade plugin.
+
+Removed opacity bindings and matches from core. Users that entered opacity
+matches should enable the obs plugin and enter the matches there.
+
+Enhanced timer infrastructure to allow synchronization of execution of
+multiple timer callbacks.
+
+Added matching for window's alpha channel (match type rgba=[0|1]).
+
+Reflect new Metacity "spacer" button type in gtk-window-decorator.
+
+Various bugfixes.
+
+Translation updates.
+
+Release 0.7.6 (2008-05-29 Dennis Kasprzyk <onestone@opencompositing.org>)
+=========================================================================
+Development release.
+
+Rewrite of place plugin, which significantly improves multi-output
+behaviour.
+
+Configurable multi-output behaviour in place.
+
+Removed plane plugin. Former plane plugin users are encouraged to use
+the wall plugin of Compiz Fusion.
+
+Removed cube wallpaper painting. Users are encouraged to use the Compiz
+Fusion wallpaper plugin instead.
+
+Place plugin viewport placement viewport numbers are now 1-based.
+
+Panel and desktop selection mode in switcher plugin.
+
+Improved painting behaviour when using overlapping outputs.
+
+Gtk-window-decorator now emits accessibility events when switching.
+
+Gtk-window-decorator behaviour when using Metacity themes has been
+improved to match Metacity better.
+
+KDE4-window-decorator has been adapted to current KDE4 API.
+
+Various bugfixes.
+
+Release 0.7.4 (2008-03-04 Dennis Kasprzyk <onestone@opencompositing.org>)
+=========================================================================
+Development release.
+
+Configurable handling of overlapping output devices.
+
+Enhanced focus stealing prevention with configurable amount of focus
+stealing prevention.
+
+Added configurable, optional delay for edge actions to prevent
+accidential invocation.
+
+Generalized vertex system to improve plugin compatibility.
+
+Optimized gaussian blur shaders to support more hardware.
+
+Improved unredirection of fullscreen windows.
+
+Several bugfixes.
+
+Translation updates.
+
+Release 0.7.2 (2008-03-06 Dennis Kasprzyk <onestone@opencompositing.org>)
+=========================================================================
+Development release.
+
+Several bugfixes 
+
+Translation support in gtk-window-decorator.
+
+Updated translations.
+
+Added wrapable session functions to core. This allows to provide a full session save/restore in a plugin.
+
+Release 0.7.0 (2008-02-07 Dennis Kasprzyk <onestone@opencompositing.org>)
+=========================================================================
+Development release.
+
+A core plugin has been added that allows handling certain core APIs, such as
+querying the ABI version, similarly to plugin APIs, allowing sharing more
+code.
+
+Added a simple object system, which generalize the privates mechanism and the plugin system. It allows to share more code between display, screen and window objects. It also makes it possible to properly introduce new object types without changing the plugin interface or breaking the API.
+
+Multi-display support.
+
+Various fixes in ICCCM compliance, window stacking and focus handling.
+
+Validity checking of ConfigureRequest events.
+
+Fixes to transient children placement in place plugin.
+
+Hooks have been added to the cube plugin which allow better control of
+viewport drawing.
+
+Middle and right click actions have been made configurable in
+gtk-window-decorator.
+
+Gtk-window-decorator now optionally allows mouse wheel title bar actions, such
+as shading.
+
+A KDE4 port of the kde-window-decorator has been added.
+
+Frequent crashes of kde-window-decorator for some people have been fixed.
+
+
+Release 0.5.4 (2007-08-20 David Reveman <davidr@novell.com>)
+============================================================
+Development release.
+
+XCB is now required.
+
+Major improvements to option system that makes
+configuration backend integration much less complex.
+
+Kconfig plugin that provides proper KDE configuration
+support.
+
+Kcfg files are generated from the meta-data and they can
+be used to generate C++ source code that will provide an
+API for applications to access all compiz configuration
+data used by the kconfig plugin.
+
+
+Release 0.5.2 (2007-08-03 David Reveman <davidr@novell.com>)
+============================================================
+Development release.
+
+Better support for multiple X-screens.
+
+XML-based meta-data system for handling of various kinds
+for meta-data like plugin descriptions, default option
+values, etc.
+
+Major improvements to option initialization based on the
+new meta-data system.
+
+Logging framework.
+
+Support for configurable button layout in metacity themes
+has been added to gtk-window-decorator.
+
+Glib plugin that allows plugins that use the glib main
+loop to integrate properly with the compiz main loop
+without waking up periodically to check for pending
+events.
+
+Plugin plugins that make it possible to adjust and extend
+the behavior of existing plugins through new plugins.
+
+More dynamic handling of output devices, which allows the
+output device configuration used when rendering to be
+changed between frames.
+
+Transparency support in cube plugin.
+
+Introspection support in dbus plugin.
+
+
+Release 0.5.0 (2007-04-02 David Reveman <davidr@novell.com>)
+============================================================
+Development release.
+
+Remove stencil buffer requirement.
+
+Focus stealing prevention support.
+
+Blur plugin that provide support for blurring windows and
+contents behind translucent windows.
+
+Fragment attribute interface that allow plugins
+to perform more advanced fragment shading effects and
+integrate properly with other plugins.
+
+Extensible window matching interface and new option type
+that provide advanced window selection functionality.
+
+Plugin that provide a composited video interface for
+efficient video playback.
+
+FUSE plugin that maps compiz options to a file-system and
+allow efficient manipulation of options by reading and
+writing files.
+
+Better occlusion detection and more efficient rendering.
+
+Flat file configuration backend.
+
+
+Release 0.3.6 (2006-12-31 David Reveman <davidr@novell.com>)
+============================================================
+Development release.
+
+Add support for unredirect of fullscreen windows when using
+the composite overlay window and make usage of the
+composite overlay window for output default.
+
+Add file notification API.
+
+Add inotify plugin that implements file notification API.
+
+A "GetPlugins" method has been added to dbus plugin
+and it can be used to retrieve a list of available plugins.
+
+A 'GetPluginMetadata' method has been added to dbus plugin
+and it returns metadata for available plugins.
+
+Add support for switching between windows without having
+the thumbnail window show up.
+
+Switcher thumbnails now include decorations and shadows.
+
+Basic drag and drop support has been added to scale plugin.
+
+It's now possible to initiate scale plugin for specific window
+groups.
+
+Window menu icon support has been added to gtk window decorator.
+
+Improved support for metacity themes.
+
+Add KDE window decorator with support for shadows and opacity
+has been added.
+
+
+Release 0.3.4 (2006-11-21 David Reveman <davidr@novell.com>)
+============================================================
+Development release.
+
+Edge button, which can be used to require a button press
+for edge actions to be triggered.
+
+Basic compiz event support.
+
+Zoom plugin now works without "largedesktop" feature.
+
+Cube plugin now handles desktop width less than 4 times
+the screen better.
+
+Support for multiple desktops (workspaces).
+
+Handling of _NET_DESKTOP_GEOMETRY client messages has
+been fixed.
+
+Much better multi-head support.
+
+Annotate plugin has been added.
+
+Clone plugin which can be used to clone outputs in a
+convenient way has been added. Currently more of a
+prototype as we need randr++ and input transformation
+in the server to do this properly.
+
+Shadow color option has been added.
+
+initiate_all option has been added to scale plugin.
+
+Zoom factor option has been added to zoom plugin.
+
+Support for new metacity theme version and support for
+metacity versions < 2.15.21.
+
+Event window placement when using some metacity
+themes has been fixed.
+
+Fix a number of issues related to minimizing windows
+with transients.
+
+
+Release 0.3.2 (2006-10-20 David Reveman <davidr@novell.com>)
+============================================================
+Development release.
+
+snap_inverted option has been added to wobbly plugin.
+
+Configuration support has been added to dbus plugin.
+
+Add 'command' option has been added to decoration plugin,
+which can be used to automatically launch a decorator
+when one isn't already running.
+
+Opacity support for metacity themes.
+
+A raise_window option has been added.
+
+Decorations on maximized windows are now rendered
+correctly when using metacity themes.
+
+An ignore_hints_when_maximized option, which makes compiz
+ignore size increment and aspect hints for maximized
+windows has been added and made default.
+
+Better default option values for rotate plugin.
+
+and much more...
+
+
+Release 0.2.0 (2006-10-02 David Reveman <davidr@novell.com>)
+============================================================
+First official release of compiz.

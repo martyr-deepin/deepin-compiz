@@ -1,0 +1,18 @@
+
+* Plugin interface
+
+* Plugin with SVG-based theme support
+
+* Plugin that supports old metacity themes
+
+----- Cleanup TODO:
+ * Allow frame keying types for frame types, so
+   /2d/window_type/state/id , this way we can have
+   different shadows per-frame and much more granular
+   memory control (decor_t just becomes a handle to some
+   decoration specific stuff, decor_frame_t becomes a
+   table of shared resources held by all decor_t's
+ * Completely seal off the values of structs and use
+   only getter and setter functions to control API
+ * Start implementing a system in GObject
+ * Put all the globals into their own structs or namespaces

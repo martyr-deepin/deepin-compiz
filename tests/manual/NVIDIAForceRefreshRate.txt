@@ -1,0 +1,12 @@
+NVIDIA REFRESH RATE
+===================
+Sam Spilsbury <sam.spilsbury@canonical.com>
+
+Force Refresh Rate
+------------------
+Actions
+#. Open ccsm and turn "Benchmark" on
+#. Hit Alt-F12
+#. Run glxgears
+#. Benchmark should display roughly under 60 frames per second
+   and not under 50 frames per second

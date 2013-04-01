@@ -1,0 +1,596 @@
+Merge: 8a17506 8a17506
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-08-12
+
+    Merge trunk
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-08-12
+
+    Fix crash
+
+Merge: 46e7890 0590eb0
+Andrea Azzarone <azzaronea@gmail.com>	2011-07-31
+
+    Merge lp:~andyrock/compiz-workarounds-plugin/fix-memory-leak
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-30
+
+    Fix typo
+
+Andrea Azzarone <azzaronea@gmail.com>	2011-07-30
+
+    Fixes one memory leak.
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-05-26
+
+    Don't write w->type () to w->wmType (). Instead back up the existing
+    wmType and new wmType every time it changes and we apply the fix
+    and then write that in when appropriate. Writing back w->type ()
+    causes bugs in window matching.
+    
+    Fixes LP #765422
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-27
+
+    Don't disable the ::handleCompizEvent function where there are windows
+    still minimizing (since we still need a notification from them as to
+    when they've finished animating)
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-26
+
+    Don't unminimize transients when the window is being destroyed
+    
+    Unminimizing the transients means that we have to loop the window list
+    in the ::~WorkaroundsWindow stage, and we don't know which of our windows
+    have already been destroyed (which is problematic for ::get ()). Since
+    the transients of windows are likely to be destroyed along with the main
+    window and and also during the entire plugin tear-down phase we are unminimizing
+    each individual window, there is no need to also unminimize transients for
+    each window.
+    
+    FIXME: We should really implement a ::fini stage where we can guaruntee that
+    nothing has been destroyed
+
+Merge: 4c7e766 4a37bdf
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/compiz/plugins/workarounds
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Cleanup (static analysis)
+
+Scott Moreau <oreaus@gmail.com>	2010-09-28
+
+    Don't require composite since opengl already does.
+
+Merge: 7f1e319 0e25184
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-26
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/compiz/plugins/workarounds
+
+Chow Loong Jin <hyperair@ubuntu.com>	2010-09-26
+
+    [PATCH] Return "" instead of NULL in getRoleAtom.
+    
+    The return value of NULL is implicitly converted into CompString (return type of getRoleAtom), and throws a logic_error causing Compiz to SIGBART.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-17
+
+    Use "window_animation"
+
+Merge: e74f916 6c7f100
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-17
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/compiz/plugins/workarounds
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-17
+
+    Enter correct notifications and also don't paint with NO_CORE_INSTANCE_MASK if animations are active
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-17
+
+    Load after animation
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-12
+
+    Set hidden EWMH state and clean up checkFunctions () function
+
+Merge: 54f2523 f3dbbf4
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-10
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/compiz/plugins/workarounds
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-08
+
+    Added "keep thumbnails of minimized windows" option, as a WORKAROUND.
+    
+    This wraps ::minimize, ::unminimize and ::minimized in order to lie to plugins
+    and also tell pagers etc that the window is gone.
+    
+    It also shapes out the input of the window, and does not paint the window, and
+    on unminimize restores the shape of the window
+
+Jay Catherwood <jay.catherwood@gmail.com>	2010-08-05
+
+    Check for managed windows in Java Taskbar Fix
+
+Jay Catherwood <jay.catherwood@gmail.com>	2010-08-05
+
+    Fix java windows disappearing from taskbar
+    
+    Certain java windows are marking themselves as transient when a modal dialog
+    is opened, causing them to vanish from the taskbar. This workaround notices
+    when they are unmarked as transient and puts them back.
+
+Jay Catherwood <jay.catherwood@gmail.com>	2010-08-05
+
+    Check for managed windows in Java Taskbar Fix
+
+Jay Catherwood <jay.catherwood@gmail.com>	2010-08-05
+
+    Fix java windows disappearing from taskbar
+    
+    Certain java windows are marking themselves as transient when a modal dialog
+    is opened, causing them to vanish from the taskbar. This workaround notices
+    when they are unmarked as transient and puts them back.
+
+Scott Moreau <oreaus@gmail.com>	2010-07-04
+
+    Load after decor plugin to prevent windows from shifting by decoration size after plugin load.
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-10-05
+
+    Replace function pointers at screen fini
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-10-05
+
+    Add no wait for video sync and force swap buffers (damageScreen on every repaint) options. Use with care
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-09-04
+
+    Remove dummy
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-09-04
+
+    Dummy commit
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-09-04
+
+    C++ port
+
+Danny Baumann <dannybaumann@web.de>	2009-03-09
+
+    Add workaround to force X-to-GLX synchronization, which should help for
+    the race condition in the XDamage protocol Nvidia users are suffering
+    from.
+
+Danny Baumann <dannybaumann@web.de>	2009-02-07
+
+    Disable some workarounds by default for cases which were fixed upstream
+    and the fix was already released.
+
+Danny Baumann <dannybaumann@web.de>	2008-10-20
+
+    Use XWMHints structure provided by core.
+
+Danny Baumann <dannybaumann@web.de>	2008-10-08
+
+    Revert "Added option for hiding Utility windows from taskbar."
+    
+    This reverts commit 151f8a63d72727d4981fef25714bcad15a5bb4b5.
+    
+    A much better alternative to that option is to set "type=Utility" in the skip_taskbar option of winrules.
+
+Danny Baumann <dannybaumann@web.de>	2008-10-06
+
+    Added option for hiding Utility windows from taskbar.
+
+Danny Baumann <dannybaumann@web.de>	2008-09-13
+
+    Only restore old window type and state if window is not already destroyed.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-10
+
+    Added an option for converting urgency to demands_attention state.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-17
+
+    Core now recalculates window type and actions on state changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Danny Baumann <dannybaumann@web.de>	2008-02-19
+
+    Don't access already free'd memory.
+    Fixes BZ #788.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-01-21
+
+    Make sure the fullscreen workaround is only applied to windows which are either already mapped or request being mapped.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-16
+
+    Added a fix for the not updating screen contents problem under XGL with recent versions of fglrx.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-15
+
+    Free the right thing.
+
+Merge: be6a8e1 1bb8130
+Danny Baumann <dannybaumann@web.de>	2008-01-07
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/plugins/workarounds
+    
+    Conflicts:
+    
+workarounds.c           
+    
+    nothing added to commit but untracked files present (use "git add" to track)
+
+Danny Baumann <dannybaumann@web.de>	2008-01-07
+
+    Restructure fullscreen window list code.
+
+Kristian Lyngstol <kristian@bohemians.org>	2008-01-06
+
+    Revert "Fix potential memleak."
+    
+    This doesn't compile, possibly a mixup with the previous commit
+    (Cleanup, coding style.).
+    
+    This reverts commit 023edd46578b63aee7955cea4df56d275175aa4c.
+
+Danny Baumann <dannybaumann@web.de>	2008-01-06
+
+    Fix potential memleak.
+
+Danny Baumann <dannybaumann@web.de>	2008-01-06
+
+    Cleanup, coding style.
+
+drago01 <drago01@gmail.com>	2008-01-06
+
+    Fix flash fullscreen windows by tracking the windows we fullscreened.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-10-24
+
+    Added a fix for broken glProgramEnvParameter4f under AIGLX with indirect rendering.
+    Fixes: blur,reflection & water for intel & fglrx.
+
+Danny Baumann <dannybaumann@web.de>	2007-10-19
+
+    Use real window type for comparison rather than the one set before.
+
+Danny Baumann <dannybaumann@web.de>	2007-10-16
+
+    Added OpenOffice.org menu fix.
+
+Danny Baumann <dannybaumann@web.de>	2007-10-05
+
+    We should remove the fullscreen flag while core processes a ConfigureRequest event.
+    Otherwise, addWindowSizeChanges will keep the window fullscreen, which means the app has no chance to unfullscreen itself.
+
+Danny Baumann <dannybaumann@web.de>	2007-10-04
+
+    We should never set the fullscreen state to desktop windows as this will break the stacking.
+
+Merge: 3c1ffaa 44b1616
+Danny Baumann <dannybaumann@web.de>	2007-10-03
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/plugins/workarounds
+
+Danny Baumann <dannybaumann@web.de>	2007-10-03
+
+    Do workarounds on map.
+    The evaluated properties may not be set on creation.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-28
+
+    Enable legacy fullscreen support by default.
+    It should now be stable enough to justify that.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-21
+
+    w->wmType may be different from the window type retrieved by getWindowType.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-17
+
+    Firefox 3 has "Popup" as menu class name.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-14
+
+    Add fullscreen as allowed action for windows that actually _are_ fullscreen and just have their minimum size set to the same value as the maximum size.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-12
+
+    Don't always overwrite wmType.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-11
+
+    Check firefox menu class name case insensitive.
+    Firefox' menu class names are not exactly consistent ("gecko" on Fedora, "Gecko" on Ubuntu).
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Track core changes.
+
+Jigish Gohil <cyberorg@prime.cyberorg.info>	2007-09-06
+
+    typo correction, thanks Excentrik
+
+Danny Baumann <dannybaumann@web.de>	2007-09-01
+
+    Fix recognition of Firefox windows.
+    Re-apply fixes on class name changes.
+
+Merge: e8c47fd 8857f08
+Danny Baumann <dannybaumann@web.de>	2007-08-30
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/plugins/workarounds
+
+Danny Baumann <dannybaumann@web.de>	2007-08-30
+
+    Track core changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-30
+
+    Whitespace.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-30
+
+    Remove sticky flag in finiWindow only with setWindowState.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-29
+
+    Don't handle InputOnly windows.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-29
+
+    Fixed legacy fullscreen support.
+    Don't try to evaluate matches in initWindow.
+    Narrowed down Firefox fix - the Qt menu fix still is way too broad, though.
+
+Roland Baer <roland@Vista.(none)>	2007-08-15
+
+    Added return value check on findWindowAtDisplay().
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-07
+
+    Removed normal sticky match. It's in winrules already.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-07
+
+    Added handling of "on all desktops" windows as sticky.
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-08-07
+
+    Fix whitespace.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-06
+
+    Makefile update.
+
+Andrew <andrew@andrew-desktop.(none)>	2007-08-05
+
+    Fix whitespace.
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-08-02
+
+    Merge workaroundsDoLegacyFullscreen() into workaroundsDoFixes().
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-08-02
+
+    Make workaroundsDoFixes() stand alone.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-31
+
+    Only apply KDE menu fix to override_redirect windows.
+    Adjust comment.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-30
+
+    Remove trailing whitespace.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-30
+
+    BCOP does the metadata handling.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-29
+
+    windowAddNotify -> initWindow. Remove getWindowUserTime.
+    windowAddNotify doesn't get called for all existing windows
+    (e.g. menus of KDE apps). initWindow gets called for all windows
+    (all existing and newly opened windows), therefore is the right place for
+    workarounds, rather than windowAddNotify.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-28
+
+    Cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-28
+
+    Added Qt window fix (taken from animation plugin).
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-28
+
+    * Oh noes, a dummy commit!
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-07-26
+
+    Make 'Legacy Fullscreen Support' default to false until the remaining bug is fixed.
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-07-26
+
+    Add the Java fix.
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-07-26
+
+    Simplify code.
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-07-26
+
+    Add recalcWindowType() after the series of fixes.
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-07-25
+
+    Add string.h include and fix up workarounds.xml.in.
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-07-25
+
+    Add a workaround for notification-daemon windows.
+    
+    Based on a patch by Danny Baumann <dannybaumann@web.de>.  (Thank you!)
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-07-25
+
+    Reset w->wmType when needed.
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-07-25
+
+    Make the style look like that of the other plug-ins.
+    
+    Idea by Danny Baumann <dannybaumann@web.de>.
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-07-25
+
+    Add the Firefox menu fix.
+    
+    Based on a patch by Danny Baumann <dannybaumann@web.de>.  (Thank you!)
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-07-25
+
+    Add initial workaroundsWindowAddNotify().
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-07-25
+
+    Make plug-in build correctly.
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-07-09
+
+    Revert "Fix a bug such that videos will now be able to unfullscreen."
+    
+    This reverts commit 1b660446987c3f134b09cacd2c577943511018a4.
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-07-09
+
+    Fix a bug such that videos will now be able to unfullscreen.
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-07-09
+
+    Fix mplayer no-border bug.
+    
+    This should fix amsn and eterm also.
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-07-02
+
+    Move workarounds.xml -> workarounds.xml.in.
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-07-02
+
+    Update Makefile.
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-06-15
+
+    Fix OpenOffice.org Presentation bug.
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-06-14
+
+    Recalculate the window type when needed.
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-06-14
+
+    Split workaroundsInitWindow() into two functions.
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-06-14
+
+    Add a possible fix for the old OpenOffice.org fullscreen problem.
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-06-13
+
+    Put in 'Utility' category.
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-06-13
+
+    Simplify code per maniac103's request.
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-06-12
+
+    Fix crash on plug-in unload.
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-06-12
+
+    Make plug-in respect the options.
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-06-12
+
+    Add initial BCOP support.
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-06-12
+
+    Updated Makefile.
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-06-12
+
+    Fix option.
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-06-11
+
+    Add option for Wine/legacy applications in the xml file.
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-06-07
+
+    Add workaround for Wine and legacy applications.
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-06-07
+
+    Add workarounds.xml stub.
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-06-07
+
+    Add 'workaroundsMetadata' and 'displayPrivateIndex.'
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-06-07
+
+    Make the plug-in loadable.
+
+Andrew Riedi <andrewriedi@gmail.com>	2007-06-07
+
+    Initial import.
+
+griswold <griswold@opencompositing.org>	2007-06-07
+
+    Dummy commit

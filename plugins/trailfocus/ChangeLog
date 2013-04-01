@@ -1,0 +1,218 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Scott Moreau <oreaus@gmail.com>	2010-09-28
+
+    Don't require composite since opengl already does.
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Load after decor plugin to prevent windows moving after plugin load
+
+Merge: 1077aa7 aa6a696
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-05-06
+
+    Merge branch 'master' of git+ssh://smspillaz@git.compiz.org/git/compiz/plugins/trailfocus
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-05-06
+
+    Fix some incorrect memory usage
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Ensure loading after required plugins
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-12-07
+
+    Fix crash on unload or window close
+
+Danny Baumann <dannybaumann@web.de>	2009-03-20
+
+    Use inputRect.
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-03-16
+
+    Track core changes.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-03-14
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2009-03-08
+
+    Use destructor to remove window from list.
+
+Danny Baumann <dannybaumann@web.de>	2009-03-08
+
+    Various improvements:
+    - Fill window from activeness stack instead of window stack when popping
+    windows
+    - Dito for refilling the list due to option changes
+    - Only wrap into glPaint when needed
+
+Danny Baumann <dannybaumann@web.de>	2009-03-07
+
+    Misc. fixes.
+
+Danny Baumann <dannybaumann@web.de>	2009-03-07
+
+    Initial C++ port.
+
+Danny Baumann <dannybaumann@web.de>	2008-12-03
+
+    Fix typo causing saturation changes not to work.
+
+Danny Baumann <dannybaumann@web.de>	2008-12-02
+
+    w->invisible gets set to FALSE later than the FocusIn may arrive, so use
+    w->mapNum as 'is-or-will-be-mapped' indicator.
+
+Danny Baumann <dannybaumann@web.de>	2008-09-01
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2008-08-08
+
+    Don't handle override_redirect windows ... we definitely don't want trailfocus to be active for menus etc.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-06-18
+
+    Track core changes
+
+Danny Baumann <dannybaumann@web.de>	2008-06-07
+
+    Initialize ts->win correctly.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Danny Baumann <dannybaumann@web.de>	2008-02-06
+
+    Fix in-viewport determination.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-06
+
+    Make sure the list is always filled enough after cleaning.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-06
+
+    Add helper function to determine if a window should be handled by trailfocus.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-06
+
+    Ignore visible outside of the current viewport for the trailfocus list.
+    Update the list when viewports are changed.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-17
+
+    Remove useless includes.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-09
+
+    Various optimizations and minor cleanups.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-09
+
+    Compiz style indention.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-30
+
+    Track core changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-06
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-16
+
+    Remove obsolete deps/features from vtable
+
+Danny Baumann <dannybaumann@web.de>	2007-07-12
+
+    We have to walk the window stack downwards, not upwards.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-12
+
+    Optimizations.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-12
+
+    Fill window list when windows are destroyed.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-01
+
+    Makefile update.
+
+Guillaume Seguin <guillaume@segu.in>	2007-06-30
+
+    * Fix more descriptions!
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    xml -> xml.in
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-28
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Updated Makefile
+
+Danny Baumann <dannybaumann@web.de>	2007-06-10
+
+    printf -> compLogMessage
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-21
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-17
+
+    initial commit
+
+compiz <compiz@de35.org>	2007-05-17
+
+    Dummy commit

@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<schemalist>
+  <schema id="org.compiz.mock" gettext-domain="compiz">
+    <key type="i" name="integer-setting">
+      <default>0</default>
+    </key>
+    <key type="b" name="boolean-setting">
+      <default>false</default>
+    </key>
+    <key type="d" name="float-setting">
+      <default>0.0</default>
+    </key>
+    <key type="s" name="string-setting">
+      <default>""</default>
+    </key>
+    <key type="s" name="match-setting">
+      <default>""</default>
+    </key>
+    <key type="b" name="bell-setting">
+      <default>false</default>
+    </key>
+    <key type="s" name="color-setting">
+      <default>""</default>
+    </key>
+    <key type="s" name="key-setting">
+      <default>""</default>
+    </key>
+    <key type="s" name="button-setting">
+      <default>""</default>
+    </key>
+    <key type="s" name="edge-setting">
+      <default>""</default>
+    </key>
+    <key type="ai" name="int-list-setting">
+      <default>[0]</default>
+    </key>
+    <key type="ad" name="float-list-setting">
+      <default>[0.0]</default>
+    </key>
+    <key type="ab" name="bool-list-setting">
+      <default>[true]</default>
+    </key>
+    <key type="as" name="string-list-setting">
+      <default>[""]</default>
+    </key>
+    <key type="as" name="match-list-setting">
+      <default>[""]</default>
+    </key>
+    <key type="as" name="color-list-setting">
+      <default>[""]</default>
+    </key>
+  </schema>
+</schemalist>

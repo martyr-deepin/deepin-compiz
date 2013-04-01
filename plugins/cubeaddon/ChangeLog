@@ -1,0 +1,346 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-02-24
+
+    Adapt for new core API
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2010-11-27
+
+    Fix plugin names in metadata
+
+Scott Moreau <oreaus@gmail.com>	2010-09-30
+
+    Move cap color settings to cube.
+
+Scott Moreau <oreaus@gmail.com>	2010-09-28
+
+    Don't require composite since opengl already does.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-15
+
+    Account for core changes
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Ensure loading after required plugins
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-11-26
+
+    Fixed broken visibility calculation.
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-11-18
+
+    More speedups.
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-11-18
+
+    More speedups.
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-11-18
+
+    Speedups.
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-11-18
+
+    C++ port.
+
+Danny Baumann <dannybaumann@web.de>	2008-09-01
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-08
+
+    Plug another memory leak.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-08
+
+    Plug memory leak.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-08
+
+    Properly initialize variable.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-05-20
+
+    Only damage screen during animation.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-05-14
+
+    Added option to control unfold cube deformation.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-05-06
+
+    Merged cubecaps plugin functianality and relized full sphere deformation.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-05-05
+
+    - Added value caching
+    - Fixed orientation calculation
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-05-05
+
+    Fixed cylinder grid calculation.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-05-05
+
+    Reduced number of addWindowGeometry calls.
+
+Danny Baumann <dannybaumann@web.de>	2008-05-04
+
+    Fix "Deform only on mouse rotate" option.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-25
+
+    Make sure, that deformation status is resetted correctly.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-24
+
+    Added new deformation mode "Sphere Like".
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-21
+
+    Make sure that screen gets damaged during animation.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-17
+
+    Restore normal to default.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-16
+
+    Use applyScreenTransform directly instead of the wrapped version, to fix wrong calculations if the 3d plugin is enabled.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-16
+
+    Use output width for correct normal scaling.
+
+Merge: 0ac2e20 c5f793b
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-15
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/fusion/plugins/cubeaddon
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-15
+
+    Added proper lighting support.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-10
+
+    Only deform the cube if there is at least one desktop window.
+
+Roland Bär <roland@verifysoft.de>	2008-04-10
+
+    [PATCH] Initialised probably uninit var lastZ
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-10
+
+    Optimization.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-10
+
+    Don't try to paint inivisible windows, only if deformation is active.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-10
+
+    Optimization.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-10
+
+    Do not paint windows outside the visible area.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-09
+
+    Whitespace fixes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-09
+
+    Removed unused code.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-09
+
+    Simplify calculation.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-09
+
+    Do no prevent other plugins from painting viewport.
+
+Danny Baumann <dannybaumann@web.de>	2008-04-09
+
+    Fix description.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-09
+
+    Dummy commit.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-09
+
+    Fixed deformation calculation.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-09
+
+    Renamed to cubeaddon.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-09
+
+    Added new cylinder deformation mode.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-01
+
+    Apply cube changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Check for header changes
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-10-24
+
+    Whitespace improvements and minor optimizations.
+
+Danny Baumann <dannybaumann@web.de>	2007-10-24
+
+    Use core matrix functions.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Track core changes.
+
+Merge: 3155d6a 364c58e
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-30
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/fusion/plugins/cubereflex
+    
+    Conflicts:
+    
+cubereflex.c           
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-30
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-30
+
+    Use core utility functions to retrieve ABI and display index.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-27
+
+    Apply core changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-06
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-16
+
+    Remove obsolete deps/features from vtable
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-05
+
+    Compiz indent style.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-01
+
+    Makefile update.
+
+Guillaume Seguin <guillaume@segu.in>	2007-06-30
+
+    * Fix typo in option description
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    xml -> xml.in
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-28
+
+    Makefile update.
+
+Treviño - 3v1n0 <trevi55@gmail.com>	2007-06-23
+
+    Fixed zoom manual only (don't zoom on grabbing)
+
+Treviño - 3v1n0 <trevi55@gmail.com>	2007-06-23
+
+    Added Auto zoom only on Mouse Rotate
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-21
+
+    Points is not const.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-21
+
+    Added support for transcube
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-19
+
+    Added "after rotate" rule to make Above mode work
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-16
+
+    Added different reflection modes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-14
+
+    Added option ot disable autozoom.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-14
+
+    Added better reflection intensity control
+
+Danny Baumann <dannybaumann@web.de>	2007-06-13
+
+    Better fix for single head setups.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-13
+
+    Fix reflection for single head setups.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-12
+
+    Fixed cube reflection with switcher.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-12
+
+    Don't rotate skydome
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    dummy commit
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    dummy commit
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    First version of the cube reflection plugin.
+
+compiz <compiz@opencompositing.org>	2007-06-11
+
+    Dummy commit

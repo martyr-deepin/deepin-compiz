@@ -1,0 +1,335 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2010-12-02
+
+    Fix typo which caused viewport numbers to be calculated incorrectly
+
+Scott Moreau <oreaus@gmail.com>	2010-09-28
+
+    Don't require composite since opengl already does.
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Load after decor plugin to prevent windwos from moving after plugin load
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Use C++ bool
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Ensure that we load after composite and opengl
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-09-06
+
+    Convert width/height to int to avoid problems when adding/subtracting them.
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-03-16
+
+    Track core changes.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-03-14
+
+    Track core changes.
+
+Merge: 2e7d96f 88c4339
+Danny Baumann <dannybaumann@web.de>	2009-02-28
+
+    Merge branch 'compiz++' of git+ssh://maniac@git.compiz-fusion.org/git/fusion/plugins/text into compiz++
+
+Sam Spilsbury <Sam@XPS-SUSE.site>	2009-02-27
+
+    Fix Makefile to allow text.h to install
+
+Merge: 1ea823a 3bb1b5a
+Danny Baumann <dannybaumann@web.de>	2009-02-22
+
+    Merge branch 'compiz++' of git+ssh://maniac@git.compiz-fusion.org/git/fusion/plugins/text into compiz++
+    
+    Conflicts:
+text.cpp           
+
+Danny Baumann <dannybaumann@web.de>	2009-02-22
+
+    Added method to clear text pixmap.
+
+Sam Spilsbury <Sam@XPS-SUSE.site>	2009-02-18
+
+    'flags' should be unsigned int otherwise you can't do bitwise operations on it
+
+Sam Spilsbury <Sam@XPS-SUSE.site>	2009-02-18
+
+    'family' should be const char *
+
+Danny Baumann <dannybaumann@web.de>	2009-02-18
+
+    Adapt pkg-config file for compiz++.
+
+Danny Baumann <dannybaumann@web.de>	2009-02-18
+
+    Fix some variable shadowing issues.
+
+Danny Baumann <dannybaumann@web.de>	2009-02-18
+
+    Remove unused options.
+
+Danny Baumann <dannybaumann@web.de>	2009-02-18
+
+    Load after opengl plugin.
+
+Joel Bosveld <Joel.Bosveld@gmail.com>	2009-02-18
+
+    Remove ; from behind functions
+
+Joel Bosveld <Joel.Bosveld@gmail.com>	2009-02-18
+
+    Store text ABI in screen
+
+Danny Baumann <dannybaumann@web.de>	2009-02-02
+
+    Indent properly and use <options> tag.
+
+Danny Baumann <dannybaumann@web.de>	2009-01-23
+
+    Make render functions non-static member functions and thus allow the
+    caller to decide whether the object should be allocated on heap or
+    stack.
+
+Danny Baumann <dannybaumann@web.de>	2009-01-18
+
+    Added getters for width and height.
+
+Danny Baumann <dannybaumann@web.de>	2009-01-18
+
+    Fix whitespace.
+
+Danny Baumann <dannybaumann@web.de>	2009-01-18
+
+    Add functions to classes.
+
+Danny Baumann <dannybaumann@web.de>	2009-01-18
+
+    API improvements.
+
+Danny Baumann <dannybaumann@web.de>	2009-01-18
+
+    Remove ^M.
+
+Sam Spilsbury <Sam@XPS-SUSE.site>	2009-01-17
+
+    Initial C++ port
+
+Danny Baumann <dannybaumann@web.de>	2009-01-10
+
+    Added documentation to the header file.
+
+Danny Baumann <dannybaumann@web.de>	2009-01-10
+
+    Check bindPixmapToTexture for errors.
+
+Danny Baumann <dannybaumann@web.de>	2009-01-10
+
+    Added opacity parameter for text drawing.
+
+Danny Baumann <dannybaumann@web.de>	2009-01-10
+
+    Added function for drawing text on screen.
+
+Danny Baumann <dannybaumann@web.de>	2009-01-10
+
+    Added automatic binding of the pixmap to a texture.
+
+Danny Baumann <dannybaumann@web.de>	2009-01-10
+
+    Allocate returned data structure dynamically and add cleanup function.
+
+Danny Baumann <dannybaumann@web.de>	2009-01-10
+
+    Fix whitespace.
+
+Danny Baumann <dannybaumann@web.de>	2009-01-10
+
+    De-cruftify text plugin interface. - Use function pointer set as interface instead of providing a fake image renderer. - De-BCOP text plugin, BCOP wasn't needed anyway. - Some cleanups.
+
+Danny Baumann <dannybaumann@web.de>	2008-10-21
+
+    Fix formatting issues for RTL languages.
+
+Danny Baumann <dannybaumann@web.de>	2008-09-01
+
+    Track core changes.
+
+Guillaume Seguin <guillaume@segu.in>	2008-04-21
+
+    Oops, this shouldn't have been committed
+
+Guillaume Seguin <guillaume@segu.in>	2008-04-21
+
+    Add optionnal Cairo based text background drawing
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Danny Baumann <dannybaumann@web.de>	2008-02-24
+
+    Only create pixmap if the size is valid.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Patrick Niklaus <marex@opencompositing.org>	2007-09-08
+
+    Fixed license header
+
+Danny Baumann <dannybaumann@web.de>	2007-09-08
+
+    Properly terminate strings.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Replace strndup usage with malloc and strncpy.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-03
+
+    Fixed viewport number calculation.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-02
+
+    Actually set ABI version.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-02
+
+    Add option to render window title with viewport number.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-02
+
+    Provide ABI version.
+    Minor cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-31
+
+    Dummy commit.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-31
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-31
+
+    Rename text.h to compiz-text.h.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-30
+
+    Track core changes.
+
+Roland Bär <roland@verifysoft.net>	2007-08-13
+
+    Too late NULL check
+
+Danny Baumann <dannybaumann@web.de>	2007-08-07
+
+    Compiz indention and missing NULL checks.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-06
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-16
+
+    Remove obsolete deps/features from vtable
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-01
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    xml -> xml.in
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-28
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    add exec_prefix
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    We require simply compiz
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    dummy commit
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-11
+
+    Fix include file.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-11
+
+    Fix header install path.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-11
+
+    Added pkg-config file and adjusted header file name.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-11
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-10
+
+    printf -> compLogMessage
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-21
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-17
+
+    initial commit
+
+compiz <compiz@de35.org>	2007-05-17
+
+    Dummy commit

@@ -1,0 +1,738 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-13
+
+    Added some extended debugging info when failing to read keys
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add new release commands
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Bump VERSION
+
+Scott Moreau <oreaus@gmail.com>	2011-05-13
+
+    * Bump version to 0.9.5
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-03-07
+
+    "Bump VERSION to 0.9.4"
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-03-07
+
+    "Update CMake Version"
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-03-07
+
+    "Update news for 0.9.4 release"
+
+Sam Spilsbury <smspillaz@XPS-UNITY.(none)>	2010-12-13
+
+    Fix branch confusion
+
+Merge: 9e2664b 55a267f
+Sam Spilsbury <sam.spilsbury@canonical.com>	2010-12-10
+
+    Merge branch 'master' of git+ssh://git.compiz.org/git/compiz/compizconfig/compizconfig-backend-gconf
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2010-12-10
+
+    Add multiscreen support
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2010-12-10
+
+    Fix setting /allscreens, we should set /screen%i (defaults to screen 0)
+
+Didier Roche <didrocks@ubuntu.com>	2010-11-26
+
+    fix schema owner and typo
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2010-11-23
+
+    Change paths so that old and new settings don't conflict
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-06
+
+    Update NEWS for 0.9.2.1 Release
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-06
+
+    Update NEWS for 0.9.2.1 Release
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-06
+
+    Set COMPIZCONFIG_GCONF_VERSION_MACRO and update to 0.9.2.1
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-06
+
+    Update to 0.9.2.1
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-24
+
+    Fix date on NEWS
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-24
+
+    Update NEWS for 0.9.2 release
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-04
+
+    Update NEWS for 0.9.0 release
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-04
+
+    Bump version
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-04
+
+    Set project definition in cmake file
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-06-06
+
+    Typo
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-05-14
+
+    Add package generation
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-05-14
+
+    Update for libcompizconfig buildsystem changes
+    and add dist and uninstall targets
+
+Merge: 350e4d5 2adeb06
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-05-07
+
+    Merge branch 'compiz++' of git+ssh://smspillaz@git.compiz.org/git/fusion/compizconfig/compizconfig-backend-gconf into compiz++
+
+Merge: 74c3fd4 091f2d0
+Danny Baumann <dannybaumann@web.de>	2010-05-03
+
+    Merge branch 'master' of git+ssh://git.compiz.org/git/fusion/compizconfig/compizconfig-backend-gconf
+
+Guido Iribarren <guidoweb@guidoi.com.ar>	2010-05-03
+
+    Integrate metacity's resize_with_right_button option.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-27
+
+    Remove autotools builsystem
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-23
+
+    Add merged autotools / cmake buildsystem and adjust for compiz++
+    
+    Please use cmake, autotools is deprecated
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-19
+
+    Remove dummy
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-19
+
+    Dummy commit
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-19
+
+    Remove multiple-screen support for compiz++
+
+Guillaume Seguin <guillaume@segu.in>	2009-10-14
+
+    * Bump version to 0.8.5
+
+Guillaume Seguin <guillaume@segu.in>	2009-10-14
+
+    * Bump version to 0.8.4
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-09-25
+
+    Sync metacity with staticswitcher instead of switcher.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-09-24
+
+    Fix crash (LP: #407020).
+
+Danny Baumann <dannybaumann@web.de>	2009-04-08
+
+    Fix warning.
+
+Danny Baumann <dannybaumann@web.de>	2009-04-08
+
+    Fix setting integration for screenshot and terminal commands.
+
+Guillaume Seguin <guillaume@segu.in>	2009-03-09
+
+    * Bump version to 0.8.3
+
+Guillaume Seguin <guillaume@segu.in>	2009-03-09
+
+    * Bump version to 0.8.2
+
+Danny Baumann <dannybaumann@web.de>	2009-02-05
+
+    Track option movements.
+
+Danny Baumann <dannybaumann@web.de>	2009-01-14
+
+    Improve readability.
+
+Danny Baumann <dannybaumann@web.de>	2009-01-14
+
+    Don't allow empty modifiers for mouse_button_modifier.
+    Fixes bug #1106.
+
+Guillaume Seguin <guillaume@segu.in>	2008-09-23
+
+    * Bump version to 0.7.9
+
+Guillaume Seguin <guillaume@segu.in>	2008-09-23
+
+    * Bump version to 0.7.8
+
+Danny Baumann <dannybaumann@web.de>	2008-07-16
+
+    Fix saving of float lists.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-11
+
+    Compiz' click_to_focus disabled is the equivalent of Metacity's sloppy focus mode.
+
+Guillaume Seguin <guillaume@segu.in>	2008-05-31
+
+    * Bump version to 0.7.7
+
+Guillaume Seguin <guillaume@segu.in>	2008-05-31
+
+    * Bump version to 0.7.6
+
+Merge: fc1a518 ba560d5
+Danny Baumann <dannybaumann@web.de>	2008-04-23
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/compizconfig/compizconfig-backend-gconf
+
+Danny Baumann <dannybaumann@web.de>	2008-04-23
+
+    Fixed applying schemas to copied profiles.
+
+Danny Baumann <dannybaumann@web.de>	2008-04-18
+
+    Remove integration for plane plugin settings.
+
+Guillaume Seguin <guillaume@segu.in>	2008-04-04
+
+    * Bump version to 0.7.5
+
+Guillaume Seguin <guillaume@segu.in>	2008-04-04
+
+    * Bump version to 0.7.4
+
+Guillaume Seguin <guillaume@segu.in>	2008-03-06
+
+    * Bump version to 0.7.3
+
+Guillaume Seguin <guillaume@segu.in>	2008-03-06
+
+    * Bump version to 0.7.2
+
+Danny Baumann <dannybaumann@web.de>	2008-02-10
+
+    Fix move, resize & window menu initiate binding integration.
+
+Danny Baumann <dannybaumann@web.de>	2008-01-06
+
+    Don't define VERSION twice.
+
+Danny Baumann <dannybaumann@web.de>	2007-10-28
+
+    More * -> *_button renames.
+    Whitespace fixes.
+
+Christopher Williams <christopherw@verizon.net>	2007-10-27
+
+    Fix Mouse Button Modifier bindings (window menu, initiate move, initiate resize)
+
+Guillaume Seguin <guillaume@segu.in>	2007-10-21
+
+    * Bump version to 0.6.99
+
+Danny Baumann <dannybaumann@web.de>	2007-10-10
+
+    Fix integration of maximize horizontally/vertically keys.
+
+Danny Baumann <dannybaumann@web.de>	2007-10-10
+
+    Use gconf_value processing in integrated settings reading.
+
+Jigish Gohil <cyberorg@prime.(none)>	2007-10-03
+
+    bump version to 0.6.0
+
+Kristian Lyngstøl <kristian@albus.(none)>	2007-09-18
+
+    Ignore num_workspaces (Patch by Mirco Müller)
+
+Danny Baumann <dannybaumann@web.de>	2007-09-09
+
+    Metacity doesn't like the key binding "Disabled", it wants "disabled".
+
+Danny Baumann <dannybaumann@web.de>	2007-09-09
+
+    Revert "Integrate desktop layout option of workspace switcher applet."
+    
+    This reverts commit b772db8b966ec5254d75dd6353799e08056818d0.
+    
+    Reasoning:
+    While this conversion is correct in theory, and it works fine controling Metacity, it has the unwanted side effect of libwnck setting _NET_DESKTOP_GEOMETRY so that we e.g. get a 3 desktop, 3x3 viewport layout if we just wanted to have a 3x3 viewport layout.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-08
+
+    Integrate desktop layout option of workspace switcher applet.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-08
+
+    Integrate visual_bell and fullscreen_visual_bell options of the fade plugin.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-09-02
+
+    Support empty lists.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-02
+
+    Remove cruft.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-21
+
+    Track option name changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-21
+
+    Track libcompizconfig changes.
+
+Merge: 192eb0d 91d3d63
+Danny Baumann <dannybaumann@web.de>	2007-08-14
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/compizconfig/compizconfig-backend-gconf
+
+Danny Baumann <dannybaumann@web.de>	2007-08-14
+
+    Integrate current_viewport option of thumbnail.
+
+Merge: 410e847 c75ac33
+Danny Baumann <dannybaumann@web.de>	2007-08-14
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/compizconfig/compizconfig-backend-gconf
+
+Danny Baumann <dannybaumann@web.de>	2007-08-14
+
+    Add VERSION to EXTRA_DIST.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-14
+
+    Add VERSION to EXTRA_DIST.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-14
+
+    gotovp -> vpswitch
+
+Danny Baumann <dannybaumann@web.de>	2007-08-13
+
+    Loop through all integrated options on Gconf value change notification to re-read all integrated options if multiple compiz options are integrated with a single metacity option.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-13
+
+    Integrate gotovp bindings.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-13
+
+    Revert "Use gotovp to integrate Metacity's switch_to_workspace_x bindings."
+    
+    This reverts commit b1a761184b4fde669534b844f4926a2e19855eeb.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-13
+
+    Use gotovp to integrate Metacity's switch_to_workspace_x bindings.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-13
+
+    Added some more integrated bindings.
+    Thanks to Michael Vogt.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-12
+
+    Version update.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-07
+
+    Added more missing NULL pointer checks.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-06
+
+    Track lib changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-03
+
+    Added missing NULL pointer checks.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-10
+
+    Added integration for 'Run terminal' command and fixed integration for command options.
+
+Merge: 8dd17c0 6574f43
+Guillaume Seguin <guillaume@segu.in>	2007-07-10
+
+    Merge branch 'master' of git+ssh://guillaume@git.opencompositing.org/git/fusion/compizconfig/compizconfig-backend-gconf
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-10
+
+    * Integrate run_terminal binding
+
+Danny Baumann <dannybaumann@web.de>	2007-07-10
+
+    Fix resetting screen edge options to default.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-09
+
+    Fixed change notify handling for system bell action.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-09
+
+    Fix resetting action values.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-09
+
+    Reset settings to default if they could not be read.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-09
+
+    Write integration value after integrated option has been changed outside of libcompizconfig.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-09
+
+    Fix profile copying.
+    Only copy values which are actually set.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-09
+
+    Explicitly pass schema path to prevent accidential deassociations.
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-08
+
+    * Whitespace
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-08
+
+    * Fix desktop horizontal size integration
+
+Danny Baumann <dannybaumann@web.de>	2007-07-07
+
+    Fix reading of gconf lists.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-05
+
+    Compiz indention style.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-26
+
+    Remove unnecessary check.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-26
+
+    Plug minor memleak.
+
+Merge: 270b692 9944789
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-20
+
+    Merge branch 'master' of git+ssh://git.beryl-project.org/git/compcomm/compiz-configuration-system/libraries/ccs-backend-gconf
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-20
+
+    Package rename
+
+Danny Baumann <dannybaumann@web.de>	2007-06-20
+
+    Fix assigning of display settings when the corresponding metacity key is changed.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-17
+
+    Clear cache before unloading.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-17
+
+    Dispatch all pending glib events before unloading backend.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-15
+
+    Fix applying integrated values on mutliscreen setups.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-15
+
+    Fix notification listening after changing profiles.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-15
+
+    Whitespace fixes.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-15
+
+    Use proper macros for gconf paths.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-15
+
+    Fix warning.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-15
+
+    Fixed profile deletion and compiz tree reset.
+    
+    Adapt to API changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-15
+
+    Another dummy.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-15
+
+    Dummy commit.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-15
+
+    Store all profiles in Gconf, keeping their schemas associated.
+    This code isn't 100% finished, that's why it's still currently disabled.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-14
+
+    Don't reset "plugin enabled" options to defaults.
+
+Merge: db7e12c 6a4d643
+Danny Baumann <dannybaumann@web.de>	2007-06-14
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/compcomm/compiz-configuration-system/libraries/ccs-backend-gconf
+
+Danny Baumann <dannybaumann@web.de>	2007-06-14
+
+    Added sanity check for value type.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-14
+
+    Disable profile handling until it get fixed.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-14
+
+    Added functions to recursive copy gconf tree
+
+Danny Baumann <dannybaumann@web.de>	2007-06-14
+
+    Properly fixed applying action settings and fixed edge setting reading.
+
+Merge: f039690 20ccbed
+Danny Baumann <dannybaumann@web.de>	2007-06-14
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/compcomm/compiz-configuration-system/libraries/ccs-backend-gconf
+
+Danny Baumann <dannybaumann@web.de>	2007-06-14
+
+    Fix immediate applying of actions.
+
+Merge: 8435740 e03df52
+Danny Baumann <dannybaumann@web.de>	2007-06-14
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/compcomm/compiz-configuration-system/libraries/ccs-backend-gconf
+
+Danny Baumann <dannybaumann@web.de>	2007-06-14
+
+    Properly set return value when reading integrated click_to_focus option.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-14
+
+    Properly set return value when reading integrated click_to_focus option.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-14
+
+    Don't run glib main loop if indicated by flag.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-13
+
+    Fixed profile path.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-12
+
+    Fixed email
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    libccs -> libcompizconfig rename
+
+Danny Baumann <dannybaumann@web.de>	2007-05-15
+
+    Added some sanity checks.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-14
+
+    Remove debug statement.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-14
+
+    Implement profile support by exporting/importing to/from files and work directly on the Compiz settings.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-13
+
+    Prepare for working on Compiz settings tree.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-13
+
+    Fixed screen edge action handling.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-13
+
+    Fixed parsing of Gconf key names in value change notify callback.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-13
+
+    Mouse_button_modifier is now read back when Gconf value changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-13
+
+    The mouse_button_modifier option now works with one exception:
+    Changing the metacity value in gconf does nothing until the next Compiz restart.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-12
+
+    Reduce amount of C'n'P.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-12
+
+    Also fix writing the mouse_button_modifier setting.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-12
+
+    Next try of properly integrating the mouse_button_modifier option.
+    I will first think and then code next time.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-12
+
+    Completely integrate mouse_button_modifier option for reading.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-12
+
+    Fix integration of core options.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-11
+
+    Fix reading Metacity value for mouse button modifier.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-11
+
+    Optimizations (use the GConfValue* returned when checking for key existance where possible)
+
+Danny Baumann <dannybaumann@web.de>	2007-05-11
+
+    Fixed unset values being accidentially set.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-11
+
+    Distinguish between an unset value and an empty list when reading list values.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-10
+
+    Fix option storage path for core options.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-10
+
+    Fix returning of existing profiles.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-10
+
+    Never ever free the value returned by ccsGetProfile().
+
+Merge: 278dcd8 fb36497
+Danny Baumann <dannybaumann@web.de>	2007-05-10
+
+    Merge branch 'master' of git+ssh://maniac@git.beryl-project.org/git/compcomm/compiz-configuration-system/libraries/ccs-backend-gconf
+
+Danny Baumann <dannybaumann@web.de>	2007-05-10
+
+    Crash fix.
+
+Robert Carr <racarr@gorbie.(none)>	2007-05-10
+
+    Use wall instead of plane (for left/up/down/right) with gconf backend integration stuff.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-10
+
+    Added integration for Metacity's mouse_button_modifier option.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-30
+
+    Applied new library name
+
+Danny Baumann <dannybaumann@web.de>	2007-04-25
+
+    Don't touch the changed settings list in the backend.
+
+Danny Baumann <dannybaumann@web.de>	2007-04-25
+
+    Don't return default profile.
+
+Danny Baumann <dannybaumann@web.de>	2007-04-23
+
+    Reset setting to default if it can't be found in Gconf.
+
+Danny Baumann <dannybaumann@web.de>	2007-04-19
+
+    Fixed default profile handling.
+
+Danny Baumann <dannybaumann@web.de>	2007-03-26
+
+    libbs-gconf: adapt for new action/color parsing interface
+
+Danny Baumann <dannybaumann@web.de>	2007-03-23
+
+    libbs-gconf: fixed action value writing
+
+maniac <maniac>	2007-03-16
+
+    libbs-gconf: allocate keyName and pathName on the stack to avoid heap fragmentation and simplify code
+
+maniac <maniac>	2007-03-16
+
+    libbs-gconf:
+    - implemented DE integrated setting read/write
+    - fixed authors section
+
+maniac <maniac>	2007-03-16
+
+    libbs-gconf:
+    - implemented list value reading
+    - properly store Bool and int directly in list->data
+
+maniac <maniac>	2007-03-16
+
+    libbs-gconf: implemented list value writing
+
+maniac <maniac>	2007-03-15
+
+    libbs-gconf: minor formatting fixes
+
+maniac <maniac>	2007-03-15
+
+    libbs-gconf:
+    - added option writing (lists are missing at the moment)
+    - fixed some warnings
+
+maniac <maniac>	2007-03-15
+
+    libbs-gconf: implemented action reading
+
+maniac <maniac>	2007-03-15
+
+    libbs-gconf:
+    - fixed plugin gconf path
+    - the plugin_enabled setting has 4 underscores, not 3
+
+maniac <maniac>	2007-03-15
+
+    libbs gconf backend: fix installation
+
+maniac <maniac>	2007-03-15
+
+    libbs: added first part of gconf backend - still a lot of work, though

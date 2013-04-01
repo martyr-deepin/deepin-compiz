@@ -1,0 +1,4 @@
+/* Define to 1 if xrender version >= 0.9.3 */
+#cmakedefine HAVE_XRENDER_0_9_3 1
+
+#define DECOR_INTERFACE_VERSION ${DECOR_INTERFACE_VERSION}

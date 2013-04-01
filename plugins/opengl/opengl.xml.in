@@ -1,0 +1,63 @@
+<compiz>
+    <plugin name="opengl" useBcop="true">
+	<_short>OpenGL</_short>
+	<_long>OpenGL Plugin</_long>
+	<category>General</category>
+	<deps>
+	    <requirement>
+		<plugin>composite</plugin>
+	    </requirement>
+	</deps>
+	<options>
+	    <option name="texture_filter" type="int">
+		<_short>Texture Filter</_short>
+		<_long>Texture filtering</_long>
+		<default>1</default>
+		<min>0</min>
+		<max>2</max>
+		<desc>
+		    <value>0</value>
+		    <_name>Fast</_name>
+		</desc>
+		<desc>
+		    <value>1</value>
+		    <_name>Good</_name>
+		</desc>
+		<desc>
+		    <value>2</value>
+		    <_name>Best</_name>
+		</desc>
+	    </option>
+	    <option name="lighting" type="bool">
+		<_short>Lighting</_short>
+		<_long>Use diffuse light when screen is transformed</_long>
+		<default>false</default>
+	    </option>
+	    <option name="sync_to_vblank" type="bool">
+		<_short>Sync To VBlank</_short>
+		<_long>Only perform screen updates during vertical blanking period</_long>
+		<default>true</default>
+	    </option>
+	    <option name="texture_compression" type="bool">
+		<_short>Texture Compression</_short>
+		<_long>If available use compression for textures converted from images</_long>
+		<default>false</default>
+	    </option>
+	    <option name="framebuffer_object" type="bool">
+		<_short>Framebuffer object</_short>
+		<_long>Render all frames indirectly using framebuffer objects (GL_EXT_framebuffer_object), if supported by the driver. Pros: Might be faster than the default buffer swapping method in some cases. Cons: This will come at the cost of (1) usually reduced graphics benchmark performance; (2) increased GPU resource consumption; and (3) possibly higher visible lag. Note: This feature is always on in OpenGL|ES builds such as ARM platforms.</_long>
+		<default>true</default>
+	    </option>
+	    <option name="vertex_buffer_object" type="bool">
+		<_short>Vertex buffer object</_short>
+		<_long>Render all graphics primitives using vertex buffer objects (GL_ARB_vertex_buffer_object), if supported by the driver. Pros: This provides higher graphics performance for some drivers. Cons: This is a new feature and may cause graphical problems. Note: This feature is always on in OpenGL|ES builds such as ARM platforms.</_long>
+		<default>true</default>
+	    </option>
+	    <option name="always_swap_buffers" type="bool">
+		<_short>Always use buffer swapping</_short>
+		<_long>Use glXSwapBuffers to display every frame. This eliminates visible tearing with most drivers and dramatically improves visual smoothness. Automatically enabled when framebuffer_object is on.</_long>
+		<default>true</default>
+	    </option>
+	</options>
+    </plugin>
+</compiz>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<compiz>
+    <plugin name="notification" useBcop="true">
+	<_short>Notification</_short>
+	<_long>Use libnotify to graphically display error messages</_long>
+	<category>Utility</category>
+	<deps>
+	    <relation type="after">
+		<plugin>composite</plugin>
+		<plugin>opengl</plugin>
+		<plugin>place</plugin>
+	    </relation>
+	</deps>
+	<options>
+	    <option type="int" name="timeout">
+		<_short>Hide Timeout</_short>
+		<_long>Timeout (in seconds) before hiding the notification, set to -1 for system default and 0 for indefinite</_long>
+		<min>-1</min>
+		<max>30</max>
+		<default>-1</default>
+	    </option>
+	    <option type="int" name="max_log_level">
+		<_short>Maximum Log Level</_short>
+		<_long>The maximum log level to display</_long>
+		<default>1</default>
+		<desc>
+		    <value>0</value>
+		    <_name>Fatal</_name>
+		</desc>
+		<desc>
+		    <value>1</value>
+		    <_name>Error</_name>
+		</desc>
+		<desc>
+		    <value>2</value>
+		    <_name>Warning</_name>
+		</desc>
+		<desc>
+		    <value>3</value>
+		    <_name>Info</_name>
+		</desc>
+		<desc>
+		    <value>4</value>
+		    <_name>Debug</_name>
+		</desc>
+	    </option>
+	</options>
+    </plugin>
+</compiz>
+

@@ -1,0 +1,320 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-03-14
+
+    Update for new core API
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-03-12
+
+    Update for core API change
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-02-19
+
+    Map and unmap switcher directly
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-02-19
+
+    Make the switcher window override redirect
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-29
+
+    Create the popup window just before we need to show it in order to not
+    confuse the decorators
+
+Scott Moreau <oreaus@gmail.com>	2010-09-28
+
+    Don't require composite since opengl already does.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-08
+
+    Return input focus to last active window if switcher is cancelled
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Load after decor plugin to prevent windows moving after plugin load
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-15
+
+    Track core buildsystem and compiztoolbox changes
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-12
+
+    Fix uninitialized value usage
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-12
+
+    Use configureXWindow and XConfigureWindow
+    
+    ::resize and XMoveResizeWindow configure the window incorrectly which results
+    in weird display artifacts
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-09
+
+    Fix typo
+
+Merge: 3a580d7 e060644
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-09
+
+    Merge branch 'master' of git+ssh://git.compiz.org/git/compiz/plugins/staticswitcher
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Use C++ bool
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Ensure we load after composite and opengl
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-25
+
+    Paint icons at the same size.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-24
+
+    Don't use mipmap for icons.
+    
+    Forward port of a4fddcb9d85e75680b70b1d5ba925449ee5b94b0.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-16
+
+    Remove unnecessary check.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-15
+
+    Various minor optimizations.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-14
+
+    Fix crash when first switching after a window is minimized.
+    
+    In that case, the crash happened when the minimized window was
+    highlighted in the switcher window.
+
+Danny Baumann <dannybaumann@web.de>	2009-12-07
+
+    Track core changes.
+
+Merge: bf75dff ea63ef7
+Sam Spilsbury <smspillaz@gmail.com>	2009-12-07
+
+    Merge branch 'master' of git+ssh://git.compiz.org/git/compiz/plugins/staticswitcher
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-12-07
+
+    Add an option to only show icon
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-11-16
+
+    Fix selected window appearing below others while switching.
+    
+    Happens only in certain cases (e.g. after showing gnome-panel tooltips).
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-10-19
+
+    Fix crash when a minimized window closes while switching with "show minimized" on.
+    
+    (Forward port of c7b509e77d0dd35062a843fa2628c0a304100351).
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-02
+
+    Fix sign warnings.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-07-30
+
+    Simplify linking.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-07-23
+
+    Initial C++ port.
+
+Danny Baumann <dannybaumann@web.de>	2009-01-15
+
+    Added option that allows selecting windows from the switcher with the
+    mouse.
+
+Danny Baumann <dannybaumann@web.de>	2008-12-02
+
+    Support icons larger than 64x64, which is especially useful for
+    minimized windows.
+
+Danny Baumann <dannybaumann@web.de>	2008-11-10
+
+    Update license.
+
+Danny Baumann <dannybaumann@web.de>	2008-09-17
+
+    Update switcher window internal state on map.
+
+Danny Baumann <dannybaumann@web.de>	2008-09-17
+
+    Fix potential memleak.
+
+Danny Baumann <dannybaumann@web.de>	2008-09-15
+
+    Set window class and name on the switcher window.
+
+Danny Baumann <dannybaumann@web.de>	2008-09-14
+
+    Properly fill in PPosition info.
+
+Danny Baumann <dannybaumann@web.de>	2008-09-14
+
+    Revert "- Properly fill in PPosition info"
+    
+    This reverts commit 06b54b1cbed8a2436ffe7a2248db9eb40fdfcb46.
+    
+    See compiz commit 7a6e30c5cba00499c2eb5540f4e65cb49b9ecf5c.
+
+Danny Baumann <dannybaumann@web.de>	2008-09-12
+
+    - Properly fill in PPosition info
+    - Put switcher window to correct position on map.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-06-18
+
+    Track core changes
+
+Danny Baumann <dannybaumann@web.de>	2008-06-12
+
+    Disable line smoothing before drawing outline.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-10
+
+    Increase damage rectangle for minimized windows a bit to cover rounding issues.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-09
+
+    Added alignment of thumbnails to the right.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-09
+
+    Draw highlight border using three rects in 2 different colors.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-09
+
+    Added option for highlight rectangle mode for minimized windows.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-09
+
+    Highlight icon geometry for minimized windows in rectangle highlight mode.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-09
+
+    Don't show highlight rectangle for invisible windows.
+
+Merge: 79bf8c7 1440777
+Danny Baumann <dannybaumann@web.de>	2008-06-09
+
+    Merge branch 'master' of git+ssh://maniac@git.compiz-fusion.org/git/fusion/plugins/staticswitcher
+
+Danny Baumann <dannybaumann@web.de>	2008-06-09
+
+    Only evaluate match for non-panel selection mode and set it to a sensible default.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-05
+
+    Minor cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-05
+
+    Combine bring_to_front and highlight_selected options into one option, making them mutually exclusive.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-04
+
+    Added selected window highlight rectangle.
+    Enabling this makes most sense with saturation and brightness set to 100 and bring to front disabled.
+
+Danny Baumann <dannybaumann@web.de>	2008-05-20
+
+    Dummy commit.
+
+Danny Baumann <dannybaumann@web.de>	2008-05-12
+
+    Added bindings to switch between windows of current application.
+
+Danny Baumann <dannybaumann@web.de>	2008-05-10
+
+    Make edge button behaviour more meaningful:
+    Terminate on edge leave, advance on button press.
+
+Danny Baumann <dannybaumann@web.de>	2008-05-10
+
+    Load before bs.
+
+Danny Baumann <dannybaumann@web.de>	2008-05-08
+
+    Fixed rectangle vertices.
+
+Danny Baumann <dannybaumann@web.de>	2008-05-08
+
+    Disable "Bring to front" while popup is not shown.
+
+Danny Baumann <dannybaumann@web.de>	2008-05-08
+
+    Don't put 4 or less windows in multiple rows.
+
+Danny Baumann <dannybaumann@web.de>	2008-05-08
+
+    Work around missing round() function.
+
+Danny Baumann <dannybaumann@web.de>	2008-05-08
+
+    Put in window management category.
+
+Danny Baumann <dannybaumann@web.de>	2008-05-08
+
+    Load after fade.
+
+Danny Baumann <dannybaumann@web.de>	2008-05-08
+
+    Try to be a bit more clever when filling switcher box.
+
+Danny Baumann <dannybaumann@web.de>	2008-05-08
+
+    Made row alignment optional.
+
+Danny Baumann <dannybaumann@web.de>	2008-05-08
+
+    Fixed selection rect positing for second row.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-05-07
+
+    Fixed remaining animation issues.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-05-07
+
+    Improved selection box painting and behavior.
+
+Danny Baumann <dannybaumann@web.de>	2008-05-07
+
+    Don't alter paint modifiers as long as we're not showing the popup.
+
+Danny Baumann <dannybaumann@web.de>	2008-05-07
+
+    Cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2008-05-07
+
+    Tweak defaults.
+
+Danny Baumann <dannybaumann@web.de>	2008-05-07
+
+    Removed zooming code.
+
+Danny Baumann <dannybaumann@web.de>	2008-05-07
+
+    Initial commit.
+
+maniac <maniac@opencompositing.org>	2008-05-07
+
+    Dummy commit

@@ -1,0 +1,212 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Merge: 93beafb 21619fa
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/compiz/plugins/firepaint
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Cleanup (static analysis)
+
+Scott Moreau <oreaus@gmail.com>	2010-09-28
+
+    Don't require composite since opengl already does.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-04
+
+    Remove build dependency on compiztoolbox
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-01
+
+    Simplify serialization interface
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-06-12
+
+    Added serialization interface and necessary changes
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Load after decor plugin to prevent windows moving after plugin load
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Use C++ bool
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Ensure loading after required plugins
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Fix warnings
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-03
+
+    Fix possible segfault on 64-bit arch. due to passing 0 to va_list and retrieving it as pointer.
+    
+    Forward port of d6b5e63ca54111caaee212470dd836e9b34b5799 to master
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-10-18
+
+    Execute code in wrappable functions only when needed
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-10-18
+
+    Fix fire drawing by fixing variable shadowing
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-22
+
+    Use original inbuilt particlesystem
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-22
+
+    Revert "Use the particlesystem plugin"
+    
+    This reverts commit 8d69a4ecaa136995fa04d523768d76ecbb160b7c.
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-22
+
+    Use the particlesystem plugin
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-22
+
+    Remove dummy
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-22
+
+    Dummy commit
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-22
+
+    Initial C++ port
+
+ThJaeger@gmail.com <ThJaeger@gmail.com>	2008-08-14
+
+    [PATCH] Add add_particle action. This makes it possible to draw fire using the dbus interface.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-17
+
+    Remove useless includes.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Track core changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-30
+
+    Track core changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-20
+
+    New action system
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-06
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-16
+
+    Remove obsolete deps/features from vtable
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-05
+
+    Compiz indent style.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-01
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    xml -> xml.in
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-28
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Updated Makefile
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-05
+
+    Clean up
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-01
+
+    Applied lastest core changes
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-21
+
+    Makefile update
+
+Danny Baumann <dannybaumann@web.de>	2007-05-14
+
+    Fix category.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-09
+
+    Makefile update
+
+Roi Cohen <roico@roico-desktop.(none)>	2007-05-08
+
+    fix typo in makefile
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-07
+
+    updated Makefile
+
+Danny Baumann <dannybaumann@web.de>	2007-05-04
+
+    Adapt for latest Compiz git.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-24
+
+    initial version of firepaint plugin
+
+Dennis Kasprzyk <onestone@de35.org>	2007-04-24
+
+    Dummy commit

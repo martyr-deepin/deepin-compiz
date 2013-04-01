@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<compiz>
+    <plugin name="text">
+	<_short>Text</_short>
+	<_long>Render text to texture</_long>
+	<category>Image Loading</category>
+	<deps>
+	    <requirement>
+		<plugin>opengl</plugin>
+	    </requirement>
+	    <relation type="after">
+		<plugin>composite</plugin>
+		<plugin>opengl</plugin>
+		<plugin>decor</plugin>
+	    </relation>
+	</deps>
+    </plugin>
+</compiz>

@@ -1,0 +1,193 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2010-12-02
+
+    Save windows that are currently unmapped and demanding attention - they might be mapped again at some point and we need to save their state in order to activate them
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2010-12-02
+
+    Do not allow windows to be added to our "waiting for attention" list it makes no sense to try and focus them on activating demand attention
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2010-11-20
+
+    Remove demanding attention windows from the list if they are destroyed
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Load after decor plugin to prevent windows moving after plugin load
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-13
+
+    Add missing <deps> tag which caused load rules not to work
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Use C++ bool
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-13
+
+    Load after composite and opengl plugins to avoid a sudden unredirect/redirect since it looks visually unappealing.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-12
+
+    Remove unneeded \n
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Allow plugin to operate correctly without composite plugin
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Ensure loading after required plugins
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-03-16
+
+    Track core changes.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-03-14
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2009-02-02
+
+    Minor stylistic improvements.
+
+Danny Baumann <dannybaumann@web.de>	2009-02-02
+
+    Don't require composite plugin.
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-02-02
+
+    Initial C++ port.
+
+Danny Baumann <dannybaumann@web.de>	2008-12-28
+
+    Revert "Added shortcut to move window to another (next, or arbitrary via dbus) output device."
+    
+    This reverts commit 537474d1aa5ba7fa41f7ec1251e17f175d3b73fd.
+    
+    This functionality was added to the put plugin.
+
+Danny Baumann <dannybaumann@web.de>	2008-12-27
+
+    Added shortcut to move window to another (next, or arbitrary via dbus) output device.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-10
+
+    Add _key postfix to activate_demands_attention key option for consistency.
+
+Danny Baumann <dannybaumann@web.de>	2008-04-30
+
+    Also handle urgency hint.
+
+Danny Baumann <dannybaumann@web.de>	2008-04-29
+
+    Added binding that allows cycling all "demands attention" windows.
+
+Danny Baumann <dannybaumann@web.de>	2008-04-28
+
+    Proper whitespacing.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-17
+
+    Core now recalculates window type and actions on state changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-11-23
+
+    Revert "Only update stacking when going to fullscreen mode."
+    
+    This reverts commit 65917229848f0f9567799f3b19625f8bd27e9877.
+
+Danny Baumann <dannybaumann@web.de>	2007-11-23
+
+    Only update stacking when going to fullscreen mode.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-30
+
+    Track core changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-20
+
+    New action system
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-06
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-05
+
+    Compiz indention.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-16
+
+    Remove obsolete deps/features from vtable
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-01
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    xml -> xml.in
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-28
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Updated Makefile
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-21
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-17
+
+    deleted dummy
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-17
+
+    initial commit
+
+compiz <compiz@de35.org>	2007-05-17
+
+    Dummy commit

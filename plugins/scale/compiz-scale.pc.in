@@ -1,0 +1,12 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: compiz-scale
+Description: Scale plugin for compiz
+Version: @VERSION@
+
+Requires: compiz compiz-composite compiz-opengl
+Libs: -L${libdir} -lscale
+Cflags: @COMPIZ_CFLAGS@ -I${includedir}/compiz

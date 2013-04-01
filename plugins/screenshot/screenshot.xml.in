@@ -1,0 +1,35 @@
+<compiz>
+    <plugin name="screenshot" useBcop="true">
+	<_short>Screenshot</_short>
+	<_long>Screenshot plugin</_long>
+	<category>Extras</category>
+	<deps>
+	    <requirement>
+		<plugin>opengl</plugin>
+		<plugin>compiztoolbox</plugin>
+		<feature>imageext:png</feature>
+	    </requirement>
+	    <relation type="after">
+		<plugin>decor</plugin>
+	    </relation>
+	</deps>
+	<options>
+	    <option name="initiate_button" type="button">
+		<_short>Initiate</_short>
+		<_long>Initiate rectangle screenshot</_long>
+		<default>&lt;Super&gt;Button1</default>
+	    </option>
+	    <option name="directory" type="string">
+		<_short>Directory</_short>
+		<_long>Put screenshot images in this directory. If empty, the desktop directory will be used.</_long>
+		<hints>directory;</hints>
+		<default></default>
+	    </option>
+	    <option name="launch_app" type="string">
+		<_short>Launch Application</_short>
+		<_long>Automatically open screenshot in this application</_long>
+		<default></default>
+	    </option>
+	</options>
+    </plugin>
+</compiz>

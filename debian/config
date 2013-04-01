@@ -1,0 +1,21 @@
+[general]
+backend = ini
+profile = deepin
+integration = false
+
+[general_deepin]
+backend = gsettings
+integration = true
+profile = deepin
+
+[gnome_session]
+backend = gsettings
+integration = true
+profile = deepin
+
+[general_ubuntu]
+backend = gsettings
+integration = true
+plugin_list_autosort = true
+profile = unity
+

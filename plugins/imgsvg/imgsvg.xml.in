@@ -1,0 +1,24 @@
+<compiz>
+    <plugin name="imgsvg" useBcop="true">
+	<_short>SVG</_short>
+	<_long>SVG image loader</_long>
+	<category>Image Loading</category>
+	<feature>imageext:svg</feature>
+	<feature>imagemime:image/svg+xml</feature>
+	<deps>
+	    <relation type="after">
+		<plugin>composite</plugin>
+		<plugin>opengl</plugin>
+		<plugin>decor</plugin>
+	    </relation>
+	</deps>
+	<options>
+	    <option name="set" type="action">
+		<_short>Set overlay</_short>
+		<_long>Set window overlay</_long>
+		<allowed/>
+		<default/>
+	    </option>
+	</options>
+    </plugin>
+</compiz>

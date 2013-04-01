@@ -1,0 +1,6 @@
+
+set (COMPIZ_BCOP_XSLT @CMAKE_INSTALL_PREFIX@/share/compiz/xslt/bcop.xslt)
+
+set (COMPIZ_GCONF_SCHEMAS_SUPPORT @USE_GCONF@)
+set (COMPIZ_GCONF_SCHEMAS_XSLT @CMAKE_INSTALL_PREFIX@/share/compiz/xslt/compiz_gconf_schemas.xslt)
+set (COMPIZ_GSETTINGS_SCHEMAS_XSLT @CMAKE_INSTALL_PREFIX@/share/compiz/xslt/compiz_gsettings_schemas.xslt)

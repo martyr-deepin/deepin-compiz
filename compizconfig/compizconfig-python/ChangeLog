@@ -1,0 +1,756 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-08
+
+    project () doesn't seem to work on non C/CXX projects so hack around that
+    by skipping it and defining CMAKE_PROJECT_NAME instead
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Don't add C and CXX to enabled languages
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add a simple CMake wrapper around distutils/cython
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Bump VERSION to 0.9.5.0
+
+Scott Moreau <oreaus@gmail.com>	2011-05-13
+
+    * Bump version to 0.9.5
+
+Scott Moreau <oreaus@gmail.com>	2011-03-09
+
+    Remove whitespace.
+
+Scott Moreau <oreaus@gmail.com>	2011-03-09
+
+    Fix typo.
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-03-07
+
+    "Bump VERSION to 0.9.4"
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-03-07
+
+    "Update news for 0.9.4 release"
+
+Guillaume Seguin <guillaume@segu.in>	2011-02-18
+
+    Don't drop the stderr since it might give a message to the user
+    that could actually be quite useful (eg, adjust PKG_CONFIG_PATH)
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-02-18
+
+    Add packges and list directly
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-02-18
+
+    Adjust for subprocess syntax
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-02-12
+
+    Use subprocess instead of commands and print () instead of print
+    because they are deprecated in Python 3.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-02-12
+
+    Use __cinit__ instead of __new__ since its removed in Cython 0.14
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2010-12-02
+
+    Don't use tabs/spaces in the pkgconfig block
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-06
+
+    Update NEWS for 0.9.2.1 Release
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-06
+
+    Update to 0.9.2.1
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-24
+
+    Update NEWS for 0.9.2 release
+
+Merge: 22b38c0 2351cfd
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-04
+
+    Merge branch 'master' of git+ssh://git.compiz.org/git/compiz/compizconfig/compizconfig-python
+
+Guillaume Seguin <guillaume@segu.in>	2010-07-04
+
+    Whitespace fix
+
+Guillaume Seguin <guillaume@segu.in>	2010-07-04
+
+    Distribute C file
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-04
+
+    Update NEWS for 0.9.0 release
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-04
+
+    Add maintainer and maintainer email fields
+
+Merge: b94163b 0725bc3
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-04
+
+    Merge branch 'master' of git+ssh://git.compiz.org/git/compiz/compizconfig/compizconfig-python
+    
+    Conflicts:
+MANIFEST.in           
+
+Guillaume Seguin <guillaume@segu.in>	2010-07-04
+
+    Add MANIFEST.in
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-04
+
+    Add MANIFEST.in to get correct files for sdist and simple Makefile
+    as a wrapper around setuptools
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-04
+
+    Better version reading and update package info
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-04
+
+    Bump version
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-06-19
+
+    Add a better rpath on/off switch
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-06-06
+
+    Added new method to get pkgconfig bits and also added COMPIZ_DISABLE_RPATH env variable
+
+Dominique Leuenberger <dimstar@opensuse.org>	2010-06-06
+
+    No RPATH to a relative path. In fact, we link to libcompizconfig.so.0, which typically is in %libdir
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-23
+
+    Pick up bits of the ccsm buildsystem, particularly uninstall support
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-17
+
+    Add more meaningful install instructions
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-05-02
+
+    Parse libcompizconfig pkg-config file and set linker path and runtime library path
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-27
+
+    Just use distutils
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-27
+
+    Remove autotools buildsystem
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-23
+
+    Remove debug message
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-23
+
+    Remove dummy
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-23
+
+    Dummy commit
+
+Merge: b0d1ee1 8b739cf
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-23
+
+    Merge branch 'master' of git://git.compiz.org/compiz/compizconfig/compizconfig-python into compiz++
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-23
+
+    Added merged autotools / CMake buildsystem.
+    
+    Please use cmake, autotools is deprecated.
+
+Marien Zwart <marien.zwart@gmail.com>	2010-04-07
+
+    Use the pyrexc detected by configure
+
+Guillaume Seguin <guillaume@segu.in>	2010-04-03
+
+    Fix python3 incompatibility
+
+Guillaume Seguin <guillaume@segu.in>	2010-04-03
+
+    Add distutils based installer (setup.py) using Cython
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-03-29
+
+    Remove display and multi-screen stuff.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-03-26
+
+    Revert "Remove display-related stuff from extensions."
+    
+    This reverts commit 7563ade4d96d4502eb0172423a89f7808f73ed52,
+    which belongs in the compiz++ branch.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-03-26
+
+    Remove display-related stuff from extensions.
+
+Guillaume Seguin <guillaume@segu.in>	2009-03-09
+
+    * Bump version to 0.8.3
+
+Guillaume Seguin <guillaume@segu.in>	2009-03-09
+
+    * Bump version to 0.8.2
+
+Danny Baumann <dannybaumann@web.de>	2008-12-03
+
+    SortSingleStringSetting fills the string restriction info as a side
+    effect, so don't skip it if sorting is not desired, but just leave the
+    list unsorted instead.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-09-18
+
+    Reorder option types for consistency with compiz.
+
+Guillaume Seguin <guillaume@segu.in>	2008-09-23
+
+    * Bump version to 0.7.9
+
+Guillaume Seguin <guillaume@segu.in>	2008-09-23
+
+    * Bump version to 0.7.8
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-09-08
+
+    Provide metadata order for groups and subgroups.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-08-31
+
+    Handle lack of animation plugin.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-08-31
+
+    Fix initializing of disabled plugins.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-08-31
+
+    Apply self extensions also when base plugin is disabled.
+    
+    Because of this, the restricted string options of a disabled base plugin
+    that "extends" itself (e.g. animation plugin) were displayed as regular
+    string options in ccsm. This fixes that.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-08-27
+
+    Add support for restricted string options and extensions.
+
+Patrick Niklaus <marex@opencompositing.org>	2008-06-11
+
+    Revert "Changed from __new__ to __cinit__, since __new__ will be deprecated in future pyrex versions."
+    
+    This reverts commit 9eb76ea82655844152486c896ff5cfa14394925c. It breaks compatibility with pyrex versions older than 0.9.6
+
+Patrick Niklaus <marex@opencompositing.org>	2008-06-08
+
+    Changed from __new__ to __cinit__, since __new__ will be deprecated in future pyrex versions.
+
+Guillaume Seguin <guillaume@segu.in>	2008-05-31
+
+    * Bump version to 0.7.7
+
+Guillaume Seguin <guillaume@segu.in>	2008-05-31
+
+    * Bump version to 0.7.6
+
+Christopher Williams <crdlb@compiz-fusion.org>	2008-04-25
+
+    Add action info support
+
+Guillaume Seguin <guillaume@segu.in>	2008-04-04
+
+    * Bump version to 0.7.5
+
+Guillaume Seguin <guillaume@segu.in>	2008-04-04
+
+    * Bump version to 0.7.4
+
+Guillaume Seguin <guillaume@segu.in>	2008-03-06
+
+    * Bump version to 0.7.3
+
+Guillaume Seguin <guillaume@segu.in>	2008-03-06
+
+    * Bump version to 0.7.2
+
+Danny Baumann <dannybaumann@web.de>	2008-02-14
+
+    (Optionally) save settings after import, which is no longer done by the lib.
+
+Patrick Niklaus <marex@opencompositing.org>	2007-11-06
+
+    CCS library API changed
+
+Guillaume Seguin <guillaume@segu.in>	2007-10-21
+
+    * Bump require
+
+Guillaume Seguin <guillaume@segu.in>	2007-10-21
+
+    * Include VERSION in distfile
+
+Guillaume Seguin <guillaume@segu.in>	2007-10-15
+
+    * Fix & update configure.ac
+
+Guillaume Seguin <guillaume@segu.in>	2007-10-21
+
+    * Bump version to 0.6.99
+
+Danny Baumann <dannybaumann@web.de>	2007-09-03
+
+    Minor beautification.
+
+Guillaume Seguin <guillaume@segu.in>	2007-09-02
+
+    * Cleanup
+
+Guillaume Seguin <guillaume@segu.in>	2007-09-02
+
+    * ChangedSettings is never None, but the list can be empty
+
+Guillaume Seguin <guillaume@segu.in>	2007-09-02
+
+    * Coding style
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-30
+
+    Fix profile resetting.
+
+Merge: 1cadd5f 1114fe3
+Patrick Niklaus <marex@opencompositing.org>	2007-08-24
+
+    Merge with git+ssh://marex@git.opencompositing.org/git/fusion/compizconfig/compizconfig-python
+
+Patrick Niklaus <marex@opencompositing.org>	2007-08-24
+
+    Added initialized property to plugin class for idle settings paring
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-23
+
+    * Finish reindenting and cleanup
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-22
+
+    * Fix coding style
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-22
+
+    * Minor coding style cleanup & authors update
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-22
+
+    * Major reindent & coding style cleanup
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-22
+
+    * Begin work on updating to latest libcompizconfig
+
+Treviño - 3v1n0 <trevi55@gmail.com>	2007-08-18
+
+    Added VERSION file for coerency with other packages
+
+Merge: c8a8d07 4c81c93
+Patrick Niklaus <marex@opencompositing.org>	2007-08-14
+
+    Merge with git+ssh://marex@git.beryl-project.org/git/fusion/compizconfig/compizconfig-python
+
+Patrick Niklaus <marex@opencompositing.org>	2007-08-14
+
+    Fixed changedSettings interface
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-12
+
+    Version update & fix depends
+
+Danny Baumann <dannybaumann@web.de>	2007-08-06
+
+    Track lib changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-06
+
+    Remove some unneeded structure definitions.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-06
+
+    Track library changes.
+
+Merge: e885a7f 3d35088
+Danny Baumann <dannybaumann@web.de>	2007-08-06
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/compizconfig/compizconfig-python
+
+Danny Baumann <dannybaumann@web.de>	2007-08-06
+
+    Remove unused struct member.
+
+Patrick Niklaus <marex@opencompositing.org>	2007-08-06
+
+    Small port...
+
+Patrick Niklaus <marex@opencompositing.org>	2007-08-06
+
+    Update to latest changed in CompizConfig lib
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-11
+
+    * Wrap ccsSetBasicMetadata
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-08
+
+    * Add possibility to load a custom set of plugins or load plugins on the fly
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-08
+
+    * Remove nScreens argument from compizconfig.Context () BREAKS API!
+
+Patrick Niklaus <marex@opencompositing.org>	2007-07-04
+
+    Added edge button support
+
+Patrick Niklaus <marex@opencompositing.org>	2007-07-03
+
+    Added function to clear the changedSettings list manually
+
+Patrick Niklaus <marex@opencompositing.org>	2007-06-29
+
+    Added some additional members to CCSContext
+
+Patrick Niklaus <marex@opencompositing.org>	2007-06-29
+
+    Added support for ProcessEvents
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-20
+
+    compizconfig-bindings -> compizconfig-python
+
+Patrick Niklaus <marex@opencompositing.org>	2007-06-17
+
+    Added profile import/export
+
+Patrick Niklaus <marex@opencompositing.org>	2007-06-15
+
+    Fixed a typo which messed up conflict handling
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-14
+
+    Convert correctly to bool
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-14
+
+    Convert to python bool.
+
+Merge: c1b9430 9dca6ea
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-14
+
+    Merge branch 'master' of git+ssh://git.beryl-project.org/git/compcomm/compiz-configuration-system/bindings/ccs-python
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-14
+
+    Reload settings after Profile/Backend change
+
+Patrick Niklaus <marex@opencompositing.org>	2007-06-14
+
+    Do not cache integration/read only (causes problems on backend change)
+
+Patrick Niklaus <marex@opencompositing.org>	2007-06-14
+
+    Added support for read only and integrated settings
+
+Patrick Niklaus <marex@opencompositing.org>	2007-06-14
+
+    Added backend integration/profile support
+
+Patrick Niklaus <marex@opencompositing.org>	2007-06-13
+
+    Added support for integration
+
+Patrick Niklaus <marex@opencompositing.org>	2007-06-13
+
+    Added easy plugin feature reading.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    added missing file
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    libccs -> libcompizconfig rename
+
+Patrick Niklaus <marex@opencompositing.org>	2007-06-07
+
+    Added ranking to use the order in metadata
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-06
+
+    Removed string restrictions
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-05
+
+    load settings only when needed
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-05
+
+    Applied lib changes
+
+marex <marex@beryl-project.org>	2007-05-21
+
+    Added support for IntDesc
+
+marex <marex@beryl-project.org>	2007-05-18
+
+    Added multiscreen support for bindings
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-16
+
+    definition fixes
+
+marex <marex@beryl-project.org>	2007-05-16
+
+    Updated the bindings to the latest changes in libccs concerning
+    ConflictFeature and ConflictPlugin
+
+marex <marex@beryl-project.org>	2007-05-16
+
+    Sorry for that..
+
+marex <marex@beryl-project.org>	2007-05-16
+
+    Fixed list to StringList converting
+
+marex <marex@beryl-project.org>	2007-05-14
+
+    Adding updading the profile list
+
+Danny Baumann <dannybaumann@web.de>	2007-05-14
+
+    Fixed backend names overwriting each other.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-14
+
+    Fix determination of current backend.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-13
+
+    Fix current backend enumeration.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-13
+
+    Fix warnings.
+
+marex <marex@beryl-project.org>	2007-05-13
+
+    Applied latest CCS API changes
+
+marex <marex@beryl-project.org>	2007-05-11
+
+    Fixed profile resetting
+
+marex <marex@beryl-project.org>	2007-05-11
+
+    Set and get the current profile and also reset it
+
+marex <marex@beryl-project.org>	2007-05-11
+
+    Added support for profiles
+
+Quinn Storm <quinn@darter.(none)>	2007-05-06
+
+    rename python subdir to src subdir
+
+Quinn Storm <quinn@darter.(none)>	2007-05-06
+
+    remove ccsm as it will be in the other repo now
+
+Quinn Storm <quinn@darter.(none)>	2007-05-06
+
+    commit the rename
+
+Quinn Storm <quinn@darter.(none)>	2007-05-06
+
+    change GPL to LGPL in ccs.pyx
+
+Merge: 6e2123b f793ddc
+Quinn Storm <quinn@darter.(none)>	2007-05-06
+
+    Merge git+ssh://git.beryl-project.org/git/compcomm/compiz-configuration-system/bindings/ccs-python
+
+marex <marex@beryl-project.org>	2007-05-05
+
+    bset-new: WIndow Matches should now work, at least I hope so.
+
+marex <marex@beryl-project.org>	2007-05-05
+
+    bset-new: Proper size and title
+
+marex <marex@beryl-project.org>	2007-05-05
+
+    bset-new: Added class for window matches, not used yet, because I have no
+    idea how to find out wether its a normal string or a window match..
+
+marex <marex@beryl-project.org>	2007-05-05
+
+    bset-new: Added proper layout for bool settings
+
+Quinn Storm <quinn@darter.(none)>	2007-05-03
+
+    add sorting function to sort classes of settings together, then by ShortDesc
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-02
+
+    applied name change
+
+Quinn Storm <quinn@darter.(none)>	2007-04-29
+
+    set up and add in some plugin en/disable stuff, not sure yet if as_____plugin_enabled is correct anymore or if I need to handle as_active_plugins myself
+
+Quinn Storm <quinn@darter.(none)>	2007-04-29
+
+    add plugin en/disable conflict readout to pyx
+
+Quinn Storm <quinn@darter.(none)>	2007-04-28
+
+    a little bit of interface cleanup
+
+Quinn Storm <quinn@darter.(none)>	2007-04-28
+
+    yeah, more updates!
+    list settings are pretty much done (but there seems to be a bug in libbs, need to check it out more thoroughly)
+    reworked setting.Hints in pyx to make it more useful
+
+Quinn Storm <quinn@darter.(none)>	2007-04-27
+
+    oops, forgot to save in vim
+
+Quinn Storm <quinn@darter.(none)>	2007-04-27
+
+    more updates, code cleanup
+    there seems to be something wrong in libbs's color option handling, but it could be a bug in my bindings, not sure yet
+
+Quinn Storm <quinn@darter.(none)>	2007-04-27
+
+    a bit more work...not sure how much more I'll be doing tonight
+
+Quinn Storm <quinn@darter.(none)>	2007-04-27
+
+    more work on filling out the interface...
+
+Quinn Storm <quinn@darter.(none)>	2007-04-27
+
+    'bset-new' is an attempt to rewrite the old code I was originally trying
+    to port as 'bset', using better coding practices such as classes, etc.,
+       and in general to make it cleaner and easier to maintain
+
+Quinn Storm <quinn@darter.(none)>	2007-04-26
+
+    add 'bset' - very basic beginning of port of beryl-settings to bsettings
+    it doesn't install or anything, and will probably not work right at all
+    please do not use it unless you are planning on working on it
+
+Quinn Storm <quinn@darter.(none)>	2007-04-26
+
+    just some little things to make bsettings start to come together
+
+Quinn Storm <quinn@darter.(none)>	2007-04-24
+
+    add read, write, few missing bits (setting.Reset(), setting.IsDefault)
+
+Quinn Storm <quinn@darter.(none)>	2007-04-24
+
+    fix a few little bugs with setting values, change Action values to be lists not tuples
+    still a little bug with Action values in that the __get__()'d value can't be immediately
+    reassigned, so it needs to be cached out by the calling app
+
+Quinn Storm <quinn@darter.(none)>	2007-04-24
+
+    fold plugins into categories
+
+Quinn Storm <quinn@darter.(none)>	2007-04-24
+
+    setting value setting implemented completely, cleaned up from previous partial implementation
+    still not tested
+
+Quinn Storm <quinn@darter.(none)>	2007-04-24
+
+    option setting for all but lists is in & compiles, *should* work, not yet tested
+
+Quinn Storm <quinn@darter.(none)>	2007-04-24
+
+    I don't like SSGroup, I'll likely replace it with something better protected,
+      but other than that, settings groups/subgroups are now folded in properly
+
+Quinn Storm <quinn@darter.(none)>	2007-04-24
+
+    finish up settings Value __get__
+    next up: __set__
+
+Quinn Storm <quinn@darter.(none)>	2007-04-24
+
+    getting far closer to being done, still haven't gotten to actual
+    value read/write, but have a lot more of the general structure complete
+
+Quinn Storm <quinn@darter.(none)>	2007-04-24
+
+    getting started...
+
+Quinn Storm <quinn@darter.(none)>	2007-04-24
+
+    fix build system and a few glitches
+
+Quinn Storm <quinn@darter.(none)>	2007-04-24
+
+    fix version in test for bsettings
+    add acinclude.m4 for PYTHON_DIR_VERSION
+
+Quinn Storm <quinn@darter.(none)>	2007-04-24
+
+    adding simple bsettings.pyx file to get started
+
+Quinn Storm <quinn@darter.(none)>	2007-04-24
+
+    remove VERSION file & use of it
+
+Quinn Storm <quinn@darter.(none)>	2007-04-24
+
+    add the rest of the build system
+    update various files for bsettings vs berylsettings
+
+Quinn Storm <quinn@darter.(none)>	2007-04-24
+
+    copy over build system from bsb
+
+Quinn Storm <quinn@darter.(none)>	2007-04-24
+
+    remove dummy
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-24
+
+    test commit
+
+compiz <compiz@de35.org>	2007-04-24
+
+    Dummy commit

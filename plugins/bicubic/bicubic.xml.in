@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<compiz>
+	<plugin name="bicubic" useBcop="true">
+		<_short>Bicubic filter</_short>
+		<_long>Bicubic texture filtering</_long>
+		<deps>
+			<requirement>
+				<plugin>opengl</plugin>
+			</requirement>
+		</deps>
+		<category>Effects</category>
+		<deps>
+			<relation type="after">
+				<plugin>composite</plugin>
+				<plugin>opengl</plugin>
+				<plugin>blur</plugin>
+			</relation>
+		</deps>
+	</plugin>
+</compiz>

@@ -1,0 +1,50 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ compiz (1:0.9.8.6-19) quantal; urgency=low
+ .
+   * change launcher argument
+Author: Yueqian Zhang <zhangyueqian@linuxdeepin.com>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: http://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- compiz-0.9.8.6.orig/plugins/put/src/put.cpp
++++ compiz-0.9.8.6/plugins/put/src/put.cpp
+@@ -1181,10 +1181,18 @@ PutScreen::toViewport (CompAction
+ 		       CompOption::Vector &option,
+ 		       int vp)
+ {
+-    int last = option.size ();
+-    option.resize(last+1);
+-    option[last].setName ("viewport",CompOption::TypeInt);
+-    option[last].value ().set (vp-1);
++    unsigned int index;
++    if (CompOption::findOption (option, "viewport", &index) == NULL)
++    {
++	int last = option.size ();
++	option.resize(last+1);
++	option[last].setName ("viewport",CompOption::TypeInt);
++	option[last].value ().set (vp-1);
++    }
++    else
++    {
++	option[index].value ().set (vp-1);
++    }
+ 
+     return initiateCommon (action, state, option, (PutType) PutViewport);
+ }

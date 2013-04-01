@@ -1,0 +1,381 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Scott Moreau <oreaus@gmail.com>	2010-09-30
+
+    Silence warning.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-13
+
+    Use sane defaults, minimums and maximums for size matches
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-04
+
+    Remove debug message
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-04
+
+    Remove debug message. Also fix size matches
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-04
+
+    Remove debug message
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-04
+
+    Window Rules needs regex to do anything remotely useful, unless the user wants to be matching on type all the time, so depend on it
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-02
+
+    Fix broken size matches implementation
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Load after decor plugin to prevent windows moving after plugin load
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-13
+
+    Add missing <deps> tag which would cause load rules not to work
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-13
+
+    Load after composite and opengl plugins to avoid a sudden unredirect/redirect
+    since it looks visually unappealing.
+
+Scott Moreau <oreaus@gmail.com>	2010-02-13
+
+    Fix maximized state rule.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Fix warning
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-11-16
+
+    Traverse a copy of the list
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-10-08
+
+    Fix typo
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-10-08
+
+    Fix no focus bug, fix typos and remove debug messages
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-10-08
+
+    Update settings on option update and initialize window actions variable
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-10-08
+
+    Pass control in handleEvent ()
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-10-06
+
+    s/screen/options
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-10-06
+
+    Return true at the end of init function
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-05-28
+
+    Update warnings
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-05-28
+
+    We don't need composite
+
+Sam Spilsbury <Sam@XPS-SUSE.site>	2009-05-27
+
+    Merge branches 'compiz++' and 'compiz++' of ../winrules-old into compiz++
+
+Sam Spilsbury <Sam@XPS-SUSE.site>	2009-05-27
+
+    Remove backup files
+
+Sam Spilsbury <Sam@XPS-SUSE.site>	2009-05-27
+
+    Add relevant files
+
+Sam Spilsbury <Sam@XPS-SUSE.site>	2009-05-27
+
+    Initial C++ Port
+
+Kristian Lyngstol <kristian@bohemians.org>	2009-02-07
+
+    Fix warning correctly
+
+Kristian Lyngstol <kristian@bohemians.org>	2009-02-07
+
+    Fix warning
+
+Danny Baumann <dannybaumann@web.de>	2008-12-02
+
+    Fix "No focus" rule.
+
+Danny Baumann <dannybaumann@web.de>	2008-10-27
+
+    There is no reason not to allow rules for dock windows.
+
+Danny Baumann <dannybaumann@web.de>	2008-10-09
+
+    Remove FIXMEs as they are invalid.
+
+Danny Baumann <dannybaumann@web.de>	2008-10-09
+
+    Revert "Instead of modifying the cached values of input hint and protocols, hook into focusWindow to prevent focus."
+    
+    This reverts commit bbe489cd524f24dc2003f0946aab49c08f6d4075.
+    
+    While changing inputHint and protocols variables might be slightly more hacky, it works way more reliably then just wrapping in focusWindow.
+
+Danny Baumann <dannybaumann@web.de>	2008-10-08
+
+    Instead of modifying the cached values of input hint and protocols, hook into focusWindow to prevent focus.
+    Implications:
+    - The window won't be shown in switcher. (should be ok)
+    - Scale still focusses the window
+
+Danny Baumann <dannybaumann@web.de>	2008-10-08
+
+    Fix window type check and apply rules on MapRequest.
+    Added some FIXMEs.
+
+Danny Baumann <dannybaumann@web.de>	2008-08-29
+
+    Added a match to open window maximized initially.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-06-18
+
+    Track core changes
+
+Merge: d0ac8f6 d4a647f
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-10
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/fusion/plugins/winrules
+
+Danny Baumann <dannybaumann@web.de>	2008-04-04
+
+    Added CMake file.
+
+Merge: 8ab4d9a 44678c7
+Danny Baumann <dannybaumann@web.de>	2008-04-04
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/plugins/winrules
+
+Danny Baumann <dannybaumann@web.de>	2008-04-04
+
+    Properly restore input hint and window protocols.
+
+Joe Rabinoff <bobqwatson@yahoo.com>	2008-04-04
+
+    Fix applying the window protocols.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Merge: 5f65277 d519bec
+Danny Baumann <dannybaumann@web.de>	2008-03-17
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/plugins/winrules
+
+Danny Baumann <dannybaumann@web.de>	2008-03-17
+
+    Core now recalculates window type and action on state changes.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-17
+
+    Send out sync request when changing window size.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Danny Baumann <dannybaumann@web.de>	2008-03-03
+
+    Remove debug artifact.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-25
+
+    Don't do anything to override_redirect windows.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-08
+
+    Improve option grouping.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-17
+
+    Simplification. It should be sufficient to allocate the protocols on the stack.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-14
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-30
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-27
+
+    Added option to suppress ARGB visuals for matched windows.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-24
+
+    Wrap into matchExpHandlerChanged and matchPropertyChanged functions to get notified when we need to re-check the matches.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-24
+
+    Fix screen option numbering.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-24
+
+    Use one-shot timer instead of MapNotify for applying rules.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-24
+
+    Whitespace improvements and less code duplication.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-24
+
+    Remove widget functionality.
+    The widget plugin now has functionality to include windows that don't have the widget hint set into the widget layer, so having this functionality in winrules as well duplicates the functionality.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-20
+
+    const char*
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-06
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-16
+
+    Remove obsolete deps/features from vtable
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-01
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    xml -> xml.in
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-28
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Updated Makefile
+
+Danny Baumann <dannybaumann@web.de>	2007-06-08
+
+    Added category and grouping.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-08
+
+    Fix whitespace.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-21
+
+    schema is generated from xml
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-21
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-16
+
+    added new dependency rules
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-09
+
+    Makefile update
+
+Roi Cohen <roico@roico-desktop.(none)>	2007-05-08
+
+    fix typo in makefile
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-07
+
+    updated Makefile
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-06
+
+    updated Makefile
+
+Danny Baumann <dannybaumann@web.de>	2007-05-04
+
+    Update winrules to completely use metadata system.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-04
+
+    Fixed setting of fullscreen, above and below states.
+    Also did some additional cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-04
+
+    Adaptions for latest Compiz git.
+
+Bellegarde Cedric <gnumdk@gmail.com>	2007-04-21
+
+    Code clean up
+
+Bellegarde Cedric <gnumdk@gmail.com>	2007-04-21
+
+    Add an option to force window size at creation
+
+Bellegarde Cedric <gnumdk@gmail.com>	2007-04-21
+
+    Remove unused includes
+
+Bellegarde Cedric <gnumdk@gmail.com>	2007-04-21
+
+    Remove dummy file, learning how git works...
+
+Bellegarde Cedric <gnumdk@gmail.com>	2007-04-21
+
+    Initial import
+
+compiz <compiz@de35.org>	2007-04-21
+
+    Initial commit

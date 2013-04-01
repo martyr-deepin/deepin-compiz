@@ -1,0 +1,2265 @@
+Merge: 21d23fe 89783cd
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-08-19
+
+    Merge lp:~thumper/compiz-libcompizconfig/fix-invalid-reads-trunk
+
+Tim Penhey <tim.penhey@canonical.com>	2011-08-18
+
+    Fix some invalid reads in setlocale.
+    
+    Also made the string comparison a little more readable.
+
+Merge: 9d32d80 8524cb2
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-29
+
+    Merge
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-24
+
+    Added settings upgrade framework.
+    
+    Store settings upgrades in SYSCONFDIR/compizconfig/upgrades with the name
+    format
+    
+    org.freedesktop.domain.num.profile.upgrade
+    
+    Where org.freedesktop.domain is a freedesktop.org reverse domain name:
+    eg org.freedesktop.compiz, num is a base 10 number indicating the upgrade
+    series (listed in incremental order) and profile is the name of the profile
+    which should be active when changing settings.
+    
+    Upgrades will be processed in alphabetical order and then written to a file
+    in XDG_CONFIG_DIR/compiz-1/compizconfig/done_upgrades so that they will be
+    skipped in the future.
+    
+    The upgrade file format follows something along the lines of a diff file
+    inlined into the ini file, for example
+    
+    [plugin]
+    +s0_option_name = foo;
+    -s0_other_option_name = bar;
+    
+    The following is the syntax of the upgrade file:
+    + with a value will replace the existing value with the specified one
+    - with a value will clear the existing value to the default value if
+      the value specified in the value section of the key matches the actual
+      value that the user has set
+    both + and - for a particular option key name will replace the value
+    if the value that the user has set matches the value section specified
+    in the - value field
+    
+    For lists, + and - will not overwrite or clear to default, but rather append
+    and subtract from list themselves.
+    + with a value will append all non-duplicate entries to the existing list
+    - with a value will subtract all matched entries from the existing list
+    both + and - for a particular list will replace the list only if the entire
+    list matches what was specified in the - field
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-13
+
+    There is no sane reason to have backends always go in the same path as the
+    detected libcompizconfig, so mandate that they go in CMAKE_INSTALL_PREFIX
+    for now
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Support new release commands
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Bump VERSION
+
+Scott Moreau <oreaus@gmail.com>	2011-06-30
+
+    Actually bump version to 0.9.5.
+
+Scott Moreau <oreaus@gmail.com>	2011-05-13
+
+    * Bump version to 0.9.5
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-03-07
+
+    "Bump VERSION to 0.9.4"
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-03-07
+
+    "Update CMake Version"
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-03-07
+
+    "Update news for 0.9.4 release"
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2010-11-25
+
+    Revert "Add a COMPIZCONFIG_PROFILE env var so that distributions and"
+    
+    This reverts commit e1438fb552487271ebed9894516c74210eb3de81.
+    
+    No need for it, we have COMPIZ_CONFIG_PROFILE
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2010-11-25
+
+    Ensure that we install the config defaults in SYSCONFDIR and also add a custom target for it
+
+Merge: e1438fb 9405fc9
+Sam Spilsbury <sam.spilsbury@canonical.com>	2010-11-22
+
+    Merge branch 'master' of git+ssh://git.compiz.org/git/compiz/compizconfig/libcompizconfig
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2010-11-22
+
+    Add a COMPIZCONFIG_PROFILE env var so that distributions and
+    session managers can specify per-session profiles
+
+Didier Roche <didrocks@ubuntu.com>	2010-11-18
+
+    Give a default value to COMPIZ_SYSCONFDIR
+    
+    That enables SYSCONFDIR to get one and so, reading the Global configuration
+    file.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-06
+
+    Update NEWS for 0.9.2.1 Release
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-06
+
+    Update NEWS for 0.9.2.1 Release
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-06
+
+    Add a LIBCOMPIZCONFIG_VERSION_MACRO and update to 0.9.2.1
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-24
+
+    Fix warnings when protobuf is disabled
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-24
+
+    Update NEWS for 0.9.2
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-29
+
+    Update INSTALL file
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-20
+
+    Fix backends not linking against libraries specified in PKGDEPS
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-04
+
+    Update NEWS for 0.9.0 release
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-04
+
+    Bump version
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-04
+
+    Load files from .compiz-1
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-04
+
+    Save protobuf files in XDG_CACHE_DIR/compizconfig-1 to prevent conflicts where 0.8 protobuf files might be loaded into 0.9 and vice versa
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-06-18
+
+    Add a COMPIZ_PACKAGING_ENABLED option for packagers to tweak libdir, et.
+    
+    Allowing this by default causes some distros to populate these options with /usr, etc
+    and overrides CMAKE_INSTALL_PREFIX, which users wouldn't want
+
+Dominique Leuenberger <dominique@leuenberger.net>	2010-06-01
+
+    Better control of destination folders by introducing the same variables as in core
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-06-06
+
+    Don't install FindCompizConfig.cmake to ${prefix}/share/compiz/cmake
+
+Merge: f1e2827 db64a60
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-06-06
+
+    Merge branch 'master' of git+ssh://git.compiz.org/git/compiz/compizconfig/libcompizconfig
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-06-06
+
+    Fix backends build
+
+Merge: 8fe1c07 89065c8
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-23
+
+    Merge branch 'master' of git+ssh://git.compiz.org/git/compiz/compizconfig/libcompizconfig
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-23
+
+    Add proper COMPIZ_DESTDIR support to findcompizconfig_install
+
+Merge: 33515ea 89065c8
+Live session user <ubuntu@ubuntu.(none)>	2010-05-22
+
+    Merge branch 'master' of git://anongit.compiz.org/compiz/compizconfig/libcompizconfig
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-05-22
+
+    Store files in the compiz-1 dir and drop the ++ extension
+
+Travis Watkins <amaranth@ubuntu.com>	2010-05-20
+
+    add so versioning to libcompizconfig.so
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-21
+
+    Use the COMPIZ_BUILD_WITH_RPATH option to disable setting an rpath on
+    backends
+
+Travis Watkins <amaranth@ubuntu.com>	2010-05-20
+
+    don't change default backend when it fails to load
+    
+    If using the gconf backend and it fails to load libcompizconfig will
+    automatically fall back to the ini backend. However, it will also update
+    the default backend to the ini backend so the user will have to manually
+    switch back once the problem is fixed.
+    
+    This patch makes the default backend not get updated to ini if the regular
+    one failed to load. Thanks to Michael Vogt for the patch.
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-21
+
+    Add COMPIZ_DESTDIR support to libcompizconfig
+
+Merge: e15877b e2ed47d
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-18
+
+    Merge branch 'master' of git+ssh://git.compiz.org/git/compiz/compizconfig/libcompizconfig
+    
+    Conflicts:
+plugin/ccp/CMakeLists.txt           
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-18
+
+    Added optional building with rpath
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-05-15
+
+    Remove some rpath usage
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-05-15
+
+    Track core buildsystem changes
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-15
+
+    Adapt for buildsystem changes
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-05-14
+
+    Fix ini build
+
+Live session user <ubuntu@ubuntu.(none)>	2010-05-14
+
+    Include CompizPackage cmake header too
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-05-14
+
+    Ensure the package is found before continuing
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-05-14
+
+    Make backend buildsystem more modular and similar to compiz_plugin function
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-14
+
+    Add git-dist target and uninstall target (a bit of a hack though...)
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-10
+
+    Added ALL_LIGUAS support and tidy up buildsystem
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-10
+
+    Install plugin globally
+
+Merge: 4d829e6 3f4ca07
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-09
+
+    Merge branch 'master' of git+ssh://git.compiz.org/git/compiz/compizconfig/libcompizconfig
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-09
+
+    Use libcompizconfig: label for errors rather than libccs:
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-05-03
+
+    Remove unnecessary debug message
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-27
+
+    Remove autotools builsystem
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-25
+
+    Actually fix internal build
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-25
+
+    Fix internal build
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-23
+
+    Remove debug message
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-23
+
+    * Fix incorrect pkgconfig installaton
+    * Add CMake Function to build a backend
+    * Add FindCompizConfig cmake function. Install it with
+      sudo make findcompizconfig_install
+    * Adapt to core cmake changes
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-22
+
+    Added merged autoreconf/cmake buildsystem.
+    
+    XXX: autoreconf is deprecated and will be removed in a future revision.
+    Please use cmake.
+
+Danny Baumann <dannybaumann@web.de>	2010-04-14
+
+    Fix precedence order of LC_* environment variables.
+    
+    The order should be LC_ALL -> LC_MESSAGES -> LANG, not LANG -> LC_ALL ->
+    LC_MESSAGES.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-09-24
+
+    Fix compiler warnings.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-09-24
+
+    Fix checking of libprotobuf version >= 2.1.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-09-20
+
+    Fix crash when LANG has no value.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-31
+
+    Fix encoding of corner followed by adjacent edge case.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-25
+
+    Avoid allocating 0-size memory. Fix memory leak.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-23
+
+    Fix memory leaks.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-19
+
+    Fix memory leaks.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-16
+
+    Fix shadowing issues.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-16
+
+    Compare string find result with npos.
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-08
+
+    Added support for POSIX 2008's definition of scandir ()
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-03-29
+
+    Remove display and multi-screen stuff.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-03-26
+
+    Remove more display-related stuff.
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-03-16
+
+    Track core changes.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-03-14
+
+    Remove display-related stuff.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-03-14
+
+    Update .pb when an older .xml is used, too.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-03-14
+
+    Track core changes.
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2008-12-24
+
+    Initial compiz++ changes.
+
+Danny Baumann <dannybaumann@web.de>	2008-12-02
+
+    Revert accidential change.
+
+Danny Baumann <dannybaumann@web.de>	2008-12-02
+
+    Mem leak fixes and minor cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2008-11-24
+
+    Sanity check input values of ccsFindSetting.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-11-07
+
+    Don't write .pb for ini, gconf, ccp, kconfig.
+    
+    Fixes these errors:
+    libprotobuf ERROR google/protobuf/message.cc:110] Can't parse message of
+      type "metadata.PluginBrief" because it is missing required fields: info
+    libprotobuf FATAL google/protobuf/message.cc:198] CHECK failed:
+      IsInitialized(): Can't serialize message of type "metadata.PluginBrief"
+      because it is missing required fields: info.name
+
+Danny Baumann <dannybaumann@web.de>	2008-11-06
+
+    Fix memory leak.
+
+Merge: 2460060 d6ecf8a
+Erkin Bahceci <erkinbah@gmail.com>	2008-10-22
+
+    Merge branch 'master' of git+ssh://cornelius@git.opencompositing.org/git/fusion/compizconfig/libcompizconfig
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-10-22
+
+    Create protobuf cache dir recursively.
+    
+    Enables using ".../x/y" as cache dir when ".../x" doesn't exist.
+
+Lubos Lunak <llunak@suse.cz>	2008-10-22
+
+    Fix copy'n'paste mistakes in allocation size.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-10-19
+
+    Disable protobuf if cache dir cannot be created.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-10-19
+
+    Use $XDG_CACHE_HOME/compizconfig/ as protobuf cache directory.
+    
+    As protobuf cache dir, we now use $XDG_CACHE_HOME/compizconfig/
+    if $XDG_CACHE_HOME is defined and ~/.cache/compizconfig/ otherwise,
+    to conform to the standards described at
+    http://standards.freedesktop.org/basedir-spec/basedir-spec-0.6.html
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-10-19
+
+    Fix circular dependency error (bug 1061).
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-10-19
+
+    Add source URL to protobuf warning message.
+
+Merge: 514ba48 741f99a
+Erkin Bahceci <erkinbah@gmail.com>	2008-10-19
+
+    Merge branch 'master' of git+ssh://cornelius@git.opencompositing.org/git/fusion/compizconfig/libcompizconfig
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-10-19
+
+    Add compizconfig.proto to dist. Simplify Makefile.am.
+
+Danny Baumann <dannybaumann@web.de>	2008-10-19
+
+    Link against libX11 because we need it for XStringToKeysym.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-10-18
+
+    Clean up whitespace.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-10-18
+
+    Disable protobuf automatically if not installed.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-10-04
+
+    Speed up metadata parsing via protocol buffers.
+    
+    Reduces startup times for compiz, ccsm, and simple-ccsm.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-10-04
+
+    Remove global metadata.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-10-04
+
+    Ignore extensions & string restrictions at compiz startup.
+
+Guillaume Seguin <guillaume@segu.in>	2008-09-23
+
+    * Bump version to 0.7.9
+
+Guillaume Seguin <guillaume@segu.in>	2008-09-23
+
+    * Bump version to 0.7.8
+
+Guillaume Seguin <ixce@ed3n.(none)>	2008-09-17
+
+    * Drop intltool-* from EXTRA_DIST and friends for building tarballs
+      (please use intltool 0.40.x to make the tarballs)
+
+Danny Baumann <dannybaumann@web.de>	2008-09-17
+
+    Make sure basePlugin is never NULL.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-09-16
+
+    Fix bug 1046: Rename extension option -> base_option, plugin -> base_plugin.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-09-16
+
+    Get extension's screen/display info from XML attr. instead of from parent.
+    
+    This boolean attribute is called display. If the display attribute is missing,
+    that means the extension belongs to screen.
+    
+    e.g: <extension plugin="animation" display="true"> for extensions of display options
+     or  <extension plugin="animation">                for extensions of screen options.
+    
+    In the metadata, extensions should now be put outside <screen> and <display>.
+
+Danny Baumann <dannybaumann@web.de>	2008-08-31
+
+    Fix mem leaks.
+
+Danny Baumann <dannybaumann@web.de>	2008-08-31
+
+    Mem leak fix.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-08-27
+
+    Add support for restricted string options and extensions.
+
+Danny Baumann <dannybaumann@web.de>	2008-08-12
+
+    Allocate string buffer dynamically when writing lists.
+    This prevents list value line lengths being truncated.
+
+Danny Baumann <dannybaumann@web.de>	2008-07-31
+
+    Added position_constrain_workarea option to appropriate subgroup.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-06-18
+
+    Track core changes
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-06-12
+
+    Added kde4 session support.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-08
+
+    Fix type conversion for bool settings.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-08
+
+    Plug mem leak.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-08
+
+    Plug mem leak.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-08
+
+    Correctly set list type.
+
+Guillaume Seguin <guillaume@segu.in>	2008-05-31
+
+    * Bump version to 0.7.7
+
+Guillaume Seguin <guillaume@segu.in>	2008-05-31
+
+    * Bump version to 0.7.6
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-25
+
+    Added an action information that indicates that a binding is not a global binding. The new "internal" tag (<internal/> or <internal>true</internal>) can now be used to mark an action setting as plugin internal.
+
+Danny Baumann <dannybaumann@web.de>	2008-04-15
+
+    But switcher panel bindings into Bindings group.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-10
+
+    Added workaround to ensure that bench is the last plugin.
+
+Merge: 44a2972 50eb74a
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-06
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/fusion/compizconfig/libcompizconfig
+
+Guillaume Seguin <guillaume@segu.in>	2008-04-04
+
+    * Bump version to 0.7.5
+
+Guillaume Seguin <guillaume@segu.in>	2008-04-04
+
+    * Bump version to 0.7.4
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-01
+
+    Make sure that symbols are only loaded locally.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-16
+
+    Put focus stealing prevention level to Focus behaviour group.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-14
+
+    Fix setting context from option changes (e.g. via dbus).
+
+Merge: 9467c38 3b0d162
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-10
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/fusion/compizconfig/libcompizconfig
+
+Danny Baumann <dannybaumann@web.de>	2008-03-10
+
+    Add overlapping output handling option to display settings group.
+
+Guillaume Seguin <guillaume@segu.in>	2008-03-06
+
+    * Bump version to 0.7.3
+
+Guillaume Seguin <guillaume@segu.in>	2008-03-06
+
+    * Bump version to 0.7.2
+
+Merge: 76cb8a7 e45c1dc
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-02-26
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/fusion/compizconfig/libcompizconfig
+
+Merge: c31723c d0de58f
+Danny Baumann <dannybaumann@web.de>	2008-02-23
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/compizconfig/libcompizconfig
+
+Danny Baumann <dannybaumann@web.de>	2008-02-23
+
+    Differentiate between an empty list and a list with one empty item by adding a delimiter also after the last item.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-22
+
+    Fix import of float values.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-02-15
+
+    Parse core dependencies.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-02-15
+
+    Don't add the same conflict multiple times to the list.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-02-15
+
+    Fix feature conflict handling.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-14
+
+    Fix float setting export.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-14
+
+    Clarify parameter name.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-14
+
+    Added some documentation for the most important functions.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-14
+
+    Do not autosave after import.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-13
+
+    Check for file existance before trying to import it.
+
+Roland Baer <roland@Vista.(none)>	2007-08-24
+
+    Major review, fixes
+
+Merge: fc2f0df cdd3e7f
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-10
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/fusion/compizconfig/libcompizconfig
+
+Danny Baumann <dannybaumann@web.de>	2008-01-06
+
+    Don't define VERSION twice.
+
+Patrick Niklaus <marex@opencompositing.org>	2007-12-27
+
+    Added file/image hint for cube caps images
+
+Danny Baumann <dannybaumann@web.de>	2007-11-27
+
+    Cleanup.
+
+Jigish Gohil <cyberorg@prime.cyberorg.info>	2007-11-27
+
+    fix for buffer overflow in strncat
+
+Patrick Niklaus <marex@opencompositing.org>	2007-11-06
+
+    Made it possible to export only non-default setting values
+
+Guillaume Seguin <guillaume@segu.in>	2007-10-21
+
+    * Bump version to 0.6.99
+
+Danny Baumann <dannybaumann@web.de>	2007-10-17
+
+    Move more bindings to key bindings page.
+
+Merge: 15dc54f d843f13
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-09-24
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/fusion/compizconfig/libcompizconfig
+
+Danny Baumann <dannybaumann@web.de>	2007-09-09
+
+    Ignore case when comparing to "Disabled".
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-09-07
+
+    Apply core changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-09-05
+
+    Make sure "core" is always the first plugin.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-04
+
+    Added grouping for new options.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-03
+
+    Cleanup.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-09-02
+
+    Allow empty lists.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-02
+
+    Make wobbly provide the feature "edgeresistance".
+
+Danny Baumann <dannybaumann@web.de>	2007-08-31
+
+    Install metadata file for ccp.
+
+Roland Bär <roland@Vista.(none)>	2007-08-31
+
+    Plug minor memleak.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-30
+
+    Add metadata handling to ccp.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-30
+
+    Track core changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-30
+
+    Do not create dir/file during import.
+    Save settings after import.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-29
+
+    Support modifier only keybindings correctly.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-29
+
+    Use new list handling.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-29
+
+    Added a more inteligent list object compare.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-29
+
+    Fixed plugin list handling.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-29
+
+    Fix list remove.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-28
+
+    There is still the core tag in the core.xml.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-28
+
+    Fixed settings loading for core options.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-28
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-28
+
+    Load core plugin by default.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-24
+
+    Another attempt at properly fixing file locking.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-23
+
+    Improve core and core plugin binding grouping.
+
+Merge: e8bb206 633536b
+Danny Baumann <dannybaumann@web.de>	2007-08-23
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/compizconfig/libcompizconfig
+
+Danny Baumann <dannybaumann@web.de>	2007-08-23
+
+    Fix ini file corruption.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-23
+
+    Allow disabling of key/button bindings.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-22
+
+    Track core option renaming.
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-22
+
+    Don't load kconfig plugin
+
+Roland Baer <roland@Vista.(none)>	2007-08-21
+
+    [PATCH] Sanitised return value(s) of getNodesFromXPath().
+    
+    If we return NULL, then *num should also be 0.
+    Mostly not directly the return value get checked, it
+    checks only num. At this rare path num is !=0 but it returns
+    NULL....
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-21
+
+    Do not return empty modifier string.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-21
+
+    Button 0 doesn't exist.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-21
+
+    Parse button metadata correctly.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-20
+
+    Use edge modifiers only for mouse bindings.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-20
+
+    Do not return NULL for conversion functions.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-20
+
+    Fixed edge modifiers.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-20
+
+    Accept NULL as parameter in stringAppend.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-20
+
+    const char *
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-20
+
+    Action setting rework part 6.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-20
+
+    Action setting rework part 5.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-20
+
+    Action setting rework part 4.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-20
+
+    Action setting rework part 3.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-20
+
+    Action setting rework part 2.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-20
+
+    Action setting rework part 1.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-14
+
+    Install default global config file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-12
+
+    Version update.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-09
+
+    Optimization.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-09
+
+    Remove debug output.
+
+Merge: 80a50f2 ba59b31
+Danny Baumann <dannybaumann@web.de>	2007-08-09
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/compizconfig/libcompizconfig
+
+Danny Baumann <dannybaumann@web.de>	2007-08-09
+
+    Properly set file permissions for newly-created files.
+
+Merge: e171259 3f2a329
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-08
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/fusion/compizconfig/libcompizconfig
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-08
+
+    Added proper debug message handling.
+
+Merge: 4681b7f a597b16
+Danny Baumann <dannybaumann@web.de>	2007-08-08
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/compizconfig/libcompizconfig
+
+Patrick Niklaus <marex@opencompositing.org>	2007-08-08
+
+    Fixed getExistingProfiles for new config path
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-08
+
+    Do not unload symbols because there may be some static variables in glib that could cause errors.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-08
+
+    Correctly reset privData pointer.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-08
+
+    Fix profile export.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-08
+
+    Fixed make distcheck.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-07
+
+    Handle plugin requirement as after rule.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-06
+
+    Add missing file.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-06
+
+    Move screens and numScreens back to CCSContext.
+    They're needed by the backends.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-06
+
+    Split out backend definitions in separate header file.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-06
+
+    Remove internal variables from API and move them into internal struct.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-06
+
+    Remove unused struct member.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-06
+
+    Read/write autosort setting from/to config.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-06
+
+    Added setter / getter for plugin list autosorting setting.
+    If disabled, the settings manager is responsible for properly setting the active_plugins list.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-06
+
+    Use default value for active_plugins setting rather than <autoenable> tag.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-06
+
+    Ensure ccp being loaded in plugin instead of sorted plugin list generation.
+
+Merge: 2938992 933b83b
+Danny Baumann <dannybaumann@web.de>	2007-08-06
+
+    Merge branch 'master' into plugin-load-redesign
+
+Danny Baumann <dannybaumann@web.de>	2007-08-06
+
+    More missing NULL pointer checks.
+
+Merge: 8cb72f5 f0cd24b
+Danny Baumann <dannybaumann@web.de>	2007-08-06
+
+    Merge branch 'master' into plugin-load-redesign
+
+Danny Baumann <dannybaumann@web.de>	2007-08-06
+
+    Add missing NULL check.
+    Minor cleanup.
+
+Merge: 5be3b2b 413179d
+Danny Baumann <dannybaumann@web.de>	2007-08-02
+
+    Merge branch 'master' into plugin-load-redesign
+
+Danny Baumann <dannybaumann@web.de>	2007-08-02
+
+    Use calloc instead of malloc.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-02
+
+    Revert back to using ~/.config if XDG_CONFIG_HOME does not exist.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-02
+
+    Revert back to using ~/.config if XDG_CONFIG_HOME does not exist.
+
+Merge: 6729d11 3813eec
+Danny Baumann <dannybaumann@web.de>	2007-08-02
+
+    Merge branch 'master' into plugin-load-redesign
+
+Danny Baumann <dannybaumann@web.de>	2007-08-02
+
+    Added proper NULL checks for malloc return values.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-02
+
+    Also check if environment variables contain a valid string.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-02
+
+    Keep usual config directory (~/.compizconfig) if no XDG home directory was found.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-02
+
+    Coding style adjustments.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-02
+
+    Fix typo.
+
+Christopher James Halse Rogers <chris@Burninator.(none)>	2007-08-02
+
+    Make libcompizconfig comply to XDG spec.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-02
+
+    Add ccp to sorted plugin list.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-02
+
+    Always load core settings.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-02
+
+    Also read active_plugins setting from XML.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-02
+
+    Get rid of ____plugin_enabled setting and write the active_plugins setting whenever a plugin is enabled or disabled.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-28
+
+    Enable workarounds by default.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-17
+
+    Make sure that ccs and compiz use the same option type.
+
+Kristian Lyngstol <kristian@nihilus.(none)>	2007-07-16
+
+    Remove features/deps from vtable
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-11
+
+    Added missing free's.   
+    Catched by Roland Bär.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-11
+
+    Use exclusive file locks only for write operations.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-11
+
+    Fixed missing return value check.
+    Catched by Roland Bär.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-10
+
+    Revert "Use flock for file locking. (seams to be more stable)"
+    - fcntl has much better performance
+    
+    This reverts commit c8a0d9f5777adf9615ca8628e64f1718345a0ae6.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-10
+
+    Use flock for file locking. (seams to be more stable)
+
+Merge: 080285b bf06693
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-10
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/fusion/compizconfig/libcompizconfig
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-10
+
+    Open lock for writing to get exclusive lock.
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-09
+
+    * Add ccsEmptyContextNew to create a context without any plugin
+    * Add ccsLoadPlugin to attempt to load a single plugin
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-07
+
+    * Whitespace fix
+
+Treviño - 3v1n0 <trevi55@gmail.com>	2007-07-07
+
+    Autoenable regex by default
+    It could be needed for best window recognition in plugins
+    like animation, switchers and so...
+
+Danny Baumann <dannybaumann@web.de>	2007-07-05
+
+    More indention fixes.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-05
+
+    Compiz indention.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-05
+
+    More indention fixes.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-05
+
+    More Compiz indention conversion.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-05
+
+    Compiz indention.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-05
+
+    Compiz indention finished.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-05
+
+    Compiz indention style without postprocessing.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-05
+
+    Fix possible memory leak.
+    Catched by Roland Bär.
+
+Patrick Niklaus <marex@opencompositing.org>	2007-07-04
+
+    Revert "Added functions to convert the edge button mask to stringlist and the"
+    
+    This reverts commit 95f2c0d379ba3d665f1183e539ea597ec677d7b6.
+
+Patrick Niklaus <marex@opencompositing.org>	2007-07-04
+
+    Added functions to convert the edge button mask to stringlist and the
+    stringlist to edge button mask
+
+Danny Baumann <dannybaumann@web.de>	2007-07-03
+
+    Lock ini files against concurrent accesses.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-03
+
+    Use safer methods for open ini files for writing. Files are no longer deleted on opening, but on saving.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-03
+
+    Open and close ini file for writing in iniparser module.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-29
+
+    Improve ccsIsEqualAction and ccsIsEqualColor functions.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-26
+
+    Fix typo.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-26
+
+    Crash fix if NULL is passed as profile name.
+
+Merge: 73f266d 071d825
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-25
+
+    Merge branch 'master' of git+ssh://git.beryl-project.org/git/compcomm/compiz-configuration-system/libraries/ccs-lib
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-25
+
+    Use global.xml to override compiz defaults.
+
+Treviño - 3v1n0 <trevi55@gmail.com>	2007-06-22
+
+    Merged 03_add_missing_include.patch from ubuntu packages
+
+Danny Baumann <dannybaumann@web.de>	2007-06-21
+
+    Added grouping for transparent cube options.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-18
+
+    Improve plugin loading speed (factor > 2) by disabling the parsing of plugin/setting description
+
+Merge: fab4702 b6839bb
+Danny Baumann <dannybaumann@web.de>	2007-06-15
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/compcomm/compiz-configuration-system/libraries/ccs-lib
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-15
+
+    Added more debug info
+
+Danny Baumann <dannybaumann@web.de>	2007-06-15
+
+    Avoid creation of global config file.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-15
+
+    Fix warning.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-15
+
+    Fix global settings reading if ~/.compizconfig/config isn't present.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-15
+
+    Crash fix.
+
+Merge: 4246f57 1fbff48
+Danny Baumann <dannybaumann@web.de>	2007-06-15
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/compcomm/compiz-configuration-system/libraries/ccs-lib
+
+Danny Baumann <dannybaumann@web.de>	2007-06-15
+
+    Don't do anything on profile / integration change if nothing was changed.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-15
+
+    Use lower case for section names.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-15
+
+    fixed global config directory.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-15
+
+    - Don't allow deletion of the default profile.
+    - Pass the context to the profile delete/get backend functions.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-14
+
+    Try to detect the running session
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-14
+
+    Allow empty values in config\n
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-14
+
+    don't change config if nothing changed
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-14
+
+    Added reading of the COMPIZ_CONFIG_PROFILE variable to enable DE specific configurations
+
+Danny Baumann <dannybaumann@web.de>	2007-06-14
+
+    Use flags rather than a Bool value to pass the information if the glib main loop should be run.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-14
+
+    Added is integration/readOnly setting option reading.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-13
+
+    Don't execute gconf backend process events if glib is loaded
+
+Merge: 1d80ceb ba7277f
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-13
+
+    Merge branch 'master' of git+ssh://git.beryl-project.org/git/compcomm/compiz-configuration-system/libraries/ccs-lib
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-13
+
+    Use global config file if local is not present
+
+Danny Baumann <dannybaumann@web.de>	2007-06-13
+
+    Added grouping for cube options.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-13
+
+    Group core options.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-13
+
+    Indention fix.
+
+Merge: 242c33e 2773d49
+Danny Baumann <dannybaumann@web.de>	2007-06-12
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/compcomm/compiz-configuration-system/libraries/ccs-lib
+
+Danny Baumann <dannybaumann@web.de>	2007-06-12
+
+    Check for inotify header presence.
+    If that header isn't present, print out a big warning message, but don't fail on compilation.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-12
+
+    Fix includes.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-12
+
+    Fixed license and email
+
+Merge: 1f08989 395e516
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-12
+
+    Merge branch 'master' of git+ssh://git.beryl-project.org/git/compcomm/compiz-configuration-system/libraries/ccs-lib
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Initialize color alpha with 0xffff.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-11
+
+    Move some plugins to utility section.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    libccs -> libcompizconfig rename
+
+Danny Baumann <dannybaumann@web.de>	2007-06-08
+
+    Remove winrules from global metadata.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-08
+
+    Combine placement matches into a list.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-07
+
+    Added subgroup for core opacity values into global metadata.
+
+Merge: e58575c 7643836
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-06
+
+    Merge branch 'master' of git+ssh://git.beryl-project.org/git/compcomm/compiz-configuration-system/libraries/ccs-lib
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-06
+
+    Removed string restrictions
+
+Merge: 198f16d 8ff1c5c
+Danny Baumann <dannybaumann@web.de>	2007-06-05
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/compcomm/compiz-configuration-system/libraries/ccs-lib
+
+Danny Baumann <dannybaumann@web.de>	2007-06-05
+
+    Finally fix 'make distcheck'.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-05
+
+    ignore read only options
+
+Merge: 159e0a0 76482ad
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-05
+
+    Merge branch 'master' of git+ssh://git.beryl-project.org/git/compcomm/compiz-configuration-system/libraries/ccs-lib
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-05
+
+    Initialize plugin settings only when needed
+
+Danny Baumann <dannybaumann@web.de>	2007-06-05
+
+    Enable a basic plugin set by default.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-05
+
+    Indentation fixes.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-05
+
+    Include private header files in source file list.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-05
+
+    Add dummy file to make 'make dist' happy.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-05
+
+    bsettings -> libccs
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-23
+
+    check that context exists
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-16
+
+    Make sure that each plugin isn't inserted twice into Plugin list during generation of the sorted plugin list
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-16
+
+    remove old style rule parsing
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-16
+
+    updated global metadata
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-16
+
+    support for new style of plugin dependencies (the old ones are still supported for a while)
+
+Merge: ec9236b 08494b0
+Danny Baumann <dannybaumann@web.de>	2007-05-16
+
+    Merge branch 'master' of git+ssh://maniac@git.beryl-project.org/git/compcomm/compiz-configuration-system/libraries/ccs-lib
+
+Danny Baumann <dannybaumann@web.de>	2007-05-16
+
+    Don't write settings that we apply ourselves.
+
+Merge: 890aaa6 6986a78
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-16
+
+    Merge branch 'master' of git+ssh://git.beryl-project.org/git/compcomm/compiz-configuration-system/libraries/ccs-lib
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-16
+
+    added support for int descriptions
+
+Danny Baumann <dannybaumann@web.de>	2007-05-15
+
+    Add some missing writes to the ccs context.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-14
+
+    Fix reading of lists from INI file.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-14
+
+    Fix description.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-13
+
+    Now only compare screen num for screen options.
+
+Merge: cc2e120 285ba65
+Danny Baumann <dannybaumann@web.de>	2007-05-13
+
+    Merge branch 'master' of git+ssh://maniac@git.beryl-project.org/git/compcomm/compiz-configuration-system/libraries/ccs-lib
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-13
+
+    fixed list object remove function
+
+Danny Baumann <dannybaumann@web.de>	2007-05-13
+
+    Fixed screen edge action handling.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-13
+
+    Fix comparison of Bool values.
+
+Danny Baumann <dannybaumann@web.de>	2007-05-13
+
+    Remove file watch when unloading backend.
+
+Merge: 056be71 4936cc7
+Danny Baumann <dannybaumann@web.de>	2007-05-11
+
+    Merge branch 'master' of git+ssh://maniac@git.beryl-project.org/git/compcomm/compiz-configuration-system/libraries/ccs-lib
+
+Danny Baumann <dannybaumann@web.de>	2007-05-11
+
+    Export modifier <-> string conversion routines.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-11
+
+    Category should never be NULL
+
+Danny Baumann <dannybaumann@web.de>	2007-05-10
+
+    Fix some categories.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-07
+
+    added xml tag "autoenable" that will make a plugin enabled by default
+
+Danny Baumann <dannybaumann@web.de>	2007-05-07
+
+    Fix parsing of strings which contain spaces.
+
+Merge: 0da686e 37e6b75
+Quinn Storm <quinn@darter.(none)>	2007-05-06
+
+    Merge branch 'master' of git+ssh://git.beryl-project.org/git/compcomm/compiz-configuration-system/libraries/ccs-lib
+
+Quinn Storm <quinn@darter.(none)>	2007-05-06
+
+    remove removal of #
+    fix bug properly
+
+marex <marex@beryl-project.org>	2007-05-06
+
+    metadata: Some more category stuff
+
+Quinn Storm <quinn@darter.(none)>	2007-05-06
+
+    fix color option handling for ini plugin!
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-05
+
+    updated global metadata file
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-05
+
+    ignore "active_plugins" core option
+
+Danny Baumann <daba@mobilrechner.localdomain>	2007-05-04
+
+    Adapt for latest Compiz git.
+
+Merge: c42c76f 5005168
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-02
+
+    Merge branch 'master' of git+ssh://git.beryl-project.org/git/compcomm/compiz-configuration-system/libraries/ccs-lib
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-02
+
+    Added fetching of metadata from global file
+
+Danny Baumann <dannybaumann@web.de>	2007-05-02
+
+    Initialize string and match options with empty strings when there is no default in the metadata.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-01
+
+    increase variable after setting the screen number
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-01
+
+    added multiscreen awareness to ccs-lib and ccp
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-30
+
+    Renamed to the final name "Compiz configuration system (ccs)"
+
+Danny Baumann <dannybaumann@web.de>	2007-04-26
+
+    Fix dangling semicolon.
+
+Danny Baumann <dannybaumann@web.de>	2007-04-26
+
+    Fix typo making config file reading not working.
+
+Danny Baumann <dannybaumann@web.de>	2007-04-26
+
+    Actually allocate returned profile name.
+
+Danny Baumann <dannybaumann@web.de>	2007-04-26
+
+    Fix dangling newline.
+
+Danny Baumann <dannybaumann@web.de>	2007-04-26
+
+    Export all settings including those matching the defaults.
+
+Danny Baumann <dannybaumann@web.de>	2007-04-26
+
+    Fix typo.
+
+Merge: 5470c21 3e74a13
+Danny Baumann <dannybaumann@web.de>	2007-04-26
+
+    Merge branch 'master' of git+ssh://maniac@git.beryl-project.org/git/compcomm/libraries/libbs/libbs
+
+Danny Baumann <dannybaumann@web.de>	2007-04-26
+
+    Added context import / export.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-26
+
+    Disabled setting dump
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-26
+
+    Added fetching of backend list
+
+Danny Baumann <dannybaumann@web.de>	2007-04-26
+
+    Disable config file file watch while writing config file.
+
+Danny Baumann <dannybaumann@web.de>	2007-04-26
+
+    Don't reinitialize the backend on bsSetBackend calls if the new backend is the same as the old one.
+
+Danny Baumann <dannybaumann@web.de>	2007-04-26
+
+    Warning fixes.
+
+Danny Baumann <dannybaumann@web.de>	2007-04-26
+
+    Build fix.
+
+Merge: 44392e6 4bf808c
+Danny Baumann <dannybaumann@web.de>	2007-04-25
+
+    Merge branch 'master' of git+ssh://maniac@git.beryl-project.org/git/compcomm/libraries/libbs/libbs
+
+Danny Baumann <dannybaumann@web.de>	2007-04-25
+
+    Don't return default profile.
+
+Merge: d3bbf07 4d0cce4
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-25
+
+    Merge branch 'master' of git+ssh://git.beryl-project.org/git/compiz/libbs/libbs
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-25
+
+    added profile handling function
+
+Merge: 3ee7c11 b8c5b09
+Danny Baumann <dannybaumann@web.de>	2007-04-25
+
+    Merge branch 'master' of git+ssh://maniac@git.beryl-project.org/git/compcomm/libraries/libbs/libbs
+
+Danny Baumann <dannybaumann@web.de>	2007-04-25
+
+    Added missing header.
+
+Danny Baumann <dannybaumann@web.de>	2007-04-25
+
+    Added file watch for config file.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-25
+
+    Merge
+
+Danny Baumann <dannybaumann@web.de>	2007-04-25
+
+    Fix float value comparison.
+
+Danny Baumann <dannybaumann@web.de>	2007-04-25
+
+    Don't touch the changed settings list in the backend.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-25
+
+    fixed wrong including of settings into context->changedSettings
+
+Danny Baumann <dannybaumann@web.de>	2007-04-25
+
+    Minor cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2007-04-25
+
+    Fixed core option setting.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-25
+
+    removed duplicate function prototype
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-25
+
+    added action conflict handling
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-24
+
+    fixed handling of default values
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-24
+
+    convert only valid keysyms
+
+Merge: 9a5c756 d98562e
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-24
+
+    Merge branch 'master' of git+ssh://git.beryl-project.org/git/compiz/libbs/libbs
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-24
+
+    reset to program locale
+
+Danny Baumann <dannybaumann@web.de>	2007-04-24
+
+    Fixed string setting for strings without allowed value restriction.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-23
+
+    fixed listRemove function (fixes plugin list order calculation)
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-23
+
+    ignore bset,gconf and ini
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-23
+
+    Fixed conflict generation
+
+Danny Baumann <dannybaumann@web.de>	2007-04-23
+
+    Reset setting to default if it can't be found in the ini file.
+
+Danny Baumann <dannybaumann@web.de>	2007-04-23
+
+    Check if plugin is active before processing its features / dependencies.
+
+Danny Baumann <dannybaumann@web.de>	2007-04-23
+
+    Added bsPluginIsActive function.
+
+Merge: 801874e d153ba8
+Danny Baumann <dannybaumann@web.de>	2007-04-23
+
+    Merge branch 'master' of git+ssh://maniac@git.beryl-project.org/git/compcomm/libraries/libbs/libbs
+
+Danny Baumann <dannybaumann@web.de>	2007-04-23
+
+    Implemented plugin unload checking.
+
+Merge: 4dcc777 bd0bc12
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-23
+
+    Merge branch 'master' of git+ssh://git.beryl-project.org/git/compiz/libbs/libbs
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-23
+
+    fixed core option setting
+
+Danny Baumann <dannybaumann@web.de>	2007-04-23
+
+    Implemented plugin load conflict checking.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-23
+
+    Added API prototype for plugin conflict handling.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-23
+
+    Added reading of rules/features from xml.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-20
+
+    Added support to read translated strings from the XML metadata file
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-19
+
+    Fixed memory corruption.
+
+Danny Baumann <dannybaumann@web.de>	2007-04-19
+
+    Fixed profile usage (again...)
+
+Danny Baumann <dannybaumann@web.de>	2007-04-19
+
+    Listen for more inotify flags.
+
+Merge: 21a7888 106f977
+Danny Baumann <dannybaumann@web.de>	2007-04-19
+
+    Merge branch 'master' of git+ssh://maniac@git.beryl-project.org/git/compiz/libbs/libbs
+
+Danny Baumann <dannybaumann@web.de>	2007-04-19
+
+    Make sure data->lastProfile is assigned properly.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-19
+
+    made resetToDefault public
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-19
+
+    reset value correctly
+
+Merge: 9d56ffa 7814210
+Danny Baumann <dannybaumann@web.de>	2007-04-19
+
+    Merge branch 'master' of git+ssh://maniac@git.beryl-project.org/git/compiz/libbs/libbs
+
+Danny Baumann <dannybaumann@web.de>	2007-04-19
+
+    Reload ini file on file change notify.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-19
+
+    Set the right setlocale value.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-19
+
+    set "C" locale for strtod
+
+Merge: 3cbb313 63085bb
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-19
+
+    Merge branch 'master' of git+ssh://git.beryl-project.org/git/compiz/libbs/libbs
+
+Danny Baumann <dannybaumann@web.de>	2007-04-19
+
+    Fixed default profile handling.
+
+Merge: bdde407 04171c0
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-19
+
+    Merge branch 'master' of git+ssh://git.beryl-project.org/git/compiz/libbs/libbs
+
+Danny Baumann <dannybaumann@web.de>	2007-04-19
+
+    Fixed ini file formatting.
+
+Merge: 6c4e1c6 6662eac
+Danny Baumann <dannybaumann@web.de>	2007-04-19
+
+    Merge branch 'master' of git+ssh://maniac@git.beryl-project.org/git/compiz/libbs/libbs
+
+Danny Baumann <dannybaumann@web.de>	2007-04-19
+
+    Fixed INI file writing format.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-19
+
+    only execute writesetting if the setting was found
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-19
+
+    fixed endless loop
+
+Danny Baumann <dannybaumann@web.de>	2007-04-19
+
+    Create ini file if it doesn't exist.
+
+Danny Baumann <dannybaumann@web.de>	2007-04-19
+
+    Properly increment private data buffer size indicator.
+
+Merge: ca3fb6c c1b9cb2
+Danny Baumann <dannybaumann@web.de>	2007-04-19
+
+    Merge branch 'master' of git+ssh://maniac@git.beryl-project.org/git/compiz/libbs/libbs
+
+Danny Baumann <dannybaumann@web.de>	2007-04-19
+
+    We shouldn't need to care about profile changes in the file change notify handler.
+
+Danny Baumann <dannybaumann@web.de>	2007-04-19
+
+    Disable file watches by removing them from inotify instead of marking them as disabled.
+
+Danny Baumann <dannybaumann@web.de>	2007-04-19
+
+    Make ini backend use the filewatch interface.
+
+Danny Baumann <dannybaumann@web.de>	2007-04-19
+
+    Added file watch interface (using inotify).
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-18
+
+    Removed memleaks.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-18
+
+    removed old code
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-18
+
+    added XML options reading system
+
+Danny Baumann <daba@rechenknecht.peppercon.de>	2007-04-18
+
+    Added missing binding conversion.
+
+marex <marex@beryl-project.org>	2007-04-17
+
+    Now installing the ini backend in the right palce and also fixed its
+    linking with libbsettings
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-04-06
+
+    libbs uses now bcop option files to generate plugin information (not very well tested).
+    plugin.options has to be in the plugin directory.
+    (now we need a bcop-dump plugin to generate option files for other plugins ;-)
+
+Danny Baumann <dannybaumann@web.de>	2007-03-28
+
+    libbs: use INI file interface for config file reading/writing
+
+Danny Baumann <dannybaumann@web.de>	2007-03-28
+
+    libbs: create dir for INI file before writing to it
+
+Danny Baumann <dannybaumann@web.de>	2007-03-27
+
+    libbs-ini: removed unneeded files
+
+Danny Baumann <dannybaumann@web.de>	2007-03-27
+
+    libbs-ini: remove unneeded files from build
+
+Danny Baumann <dannybaumann@web.de>	2007-03-27
+
+    libbs-ini: build fix
+
+Danny Baumann <dannybaumann@web.de>	2007-03-27
+
+    libbs-ini: adaptions for ini handling in libbs
+
+Danny Baumann <dannybaumann@web.de>	2007-03-27
+
+    libbs: added ini file handling
+
+Danny Baumann <daba@rechenknecht.peppercon.de>	2007-03-27
+
+    libbs: added ini handling files
+
+Danny Baumann <dannybaumann@web.de>	2007-03-26
+
+    libbs: added action binding and color parsing routines which previously were spread over the backends
+
+Danny Baumann <daba@rechenknecht.peppercon.de>	2007-03-26
+
+    libbs-ini: added file change notify and made the ini file data context-private
+
+Danny Baumann <dannybaumann@web.de>	2007-03-26
+
+    libbs-ini: implemented list value writing
+
+Danny Baumann <daba@noname.(none)>	2007-03-25
+
+    libbs-ini: build fix
+
+Danny Baumann <daba@noname.(none)>	2007-03-25
+
+    libbs-ini: implemented list value reading
+
+Danny Baumann <daba@noname.(none)>	2007-03-25
+
+    libbs-ini: include screen number in key name
+
+Danny Baumann <dannybaumann@web.de>	2007-03-24
+
+    libbs-ini: avoid changing strings that reside in dictionary
+
+Danny Baumann <dannybaumann@web.de>	2007-03-23
+
+    libbs-ini: use more elegant tokenizing; added framework for list value reading/writing
+
+Danny Baumann <dannybaumann@web.de>	2007-03-23
+
+    libbs-ini: really write action value to disk
+
+Danny Baumann <dannybaumann@web.de>	2007-03-23
+
+    libbs-ini: added action value reading/writing as well as value unsetting
+
+Danny Baumann <dannybaumann@web.de>	2007-03-23
+
+    libbs-ini: added color value reading/writing
+
+Danny Baumann <dannybaumann@web.de>	2007-03-23
+
+    libbs-ini: added option-to-string converter (copied from gconf backend)
+
+Danny Baumann <dannybaumann@web.de>	2007-03-23
+
+    libbs-ini: build fix
+
+Danny Baumann <daba@rechenknecht.peppercon.de>	2007-03-23
+
+    libbs-ini: implemented profile deletion
+
+Danny Baumann <daba@rechenknecht.peppercon.de>	2007-03-23
+
+    libbs-ini: implemented profile deletion
+
+Danny Baumann <daba@rechenknecht.peppercon.de>	2007-03-23
+
+    libbs-ini: reading and writing of simple data types
+
+Danny Baumann <daba@mobilrechner.localdomain>	2007-03-23
+
+    libbs: also check for error condition when searching directory
+
+Danny Baumann <daba@noname.(none)>	2007-03-22
+
+    libbs: test commit, please ignore
+
+Danny Baumann <daba@noname.(none)>	2007-03-22
+
+    libbs: added basic ini file loading / saving
+
+Danny Baumann <daba@noname.(none)>	2007-03-22
+
+    libbs: more C'n'P woes (sorry, but have to learn git better :-/ )
+
+Danny Baumann <daba@rechenknecht.peppercon.de>	2007-03-22
+
+    libbs: get rid of C'n'P and really make ini a framework
+
+Danny Baumann <daba@rechenknecht.peppercon.de>	2007-03-22
+
+    libbs: added framework for INI backend based on iniparser library by Nicolas Devillard
+
+Danny Baumann <daba@rechenknecht.peppercon.de>	2007-03-22
+
+    libbs: added empty POTFILES.in to make autotools happy
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-03-22
+
+    Basic write support for the plugin
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-03-21
+
+    fixed action initialisation
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-03-21
+
+    added first simple version of the setting plugin
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-03-21
+
+    check for NULL pointer
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-03-21
+
+    store changed settings in list
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-03-21
+
+    added missing file
+
+maniac <maniac>	2007-03-16
+
+    libbs: removed gconf and glib checks
+
+onestone <onestone>	2007-03-15
+
+    libbs: added integrated configuration system
+
+onestone <onestone>	2007-03-15
+
+    libbs: updated TODO
+
+racarr <racarr>	2007-03-14
+
+    Just compare color.color
+
+racarr <racarr>	2007-03-14
+
+    Make the field compare macro a little safer, no reason NOT to do it
+
+onestone <onestone>	2007-03-14
+
+    libbs: fixed last commit
+
+onestone <onestone>	2007-03-14
+
+    libbs: added setting load function
+
+racarr <racarr>	2007-03-14
+
+    Add functions to compare BSSettingColorAction and Color, use this instead of memcmp to compare structs
+
+onestone <onestone>	2007-03-14
+
+    libbs: added processEvents call
+
+onestone <onestone>	2007-03-14
+
+    libbs: some fixes and new functions
+
+onestone <onestone>	2007-03-14
+
+    libbs: added active plugin list get functions
+
+maniac <maniac>	2007-03-14
+
+    libbs: added ListRemove function
+
+onestone <onestone>	2007-03-14
+
+    libbs: nicer List handling
+
+onestone <onestone>	2007-03-14
+
+    libbs: more list setter/getter functions
+
+onestone <onestone>	2007-03-14
+
+    libbs: more string list setter/getter functions
+
+onestone <onestone>	2007-03-14
+
+    libbs: added list get function
+
+onestone <onestone>	2007-03-14
+
+    libbs: added basic list set function
+
+maniac <maniac>	2007-03-14
+
+    libbs:
+    - use BSSettings* as parameter for getters as well
+    - remove function getSettingInfo
+
+onestone <onestone>	2007-03-14
+
+    libbs: changed setter functions
+
+maniac <maniac>	2007-03-14
+
+    libbs: avoid unnecessary memory allocations
+
+maniac <maniac>	2007-03-14
+
+    libbs:
+    - added edge button to action struct
+    - respect restriction from info struct for setting actions
+
+maniac <maniac>	2007-03-14
+
+    libbs:
+    - implemented getters
+    - check for valid setting type as first action in setters (makes no sense to do anything if the type is invalid)
+    - respect restrictions when setting float, int, string
+
+maniac <maniac>	2007-03-14
+
+    libbs:
+    - use TRUE/FALSE when returning a Bool instead of 0/1
+    - memcmp / strcmp return 0 if the memory blocks are equal
+    - fixed memleaks
+
+maniac <maniac>	2007-03-14
+
+    libbs: completed lists code
+
+maniac <maniac>	2007-03-14
+
+    libbs: minor cleanup
+
+racarr <racarr>	2007-03-14
+
+    Fix typos
+
+racarr <racarr>	2007-03-14
+
+    It's difficult to write a commit message describing what this does succinctly
+
+onestone <onestone>	2007-03-14
+
+    libbs: added TODO
+
+onestone <onestone>	2007-03-14
+
+    libbs: added copyFromDefault & copyValue functions
+
+racarr <racarr>	2007-03-14
+
+    Use Bool as return type
+
+racarr <racarr>	2007-03-14
+
+    Add setters
+
+onestone <onestone>	2007-03-14
+
+    libbs: added context destroy function
+
+onestone <onestone>	2007-03-14
+
+    libbs: backend should be in bsettings directory
+
+onestone <onestone>	2007-03-14
+
+    libbs: added backend loading
+
+onestone <onestone>	2007-03-13
+
+    libbs: added backend functions
+
+onestone <onestone>	2007-03-13
+
+    libbs: added cleanup functions
+
+onestone <onestone>	2007-03-13
+
+    libbs: added group handling
+
+onestone <onestone>	2007-03-13
+
+    libbs: completed settings loading
+
+onestone <onestone>	2007-03-13
+
+    libbs: initial plugin load
+
+onestone <onestone>	2007-03-13
+
+    libbs: whitespace changes
+
+onestone <onestone>	2007-03-13
+
+    first version of new data structures
+
+maniac <maniac>	2007-03-13
+
+    libbs branch: fix configure script
+
+onestone <onestone>	2007-03-13
+
+    test branch for libberylsettings rewrite

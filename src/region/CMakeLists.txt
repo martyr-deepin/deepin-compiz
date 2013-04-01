@@ -1,0 +1,64 @@
+pkg_check_modules (
+  X11
+  REQUIRED
+  x11
+)
+
+INCLUDE_DIRECTORIES (  
+  ${CMAKE_CURRENT_SOURCE_DIR}/include
+  ${CMAKE_CURRENT_SOURCE_DIR}/src
+
+  ${compiz_SOURCE_DIR}/src/point/include
+  ${compiz_SOURCE_DIR}/include
+
+  ${compiz_SOURCE_DIR}/src/rect/include
+  ${compiz_SOURCE_DIR}/include
+
+  ${Boost_INCLUDE_DIRS}
+  
+  ${GLIBMM_INCLUDE_DIRS}
+)
+
+LINK_DIRECTORIES (${X11_LIBRARY_DIRS}) 
+
+SET ( 
+  PUBLIC_HEADERS 
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/core/region.h
+)
+
+SET ( 
+  PRIVATE_HEADERS 
+)
+
+SET( 
+  SRCS 
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/region.cpp
+)
+
+ADD_LIBRARY( 
+  compiz_region STATIC
+  
+  ${SRCS}
+  
+  ${PUBLIC_HEADERS}
+  ${PRIVATE_HEADERS}
+)
+
+IF (COMPIZ_BUILD_TESTING)
+ADD_SUBDIRECTORY( ${CMAKE_CURRENT_SOURCE_DIR}/tests )
+ENDIF (COMPIZ_BUILD_TESTING)
+
+SET_TARGET_PROPERTIES(
+  compiz_region PROPERTIES
+  PUBLIC_HEADER "${PUBLIC_HEADERS}"
+)
+
+install (FILES ${PUBLIC_HEADERS} DESTINATION ${COMPIZ_CORE_INCLUDE_DIR})
+
+TARGET_LINK_LIBRARIES( 
+  compiz_region
+  compiz_point
+  compiz_rect
+
+  ${X11_LIBRARIES}
+)

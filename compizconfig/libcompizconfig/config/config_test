@@ -1,0 +1,3 @@
+[general]
+backend = ini
+plugin_list_autosort = true

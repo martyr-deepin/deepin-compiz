@@ -1,0 +1,185 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-02-24
+
+    Adapt for new core API
+
+Scott Moreau <oreaus@gmail.com>	2010-09-28
+
+    Don't require composite since opengl already does.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Ensure loading after required plugins
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-09-05
+
+    Fix drawing and only draw when necessary
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-08-30
+
+    Remove dummy
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-08-30
+
+    Dummy commit
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-08-30
+
+    Initial C++ port [broken]
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-11-04
+
+    Cache multiple fragment functions.
+    
+    Prevents recreating fragment functions when unit/param changes because of
+    another plugin. If the other plugin paints fragment programs on only some
+    windows, the issue becomes more visible and a new fragment function needs
+    to be created possibly every frame without this patch.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-11-04
+
+    Fix fragment function leak.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-17
+
+    Remove useless includes.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Track core changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-30
+
+    Track core changes.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-08-19
+
+    Handle changes in param & unit.
+
+Merge: ab09a3e 50dfd6b
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-15
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/fusion/plugins/reflex
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-15
+
+    Evaluate match only if needed.
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-15
+
+    * Fix file name in copyright header
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-07
+
+    Added default reflection image.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-06
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-16
+
+    Remove obsolete deps/features from vtable
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-05
+
+    Compiz indent style.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-03
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-02
+
+    Added 'after' dependency for blur which is needed for reflection to be visible with blur loaded.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-02
+
+    Indention fixes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-01
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    xml -> xml.in
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-28
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-18
+
+    Added option to disable reflection movement.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-18
+
+    Optimize shader code
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-18
+
+    Fixed image movement.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-18
+
+    load after image plugins
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-13
+
+    Fix image shifting when moving window.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Updated Makefile
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-21
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-17
+
+    initial commit
+
+compiz <compiz@de35.org>	2007-05-17
+
+    Dummy commit

@@ -1,0 +1,327 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-03-15
+
+    Update for new core API
+
+Scott Moreau <oreaus@gmail.com>	2011-02-22
+
+    Remove unused variable.
+
+Merge: 369dd49 2f19e62
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/compiz/plugins/animationaddon
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Cleanup (static analysis)
+
+Scott Moreau <oreaus@gmail.com>	2010-09-28
+
+    Don't require composite since opengl already does.
+
+Jay Catherwood <jay.catherwood@gmail.com>	2010-08-22
+
+    Change dissolve transparency
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-19
+
+    Fix NUM_EFFECTS
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-18
+
+    Remove #if'd code
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-17
+
+    Move dissolve effect to MultiAnim method
+
+Jay Catherwood <jay.catherwood@gmail.com>	2010-08-14
+
+    Fix crash by completing dissolve animation
+
+Jay Catherwood <jay.catherwood@gmail.com>	2010-08-12
+
+    Add dissolve animation
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Load after decor plugin to prevent windows moving after plugin load
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-11
+
+    Fix typo
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-11
+
+    Fix potential crash when blur is determining projection regions
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-11
+
+    Fix typo
+
+Merge: d5a78f7 049f863
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-11
+
+    Merge branch 'master' of ssh://git.compiz.org/git/compiz/plugins/animationaddon
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-11
+
+    Fix potential crash
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Ensure loading after required plugins
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Fix warning
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-01-28
+
+    Fix airplane animation:
+     * Do not use PolygonAnim::updateBB, rather override updateBB and update the screen
+     * Fixed incorrect calculation for PolygonObject::centerPosStart.z
+     * Fixed sign bits mixing up by casting on line 651
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-01-27
+
+    C++ port of the Airplane animation. Change PolygonObject vector to pointers to allow class overriding. Airplane animation is ported, but does not work yet
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-01-26
+
+    C++ port of the glide3 animation
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-01-26
+
+    C++ port of fold animation
+
+Merge: 1e7be81 19e7719
+Sam Spilsbury <smspillaz@gmail.com>	2010-01-26
+
+    Merge branch 'compiz++' of git+ssh://smspillaz@git.compiz.org/git/fusion/plugins/animationaddon into compiz++
+    
+    Conflicts:
+animationaddon.c           
+beamup.c           
+burn.c           
+particle.c           
+polygon.c           
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-24
+
+    Glass tessellation C++ port.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-24
+
+    Hexagon tessellation C++ port.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-24
+
+    Clean up.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-24
+
+    Skewer C++ port.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-24
+
+    Remove unnecessary enum.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-24
+
+    Leaf spread, domino, razr C++ port.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-24
+
+    Remove unnecessary constant.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-24
+
+    Limit max number of new particles created simultaneously.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-24
+
+    Limit max number of new particles created simultaneously.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-18
+
+    Remove unnecessary code, optimize.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-18
+
+    Optimize particle system creation.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-18
+
+    Beam-up C++ port.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-13
+
+    Fix crash when switching during polygon-based animation.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-06
+
+    Reduce CPU & RAM usage. Fix empty right/bottom border when normal windows open.
+    
+    (only polygon-based animations)
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-06
+
+    Fix artifacts with polygon-based animations.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-06
+
+    Fix too large damage region with particle-based animations.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-04
+
+    Fix crash when the first animation is polygon-based.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-11-28
+
+    Partial C++ port. Burn & explode works.
+    
+       Done: particle engine, polygon engine, burn, and explode.
+    Missing: hexagon and glass tessellation, airplane, beamup, domino,
+             fold, glide3, leafspread, and skewer.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-10-20
+
+    Fix possible crash.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-10-16
+
+    Initial setup for compiz++ port.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-10-07
+
+    Fix crash when window is removed before animation ends.
+    
+    e.g: gksu window.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-09-01
+
+    Fix warning.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-24
+
+    Fix crash when wrong effect option name is entered in ccsm.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-12
+
+    Simplify realloc failure handling.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-02
+
+    Clean up properly if realloc fails.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-02
+
+    Fix crash due to uninitialized variable.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-10-24
+
+    Update animationaddon ABI version.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-10-22
+
+    Fix glass tessellation problems.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-10-22
+
+    Whitespace changes.
+
+Kevin DuBois <kdub432@gmail.com>	2008-10-22
+
+    Add glass tessellation. Use it in explode animation.
+
+Guillaume Seguin <guillaume@segu.in>	2008-09-18
+
+    Revert "fix include compiz-animationaddon.h" (this is not useful)
+    
+    This reverts commit eac73f98cb1775fd727a3d706412c62cda0e7e2f.
+
+Jigish Gohil <cyberorg@opensuse.org>	2008-09-18
+
+    fix include compiz-animationaddon.h
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-09-18
+
+    Remove dummy.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-09-16
+
+    Track libcompizconfig changes.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-09-10
+
+    Appease gentoo's memcpy macro.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-09-09
+
+    Reorder subgroups in metadata.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-09-07
+
+    Check window validity.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-09-07
+
+    Remove unnecessary variable.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-09-06
+
+    Remove unnecessary includes.
+
+Merge: 92cab5f 7d1f0c8
+Danny Baumann <dannybaumann@web.de>	2008-09-01
+
+    Merge branch 'master' of git+ssh://maniac@git.compiz-fusion.org/git/fusion/plugins/animationaddon
+
+Danny Baumann <dannybaumann@web.de>	2008-09-01
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2008-08-31
+
+    Fini display options.
+
+Danny Baumann <dannybaumann@web.de>	2008-08-28
+
+    Added animation plugin dependency.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-08-27
+
+    Fix uninitialized variable.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-08-27
+
+    Dummy commit
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-08-27
+
+    Enum -> string. Merge animation changes since April.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-04-23
+
+    Modifications for animation -> animationaddon.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-04-23
+
+    Remove/rename files.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-04-22
+
+    Initial commit. Copy of animation as of 22 Apr 2008 20:00:00 +0000.

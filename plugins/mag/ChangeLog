@@ -1,0 +1,237 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-02-24
+
+    Adapt for new core API
+
+Scott Moreau <oreaus@gmail.com>	2010-09-28
+
+    Don't require composite since opengl already does.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-04
+
+    Remove build dependency on compiztoolbox
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-04
+
+    Don't depend on compiztoolbox
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-01
+
+    Simplify serialization interface
+
+Merge: f844a2a 30889b6
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-06-18
+
+    Merge branch 'master' of git+ssh://smspillaz@git.compiz.org/git/compiz/plugins/mag
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-06-12
+
+    Added serialization interface and necessary changes
+
+Guillaume Seguin <guillaume@segu.in>	2010-06-01
+
+    Load after image loaders
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Use PropertyWriter to keep toggled state persistence
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-24
+
+    Load after decor plugin to prevent windows moving after plugin load
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Use C++ bool
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Ensure that we load after composite, opengl and mousepoll
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-08
+
+    Disable painting functions when not needed.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-08
+
+    Start zoomed when initiated.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-08
+
+    Require opengl plugin.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-08
+
+    Fix painting.
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-02
+
+    remove dummy
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-02
+
+    dummy commit
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-02
+
+    remove dummy
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-02
+
+    dummy commit
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-02
+
+    Added relevant files
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-02
+
+    Initial C++ port. Works in theory but painting is broken
+
+Danny Baumann <dannybaumann@web.de>	2008-09-01
+
+    Track core changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-01
+
+    glMultiytexCoord2f is now in core.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-02-11
+
+    Damage screen if the mode changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-02-05
+
+    Dummy
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-02-05
+
+    Fixed "Keep always on screen mode".
+
+Patrick Niklaus <marex@opencompositing.org>	2008-01-25
+
+    Fixed image x and y offset
+
+Patrick Niklaus <marex@opencompositing.org>	2008-01-25
+
+    Reorganized gnome image svg
+
+Patrick Niklaus <marex@opencompositing.org>	2008-01-25
+
+    Fixed size of the oxygen image to match the size of gnome image
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-25
+
+    Use COS instead of SIN because it's broken on intel.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-24
+
+    Make copied area 2 pixels bigger to avoid interpolation errors at the edges.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Replace "fragment.position" with texture coordinates to workaround broken implementations.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Replaced KIL shader operation with CMP to support more hardware.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Check for header changes
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Patrick Niklaus <marex@opencompositing.org>	2008-01-21
+
+    Added new magnifier image, taken from Oxygen icon theme
+
+Patrick Niklaus <marex@opencompositing.org>	2008-01-21
+
+    Added new magnifier image, taken from the Gnome-Icon-Theme
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-21
+
+    Damage only needed regions.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-21
+
+    Better option grouping.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-21
+
+    Merged fisheye plugin as another mag mode.
+
+Danny Baumann <dannybaumann@web.de>	2008-01-21
+
+    Coding style adjustments.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-21
+
+    Translate group names.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-21
+
+    Added new image based magnifier mode.
+    (temporary example images only)
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-21
+
+    Finally fixed "Keep fully on screen" mode.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-21
+
+    Translate the right region.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-21
+
+    Copy only the needed part of the screen.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-21
+
+    Changed zoom system to a texture based system, to allow more features in the future and to fix multihead issues.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-19
+
+    Fixed multihead configurations.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-18
+
+    Initial commit.
+
+compiz <compiz@opencompositing.org>	2008-01-18
+
+    Dummy commit

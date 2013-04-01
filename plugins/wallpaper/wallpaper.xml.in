@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<compiz>
+	<plugin name="wallpaper" useBcop="true">
+		<_short>Wallpaper</_short>
+		<_long>Draw the desktop wallpaper</_long>
+		<category>Utility</category>
+		<deps>
+			<requirement>
+				<plugin>opengl</plugin>
+			</requirement>
+			<relation type="after">
+				<plugin>composite</plugin>
+				<plugin>opengl</plugin>
+				<plugin>svg</plugin>
+				<plugin>png</plugin>
+				<plugin>imgjpeg</plugin>
+				<plugin>decor</plugin>
+			</relation>
+		</deps>
+		<options>
+			<subgroup>
+				<_short>Backgrounds</_short>
+				<option name="bg_image" type="list">
+					<_short>Image</_short>
+					<_long>Image file.</_long>
+					<type>string</type>
+					<hints>file;image;</hints>
+				</option>
+				<option name="bg_image_pos" type="list">
+					<_short>Position</_short>
+					<_long>Image position.</_long>
+					<type>int</type>
+					<min>0</min>
+					<max>4</max>
+					<desc>
+						<value>0</value>
+						<_name>Scale and Crop</_name>
+					</desc>
+					<desc>
+						<value>1</value>
+						<_name>Scaled</_name>
+					</desc>
+					<desc>
+						<value>2</value>
+						<_name>Centered</_name>
+					</desc>
+					<desc>
+						<value>3</value>
+						<_name>Tiled</_name>
+					</desc>
+					<desc>
+						<value>4</value>
+						<_name>Center Tiled</_name>
+					</desc>
+				</option>
+				<option name="bg_fill_type" type="list">
+					<_short>Fill type</_short>
+					<_long>Background fill type.</_long>
+					<type>int</type>
+					<min>0</min>
+					<max>2</max>
+					<desc>
+						<value>0</value>
+						<_name>Solid fill</_name>
+					</desc>
+					<desc>
+						<value>1</value>
+						<_name>Vertical gradient</_name>
+					</desc>
+					<desc>
+						<value>2</value>
+						<_name>Horizontal gradient</_name>
+					</desc>
+				</option>
+				<option name="bg_color1" type="list">
+					<_short>Color 1</_short>
+					<_long>Fill or first gradient color.</_long>
+					<type>color</type>
+				</option>
+				<option name="bg_color2" type="list">
+					<_short>Color 2</_short>
+					<_long>Second gradient color.</_long>
+					<type>color</type>
+				</option>
+			</subgroup>
+			<subgroup>
+				<_short>Wallpaper Rotation</_short>
+				<option name="cycle_wallpapers" type="bool">
+					<_short>Cycle Wallpapers</_short>
+					<_long>Cycle through wallpapers if more than one is defined.</_long>
+					<default>false</default>
+				</option>
+				<option name="cycle_timeout" type="float">
+					<_short>Cycle Timeout (min)</_short>
+					<_long>Length of time before cycling to the next wallpaper.</_long>
+					<default>10.0</default>
+					<min>0.15</min>
+					<max>1440.0</max>
+				</option>
+				<option name="fade_duration" type="float">
+					<_short>Fade Duration (sec)</_short>
+					<_long>Length of time to fade from one wallpaper to the next.</_long>
+					<default>2.0</default>
+					<min>0.05</min>
+					<max>10.0</max>
+				</option>
+			</subgroup>
+		</options>
+	</plugin>
+</compiz>
+
+	
+	

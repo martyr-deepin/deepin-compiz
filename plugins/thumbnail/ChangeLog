@@ -1,0 +1,304 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-03-15
+
+    Update for new core API
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-27
+
+    Only enable resizeNotify when we need it
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-27
+
+    s/resize/resizeNotify/
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-27
+
+    Only use window paint functions where we need them
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-27
+
+    Only call glPaintOutput when needed
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-27
+
+    1) Add copyright notices
+    2) Fix warning
+    3) Only  do preparePaint/donePaint when needed
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-27
+
+    Hook window functions correctly
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Cleanup (static analysis)
+
+Merge: 55111c0 a135c42
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Merge branch 'master' of ssh://anongit.compiz.org/git/compiz/plugins/thumbnail
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-24
+
+    Load after decor plugin to prevent windows moving after plugin load
+
+Danny Baumann <dannybaumann@web.de>	2010-05-01
+
+    Avoid useless cast.
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-05-01
+
+    Use CompRect for output geometry
+
+Merge: 8d624d4 6798a4e
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Merge branch 'master' of ssh://anongit.compiz.org/git/compiz/plugins/thumbnail
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Use C++ bool
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Ensure that we load after composite and opengl
+
+Merge: 284606b a308b30
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Merge branch 'compiz++' of ../thumbnail into compiz++
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Fix warnings
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-09-02
+
+    Fix possible crash on window closing.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-27
+
+    Fix uninitialized variables.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-08
+
+    Fix damage and painting issues.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-08
+
+    Require opengl plugin.
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-01
+
+    Remove dummy
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-01
+
+    dummy commit
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-01
+
+    Initial c++ port, although thumbnail texture painting and damage is semi-broken
+
+Danny Baumann <dannybaumann@web.de>	2009-01-15
+
+    Fix double free.
+
+Danny Baumann <dannybaumann@web.de>	2009-01-11
+
+    Adapt for text plugin interface changes.
+
+Danny Baumann <dannybaumann@web.de>	2008-11-26
+
+    Speed up window-on-viewport determination.
+
+Danny Baumann <dannybaumann@web.de>	2008-11-18
+
+    Show thumbnails for all windows that set the dock hint (also for below state ones).
+
+Danny Baumann <dannybaumann@web.de>	2008-09-15
+
+    Fix constant damage of thumbnail while it is shown.
+
+Danny Baumann <dannybaumann@web.de>	2008-09-14
+
+    Prevent excessive damage.
+
+Danny Baumann <dannybaumann@web.de>	2008-09-14
+
+    Damage old thumb properly when making it invisible.
+
+Danny Baumann <dannybaumann@web.de>	2008-09-14
+
+    Optimization.
+
+Danny Baumann <dannybaumann@web.de>	2008-09-01
+
+    Track core changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-06-18
+
+    Don't crash if ts->dock is not set.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-06-18
+
+    Track core changes
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-06-18
+
+    Reset thumbnail correctly if mouse leaves thumbnail area.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-06-18
+
+    Use mousepoll and only update mouse position if mouse is above a desktop window.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-09
+
+    Use icon geometry stored in CompWindow struct.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Check for header changes
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-17
+
+    Don't include unneeded headers.
+
+Roland Baer <roland@Vista.(none)>	2007-09-10
+
+    Too late null check fix
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-02
+
+    Cleanup and beautification.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-02
+
+    Track text plugin changes and check for its presence.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-31
+
+    Use correct header file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-30
+
+    Track core changes.
+
+Roland Baer <roland@Vista.(none)>	2007-08-16
+
+    [PATCH] XCreateRegion can return NULL
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-06
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-19
+
+    Reset old thumbnails correctly.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-19
+
+    Don't update window title when it's disabled.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-19
+
+    Disable texture cooridinate array before painting directly.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-16
+
+    Remove obsolete deps/features from vtable
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-05
+
+    Compiz indent style.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-01
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    xml -> xml.in
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-28
+
+    Makefile update.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-26
+
+    Scale z by 1 instead of 0.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-11
+
+    Use text plugin package.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Updated Makefile
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Updated Makefile
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-01
+
+    Applied lastest core changes
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-21
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-17
+
+    initial commit
+
+compiz <compiz@de35.org>	2007-05-17
+
+    Dummy commit

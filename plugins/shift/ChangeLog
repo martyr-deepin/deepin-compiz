@@ -1,0 +1,487 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-03-14
+
+    Update for new core API
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-05
+
+    Tweak defaults
+
+Merge: b96a25b 5671860
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/compiz/plugins/shift
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Cleanup (static analysis)
+
+Scott Moreau <oreaus@gmail.com>	2010-09-28
+
+    Don't require composite since opengl already does.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-19
+
+    Make space between windows and maximum number of visible windows configurable
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-16
+
+    Make cover angle configurable
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Load after decor plugin to prevent windows moving after plugin load
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-09
+
+    Fix prolonged period where animation values are extremely low
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-09
+
+    Fix more invisible () / !isViewable () confusion, resulting in the decoration
+    plugin's switcher window displaying briefly during shift
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-09
+
+    Fix typo which would cause the initiate bindings not to work
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-09
+
+    Fix more uninitialized variable usage
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-09
+
+    Fix use of unused variable in conditional
+
+Merge: 6121ac6 3a6e74d
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-08
+
+    Merge branch 'master' of ssh://smspillaz@git.compiz.org/git/compiz/plugins/shift
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-08
+
+    Add dynamic wrappable function enable/disable
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-08
+
+    Don't draw reflection and parts of windows on both outputs for "On activated output"
+
+Danny Baumann <dannybaumann@web.de>	2010-05-01
+
+    Improve CompRect method usage.
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-05-01
+
+    Use isViewable () rather than invisible ()
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-05-01
+
+    Use CompRect for output extents calculation
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Use #defines for better ::bind coding style
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Use C++ bool
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Only ensure that desktop and dock type windows are drawn on screen
+    as "non shifted" windows
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Fix typo
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Load after composite and opengl
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Ensure that we load after composite and opengl
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-05
+
+    Ensure that non shiftable windows such as the desktop are still painted
+
+Sam <smspillaz@gmail.com>	2010-04-05
+
+    Fix warnigns
+
+Sam <smspillaz@gmail.com>	2010-04-05
+
+    Correctly reset window geometry when drawing icno
+
+Sam Spilsbury <smspillaz@smspillaz-desktop.(none)>	2010-04-04
+
+    Correclty initialize values
+
+Sam Spilsbury <smspillaz@smspillaz-desktop.(none)>	2010-04-03
+
+    Shift Take Two
+
+Merge: b6f301e 724587d
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Merge branch 'compiz++' of ../shift into compiz++
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Fix warnings
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-17
+
+    Fix crash when a window closes during shift switcher use.
+    
+    Forward port of 0dcf61174582214563e444a04069e84984cb9e44.
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-11-15
+
+    Remove unused variables and irrelevant #warning
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-11-15
+
+    Remove debuggin messages
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-11-15
+
+    Initialize all screen variables. Not initializing them leads to a race condition where buttonPressed could be true and startTarget to be MAXSHORT causing loops in MotionNotify event to recurse about MAXSHORT times which is very taxing on the CPU
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-10-02
+
+    Remove dummy
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-10-02
+
+    Dummy commit
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-10-02
+
+    Initial C++ port, known bugs:
+     * - Flip mode has some opacity setting issues, will fix later
+     * - Mouse-drag based switching is _incredibly_ slow. Have no idea why - the code is exactly the same on both 0.8 and 0.9
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-09-01
+
+    Fix possible segfault on 64-bit arch. due to passing 0 to va_list and retrieving it as pointer.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-06
+
+    Fix crash when a window is closed while ending shift.
+
+Danny Baumann <dannybaumann@web.de>	2009-01-11
+
+    Adapt for text plugin interface changes.
+
+Danny Baumann <dannybaumann@web.de>	2008-09-01
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2008-07-29
+
+    Track core changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-05-03
+
+    Flp cull face for reflection.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-21
+
+    Use Cairo-based text background drawing.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Check for header changes
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-01-21
+
+    Use wording already present in translations.
+
+Danny Baumann <dannybaumann@web.de>	2008-01-20
+
+    Allow showing shaded windows.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-12-20
+
+    Cleanups.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-12-20
+
+    Modify window list to get the proper cover mode animation/stacking order.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-12-19
+
+    Proper implementation of "cancel" action handling.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-12-19
+
+    Vertical ouputs patch by Steven Robertson
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-10-16
+
+    Compare window stacking if the drawSlots have the same distance.
+
+Jigish Gohil <cyberorg@prime.cyberorg.info>	2007-09-08
+
+    typo correction, thanks Excentrik
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Track core changes.
+
+Merge: 9e238ac fad5d76
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-09-03
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/fusion/plugins/shift
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-09-03
+
+    Optimizations.
+
+Merge: 2467b92 16845c7
+Danny Baumann <dannybaumann@web.de>	2007-09-03
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/plugins/shift
+
+Danny Baumann <dannybaumann@web.de>	2007-09-03
+
+    Show viewport number in window title when showing windows from all viewports.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-09-03
+
+    Load before bs.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-09-03
+
+    Use windowPaintAttribs.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-09-03
+
+    Initiate with minimized windows in the background.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-02
+
+    Track text plugin changes and check for its presence.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-31
+
+    Use correct header file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-30
+
+    Track core changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-30
+
+    Handle shift mode exit as button action.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-30
+
+    Right type conversion.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-30
+
+    Paint individual windows instead the whole output, when painting above current animation.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-30
+
+    Do only paint windows of current viewport above the animation. (Fixes transparent cube)
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-30
+
+    Load before fade.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-30
+
+    Added option to hide all non Desktop windows during switching.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-30
+
+    Fade in/out windows that are above the selected window.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-29
+
+    Handle selected window opacity correctly.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-23
+
+    Sort initial window list based on stack position.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-23
+
+    Added missing damageScreen on end of the animation.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-23
+
+    Don't paint invisible windows.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-23
+
+    Don't fade windows in multioutput mode.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-23
+
+    Added different output modes for multiple output configurations.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-23
+
+    Cleanup.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-22
+
+    Added initiate on edge actions.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-22
+
+    Fix stacking.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-22
+
+    Smoother animation.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-22
+
+    Remove useless code.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-22
+
+    Better fade in/out
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-20
+
+    New action system
+
+Roland Baer <roland@Vista.(none)>	2007-08-13
+
+    [PATCH] Removed unused function shiftLinearInterpolation()
+
+Danny Baumann <dannybaumann@web.de>	2007-08-09
+
+    Fix problems when selected window is removed.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-09
+
+    Fixed adding windows to switcher.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-07
+
+    Fix header
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-06
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-30
+
+    Only skip SkipTaskbar windows, not SkipPager ones.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-30
+
+    Windows in show desktop mode are also valid switcher targets.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-28
+
+    Simplify match. The workarounds plugin will handle the workarounds.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-28
+
+    Add activate event.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-25
+
+    Initialize variables correctly.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-25
+
+    Added option to manipulate cover offset.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-25
+
+    Fixed flip drawing order.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-24
+
+    - Select right window after mouse movement.
+    - Change window title during mouse movement.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-24
+
+    Added mouse movement of the switcher.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-24
+
+    Added initiate action for windows on all viewports.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-24
+
+    Terminate switching mode on button press.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-24
+
+    Added a not auto terminating initiate action and posibillity to switch with mouse/keyboard.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-24
+
+    Make sure that opacity has always the right value.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-24
+
+    Switched to a simpler fadein/out animation.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-24
+
+    Increased flip fade/move out.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-23
+
+    Added mipmap support.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-23
+
+    Remove dummy file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-23
+
+    Initial commit.
+
+compiz <compiz@opencompositing.org>	2007-07-23
+
+    Dummy commit

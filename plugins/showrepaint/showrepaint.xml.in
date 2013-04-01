@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<compiz>
+    <plugin name="showrepaint" useBcop="true">
+	<_short>Show Repaint</_short>
+	<_long>Show repainted regions in different colors</_long>
+	<category>Utility</category>
+	<deps>
+	    <requirement>
+		<plugin>opengl</plugin>
+	    </requirement>
+	</deps>
+	<options>
+	    <option name="toggle_key" type="key">
+		<_short>Toggle</_short>
+		<_long>Toggle showing of repainted regions.</_long>
+		<default>&lt;Super&gt;&lt;Alt&gt;r</default>
+	    </option>
+	    <option name="intensity" type="int">
+		<_short>Intensity</_short>
+		<_long>Intensity.</_long>
+		<default>20</default>
+		<min>0</min>
+		<max>100</max>
+	    </option>
+	</options>
+    </plugin>
+</compiz>

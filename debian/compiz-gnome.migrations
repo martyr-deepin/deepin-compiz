@@ -1,0 +1,3 @@
+postinst/migration-scripts/02_migrate_to_gsettings.py
+postinst/migration-scripts/03_migrate_profile_independent.py
+debian/00_remove_unityshell_in_gnome_session.py

@@ -1,0 +1,555 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Merge: 67b0ca9 07c9498
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/compiz/plugins/3d
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Cleanup (static analysis)
+
+Scott Moreau <oreaus@gmail.com>	2010-09-28
+
+    Don't require composite since opengl already does.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-15
+
+    Account for core changes
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-13
+
+    Remove debug message
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-13
+
+    Fix other viewports not painting in "on rest" transparency.
+    
+    Setting CubeScreen::paintAllViewports to false is a bit useless
+    for us, since we don't need to be concerned with what is
+    painting all viewports, since we aren't actually painting them
+    ourselves. If we are enabled, request that it be done, otherwise
+    leave it alone.
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-24
+
+    Load after decor plugin to prevent windows moving after plugin load
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-08
+
+    Added dynamic wrappable function enable/disable
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-05-06
+
+    Fix use of uninitialized var
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Use C++ bool
+
+Scott Moreau <oreaus@gmail.com>	2010-04-25
+
+    Remove unused variables.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-17
+
+    Set the paintAllViewports bit to our active state
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-17
+
+    Don't use CompWindow::invisible () in the state checking function
+    
+    invisible () returns false if the window is on another viewport, which isn't
+    the information that we wanted. We want to know if a window is visible as
+    in its map state.
+    
+    Also beautify code a little (no functional effect)
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Ensure we load after composite and opengl
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-01-24
+
+    Remove dummy
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-01-24
+
+    Dummy commit
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-01-24
+
+    Initial C++ port
+
+Danny Baumann <dannybaumann@web.de>	2008-05-22
+
+    Warning fix.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-24
+
+    Apply cubeaddon option name change.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-21
+
+    Damage screen only during animation.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-16
+
+    Use cube changes to paint the desctop in correct order.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-10
+
+    Removed dead code.
+
+Roland Bär <roland@verifysoft.de>	2008-04-10
+
+    [PATCH] Initilised previously uninit var
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-10
+
+    More optimizations.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-10
+
+    Optimizations.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-10
+
+    Disable occlusion detection.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-10
+
+    Only calculate second matrices, if window depth is active.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-09
+
+    Use cube progress value instead of own animation calculation.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-09
+
+    Work together with cylinder transformation of cubeaddon (no window depth).
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-27
+
+    Enable 3d only if s->hsize is bigger than 2.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Danny Baumann <dannybaumann@web.de>	2008-02-08
+
+    Dummy commit.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-28
+
+    Flip cull face instead of setting it directly, to fix cube reflections.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-27
+
+    Whitespace
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-27
+
+    Cleanups.
+
+Kevin Lange <klange@ogunderground.com>	2008-01-27
+
+    [PATCH] Added option to use custom colors for window borders
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Check for header changes
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-12-19
+
+    Reset cull face correctly.
+
+Danny Baumann <dannybaumann@web.de>	2007-10-24
+
+    Track checkOrientation API changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-10-24
+
+    Use CompVector.
+
+Danny Baumann <dannybaumann@web.de>	2007-10-24
+
+    Use core matrix functions.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-10-09
+
+    Use window offsets to translate windows correctly.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-26
+
+    Properly terminate 3D usage after ending cube rotation.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-25
+
+    Simplify window size calculations.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-24
+
+    Dummy commit.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-24
+
+    Fix whitespace.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-24
+
+    Fix bevel handling.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-24
+
+    Cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-24
+
+    Fix window depth quads being clipped (thanks Dennis)
+
+Danny Baumann <dannybaumann@web.de>	2007-09-23
+
+    Fix typo.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-23
+
+    Remove solved TODO items.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-23
+
+    Cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-23
+
+    Fix speed default.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-23
+
+    Make minimum cube size and maximum window spacing options.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-23
+
+    Remove more unused options.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-23
+
+    Improve option grouping.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-23
+
+    Remove unused options.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-23
+
+    Properly set PAINT_WINDOW_TRANSFORMED_MASK when painting the window translated.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-23
+
+    Remove useless checks.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-23
+
+    Properly initialize variables.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-23
+
+    Only show depth for 3D windows.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-22
+
+    Give function a more meaningful name.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-22
+
+    Re-enable and cleanup window depth paint code.
+    Doesn't work properly yet, though.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-22
+
+    Hook into cube's postPaintViewport function.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-22
+
+    Force cube to paint all viewports.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-17
+
+    Remove clip planes hack.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-16
+
+    Load and wrap after cube.
+    This change will cause no behavioural changes; cube will need to provide a post-paint-transformed-output hook to make 3D work again.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-09
+
+    More fixes for latest core, doesn't work properly, though.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-09
+
+    Make 3D at least compile with latest core.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Track core changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-30
+
+    Track core changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-30
+
+    Initialize variable.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-28
+
+    Fixed inside cube mode.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-28
+
+    Minor optimizations and cleanups.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-28
+
+    Compiz indention style and cleanups.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-28
+
+    Compile without core changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-28
+
+    Set tdWindowExists.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-28
+
+    Removed unneeded stuff.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-28
+
+    Begin of the big 3d rework.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-06
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-31
+
+    Fix typo.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-16
+
+    Remove obsolete deps/features from vtable
+
+Danny Baumann <dannybaumann@web.de>	2007-07-09
+
+    Mark missing string as translatable.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-06
+
+    Fix usage of wrong constants.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-06
+
+    Re-add multiple output mode handling.
+
+Roi Cohen <roico@roico-desktop.(none)>	2007-07-03
+
+    fix windows in 2 different viewports - needs the clip planes patch
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-01
+
+    Makefile update.
+
+Roi Cohen <roico@roico-desktop.(none)>	2007-06-30
+
+    some small cleanup
+
+Danny Baumann <dannybaumann@web.de>	2007-06-29
+
+    Dummy commit.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-29
+
+    xml -> xml.in
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-28
+
+    Makefile update.
+
+Diogo Ferreira <defer@localhost.localdomain>	2007-06-27
+
+    Yet another header update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-27
+
+    Update header.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-27
+
+    Disable normal changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-27
+
+    More cleanup.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-27
+
+    Cleanup.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-27
+
+    Rework of walker interface.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-27
+
+    Remove some cruft.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-27
+
+    Optimization.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-27
+
+    Fix wrapping order issue.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-27
+
+    Correctly disable caps painting.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-27
+
+    Wrap into screen functions from correct place.
+
+Merge: c5bcecb 9168aaf
+Roi Cohen <roico@roico-desktop.(none)>	2007-06-27
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/fusion/plugins/3d
+
+Roi Cohen <roico@roico-desktop.(none)>	2007-06-27
+
+    get rid of lastBTF
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-26
+
+    Unload correctly.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-26
+
+    Unwrap *PluginForDisplay functions.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-26
+
+    Fixed inside cube mode.
+
+Merge: 24ec172 28fa0f8
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-26
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/fusion/plugins/3d
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-26
+
+    Fixed walker interface.
+
+Roi Cohen <roico@roico-desktop.(none)>	2007-06-26
+
+    fix a typo
+
+Roi Cohen <roico@roico-desktop.(none)>	2007-06-26
+
+    add compiz-cube as a dependency
+
+Roi Cohen <roico@roico-desktop.(none)>	2007-06-26
+
+    updated makefile - is the plugin.info okay?
+
+Roi Cohen <roico@roico-desktop.(none)>	2007-06-26
+
+    - load plugin properly - thanks defer!
+    - use cs->invert properly
+    - another painting order fix - still wrong
+
+Roi Cohen <roico@roico-desktop.(none)>	2007-06-26
+
+    fix a drawing order issue (the plugin still does not load)
+
+Roi Cohen <roico@roico-desktop.(none)>	2007-06-26
+
+    fix loading order in xml
+
+Roi Cohen <roico@roico-desktop.(none)>	2007-06-26
+
+    some optimization / cleanup
+
+Merge: 20fd359 7ae4b0c
+Roi Cohen <roico@roico-desktop.(none)>	2007-06-26
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/fusion/plugins/3d
+    
+    Conflicts:
+    
+3d.c           
+
+Roi Cohen <roico@roico-desktop.(none)>	2007-06-26
+
+    first try for a working 3d - doesn't load here for some reason, but compiles fine and it uses walking interface properly
+
+Danny Baumann <dannybaumann@web.de>	2007-06-23
+
+    Optimization.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-23
+
+    Added missing metadata.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-23
+
+    Indention fixes.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-22
+
+    API adjustments (still needs to be adjusted to walker interface...)
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-17
+
+    initial 3d commit (still broken)
+
+compiz <compiz@de35.org>	2007-05-17
+
+    Dummy commit

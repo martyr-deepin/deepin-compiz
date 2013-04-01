@@ -1,0 +1,665 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2010-11-14
+
+    CompizPlugin automatically sets DATADIR to whereever you installed the plugin, no need to set it ourselves
+    
+    Revert "Add the DATADIR definition to CMakeLists"
+    
+    This reverts commit dd26a937f3cb7a132aacfd07628497b30c832a5b.
+
+Merge: 46bc7db dd26a93
+Sam Spilsbury <sam.spilsbury@canonical.com>	2010-11-14
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/compiz/plugins/colorfilter
+
+Kristian Lyngstol <kristian@bohemians.org>	2010-11-13
+
+    Add the DATADIR definition to CMakeLists
+    
+    Hopefully, this, is reasonably correct.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-04
+
+    Fix buffer overrun
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-04
+
+    We can use basename () directly, so we don't need to reimplement it
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-04
+
+    Also use direct character substitution where appropriate in stripping linefeeds etc
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-04
+
+    Make FragmentOffset list a normal list not a pointer list (since we never needed a pointer list anyways). This fixes a nasty memleak in the process
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-04
+
+    Cleanup offset_string
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-04
+
+    FragmentString never made much sense anyways, so kill it and just use a const reference when getting the first argument from some line on FragmentParser
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-04
+
+    Replace strange hack with direct character substitution
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-04
+
+    We have an isspace utility function - use that
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-04
+
+    More const correctness
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-04
+
+    const reference correctness in more places. Also don't be returning values if we are just modifying some source
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-04
+
+    const reference in ltrim
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-04
+
+    const correctness and also load file names with absolute paths correctly
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-04
+
+    base_name should be baseFileName
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-04
+
+    Fix a (rather obvious) memleak
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-04
+
+    Update copyright
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-11-04
+
+    Convert all remaining C String usage to CompString, which also happens to
+    fix several memleaks in the process.
+    
+    Also fix comment handling
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-30
+
+    Use CompString in ::programAddOffsetFromOp
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-30
+
+    Use CompString in programFindOffset
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-30
+
+    Make ::loadFragmentProgram take CompStrings instead of chars
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-30
+
+    Change ::programCleanName to use std strings and also change
+    ::programReadSource to use ifstream
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-30
+
+    Change ::ltring to use std::string
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-30
+
+    Use std::string logic in ::base_name
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-26
+
+    Fix typo in filter name
+
+Scott Moreau <oreaus@gmail.com>	2010-09-30
+
+    Silence warning.
+
+Scott Moreau <oreaus@gmail.com>	2010-09-28
+
+    Don't require composite since opengl already does.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-04
+
+    Remove build dependency on compiztoolbox
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-01
+
+    Simplify serialization interface
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-06-18
+
+    Kill backup file
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-06-18
+
+    Add serialization interface and necessary changes
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-06-12
+
+    Added serialization interface and necessary changes
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Load after decor plugin to prevent windows moving after plugin load
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-09
+
+    Free original memory in string
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-09
+
+    Fix crash
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-05-07
+
+    Fix most of the leaks in the previously leaky parser classes
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-05-05
+
+    Set data directory appropriately
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Use C++ bool
+
+Sam <smspillaz@gmail.com>	2010-04-05
+
+    Avoid creating an std::string with a NULL construct, which could lead to a SIGABRT
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Fix warnings
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-09-07
+
+    Remove dummy
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-09-07
+
+    Dummy commit
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-09-07
+
+    Initial C++ port
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-08-24
+
+    Handle empty filter name.
+    
+    e.g: when it happens while adding a new one in ccsm.
+
+Danny Baumann <dannybaumann@web.de>	2008-09-01
+
+    Track core changes.
+
+Adel Gadllah <adel.gadllah@gmail.com>	2008-07-15
+
+    * Fix build on PPC64
+
+Guillaume Seguin <guillaume@segu.in>	2008-06-06
+
+    Add deuteranopia and protonopia to default filters
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Guillaume Seguin <guillaume@segu.in>	2007-09-20
+
+    * Avoid default keybinding conflict with shift for Switch filter binding
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Track core changes.
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-31
+
+    * Modify Switch Filter binding to avoid conflict with group
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-31
+
+    * Fix include
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-30
+
+    * Track core changes
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-28
+
+    * Makefile update
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-28
+
+    * Fix comment
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-25
+
+    * Don't try to load filters with an empty name
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-24
+
+    * Add comment & fix comment
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-21
+
+    * Fix metadata for real
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-21
+
+    * Fix metadata
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-21
+
+    * New action system
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-20
+
+    * Set default filters list
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-20
+
+    * Minor coding style/function naming update
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-20
+
+    * Damage screen when "Filter Decorations" option is toggled
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-20
+
+    * Fix negative-green filter
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-20
+
+    * Add blueish filter
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-19
+
+    * Update negative filters
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-19
+
+    * Fix color ops parsing
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-19
+
+    * Add test filters for colorblindness simulation
+
+Danny Baumann <dannybaumann@web.de>	2007-08-17
+
+    Fixed exclude match handling.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-17
+
+    Cleaned up initial filter state setting.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-17
+
+    Fix default matches.
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-16
+
+    * Update pretty fragment program print core patch
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-15
+
+    * Increase precision of dot products vectors for grayscale and blackandwhite
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-15
+
+    * Improve blackandwhite filter
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-15
+
+    * Improve grayscale filter
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-15
+
+    * Add simple color swapping filters
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-15
+
+    * Use DATADIR directly instead of PREFIX to load global filters
+
+Merge: 5c6d3ca 6eb3ead
+Guillaume Seguin <guillaume@segu.in>	2007-08-15
+
+    Merge branch 'master' of git+ssh://guillaume@git.opencompositing.org/git/users/guillaume/soc/colorfilter
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-15
+
+    Makefile update
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-15
+
+    * Add sepia filter
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-15
+
+    * Add blackandwhite filter
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-15
+
+    * Adjust local filters path (set it to ~/.compiz/data/filters/)
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-15
+
+    * Coding style cleanup
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-15
+
+    * Cleanup (no need to check for Fragment Program availability there)
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-15
+
+    * Cleanup (checking again if w is null is useless, we did it 7 lines before)
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-15
+
+    * Fix crash when Fragment Programs aren't supported by GPU
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-15
+
+    * Add grayscale filter
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-15
+
+    * Correctly parse parameters such as PARAM a = {1, 2, 3, 4};
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-14
+
+    Load after blur.
+
+Merge: 28676b3 42ff8cc
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-14
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/fusion/plugins/colorfilter
+
+Roland Baer <roland@Vista.(none)>	2007-08-10
+
+    * Filehandle leak fix
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-07
+
+    * Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-07
+
+    Makefile update
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-07
+
+    * Move filters to data/filters/
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-05
+
+    * Add AUTHORS file
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-05
+
+    * Add alpha channel to negative filters
+      (from Compiz Fusion neg.c, by Dennis Kasprzyk)
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-31
+
+    * Check for fragment program availability when initiating screen
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-29
+
+    * Fix indent
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-28
+
+    * Do not include useless X headers
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-27
+
+    * Fix indent
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-27
+
+    * Remove debug leftover
+
+Roland Baer <roland@Vista.(none)>	2007-07-27
+
+    * Minor mem leak fix
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-26
+
+    * Cleanup
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-26
+
+    * Add FIXME
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-26
+
+    * Add parsing of offsets for tex coords
+    * Make fetch ops parsing bits use offsets
+    * Fix memleak in color ops parsing
+    * Clearly separate functions sections
+    * Add a few comments
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-21
+
+    * Clean DataOp parsing
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-20
+
+    * Clean fragment program name before using it in Compiz FAI
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-20
+
+    * Compiz style for macro indents
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-20
+
+    * Remove debug leftover ><
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-20
+
+    * Add FetchOp example
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-20
+
+    * Clean FetchOp parsing
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-20
+
+    * Fix mem leak
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-20
+
+    * Clean MUL ColorOp parsing
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-20
+
+    * Better comment
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-20
+
+    * Indentation, again -_-
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-20
+
+    * Fix remaining indentation problems
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-20
+
+    * Coding style (80 columns, comments style cleanup)
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-20
+
+    * Use C comments
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-20
+
+    * Compiz coding style
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-20
+
+    * Compiz coding style
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-20
+
+    * man strstr
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-20
+
+    * Clean MOV ColorOp parsing
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-20
+
+    * Add compiz core patch that prints fragment programs once they are computed
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-20
+
+    * Start to improve argument parsing
+    * Add left trimming `ltrim` function
+    * Add function to get the first argument in a string
+    * Use it for TEMP/PARAM/ATTRIB operators parsing
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-19
+
+    * Use strtok_r instead of strtok for thread safety
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-18
+
+    * Remove obsolete deps/features from vtable
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-11
+
+    * Add files hint to filter list
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-09
+
+    * Damage filtered windows when filters are reloaded
+    * Fix typo
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-08
+
+    * Rename bindings options, looks better *sigh*
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-08
+
+    * Add buildFragmentProgram function to build a Fragment Function from a string
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-07
+
+    * Code cleanup
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-07
+
+    * Skip comments (starting by \#)
+    * Add a few comments
+
+Patrick Niklaus <marex@opencompositing.org>	2007-07-06
+
+    Added contrast colorfilter
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-06
+
+    * Use PREFIX instead of a hardcoded path
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-06
+
+    * Alter log message to reflect that the filter item might not be a path
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-06
+
+    * Try to load filter from different places before failing
+      (namely ~/.compiz/filters and PREFIX/share/compiz/filters)
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-06
+
+    * Free filter name
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-06
+
+    * Rename basename to base_name to avoid conflict with libc's (I prefer mine :>)
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-06
+
+    * Remove development leftover
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-06
+
+    * Use strdup for string duplication
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-06
+
+    * Add comments for basename
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-06
+
+    * Replace ugly while (1) {if (...) break;...}
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-06
+
+    * Better comments for loadFragmentProgram
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-06
+
+    * Revamped basename
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-06
+
+    * '\0' => 0
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-06
+
+    * Check if file was successfully open before continuing...
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-06
+
+    * Coding style cleanup
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-05
+
+    * Fix damage problem when switching filters
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-05
+
+    * Add sample filters
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-05
+
+    * Update metadata (add plugin to Accessibility category)
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-05
+
+    * Initial import

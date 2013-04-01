@@ -1,0 +1,268 @@
+<compiz>
+    <plugin name="core" useBcop="true">
+	<_short>General Options</_short>
+	<_long>General compiz options</_long>
+	<options>
+	    <option name="active_plugins" type="list">
+		<_short>Active Plugins</_short>
+		<_long>List of currently active plugins</_long>
+		<type>string</type>
+		<default_plugins/>
+	    </option>
+	    <option name="audible_bell" type="bool">
+		<_short>Audible Bell</_short>
+		<_long>Audible system beep</_long>
+		<default>true</default>
+	    </option>
+	    <option name="ignore_hints_when_maximized" type="bool">
+		<_short>Ignore Hints When Maximized</_short>
+		<_long>Ignore size increment and aspect hints when window is maximized</_long>
+		<default>true</default>
+	    </option>
+	    <option name="hide_skip_taskbar_windows" type="bool">
+		<_short>Hide Skip Taskbar Windows</_short>
+		<_long>Hide windows not in taskbar when entering show desktop mode</_long>
+		<default>true</default>
+	    </option>
+	    <option name="edge_delay" type="int">
+		<_short>Edge Trigger Delay</_short>
+		<_long>Duration the pointer must rest in a screen edge before an edge action is taken.</_long>
+		<default>0</default>
+		<min>0</min>
+		<max>10000</max>
+	    </option>
+	    <option name="ping_delay" type="int">
+		<_short>Ping Delay</_short>
+		<_long>Interval between ping messages</_long>
+		<default>5000</default>
+		<min>1000</min>
+		<max>30000</max>
+	    </option>
+	    <option name="default_icon" type="string">
+		<_short>Default Icon</_short>
+		<_long>Default window icon image</_long>
+		<default>icon</default>
+	    </option>
+	    <option name="do_serialize" type="bool">
+		<_short>Save plugin states on unload</_short>
+		<_long>Save the state of plugins when they are unloaded such
+		       they will resume their past internal state when reloaded</_long>
+		<default>false</default>
+	    </option>
+	    <group>
+		<_short>Display Settings</_short>
+			<option name="overlapping_outputs" type="int">
+			<_short>Overlapping Output Handling</_short>
+			<_long>Which one of overlapping output devices should be preferred</_long>
+			<default>0</default>
+			<min>0</min>
+			<max>2</max>
+			<desc>
+				<value>0</value>
+				<_name>Smart mode</_name>
+			</desc>
+			<desc>
+				<value>1</value>
+				<_name>Prefer larger output</_name>
+			</desc>
+			<desc>
+				<value>2</value>
+				<_name>Prefer smaller output</_name>
+			</desc>
+			</option>
+			<option name="detect_outputs" type="bool">
+			<_short>Detect Outputs</_short>
+			<_long>Automatic detection of output devices</_long>
+			<default>true</default>
+			</option>
+			<option name="outputs" type="list">
+			<_short>Outputs</_short>
+			<_long>List of strings describing output devices</_long>
+			<type>string</type>
+			<default>
+				<value>640x480+0+0</value>
+			</default>
+			</option>
+	    </group>
+	    <group>
+		<_short>Focus &amp; Raise Behaviour</_short>
+			<option name="click_to_focus" type="bool">
+			<_short>Click To Focus</_short>
+			<_long>Click on window moves input focus to it</_long>
+			<default>true</default>
+			</option>
+			<option name="raise_on_click" type="bool">
+			<_short>Raise On Click</_short>
+			<_long>Raise windows when clicked</_long>
+			<default>true</default>
+			</option>
+			<option name="autoraise" type="bool">
+			<_short>Auto-Raise</_short>
+			<_long>Raise selected windows after interval</_long>
+			<default>true</default>
+			</option>
+			<option name="autoraise_delay" type="int">
+			<_short>Auto-Raise Delay</_short>
+			<_long>Interval before raising selected windows</_long>
+			<default>1000</default>
+			<min>0</min>
+			<max>10000</max>
+			</option>
+			<option name="focus_prevention_level" type="int">
+			<_short>Focus Prevention Level</_short>
+			<_long>Level of focus stealing prevention</_long>
+			<min>0</min>
+			<max>4</max>
+			<default>1</default>
+			<desc>
+				<value>0</value>
+				<_name>Off</_name>
+			</desc>
+			<desc>
+				<value>1</value>
+				<_name>Low</_name>
+			</desc>
+			<desc>
+				<value>2</value>
+				<_name>Normal</_name>
+			</desc>
+			<desc>
+				<value>3</value>
+				<_name>High</_name>
+			</desc>
+			<desc>
+				<value>4</value>
+				<_name>Very High</_name>
+			</desc>
+			</option>
+			<option name="focus_prevention_match" type="match">
+			<_short>Focus Prevention Windows</_short>
+			<_long>Focus prevention windows</_long>
+			<default>any</default>
+			</option>
+		</group>
+		<group>
+		<_short>Key bindings</_short>
+			<option name="close_window_key" type="key">
+			<_short>Close Window</_short>
+			<_long>Close active window</_long>
+			<default>&lt;Alt&gt;F4</default>
+			</option>
+			<option name="close_window_button" type="button">
+			<_short>Close Window</_short>
+			<_long>Close active window</_long>
+			</option>
+			<option name="raise_window_key" type="key">
+			<_short>Raise Window</_short>
+			<_long>Raise window above other windows</_long>
+			</option>
+			<option name="raise_window_button" type="button">
+			<_short>Raise Window</_short>
+			<_long>Raise window above other windows</_long>
+			<default>&lt;Control&gt;Button6</default>
+			</option>
+			<option name="lower_window_key" type="key">
+			<_short>Lower Window</_short>
+			<_long>Lower window beneath other windows</_long>
+			</option>
+			<option name="lower_window_button" type="button">
+			<_short>Lower Window</_short>
+			<_long>Lower window beneath other windows</_long>
+			<default>&lt;Alt&gt;Button6</default>
+			</option>
+			<option name="minimize_window_key" type="key">
+			<_short>Minimize Window</_short>
+			<_long>Minimize active window</_long>
+			<default>&lt;Alt&gt;F9</default>
+			</option>
+			<option name="minimize_window_button" type="button">
+			<_short>Minimize Window</_short>
+			<_long>Minimize active window</_long>
+			</option>
+			<option name="maximize_window_key" type="key">
+			<_short>Maximize Window</_short>
+			<_long>Maximize active window</_long>
+			<default>&lt;Alt&gt;F10</default>
+			</option>
+			<option name="unmaximize_window_key" type="key">
+			<_short>Unmaximize Window</_short>
+			<_long>Unmaximize active window</_long>
+			<default>&lt;Alt&gt;F5</default>
+			</option>
+			<option name="maximize_window_horizontally_key" type="key">
+			<_short>Maximize Window Horizontally</_short>
+			<_long>Maximize active window horizontally</_long>
+			</option>
+			<option name="maximize_window_vertically_key" type="key">
+			<_short>Maximize Window Vertically</_short>
+			<_long>Maximize active window vertically</_long>
+			</option>
+			<option name="window_menu_key" type="key">
+			<_short>Window Menu</_short>
+			<_long>Window menu key binding</_long>
+			<default>&lt;Alt&gt;space</default>
+			</option>
+			<option name="window_menu_button" type="button">
+			<_short>Window Menu</_short>
+			<_long>Window menu button binding</_long>
+			<default>&lt;Alt&gt;Button3</default>
+			</option>
+			<option name="show_desktop_key" type="key">
+			<_short>Show Desktop</_short>
+			<_long>Hide all windows and focus desktop</_long>
+			<default>&lt;Control&gt;&lt;Alt&gt;d</default>
+			</option>
+			<option name="show_desktop_edge" type="edge">
+			<_short>Show Desktop</_short>
+			<_long>Hide all windows and focus desktop</_long>
+			<default/>
+			</option>
+			<option name="toggle_window_maximized_key" type="key">
+			<_short>Toggle Window Maximized</_short>
+			<_long>Toggle active window maximized</_long>
+			</option>
+			<option name="toggle_window_maximized_button" type="button">
+			<_short>Toggle Window Maximized</_short>
+			<_long>Toggle active window maximized</_long>
+			</option>
+			<option name="toggle_window_maximized_horizontally_key" type="key">
+			<_short>Toggle Window Maximized Horizontally</_short>
+			<_long>Toggle active window maximized horizontally</_long>
+			</option>
+			<option name="toggle_window_maximized_vertically_key" type="key">
+			<_short>Toggle Window Maximized Vertically</_short>
+			<_long>Toggle active window maximized vertically</_long>
+			</option>
+			<option name="toggle_window_shaded_key" type="key">
+			<_short>Toggle Window Shaded</_short>
+			<_long>Toggle active window shaded</_long>
+			<default>&lt;Control&gt;&lt;Alt&gt;s</default>
+			</option>
+	    </group>
+	    <group>
+		<_short>Desktop Size</_short>
+			<option name="hsize" type="int">
+			<_short>Horizontal Virtual Size</_short>
+			<_long>Screen size multiplier for horizontal virtual size</_long>
+			<default>4</default>
+			<min>1</min>
+			<max>32</max>
+			</option>
+			<option name="vsize" type="int">
+			<_short>Vertical Virtual Size</_short>
+			<_long>Screen size multiplier for vertical virtual size</_long>
+			<default>1</default>
+			<min>1</min>
+			<max>32</max>
+			</option>
+			<option name="number_of_desktops" type="int">
+			<_short>Number of Desktops</_short>
+			<_long>Number of virtual desktops</_long>
+			<default>1</default>
+			<min>1</min>
+			<max>36</max>
+			</option>
+	    </group>
+	</options>
+    </plugin>
+</compiz>

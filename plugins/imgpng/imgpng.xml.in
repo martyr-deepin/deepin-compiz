@@ -1,0 +1,16 @@
+<compiz>
+    <plugin name="imgpng">
+	<_short>PNG</_short>
+	<_long>PNG image loader</_long>
+	<category>Image Loading</category>
+	<feature>imageext:png</feature>
+	<feature>imagemime:image/png</feature>
+	<deps>
+	    <relation type="after">
+		<plugin>composite</plugin>
+		<plugin>opengl</plugin>
+		<plugin>decor</plugin>
+	    </relation>
+	</deps>
+    </plugin>
+</compiz>

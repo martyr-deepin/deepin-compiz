@@ -1,0 +1,235 @@
+BASIC GSETTINGS MANUAL TESTS
+=============================
+Daniel van Vugt <daniel.van.vugt@canonical.com>
+
+
+NOTE 1: Common setup "Compile compiz and install to ~/staging":
+  (Starting in the compiz source directory)
+  mkdir build
+  cd build
+  cmake .. -DCMAKE_INSTALL_PREFIX=~/staging
+  make -j2
+  make install
+
+NOTE 2: "Set XDG_DATA_DIRS":
+  All of these tests depend of XDG_DATA_DIRS being defined already, as it is
+  in X. If you're not in X then you can set it with this command:
+    export XDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/
+
+NOTE 3: "Create a dev profile":
+  All of these tests require a compizconfig profile to exist, called "dev".
+  To make one, edit ~/.config/compiz-1/compizconfig/config and add:
+    [general_dev]
+    backend = gsettings
+    profile = dev
+    integration = true
+    plugin_list_autosort = true
+
+NOTE 4: "Delete your old compiz gsettings":
+  dconf reset -f "/apps/compiz-1/"
+  dconf reset -f "/org/freedesktop/compiz/"
+  dconf reset -f "/org/compiz/profiles/dev/"
+
+
+CompizConfig Settings Manager (CCSM) initialization
+----------------------------------------------------
+Setup:
+#. sudo apt-get install dconf-tools
+#. Create a dev profile.
+#. Compile compiz and install to ~/staging
+#. Log into X if not already.
+#. Delete your old compiz gsettings.
+  
+Actions:
+#. cd ~/staging
+#. env LD_LIBRARY_PATH=./lib XDG_DATA_DIRS="./share:$XDG_DATA_DIRS" COMPIZ_CONFIG_PROFILE=dev PYTHONPATH=./lib/python2.7/site-packages ./bin/ccsm
+#. Close CCSM.
+#. dconf dump /org/compiz/
+
+Expected Result:
+  Some settings are shown by the dconf dump.
+
+
+Correct storage of plugin-list
+-------------------------------
+Setup:
+#. sudo apt-get install dconf-tools
+#. Create a dev profile.
+#. Compile compiz and install to ~/staging
+#. Log into X if not already.
+#. Delete your old compiz gsettings.
+  
+Actions:
+#. cd ~/staging
+#. env LD_LIBRARY_PATH=./lib XDG_DATA_DIRS="./share:$XDG_DATA_DIRS" COMPIZ_CONFIG_PROFILE=dev PYTHONPATH=./lib/python2.7/site-packages ./bin/ccsm
+#. In CCSM, tick several different boxes (each one is a plugin)
+#. Close CCSM.
+#. Start ccsm again (same as above)
+
+Expected Result:
+  All the same boxes are still ticked when CCSM is restarted.
+
+
+Correct storage of enumerations
+--------------------------------
+Setup:
+#. sudo apt-get install dconf-tools
+#. Create a dev profile.
+#. Compile compiz and install to ~/staging
+#. Log into X if not already.
+#. Delete your old compiz gsettings.
+  
+Actions:
+#. cd ~/staging
+#. env LD_LIBRARY_PATH=./lib XDG_DATA_DIRS="./share:$XDG_DATA_DIRS" COMPIZ_CONFIG_PROFILE=dev PYTHONPATH=./lib/python2.7/site-packages ./bin/ccsm
+#. In CCSM, OpenGL > Texture Filter = Best
+#. Close CCSM.
+#. dconf read /org/compiz/profiles/dev/plugins/opengl/texture-filter
+
+Expected Result:
+  The value "2" is output.
+
+
+Correct storage of bools 
+-------------------------
+Setup:
+#. sudo apt-get install dconf-tools
+#. Create a dev profile.
+#. Compile compiz and install to ~/staging
+#. Log into X if not already.
+#. Delete your old compiz gsettings.
+  
+Actions:
+#. cd ~/staging
+#. env LD_LIBRARY_PATH=./lib XDG_DATA_DIRS="./share:$XDG_DATA_DIRS" COMPIZ_CONFIG_PROFILE=dev PYTHONPATH=./lib/python2.7/site-packages ./bin/ccsm
+#. In CCSM, Composite > Detect Refresh Rate = OFF
+#. Close CCSM.
+#. dconf read /org/compiz/profiles/dev/plugins/composite/detect-refresh-rate
+
+Expected Result:
+  The value "false" is output.
+
+
+Correct storage of integers
+----------------------------
+Setup:
+#. sudo apt-get install dconf-tools
+#. Create a dev profile.
+#. Compile compiz and install to ~/staging
+#. Log into X if not already.
+#. Delete your old compiz gsettings.
+  
+Actions:
+#. cd ~/staging
+#. env LD_LIBRARY_PATH=./lib XDG_DATA_DIRS="./share:$XDG_DATA_DIRS" COMPIZ_CONFIG_PROFILE=dev PYTHONPATH=./lib/python2.7/site-packages ./bin/ccsm
+#. In CCSM, Composite > Refresh Rate = 100
+#. Close CCSM.
+#. dconf read /org/compiz/profiles/dev/plugins/composite/refresh-rate
+
+Expected Result:
+  The value "100" is output.
+
+
+Correct storage of strings
+---------------------------
+Setup:
+#. sudo apt-get install dconf-tools
+#. Create a dev profile.
+#. Compile compiz and install to ~/staging
+#. Log into X if not already.
+#. Delete your old compiz gsettings.
+  
+Actions:
+#. cd ~/staging
+#. env LD_LIBRARY_PATH=./lib XDG_DATA_DIRS="./share:$XDG_DATA_DIRS" COMPIZ_CONFIG_PROFILE=dev PYTHONPATH=./lib/python2.7/site-packages ./bin/ccsm
+#. In CCSM, General Options > Default Icon = hello
+#. Close CCSM.
+#. dconf read /org/compiz/profiles/dev/plugins/core/default-icon
+
+Expected Result:
+  The value 'hello' is output.
+
+
+Loading colour settings
+------------------------
+Setup:
+#. sudo apt-get install dconf-tools
+#. Create a dev profile.
+#. Compile compiz and install to ~/staging
+#. Log into X if not already.
+#. Delete your old compiz gsettings.
+
+Actions:
+#. cd ~/staging
+#. env LD_LIBRARY_PATH=./lib XDG_DATA_DIRS="./share:$XDG_DATA_DIRS" COMPIZ_CONFIG_PROFILE=dev PYTHONPATH=./lib/python2.7/site-packages ./bin/ccsm
+#. In CCSM, enable Composite, OpenGL, Desktop Wall, Window Decoration,
+   Move Window, Resize Window.
+#. In CCSM, Desktop Wall > Outline Color = RED
+#. Close CCSM.
+#. Switch to a VT and log in.
+#. cd ~/staging
+#. Set XDG_DATA_DIRS (see NOTE 2 above).
+#. env DISPLAY=:0 LD_LIBRARY_PATH=./lib XDG_DATA_DIRS="./share:$XDG_DATA_DIRS" COMPIZ_CONFIG_PROFILE=dev ./bin/compiz --replace ccp
+#. Switch to X using Ctrl+Alt+F7.
+#. Switch between viewports using Ctrl+Alt+Left/Right.
+
+Expected Result:
+  Windows are decorated, moveable and resizeable. When switching viewports,
+  the switcher preview has a RED border.
+
+
+Real-time plugin unloads
+-------------------------
+Setup:
+#. sudo apt-get install dconf-tools
+#. Create a dev profile.
+#. Compile compiz and install to ~/staging
+#. Log into X if not already.
+#. Delete your old compiz gsettings.
+
+Actions:
+#. cd ~/staging
+#. env LD_LIBRARY_PATH=./lib XDG_DATA_DIRS="./share:$XDG_DATA_DIRS" COMPIZ_CONFIG_PROFILE=dev PYTHONPATH=./lib/python2.7/site-packages ./bin/ccsm
+#. In CCSM, enable Composite, OpenGL, Desktop Wall, Window Decoration,
+   Move Window, Resize Window.
+#. Close CCSM.
+#. Switch to a VT and log in.
+#. cd ~/staging
+#. Set XDG_DATA_DIRS (see NOTE 2 above).
+#. env DISPLAY=:0 LD_LIBRARY_PATH=./lib XDG_DATA_DIRS="./share:$XDG_DATA_DIRS" COMPIZ_CONFIG_PROFILE=dev ./bin/compiz --replace ccp
+#. Switch to X using Ctrl+Alt+F7.
+#. Open a window (if none already). e.g. Ctrl+Alt+T and verify its moveable.
+#. Start ccsm again, as above.
+#. Untick (disable) "Move Window".
+
+Expected Result:
+  Can't move windows any more.
+
+
+Real-time settings changes
+---------------------------
+Setup:
+#. sudo apt-get install dconf-tools
+#. Create a dev profile.
+#. Compile compiz and install to ~/staging
+#. Log into X if not already.
+#. Delete your old compiz gsettings.
+
+Actions:
+#. cd ~/staging
+#. env LD_LIBRARY_PATH=./lib XDG_DATA_DIRS="./share:$XDG_DATA_DIRS" COMPIZ_CONFIG_PROFILE=dev PYTHONPATH=./lib/python2.7/site-packages ./bin/ccsm
+#. In CCSM, enable Composite, OpenGL, Desktop Wall, Window Decoration,
+   Move Window, Resize Window, Expo.
+#. Close CCSM.
+#. Switch to a VT and log in.
+#. cd ~/staging
+#. Set XDG_DATA_DIRS (see NOTE 2 above).
+#. env DISPLAY=:0 LD_LIBRARY_PATH=./lib XDG_DATA_DIRS="./share:$XDG_DATA_DIRS" COMPIZ_CONFIG_PROFILE=dev ./bin/compiz --replace ccp
+#. Switch to X using Ctrl+Alt+F7.
+#. Start ccsm again, as above.
+#. In CCSM, General Options > Horizontal Virtual Size = 10
+#. Press Super+E.
+
+Expected Result:
+  Verify you can now see 10 workspaces when in expo mode (Super+E).
+

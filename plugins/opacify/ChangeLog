@@ -1,0 +1,229 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-13
+
+    Added VERSION file (0.9.5.0)
+
+Scott Moreau <oreaus@gmail.com>	2011-05-27
+
+    Reset timer on timeout option change.
+
+Scott Moreau <oreaus@gmail.com>	2011-05-27
+
+    Enable by default.
+
+Merge: fcf12e5 505c952
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/compiz/plugins/opacify
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Cleanup (static analysis)
+
+Scott Moreau <oreaus@gmail.com>	2010-09-28
+
+    Don't require composite since opengl already does.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-04
+
+    Remove build dependency on compiztoolbox
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-04
+
+    Don't depend on compiztoolbox
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-01
+
+    Simplfily serialization interface
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-06-12
+
+    Added serialization interface and necessary changes
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Load after decor plugin to prevent windwos from moving after plugin load
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-23
+
+    Write toggled state information to window property and read on plugin
+    reload so that the user does not have to re-toggle the effect when the plugin
+    is reloaded.
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-10
+
+    Use isViewable () rather than invisible ()
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-08
+
+    Add dynamically enabled wrappable functions
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Use C++ bool
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Ensure that we load after composite and opengl
+
+Scott Moreau <oreaus@gmail.com>	2010-02-13
+
+    Require opengl.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-03
+
+    Fix possible segfault on 64-bit arch. due to passing 0 to va_list and retrieving it as pointer.
+    
+    Forward port of f1e126863717cb77feb896fade04b59535a29159 to master
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-12
+
+    Remove dummy
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-12
+
+    Dummy commit
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-12
+
+    Use an std::list instead of a fixed array
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-12
+
+    Initial C++ port
+
+Kristian Lyngstol <kristian@linpro.no>	2008-11-27
+
+    Move trigger-toggling to the actual trigger. Superduper performance boost for normal operation. Rejoice!
+
+Danny Baumann <dannybaumann@web.de>	2008-09-01
+
+    Track core changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-06-18
+
+    Track core changes
+
+Danny Baumann <dannybaumann@web.de>	2008-06-07
+
+    Properly initialize variable.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-17
+
+    The window passed to handleEnter might be NULL, so we have to pass the screen struct, too.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-11
+
+    Compiz coding style.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Track core changes.
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-31
+
+    * Track core changes
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-20
+
+    New action system
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-06
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-28
+
+    Simplify match. The workarounds plugin will handle the workarounds.
+
+Kristian Lyngstol <kristian@nihilus.(none)>	2007-07-16
+
+    Remove obsolete deps/feature field from vtable
+
+Kristian Lyngstol <kristian@nihilus.(none)>	2007-07-13
+
+    Add windowDamage when resetting opacity
+
+Danny Baumann <dannybaumann@web.de>	2007-07-11
+
+    Fix missing NULL pointer check.
+    Catched by Roland Bär.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-01
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    xml -> xml.in
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-28
+
+    Makefile update.
+
+Treviño - 3v1n0 <trevi55@gmail.com>	2007-06-28
+
+    s/Beryl/Compiz/ in opacify.xml
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Updated Makefile
+
+Danny Baumann <dannybaumann@web.de>	2007-06-10
+
+    printf -> compLogMessage
+
+Trevi - 3v1n0 <trevi55@gmail.com>	2007-06-08
+
+    Include Java apps in Opacify List
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-21
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-17
+
+    initial commit
+
+compiz <compiz@de35.org>	2007-05-17
+
+    Dummy commit

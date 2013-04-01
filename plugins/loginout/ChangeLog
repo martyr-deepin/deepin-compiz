@@ -1,0 +1,126 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Scott Moreau <oreaus@gmail.com>	2010-09-28
+
+    Don't require composite since opengl already does.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-02
+
+    Use options tag
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Load after decor plugin to prevent windwos from moving after plugin load
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Use C++ bool
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Ensure loading after required plugins
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-09-25
+
+    Don't return uninitialized status
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-03-16
+
+    Track core changes.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-03-14
+
+    Track core changes.
+
+Merge: ed819e7 d870211
+Sam Spilsbury <Sam@XPS-SUSE.site>	2009-02-12
+
+    Merge ../loginout_old into compiz++
+
+Sam Spilsbury <Sam@XPS-SUSE.site>	2009-02-12
+
+    Remove redundant comment
+
+Sam Spilsbury <Sam@XPS-SUSE.site>	2009-02-12
+
+    Store wmSnSelectionInfo in the class. Rationale is that we use 4 bytes to save a few machine cycles
+
+Sam Spilsbury <Sam@XPS-SUSE.site>	2009-02-12
+
+    Remove dummy
+
+Sam Spilsbury <Sam@XPS-SUSE.site>	2009-02-12
+
+    Dummy commit
+
+Merge: 2dc8e59 f5abb87
+Sam Spilsbury <Sam@XPS-SUSE.site>	2009-02-12
+
+    Merge ../loginout_old into compiz++
+
+Sam Spilsbury <Sam@XPS-SUSE.site>	2009-02-12
+
+    Add files
+
+Sam Spilsbury <Sam@XPS-SUSE.site>	2009-02-12
+
+    Initial C++ port
+
+Danny Baumann <dannybaumann@web.de>	2009-01-27
+
+    The class name of the logout window is ksmserver in KDE 4.2, so better
+    filter case insensitive.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-02-05
+
+    Dummy
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-02-05
+
+    Use a special property on the composite manager selection window, to inform ksmserver that we provide a logout effect.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-01-21
+
+    Use wording already present in translations.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-16
+
+    Initial commit.
+
+compiz <compiz@opencompositing.org>	2008-01-16
+
+    Dummy commit

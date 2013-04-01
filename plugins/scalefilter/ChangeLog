@@ -1,0 +1,338 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2010-11-30
+
+    Select the window immediately if we press enter and it is the last window remaining
+
+Scott Moreau <oreaus@gmail.com>	2010-09-28
+
+    Don't require composite since opengl already does.
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Use C++ bool type
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Ensure loading after required plugins
+
+Danny Baumann <dannybaumann@web.de>	2009-03-20
+
+    Remove unneeded update call.
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-03-16
+
+    Track core changes.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-03-14
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2009-02-25
+
+    Various fixes to make scalefilter work:
+    - Add missing method FilterInfo::hasText
+    - Enable event handlers
+
+Danny Baumann <dannybaumann@web.de>	2009-02-22
+
+    Use empty match correctly.
+
+Danny Baumann <dannybaumann@web.de>	2009-02-22
+
+    Initial C++ port. Only compile time tested so far, possibly completely broken. Work-in-progress.
+
+Danny Baumann <dannybaumann@web.de>	2009-02-08
+
+    Indent properly.
+
+Danny Baumann <dannybaumann@web.de>	2009-02-07
+
+    Filter case insensitive by default.
+    It should now be safe to assume everyone who uses current scalefilter
+    also has case insenstive filtering in regex.
+
+Danny Baumann <dannybaumann@web.de>	2009-02-07
+
+    End scale mode on pressing return when only one window is left instead
+    of just applying filter.
+    Reasoning is that the user most likely will switch to the remaining
+    window afterwards anyway.
+
+Danny Baumann <dannybaumann@web.de>	2009-01-11
+
+    Adapt for text plugin interface changes.
+
+Danny Baumann <dannybaumann@web.de>	2008-12-02
+
+    Allow AltGr as modifier in scalefilter.
+
+Danny Baumann <dannybaumann@web.de>	2008-12-02
+
+    Ignore text input with modifiers; only Shift is allowed.
+
+Danny Baumann <dannybaumann@web.de>	2008-10-07
+
+    Process Enter, Backspace, Escape before other plugins (to suppress input if necessary), but text input after other plugins.
+
+Danny Baumann <dannybaumann@web.de>	2008-10-07
+
+    Only process keypresses that weren't used for enabling or disabling scale.
+
+Danny Baumann <dannybaumann@web.de>	2008-09-01
+
+    Track core changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-06-18
+
+    Track core changes
+
+Danny Baumann <dannybaumann@web.de>	2008-06-08
+
+    Plug memory leak.
+
+Danny Baumann <dannybaumann@web.de>	2008-05-24
+
+    When the last scaled window is closed and any filter is applied, remove filter instead of exiting scale.
+
+Danny Baumann <dannybaumann@web.de>	2008-04-27
+
+    Cleanups, coding style fixes.
+
+Danny Baumann <dannybaumann@web.de>	2008-04-21
+
+    Use text's background rendering.
+
+Merge: 0385740 8df206b
+Danny Baumann <dannybaumann@web.de>	2008-04-04
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/plugins/scalefilter
+
+Danny Baumann <dannybaumann@web.de>	2008-04-04
+
+    Whitespace fix.
+
+Joe Rabinoff <bobqwatson@yahoo.com>	2008-04-04
+
+    Fix filtered windows disappearing temporarily when exiting scale.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Danny Baumann <dannybaumann@web.de>	2008-02-23
+
+    No need to clear selectedWindow and hoveredWindow, scale will update those automatically.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Check for header changes
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-12-16
+
+    Revert "Auto-escape special regex chars [ and ], which fixes a crash when entering those characters."
+    
+    This reverts commit ad10e5754520465cc29e74c67df54b21ef52eec7.
+
+Danny Baumann <dannybaumann@web.de>	2007-12-16
+
+    Auto-escape special regex chars [ and ], which fixes a crash when entering those characters.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-10
+
+    Cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-02
+
+    Track text plugin changes and check for its presence.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-31
+
+    Use correct header file.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-30
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-30
+
+    Use core utility functions to retrieve ABI and display index.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-20
+
+    const char*
+
+Danny Baumann <dannybaumann@web.de>	2007-08-17
+
+    Minor cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-17
+
+    Free pixmap if we couldn't bind it to the texture. This makes sure we don't attempt to draw it.
+
+Roland Baer <roland@Vista.(none)>	2007-08-16
+
+    Sanity check...
+
+Danny Baumann <dannybaumann@web.de>	2007-08-07
+
+    Shut up compiler.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-06
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-31
+
+    Rearrange some code.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-29
+
+    Explicitly include keysymdef.h for those folks with X installation that don't include this implicitly.
+
+Patrick Niklaus <marex@opencompositing.org>	2007-07-17
+
+    Remove obsolete deps/features from vtable
+
+Danny Baumann <dannybaumann@web.de>	2007-07-12
+
+    Default to case sensitive filtering because that's the only one guaranteed to be present.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-12
+
+    Drop previously applied filter with Escape instead of Backspace.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-12
+
+    Added option for case insensitive filtering.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-09
+
+    Only set the needed locale type, LC_ALL breaks string formatting for floating point numbers in pixel shaders ;-)
+
+Danny Baumann <dannybaumann@web.de>	2007-07-07
+
+    More UTF-8 fixes.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-06
+
+    Added basic text input localization support.
+    Non-Latin characters are now correctly displayed, however it seems they aren't supported by the regex plugin yet.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-06
+
+    Fix typo.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-06
+
+    Dummy commit.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-06
+
+    Use relayout action instead of duplicating functions.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-06
+
+    Use setScaledPaintAttributes function.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-05
+
+    xml -> xml.in
+
+Danny Baumann <dannybaumann@web.de>	2007-07-05
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-05
+
+    Improve filter match handling.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-22
+
+    Fix some match weirdnesses after applying a match persistently.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-21
+
+    Added feature to apply the current filter persistently by pressing Return.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-21
+
+    Plug memleak.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-20
+
+    Added ending the filter mode with the Escape key.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-20
+
+    Improve text box damage handling and keep text box on one output.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-20
+
+    Only relayout if neccessary.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-20
+
+    Clear hovered and selected windows on match change.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-20
+
+    Remove debug statements.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-20
+
+    Now really properly free timer.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-20
+
+    Hide windows hidden by the filter.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-20
+
+    Prevent double free.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-20
+
+    Don't display border if text is empty.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-20
+
+    Initial import.
+
+maniac <maniac@opencompositing.fr.nf>	2007-06-20
+
+    Dummy commit

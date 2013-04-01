@@ -1,0 +1,167 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Scott Moreau <oreaus@gmail.com>	2010-09-28
+
+    Don't require composite since opengl already does.
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Load after decor plugin to prevent windows moving after plugin load
+
+Merge: b645ff8 234098d
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-05-06
+
+    Merge branch 'master' of git+ssh://smspillaz@git.compiz.org/git/compiz/plugins/fadedesktop
+    
+    Conflicts:
+fadedesktop.xml.in           
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-05-05
+
+    Load after composite, opengl and fix windows not fading out of showdesktop mode
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Ensure loading after required plugins
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-03-16
+
+    Track core changes.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-03-14
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2009-02-02
+
+    Options are now in the <options> tag.
+
+Danny Baumann <dannybaumann@web.de>	2009-02-02
+
+    Indent properly.
+
+Danny Baumann <dannybaumann@web.de>	2009-01-28
+
+    Stylistic improvements, minor fixes.
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-01-28
+
+    Initial C++ port.
+
+Danny Baumann <dannybaumann@web.de>	2008-07-29
+
+    Track core changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Danny Baumann <dannybaumann@web.de>	2008-02-15
+
+    Don't showdesktop grabbed windows.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-11-01
+
+    Compare to real window type to also catch docks that have below state.
+
+Danny Baumann <dannybaumann@web.de>	2007-11-01
+
+    Don't touch docks and desktops as well as skip pager windows.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Track core changes.
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-31
+
+    * Check core plugin ABIVERSION
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-31
+
+    * Track core changes
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-06
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-16
+
+    Remove obsolete deps/features from vtable
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-08
+
+    Add compiz event on fading start/stop.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-06
+
+    Beryl -> Compiz
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-01
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    xml -> xml.in
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-28
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Updated Makefile
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-21
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-17
+
+    deleted dummy
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-17
+
+    initial commit
+
+compiz <compiz@de35.org>	2007-05-17
+
+    Dummy commit

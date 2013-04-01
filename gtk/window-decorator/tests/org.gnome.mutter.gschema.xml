@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema path="/org/gnome/mutter/" id="org.gnome.mutter" gettext-domain="@GETTEXT_DOMAIN">
+
+    <key type="b" name="attach-modal-dialogs">
+      <default>false</default>
+      <summary>Attach modal dialogs</summary>
+      <description>When true, instead of having independent titlebars, modal dialogs appear attached to the titlebar of the parent window and are moved together with the parent window.</description>
+    </key>
+
+    <key type="i" name="draggable-border-width">
+      <default>10</default>
+      <range min="0" max="64"/>
+      <summary>Draggable border width</summary>
+      <description>The amount of total draggable borders. If the theme's visible borders are not enough, invisible borders will be added to meet this value.</description>
+    </key>
+  </schema>
+</schemalist>

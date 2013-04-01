@@ -1,0 +1,12 @@
+GTK-Window-Decorator Resource Usage
+===================================
+Sam Spilsbury <sam.spilsbury@canonical.com>
+
+XRestop usage
+-------------
+#. Install xrestop (sudo apt-get install xrestop)
+#. Run xrestop (eg, $ xrestop &)
+#. Note the number in the "Wns" column for gtk-window-decorator
+#. Open a window
+#. Close that window
+#. The number should be the same

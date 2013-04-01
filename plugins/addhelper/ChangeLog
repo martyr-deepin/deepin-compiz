@@ -1,0 +1,195 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Scott Moreau <oreaus@gmail.com>	2010-09-28
+
+    Don't require composite since opengl already does.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-04
+
+    Remove build dependency on compiztoolbox
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-04
+
+    Don't depend on compiztoolbox
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-07-01
+
+    Simplyfiy serialization interface
+
+Merge: 9d824de 3970f9f
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-06-18
+
+    Merge branch 'master' of git+ssh://smspillaz@git.compiz.org/git/compiz/plugins/addhelper
+    
+    Conflicts:
+src/addhelper.cpp           
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-06-12
+
+    Added serialization interface and necessary changes
+
+Scott Moreau <oreaus@gmail.com>	2010-05-24
+
+    Fix typo.
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Load after decor plugin to prevent windows moving after plugin load
+
+Merge: edf7606 2d09eb3
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-23
+
+    Merge branch 'master' of git+ssh://smspillaz@git.compiz.org/git/compiz/plugins/addhelper
+    
+    Conflicts:
+src/addhelper.cpp           
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-23
+
+    Use PropertyWriter to remember state information on reload
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-05-16
+
+    Fix damage and drawing issues
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Use C++ bool
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Ensure loading after required plugins
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-08
+
+    remove dummy
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-08
+
+    dummy commit
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2009-08-08
+
+    Initial C++ port
+
+Kristian Lyngstol <kristian@bohemians.org>	2008-05-22
+
+    Don't initially dim override_redirect windows, fixes menu issues
+
+Kristian Lyngstol <kristian@yoda.lyngstol.net>	2008-05-21
+
+    Add an option to enable ADD Helper automatically on start
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-01-21
+
+    Use wording already present in translations.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-11
+
+    Compiz coding style.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Track core changes.
+
+Guillaume Seguin <guillaume@segu.in>	2007-08-31
+
+    * Track core changes
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-20
+
+    New action system
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-06
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-06
+
+    Fix applying the saturation value.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-16
+
+    Remove obsolete deps/features from vtable
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-08
+
+    Fix description.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-07-08
+
+    Fix description.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-01
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    xml -> xml.in
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-28
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Updated Makefile
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-21
+
+    removed dummy
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-21
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-17
+
+    initial commit
+
+compiz <compiz@de35.org>	2007-05-17
+
+    Dummy commit

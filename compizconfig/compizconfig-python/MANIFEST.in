@@ -1,0 +1,2 @@
+include TODO README INSTALL AUTHORS COPYING NEWS VERSION ChangeLog
+include Makefile MANIFEST.in

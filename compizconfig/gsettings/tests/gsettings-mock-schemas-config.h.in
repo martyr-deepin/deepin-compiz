@@ -1,0 +1,14 @@
+#ifndef _COMPIZCONFIG_GSETTINGS_MOCK_SCHEMAS_CONFIG_H
+#define _COMPIZCONFIG_GSETTINGS_MOCK_SCHEMAS_CONFIG_H
+
+#define MOCK_SCHEMA_PATH "@CMAKE_BINARY_DIR@/generated/glib-2.0/schemas"
+
+#include <string>
+
+namespace
+{
+const std::string MOCK_SCHEMA ("org.compiz.mock");
+const std::string MOCK_PATH (MOCK_SCHEMA_PATH);
+}
+
+#endif

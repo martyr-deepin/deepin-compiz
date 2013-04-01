@@ -1,0 +1,38 @@
+Installation Instructions
+*************************
+
+Copyright (C) 2010 Sam Spilsbury.
+
+   This file is free documentation under the GNU GFDL; I hereby give
+unlimited permission to copy, distribute and modify it.
+
+Basic Installation
+==================
+
+   CompizConfig Python Bindings use the distutils buildsystem to translate,
+build and install the bindings.
+
+   See the Distutils documentation for more information on how to use the
+specifics of the buildsystem. At the moment, you probably just want to issue
+something like:
+
+   # python setup.py install
+
+Command Line Arguments
+======================
+
+   If you want to install to a particular prefix (eg /opt) then you would use
+   the '--prefix' switch:
+
+   # python setup.py install --prefix=/opt
+
+Environment Variables
+=====================
+
+   CompizConfig Python Bindings might require some environment variables
+   if you installed LibCompizConfig to a non-standard location. Currently,
+   only PKG_CONFIG_PATH is supported, and this is used to find the
+   pkgconfig file to determine the libcompizconfig install location for
+   linking
+
+   # PKG_CONFIG_PATH=/opt/lib/pkgconfig python setup.py install

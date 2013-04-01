@@ -1,0 +1,13 @@
+<compiz>
+    <plugin name="compiztoolbox" useBcop="true">
+	<_short>Compiz Library Toolbox</_short>
+	<_long>Commonly used routines by plugins separated into a separate library</_long>
+	<category>Utility</category>
+	<deps>
+	    <relation type="after">
+		<plugin>composite</plugin>
+		<plugin>opengl</plugin>
+	    </relation>
+	</deps>
+    </plugin>
+</compiz>

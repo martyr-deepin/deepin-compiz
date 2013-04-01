@@ -1,0 +1,12 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: compiz-composite
+Description: Compositing plugin for compiz
+Version: @VERSION@
+
+Requires: compiz
+Libs: @_composite_plugin_LDFLAGS@ -L${libdir} -lcomposite
+Cflags: @COMPIZ_CFLAGS@ @_composite_plugin_CFLAGS@ -I${includedir}/compiz

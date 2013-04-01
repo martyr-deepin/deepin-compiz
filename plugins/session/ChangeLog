@@ -1,0 +1,537 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-03-15
+
+    Update for new core API
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-09-07
+
+    Use libxml to write out session file so that the output is properly
+    encoded.
+    
+    This fixes restoration of sessions which had windows with e.g. '&' in
+    its title.
+    
+    Forward port of 8d9fbe0d6cfd3e4416cca5609ca012f57b3adc25 to master
+
+Merge: 3664670 a3bc91d
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-24
+
+    Merge branch 'master' of git+ssh://smspillaz@git.compiz.org/git/compiz/plugins/session
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-24
+
+    Load after decor plugin to prevent windows moving after plugin load
+
+Scott Moreau <oreaus@gmail.com>	2010-05-13
+
+    Fix typo.
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-13
+
+    Load after composite and opengl to prevent a crash in newer versions of libdri
+    
+    Also, loading before causes mass unredirection/redirection and looks ugly
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Use C++ bool
+
+Danny Baumann <dannybaumann@web.de>	2009-03-20
+
+    Initial C++ port.
+
+Kristian Lyngstol <kristian@bohemians.org>	2009-02-07
+
+    Fix warning correctly
+
+Kristian Lyngstol <kristian@bohemians.org>	2009-02-07
+
+    Fix warning
+
+Danny Baumann <dannybaumann@web.de>	2009-01-28
+
+    Always save topleft edge of window including decorations so we don't
+    depend on the timing of decorator startup when restoring the session.
+
+Malte Schröder <maltesch@gmx.de>	2008-11-23
+
+    Allow windows to be excluded from sessoin management
+
+Danny Baumann <dannybaumann@web.de>	2008-09-27
+
+    Make sure that "demands attention" state is not set for windows restored to another viewport.
+
+Danny Baumann <dannybaumann@web.de>	2008-09-27
+
+    Make sure windows are restored on the correct viewport.
+
+Merge: 6c43d70 1ede544
+Danny Baumann <dannybaumann@web.de>	2008-06-19
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/plugins/session
+
+Danny Baumann <dannybaumann@web.de>	2008-06-19
+
+    Use simpler check for unmanaged windows.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-06-18
+
+    Track core changes
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Merge: f6e0d2e 14dc214
+Danny Baumann <dannybaumann@web.de>	2008-03-17
+
+    Merge branch 'master' of git+ssh://maniac@git.compiz-fusion.org/git/fusion/plugins/session
+
+Danny Baumann <dannybaumann@web.de>	2008-03-17
+
+    Core now calculates window type and actions on state changes.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-17
+
+    Send out sync request when changing window size.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Remove superflous variable.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Track core changes.
+
+Merge: 5301b62 3d1ed50
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Merge branch 'master' of git+ssh://maniac@git.compiz-fusion.org/git/fusion/plugins/session
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Danny Baumann <dannybaumann@web.de>	2008-03-11
+
+    Only ignore initial saveYourself calls instead of all non-shutdown ones.
+
+Merge: a57d3e8 13111b4
+Danny Baumann <dannybaumann@web.de>	2008-03-09
+
+    Merge branch 'master' of git+ssh://maniac@git.compiz-fusion.org/git/fusion/plugins/session
+    
+    Conflicts:
+    
+session.c           
+
+Danny Baumann <dannybaumann@web.de>	2008-03-09
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-06
+
+    Simplification and free filename in error cases.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-05
+
+    Fix minor possible memleak.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-05
+
+    Allocate filename dynamically.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-22
+
+    Added missing newline.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-21
+
+    Only save session state on shutdown.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-21
+
+    Mark session files as UTF-8 encoded.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-19
+
+    Don't filter out windows that have the client leader property set.
+    - xterm windows set the client id property on their main window, which is also the client leader
+    - We filtered out unmapped windows anyway.
+
+Roland Bär <roland@verifysoft.de>	2008-02-19
+
+    Sanity checksc on findWindowAtScreen()
+
+Merge: 9c20164 6278c44
+Danny Baumann <dannybaumann@web.de>	2008-02-19
+
+    Merge branch 'master' of git+ssh://maniac@git.compiz-fusion.org/git/fusion/plugins/session
+    
+    Conflicts:
+    
+session.c           
+
+Danny Baumann <dannybaumann@web.de>	2008-02-19
+
+    Disable save legacy by default as it messes Gnome's panels up.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-19
+
+    Update file header.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-19
+
+    Make saving non-XSMP conformant apps optional.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-19
+
+    Fix handling of windows without client id, but with WM_COMMAND.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-19
+
+    - WM_COMMAND is a client leader property
+    - Reduce code duplication
+
+Danny Baumann <dannybaumann@web.de>	2008-02-18
+
+    Improve matching algorithm.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-18
+
+    Also save & restore window command text.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-18
+
+    Properly call other wrapped functions.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-18
+
+    Don't save unmapped windows that we didn't unmap.
+    This works around sort-of-broken apps like skype that create unmapped windows with weird sizes that aren't distinguishable from the app's visible windows.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-18
+
+    Actually, one timer per display is enough.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-17
+
+    Optimize hack.
+    One timeout per screen is better than one per window.
+    Thanks to onestone for the hint.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-17
+
+    The new timing requires us to not include the decorations into the saved position.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-17
+
+    As objectAdd is _not_ called for objects that are present before plugin load (and specifically, windowAdd is not called for windows that are present on Compiz load), work around this using a timer.
+    This ugly and inefficient crap should be removed as soon as Compiz is fixed to call windowAdd for windows that are present on Compiz load.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-17
+
+    Various fixes to make session restore work with all kinds of timings:
+    - Only handle non-override_redirect windows.
+    - Check on map request rather than on objectAdd as at creation time the needed properties aren't set.
+    - Load defore decoration and save geometry without decoration size. As decoration might move the window from all kinds of places inside the code, this is safer behaviour.
+    - Account for viewport different from 0,0 at session save.
+    - Use configureXWindow again and set placed flag directly.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-16
+
+    Also try to match window role as suggested by ICCCM section 5.1. Use class/name match as last resort.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-16
+
+    Also restore resClass, resName and role.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-16
+
+    Optimize function signatures.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-16
+
+    Also save window role.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-16
+
+    Avoid code duplication.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-16
+
+    Only save title, name, class if available.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-16
+
+    Rename name to title to differentiate it from the resName.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-16
+
+    Load after decoration to make sure we always overwrite decoration's window movements. This works fine because we also saved the geometry after decoration movement. Reflect that in the calculations.
+
+Travis Watkins <amaranth@ubuntu.com>	2008-02-15
+
+    update copyright
+
+Danny Baumann <dannybaumann@web.de>	2008-02-15
+
+    Also save fullscreen state.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-15
+
+    Put window list in core object and some minor cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-15
+
+    Fix infinite loop on plugin unload.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-15
+
+    Compiz coding style and some more optimizations.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-15
+
+    Get rid of sessionForeachWindow.
+    Windows that are present on Compiz startup get an explicit WindowAdd callback, so there's no need to loop through them.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-15
+
+    Desktop and dock windows aren't sticky.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-15
+
+    Remove unused function.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-15
+
+    Optimizations.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-15
+
+    Use moveResizeWindow.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-15
+
+    Optimizations.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-15
+
+    Update window attributes after applying saved stuff.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-15
+
+    Window attributes are in child items.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-15
+
+    Plug memleaks.
+
+Travis Watkins <amaranth@ubuntu.com>	2008-02-14
+
+    make sure we don't accidentally free windowList when removing an item
+    add sessionWindowAdd to get windows that don't show up until after compiz is started
+
+Travis Watkins <amaranth@ubuntu.com>	2008-02-14
+
+    small fixes
+
+Travis Watkins <amaranth@ubuntu.com>	2008-02-14
+
+    little fixes
+
+Travis Watkins <amaranth@ubuntu.com>	2008-02-14
+
+    add linked list of windows we want to apply attributes to
+
+Merge: e3c657d 6f78a68
+Travis Watkins <amaranth@ubuntu.com>	2008-02-14
+
+    Merge branch 'master' of git+ssh://amaranth@git.compiz-fusion.org/git/users/amaranth/session
+    
+    Conflicts:
+    
+session.c           
+
+Travis Watkins <amaranth@ubuntu.com>	2008-02-14
+
+    adapt to new ABI
+
+Danny Baumann <dannybaumann@web.de>	2008-02-14
+
+    Fix memleak.
+    Don't make plugin fail load if no SM is available.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-14
+
+    Adapt to new core API.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-14
+
+    Use compObjectFind to find default display.
+    Also fixed symbol name for getPluginInfo.
+
+Merge: 7b75289 fcc42d7
+Danny Baumann <dannybaumann@web.de>	2008-02-14
+
+    Merge branch 'master' of git+ssh://maniac@git.compiz-fusion.org/git/users/amaranth/session
+
+Danny Baumann <dannybaumann@web.de>	2008-02-14
+
+    Fix copy'n'paste mistakes.
+
+Travis Watkins <amaranth@ubuntu.com>	2008-02-14
+
+    remove session management, update to new session hooks
+
+Danny Baumann <dannybaumann@web.de>	2008-02-08
+
+    Added infrastructure for using core's session functions.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-08
+
+    Build fixes for latest core.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-08
+
+    Makefile update.
+
+Travis Watkins <amaranth@ubuntu.com>	2007-09-23
+
+    support --sm-disable
+
+Travis Watkins <amaranth@ubuntu.com>	2007-09-23
+
+    update copyright header
+
+Travis Watkins <amaranth@ubuntu.com>	2007-09-23
+
+    load metadata (thanks danny)
+
+Travis Watkins <amaranth@ubuntu.com>	2007-09-23
+
+    save/restore shaded state
+
+Travis Watkins <amaranth@ubuntu.com>	2007-09-23
+
+    properly save geometry for maximized windows
+
+Travis Watkins <amaranth@ubuntu.com>	2007-09-23
+
+    cleanup
+
+Travis Watkins <amaranth@ubuntu.com>	2007-09-23
+
+    only free previousId if non-NULL
+
+Travis Watkins <amaranth@ubuntu.com>	2007-09-23
+
+    restore window's workspace too
+
+Travis Watkins <amaranth@ubuntu.com>	2007-09-23
+
+    fix typo
+
+Travis Watkins <amaranth@ubuntu.com>	2007-09-23
+
+    don't save geometry if maximized
+
+Travis Watkins <amaranth@ubuntu.com>	2007-09-23
+
+    fix all boogs
+
+Travis Watkins <amaranth@ubuntu.com>	2007-09-23
+
+    moving windows works now
+
+Travis Watkins <amaranth@ubuntu.com>	2007-09-23
+
+    oops, this isn't python, strcmp is important
+
+Travis Watkins <amaranth@ubuntu.com>	2007-09-23
+
+    remove dependencies
+
+Travis Watkins <amaranth@ubuntu.com>	2007-09-22
+
+    still with the crashing
+
+Travis Watkins <amaranth@ubuntu.com>	2007-09-22
+
+    add more dependencies
+
+Travis Watkins <amaranth@ubuntu.com>	2007-09-22
+
+    fix crash by adding metadata to make plugin load very early
+
+Travis Watkins <amaranth@ubuntu.com>	2007-09-22
+
+    add ignore file
+
+Travis Watkins <amaranth@ubuntu.com>	2007-09-22
+
+    more cleanup
+
+Travis Watkins <amaranth@ubuntu.com>	2007-09-22
+
+    delete dummy
+
+Travis Watkins <amaranth@ubuntu.com>	2007-09-22
+
+    more cleanup, doesn't seem to crash anymore
+
+Travis Watkins <amaranth@ubuntu.com>	2007-09-22
+
+    cleanup
+
+Merge: 0c31ad8 5950cfa
+Travis Watkins <amaranth@ubuntu.com>	2007-09-22
+
+    Merge git+ssh://amaranth@git.compiz-fusion.org/git/users/amaranth/session
+
+amaranth <amaranth@opencompositing.org>	2007-09-23
+
+    Dummy commit
+
+Travis Watkins <amaranth@ubuntu.com>	2007-09-22
+
+    blah blah, commit more often, or at least don't only commit when it's broken
+
+Travis Watkins <amaranth@ubuntu.com>	2007-09-22
+
+    create save file properly using session ID
+
+Travis Watkins <amaranth@ubuntu.com>	2007-09-22
+
+    initialize the session even if we didn't get a client id
+
+Travis Watkins <amaranth@ubuntu.com>	2007-09-21
+
+    it works again
+
+Travis Watkins <amaranth@ubuntu.com>	2007-09-21
+
+    shit, i really need to remember to commit this stuff

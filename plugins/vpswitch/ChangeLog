@@ -1,0 +1,253 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Scott Moreau <oreaus@gmail.com>	2010-07-17
+
+    Fix porting bugs.
+
+Scott Moreau <oreaus@gmail.com>	2010-07-17
+
+    Bind next and prev to their respective functions.
+
+Jay Catherwood <jay.catherwood@gmail.com>	2010-06-10
+
+    Fix goto numbered
+
+Merge: dd2352a 9c4ce74
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Load after decor plugin to prevent windwos from moving after plugin load
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Load after decor plugin to prevent windows moving after plugin load
+
+Scott Moreau <scott@box1.(none)>	2010-05-13
+
+    Fix typo. The relation type must be in this order or it can cause problems. (on open drivers, it causes black screen when toggling the plugin)
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-13
+
+    Add missing <deps> tag which caused load rules not to work
+
+Merge: b13e258 392aae7
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-13
+
+    Merge branch 'master' of git+ssh://git.compiz.org/git/compiz/plugins/vpswitch
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-13
+
+    Load after composite and opengl plugins to avoid a sudden unredirect/redirect
+    since it looks visually unappealing.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Fix warnings
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-11-28
+
+    Don't create copies of all plugin options during iteration. Uninitializing the copied action options will remove the main keybindings.
+
+Joel Bosveld <Joel.Bosveld@gmail.com>	2009-07-01
+
+    Track changes for modHandler
+
+Joel Bosveld <Joel.Bosveld@gmail.com>	2009-07-01
+
+    Properly track core changes
+
+Joel Bosveld <Joel.Bosveld@gmail.com>	2009-07-01
+
+    Fix CMakeLists.txt
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-07-01
+
+    Remove dummy
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-07-01
+
+    Dummy commit
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-07-01
+
+    Track (semi)-recent core changes
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-07-01
+
+    Add files
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-07-01
+
+    Initial C++ port
+
+Danny Baumann <dannybaumann@web.de>	2008-11-20
+
+    While in a grab, use window under pointer for checking if it's a desktop window.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-05-17
+
+    Allow also the root window for action execution, even if a desktop window is present.
+
+Danny Baumann <dannybaumann@web.de>	2008-04-25
+
+    Set internal hint for desktop bindings.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-02-15
+
+    Check for action function existence.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-02-14
+
+    Work with any action type.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-10-24
+
+    Whitespace fixes.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-18
+
+    Don't wrap around when moving up/down/left/right.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Track core changes.
+
+Merge: d012647 9aeec2b
+Danny Baumann <dannybaumann@web.de>	2007-08-30
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/plugins/vpswitch
+    
+    Conflicts:
+    
+vpswitch.c           
+    
+    nothing added to commit but untracked files present (use "git add" to track)
+
+Danny Baumann <dannybaumann@web.de>	2007-08-30
+
+    Finalize core changes tracking.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-30
+
+    Fixed getting of options.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-30
+
+    (Partially) track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-29
+
+    Fixed rotate initiation.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-20
+
+    New action system
+
+Danny Baumann <dannybaumann@web.de>	2007-08-13
+
+    Fix plugin description.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-13
+
+    Fix header.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-13
+
+    Merge in gotovp functionality.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-13
+
+    Fix calculations.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-13
+
+    Whitespace fixes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-06
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-24
+
+    Use root window only if there are no desktop windows.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-16
+
+    Remove obsolete deps/features from vtable
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-05
+
+    Compiz indent style.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-04
+
+    Initiate only on desktop click.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-04
+
+    Added system to initiate a different plugin action on desktop click.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-01
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    xml -> xml.in
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-28
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-25
+
+    Check for screengrabs of other plugins.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-20
+
+    Allow also clicks on the root window.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-20
+
+    First version of the mouse action on desktop window viewport switcher plugin.
+
+compiz <compiz@opencompositing.fr.nf>	2007-06-20
+
+    Dummy commit

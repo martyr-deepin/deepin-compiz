@@ -1,0 +1,10 @@
+find_package (Compiz REQUIRED)
+
+include (CompizCommon)
+include (CompizPackage)
+
+compiz_add_plugins_in_folder ("${CMAKE_SOURCE_DIR}")
+
+compiz_print_configure_header ("Compiz")
+compiz_print_plugin_stats ("${CMAKE_SOURCE_DIR}")
+compiz_print_configure_footer ()

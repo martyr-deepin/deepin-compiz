@@ -1,0 +1,22 @@
+<compiz>
+    <plugin name="clone" useBcop="true">
+	<_short>Clone Output</_short>
+	<_long>Output clone handler</_long>
+	<category>Desktop</category>
+	<deps>
+	    <requirement>
+		<plugin>opengl</plugin>
+	    </requirement>
+	    <relation type="after">
+		<plugin>decor</plugin>
+	    </relation>
+	</deps>
+	<options>
+	    <option name="initiate_button" type="button">
+		<_short>Initiate</_short>
+		<_long>Initiate clone selection</_long>
+		<default>&lt;Super&gt;&lt;Shift&gt;Button1</default>
+	    </option>
+	</options>
+    </plugin>
+</compiz>

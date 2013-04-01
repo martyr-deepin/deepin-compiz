@@ -1,0 +1,440 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-02-24
+
+    Initialize variable
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Cleanup (static analysis)
+
+Merge: 987b871 95e8b43
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Merge branch 'master' of ssh://anongit.compiz.org/git/compiz/plugins/ring
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Load after decor plugin to prevent windows moving after plugin load
+
+Danny Baumann <dannybaumann@web.de>	2010-05-01
+
+    Improve CompRect method usage.
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-05-01
+
+    Use CompRect for output geometry
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Use #defines for better action binding style
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Use C++ bool
+
+Merge: 121ee99 32592c6
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Merge branch 'master' of ssh://anongit.compiz.org/git/compiz/plugins/ring
+
+Sam <smspillaz@gmail.com>	2010-04-05
+
+    Properly reset window geometry when drawing overlay icon
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Fix warning and build
+
+Merge: 367c5ba 02e2a1b
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Merge branch 'compiz++' of ../ring into compiz++
+    
+    Conflicts:
+src/ring.cpp           
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Fix warning
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-17
+
+    Fix warning.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-17
+
+    Fix sorting order.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-12-17
+
+    Fix crash when a window closes during ring use.
+    
+    Forward port of def43e4d1683acf69845b006834e87f25929ab1f.
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-09-12
+
+    Fixed unused variable declaration
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-09-12
+
+    Add "active" compiz event to prevent focus animation after ring usage.
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-09-12
+
+    Fix possible segfault on 64-bit arch. due to passing 0 to va_list and retrieving it as pointer.
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-09-12
+
+    Be a little safer in that loop
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-09-12
+
+    Only paint when required
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-09-12
+
+    Require opengl
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-09-12
+
+    Work correctly without the text plugin
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-09-11
+
+    Remove dummy
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-09-11
+
+    Dummy commit
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-09-11
+
+    Initial C++ port
+
+Danny Baumann <dannybaumann@web.de>	2009-01-11
+
+    Adapt for text plugin interface changes.
+
+Danny Baumann <dannybaumann@web.de>	2008-12-02
+
+    Support icons larger than 96x96 and limit painting of emblem icons to
+    64x64.
+
+Danny Baumann <dannybaumann@web.de>	2008-11-28
+
+    Use core's normal cursor instead of having an extra copy.
+
+Danny Baumann <dannybaumann@web.de>	2008-09-26
+
+    Change window title according to mouse movement when using mouse selection mode.
+
+Danny Baumann <dannybaumann@web.de>	2008-09-01
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2008-07-29
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2008-04-27
+
+    Coding style fixes, cleanups.
+
+Danny Baumann <dannybaumann@web.de>	2008-04-21
+
+    Fix segfault on using mouse selection.
+
+Guillaume Seguin <guillaume@segu.in>	2008-04-21
+
+    Use Cairo-based text background drawing
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Danny Baumann <dannybaumann@web.de>	2008-03-09
+
+    Fixed handling of binding termination.
+    When an action is initiated via edge button, terminate on edge leave instead of button release.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Check for header changes
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-01-21
+
+    Use wording already present in translations.
+
+Danny Baumann <dannybaumann@web.de>	2008-01-20
+
+    Allow showing shaded windows.
+
+Danny Baumann <dannybaumann@web.de>	2007-10-16
+
+    More minor cleanup and beautification.
+
+Danny Baumann <dannybaumann@web.de>	2007-10-16
+
+    Free slots on plugin unload.
+
+Danny Baumann <dannybaumann@web.de>	2007-10-16
+
+    Minor beautification.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-03
+
+    Show viewport number in window title when showing windows from all viewports.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-02
+
+    Track text plugin changes and look for its presence.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-31
+
+    Use correct header file.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-30
+
+    Track core changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-20
+
+    New action system
+
+Danny Baumann <dannybaumann@web.de>	2007-08-09
+
+    Fix problems when the selected window is closed.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-09
+
+    Fix adding windows to ring.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-06
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-30
+
+    Only skip SkipTaskbar windows, not SkipPager ones.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-30
+
+    Windows in show desktop mode are also valid switcher windows.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-28
+
+    Simplify match because the workarounds plugin will handle the workarounds.
+
+Merge: bb25e72 c193da4
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-18
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/fusion/plugins/ring
+
+Roland Baer <roland@Vista.(none)>	2007-07-18
+
+    ring unused var
+
+Merge: 3b9cb4a 1d27369
+Guillaume Seguin <guillaume@segu.in>	2007-07-18
+
+    Merge branch 'master' of git+ssh://guillaume@git.opencompositing.org/git/fusion/plugins/ring
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-16
+
+    Remove obsolete deps/features from vtable
+
+Guillaume Seguin <guillaume@segu.in>	2007-07-16
+
+    * Fix typo
+
+Danny Baumann <dannybaumann@web.de>	2007-07-08
+
+    Code formatting fixes.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-08
+
+    Code cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-08
+
+    Only use depth scaling for emblem icon display.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-07
+
+    Don't scale icons for minimized windows twice.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-07
+
+    Also scale icons according to their position in the ring, not only the windows.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-06
+
+    Fix incompatibility between unmap fadeout of the fade plugin and minimized window icon display.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-01
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-07-01
+
+    Fix typo.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    xml -> xml.in
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    Beautification.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    Update window title display if window title of selected window changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-28
+
+    Makefile update.
+
+Erkin Bahceci <erkinbah@gmail.com>	2007-06-26
+
+    Scale z by 1 instead of 0.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-21
+
+    Properly free window private index.
+    Thanks to Pafy for catching this one.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-11
+
+    Use text plugin package.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Updated Makefile
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Updated Makefile
+
+Danny Baumann <dannybaumann@web.de>	2007-06-08
+
+    Re-sort options.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-08
+
+    Typo fix.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-08
+
+    Whitespace fixes.
+
+Trevi - 3v1n0 <trevi55@gmail.com>	2007-06-08
+
+    Shows correctly Java and Firefox tools on Ring switcher
+
+Danny Baumann <dannybaumann@web.de>	2007-06-06
+
+    Adjust TODO list and mail address.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-04
+
+    Improve spelling and code formatting.
+
+Quinn Storm <quinn@quinn-laptop.(none)>	2007-06-03
+
+    add simple option to specify which ring direction is 'next', affects layout and rotation by simply mirroring X translation when enabled
+    default is the old behaviour, though enabling it brings ring more in line with the behaviour of the regular switcher
+
+Danny Baumann <daba@mobilrechner.localdomain>	2007-06-02
+
+    Remove "No Spring Model After Settle" option.
+    We should not have any options that enable broken-by-design behaviour, especially if we are aware of the fact that it is broken.
+    This option can either be implemented properly or be kept in a local branch, but not in master in its current state.
+
+Quinn Storm <quinn@quinn-laptop.(none)>	2007-05-31
+
+    mark the spring model option as buggy
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-01
+
+    Applied lastest core changes
+
+Danny Baumann <daba@mobilrechner.localdomain>	2007-05-23
+
+    Improve formatting and option description.
+
+Quinn <quinn@darter.(none)>	2007-05-22
+
+    add (admittedly ill-described at the moment) option to ring plugin to turn off the disabling of the spring model after the ring has 'settled', in order to make experience more consistent (otherwise you can't be sure if the user will see springy or non-springy ring rotation, depending on if they let the ring settle)
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-21
+
+    Makefile update
+
+Danny Baumann <daba@mobilrechner.localdomain>	2007-05-17
+
+    Fix usage of enum option accesses.
+
+Merge: e697761 ebf0702
+Danny Baumann <daba@mobilrechner.localdomain>	2007-05-17
+
+    Merge branch 'master' of git+ssh://maniac@git.beryl-project.org/git/compcomm/plugins/ring
+
+Danny Baumann <daba@mobilrechner.localdomain>	2007-05-17
+
+    Remove autogenerated files.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-17
+
+    cleanup
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-17
+
+    initial commit
+
+compiz <compiz@de35.org>	2007-05-17
+
+    Dummy commit

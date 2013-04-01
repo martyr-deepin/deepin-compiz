@@ -1,0 +1,14 @@
+<compiz>
+    <plugin name="regex">
+	<_short>Regex Matching</_short>
+	<_long>Regex window matching</_long>
+	<category>Utility</category>
+	<deps>
+	    <relation type="after">
+		<plugin>composite</plugin>
+		<plugin>opengl</plugin>
+		<plugin>decor</plugin>
+	    </relation>
+	</deps>
+    </plugin>
+</compiz>

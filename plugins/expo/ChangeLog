@@ -1,0 +1,633 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-03-30
+
+    Fix typo which caused the wrong window to move when doing dnd
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2010-11-21
+
+    Force one wall per output in the case that output sizes do not match
+
+Merge: 1fc0f9d a53262d
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/compiz/plugins/expo
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-10-23
+
+    Cleanup (static analysis)
+
+Scott Moreau <oreaus@gmail.com>	2010-09-28
+
+    Don't require composite since opengl already does.
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-11
+
+    Fix conditional jump or move on uninitialized variable
+
+Merge: 90b9620 d0b93eb
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Merge branch 'master' of git+ssh://smspillaz@git.compiz.org/git/compiz/plugins/expo
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Use C++ bool
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Ensure that we load after composite and opengl
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-05
+
+    Fix warnings
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-03
+
+    Fix possible segfault on 64-bit arch. due to passing 0 to va_list and retrieving it as pointer.
+    
+    Forward port of d1e2fb4ffd923966ad27747b393ab18d47c5423e to master
+
+Merge: bc4fa92 c288c16
+Sam Spilsbury <smspillaz@gmail.com>	2009-11-18
+
+    Merge branch 'master' of git+ssh://smspillaz@git.compiz.org/git/compiz/plugins/expo
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-11-18
+
+    Fix typo
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-11-17
+
+    Use new glAddGeometry grid interface.
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-11-04
+
+    Fixed action state handling.
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-11-04
+
+    Call base glPaintTransformedOutput function.
+
+Merge: bd45303 42a411d
+Danny Baumann <dannybaumann@web.de>	2009-03-20
+
+    Merge branch 'compiz++' of git+ssh://git.compiz-fusion.org/git/fusion/plugins/expo into compiz++
+
+Danny Baumann <dannybaumann@web.de>	2009-03-20
+
+    Use inputRect.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-03-18
+
+    Remove trailing space.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-03-18
+
+    Include CompizPlugin in CMakeLists.txt.
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-03-16
+
+    Track core changes.
+
+Erkin Bahceci <erkinbah@gmail.com>	2009-03-14
+
+    Track core changes.
+
+Merge: d166246 376495d
+Danny Baumann <dannybaumann@web.de>	2009-03-10
+
+    Merge branch 'compiz++' of git+ssh://git.compiz-fusion.org/git/fusion/plugins/expo into compiz++
+    
+    Conflicts:
+expo.cpp           
+
+Danny Baumann <dannybaumann@web.de>	2009-03-10
+
+    Minor cleanup.
+
+Eduardo Gurgel Pinho <eduardo@mad4.(none)>	2009-03-09
+
+    Track core changes
+
+Danny Baumann <dannybaumann@web.de>	2009-03-09
+
+    Add opengl plugin requirement.
+
+Danny Baumann <dannybaumann@web.de>	2009-03-09
+
+    Indent properly.
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-03-09
+
+    Fixed curve deformation animation.
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-03-09
+
+    Initialize values.
+
+Dennis Kasprzyk <onestone@compiz-fusion.org>	2009-03-09
+
+    Fixed metadata.
+
+Danny Baumann <dannybaumann@web.de>	2009-03-05
+
+    Whitespace fix.
+
+Danny Baumann <dannybaumann@web.de>	2009-03-05
+
+    Initial C++ port.
+
+Danny Baumann <dannybaumann@web.de>	2008-12-19
+
+    Show panels in expo mode by default.
+
+Danny Baumann <dannybaumann@web.de>	2008-12-19
+
+    Fix mouse-over-window calculation for sticky windows.
+
+Danny Baumann <dannybaumann@web.de>	2008-11-21
+
+    Don't allow movement of windows that are not supposed to be moved.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-07
+
+    Plug mem leaks.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-05-02
+
+    We have to scale the normal, because we are also scaling in z direction.
+
+Danny Baumann <dannybaumann@web.de>	2008-04-25
+
+    Set internal hint.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-22
+
+    Added an additional scale to fix lighting of big walls.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-22
+
+    Make sure that we don't hit a point on the other side of the curve.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-22
+
+    Added normal calculation for proper lighting.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-22
+
+    Use simpler deformation formula.
+    Use direct inversion in curved mode (thanks to iXce).
+
+Roland Bär <roland@verifysoft.de>	2008-04-10
+
+    [PATCH] Mam leak fix
+
+Roland Bär <roland@verifysoft.de>	2008-04-10
+
+    [PATCH] Initalised lastZ variable
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-10
+
+    Optimization.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-10
+
+    Optimization.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-10
+
+    Load after cubeaddon.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    Initialize es->expoActive correctly.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Erkin Bahceci <erkinbah@gmail.com>	2008-04-01
+
+    [PATCH] Fix high cpu usage during expo mode.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-31
+
+    Bring back inactive viewport saturation/brightness on exit.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-31
+
+    Fixed dock window handling.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-31
+
+    Load after wallpaper.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-31
+
+    Fixed expo reflection for vsize > 1.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Transform window only in valid area.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Resorted some options.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Moved z coordinate transformation into addWindowGeometry to make curved expo work with blur.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-13
+
+    Only enable soft curve if there is one desktop window.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-13
+
+    Load after wobbly and animation.
+
+Merge: a1dbed5 ee3ca18
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-13
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/fusion/plugins/expo
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-13
+
+    Added new "curve" mode.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-12
+
+    Update header.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Danny Baumann <dannybaumann@web.de>	2008-02-28
+
+    Fixed flicker when cancelling expo.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-02-26
+
+    Added fading on active viewport change.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-02-26
+
+    Added more appearance options.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-02-25
+
+    Move reflection settings into separate subgroup.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-13
+
+    Use coordinates on viewport instead of global ones for grab notify.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-12-04
+
+    A terminate function may be called without the root window passed to it; make sure DnD is ended correctly in that case.
+
+Danny Baumann <dannybaumann@web.de>	2007-10-29
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-10-23
+
+    Optimization.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-10-08
+
+    Use new core API instead of moveScreenViewport.
+
+Danny Baumann <dannybaumann@web.de>	2007-10-06
+
+    Correctly terminate Drag'n'Drop when terminating expo mode.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-25
+
+    Use passive grabs for the expo-only buttons.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-20
+
+    No need to copy core clip planes.
+    A better fix for the underlying problem is now in cube plugin.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-09-18
+
+    Stupid mistake.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-09-18
+
+    Use right clipping planes in expo mode.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-09-17
+
+    Use current aspact ratio for reflection calculation.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Track core changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-09-03
+
+    Optimizations.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-09-03
+
+    Load after cubereflex.
+
+Merge: f1b1f37 3cd9026
+Danny Baumann <dannybaumann@web.de>	2007-08-30
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/fusion/plugins/expo
+    
+    Conflicts:
+    
+expo.c           
+
+Danny Baumann <dannybaumann@web.de>	2007-08-30
+
+    Track core changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-30
+
+    Track core changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-30
+
+    Use action system for expo button bindings.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-23
+
+    Added expo termination with double click.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-20
+
+    Change to new action system.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-14
+
+    Also allow fullscreen windows to be moved in expo mode.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-06
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-06
+
+    Small cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-06
+
+    Fix in-window calculations.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-05
+
+    Cycle selected viewport with mousewheel scrolling.
+    Only terminate expo with right mouse button.
+    TODO: Convert this stuff to normal button bindings.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-05
+
+    Select active viewport by default.
+    Some more code cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-05
+
+    Properly reset viewport update mode variable.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-05
+
+    Various code cleanups.
+    Should not contain functional changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-05
+
+    Allow termination of expo mode with return key.
+    Return to previously selected viewport when terminating with Esc.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-05
+
+    Improve variable naming.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-05
+
+    Fix viewport selection & termination with mouse click.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-04
+
+    Use expoTermExpo when leaving expo mode to avoid code duplication.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-04
+
+    Fix mouse pointer desynchronization on window move by synchronizing the viewport changes only on ungrab.
+    Also removed some unneeded code.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-03
+
+    Make sure that saved window coordinates follow window movement when a maximized window is dragged between viewports.
+    Also don't call updateWindowAttributes for non-maximized windows as it's unneeded.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-03
+
+    Code cleanup, unnecessary code removal and optimizations.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-02
+
+    Make sure we snap maximized windows to the right output.
+
+David Reveman <davidr@novell.com>	2007-08-02
+
+    Update viewport when dragging a window to a new one.
+    Fixes snapping of maximized windows.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-16
+
+    Remove obsolete deps/features from vtable
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-11
+
+    Added option to disable/enable docks in expo mode.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-10
+
+    Added "One wall per output" multioutput mode.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-05
+
+    Compiz indent style.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-05
+
+    Terminate on global cancel event (Escape).
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-03
+
+    Makefile update.
+
+Patrick Niklaus <patrick@dark-desktop.(none)>	2007-07-02
+
+    Added an option to scale the reflection
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-01
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    xml -> xml.in
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-28
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-28
+
+    Fix possible NULL pointer dereferences.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-26
+
+    Remove screengrab in finiScreen if it's still active.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-26
+
+    Use mipmaps also for zoom animation.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-25
+
+    Remove screengrab after animation has finished.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-25
+
+    Handle windows on multiple viewports correctly.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-23
+
+    Improve description.
+
+Merge: 307906b df0b26c
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-21
+
+    Merge branch 'master' of git+ssh://git.beryl-project.org/git/compcomm/plugins/expo
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-21
+
+    Fixed window opacity fading issues.
+
+Merge: 3abc4c5 6f105f1
+Robert Carr <racarr@gorbie.(none)>	2007-06-19
+
+    Merge branch 'master' of git+ssh://git.opencompositing.org/git/compcomm/plugins/expo
+
+Robert Carr <racarr@gorbie.(none)>	2007-06-19
+
+    Add ability to move focus viewport in expo with arrow keys
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-18
+
+    Added option to control the zoom out duration
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    fixed plugin.info file
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-11
+
+    Updated Makefile
+
+Danny Baumann <dannybaumann@web.de>	2007-06-08
+
+    Re-sort some options.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-08
+
+    Fix indention.
+
+Patrick Niklaus <marex@opencompositing.org>	2007-06-06
+
+    Fix metadata for expo animation
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-06
+
+    Removed string restrictions
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-06
+
+    Added aspect ratio option
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-06
+
+    Added distance option
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-05
+
+    - added ground size option
+    - improved mouse handling code
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-05
+
+    added ground color selection
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-05
+
+    Show reflection in non rotated mode too
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-04
+
+    Don't unwrap a non used function.
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-04
+
+    Fixed reflection fadeout
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-06-04
+
+    Added a reflective ground
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-02
+
+    - Use new output system to fix multihead
+    - Huge code cleanup
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-01
+
+    Applied lastest core changes
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-21
+
+    Makefile update
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-16
+
+    added new dependency rules
+
+Dennis Kasprzyk <onestone@beryl-project.org>	2007-05-09
+
+    Expo separated from wall
+
+compiz <compiz@de35.org>	2007-05-09
+
+    Dummy commit

@@ -1,0 +1,92 @@
+<compiz>
+    <plugin name="annotate" useBcop="true">
+	<_short>Annotate</_short>
+	<_long>Annotate plugin</_long>
+	<category>Extras</category>
+	<deps>
+	    <relation type="after">
+		<plugin>decor</plugin>
+	    </relation>
+	    <requirement>
+		<plugin>opengl</plugin>
+	    </requirement>
+	</deps>
+	<options>
+	    <option name="initiate_free_draw_button" type="button">
+		<_short>Initiate Free Draw</_short>
+		<_long>Initiate freehand drawing</_long>
+		<default>&lt;Super&gt;&lt;Alt&gt;Button1</default>
+	    </option>
+	    <option name="initiate_line_button" type="button">
+		<_short>Initiate Line</_short>
+		<_long>Initiate line drawing</_long>
+		<default>&lt;Super&gt;&lt;Alt&gt;Button2</default>
+	    </option>
+	    <option name="initiate_rectangle_button" type="button">
+		<_short>Initiate Rectangle</_short>
+		<_long>Initiate rectangle drawing</_long>
+		<default>&lt;Super&gt;&lt;Alt&gt;&lt;Shift&gt;Button1</default>
+	    </option>
+	    <option name="initiate_ellipse_button" type="button">
+		<_short>Initiate Ellipse</_short>
+		<_long>Initiate ellipse drawing</_long>
+		<default>&lt;Super&gt;&lt;Alt&gt;&lt;Shift&gt;Button2</default>
+	    </option>
+	    <option name="draw" type="action">
+		<_short>Draw</_short>
+		<_long>Draw using tool</_long>
+		<allowed/>
+	    </option>
+	    <option name="erase_button" type="button">
+		<_short>Initiate Erase</_short>
+		<_long>Initiate annotate erasing</_long>
+		<default>&lt;Super&gt;&lt;Alt&gt;Button3</default>
+	    </option>
+	    <option name="clear_key" type="key">
+		<_short>Clear</_short>
+		<_long>Clear</_long>
+		<default>&lt;Super&gt;&lt;Alt&gt;k</default>
+	    </option>
+	    <option name="clear_button" type="button">
+		<_short>Clear</_short>
+		<_long>Clear</_long>
+	    </option>
+	    <option name="draw_shapes_from_center" type="bool">
+		    <_short>Draw shapes from center</_short>
+		    <_long>Uses the initial click point as the center of shapes.</_long>
+		    <default>true</default>
+	    </option>
+	    <option name="fill_color" type="color">
+		<_short>Annotate Fill Color</_short>
+		<_long>Fill color for annotations</_long>
+		<default>
+		    <red>0xffff</red>
+		    <alpha>0x8888</alpha>
+		</default>
+	    </option>
+	    <option name="stroke_color" type="color">
+		<_short>Annotate Stroke Color</_short>
+		<_long>Stroke color for annotations</_long>
+		<default>
+		    <green>0xffff</green>
+		</default>
+	    </option>
+	    <option name="erase_width" type="float">
+		<_short>Erase width</_short>
+		<_long>Erase size</_long>
+		<default>20.0</default>
+		<min>1.0</min>
+		<max>100.0</max>
+		<precision>0.1</precision>
+	    </option>
+	    <option name="stroke_width" type="float">
+		<_short>Stroke width</_short>
+		<_long>Stroke width for annotations</_long>
+		<default>3.0</default>
+		<min>1.0</min>
+		<max>100.0</max>
+		<precision>0.1</precision>
+	    </option>
+	</options>
+    </plugin>
+</compiz>

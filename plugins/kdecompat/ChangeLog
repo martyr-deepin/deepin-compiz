@@ -1,0 +1,159 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Danny Baumann <dannybaumann@web.de>	2011-02-01
+
+    Don't implicitly enable paint functions for windows in the stack above
+    the window that we want to activate paint functions on.
+    
+    Also check paint functions on slide property update
+
+Scott Moreau <oreaus@gmail.com>	2010-09-28
+
+    Don't require composite since opengl already does.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-16
+
+    Fix windows not redrawing after animating in
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-14
+
+    Don't stop screen level paint functions if one window has nothing to paint
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-14
+
+    Dynamically toggle paint functions
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-13
+
+    Fix slide animation not working on sliding window close
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-13
+
+    Fix typo which caused slide animations to be clipped incorrectly
+
+Danny Baumann <dannybaumann@web.de>	2010-08-13
+
+    Add support for KDE 4.5 blur hinting
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-06-19
+
+    Fix valgrind warnings
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-24
+
+    Load after decor plugin to prevent windows moving after plugin load
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-21
+
+    Ensure damage if the number of previews has changed
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Use C++ bool
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-01
+
+    Cleanup
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-01
+
+    Fix rendering issues in both thumbnail and slide
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-03-22
+
+    Load after composite and opengl
+
+Merge: 8ba6489 8f532e2
+Sam Spilsbury <smspillaz@gmail.com>	2010-03-19
+
+    Merge branch 'master' of git+ssh://smspillaz@git.compiz.org/git/compiz/plugins/kdecompat
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-03-19
+
+    Fix missing symbol
+
+Danny Baumann <dannybaumann@web.de>	2010-03-17
+
+    More cleanup.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-03-17
+
+    Cleanup.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-03-17
+
+    Add support for 'present window group' effect.
+    
+    Forward port of 61627a181e04f9911e69da2821b70a9a5187cb4e to master
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-03-16
+
+    Add plasma popup slide effect.
+    
+    Forward port of fe6735ace81250cbef33cdcfe3c8a1899dbc86dd to master
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-02
+
+    Build fix
+
+Danny Baumann <dannybaumann@web.de>	2010-02-02
+
+    Cleanup.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-02
+
+    Remove dummy
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-02
+
+    Dummy commit
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-02-02
+
+    Initial C++ port
+
+Danny Baumann <dannybaumann@web.de>	2009-10-26
+
+    Fix property reading for 64-bit architectures.
+
+Danny Baumann <dannybaumann@web.de>	2009-10-05
+
+    Safeguard against invalid xid.
+
+Danny Baumann <dannybaumann@web.de>	2009-10-03
+
+    Dummy commit
+
+Danny Baumann <dannybaumann@web.de>	2009-10-03
+
+    Fix warning.
+
+Danny Baumann <dannybaumann@web.de>	2009-09-22
+
+    Assign category.
+
+Danny Baumann <dannybaumann@web.de>	2009-09-22
+
+    Draw icon scaled if it's larger than plasma's placeholder.
+
+Danny Baumann <dannybaumann@web.de>	2009-09-22
+
+    Add drawing of icon for minimized windows.
+
+Danny Baumann <dannybaumann@web.de>	2009-09-22
+
+    Initial import.
+
+maniac <maniac@opencompositing.org>	2009-09-22
+
+    Dummy commit

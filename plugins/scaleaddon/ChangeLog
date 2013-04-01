@@ -1,0 +1,391 @@
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Bump VERSION
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-14
+
+    Update NEWS for 0.9.5.0
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-07-07
+
+    Add VERSION file (0.9.5.0)
+
+Sam Spilsbury <sam.spilsbury@canonical.com>	2011-03-15
+
+    Update for new core API
+
+Scott Moreau <oreaus@gmail.com>	2010-09-28
+
+    Don't require composite since opengl already does.
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-07
+
+    Add slot expansion code and aspect ratio adjustment code to better optimise window placement.
+    
+    NB: Aspect ratio adjustment code is disabled for now
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-07
+
+    Add attribution
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-07
+
+    Take into account decorations
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-07
+
+    Force movement if distances resolve to zero
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-07
+
+    Add precision option
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-08-07
+
+    Add "natural" mode, inspired by KWin
+
+Merge: bf4c5ac ae20fba
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Merge branch 'master' of git+ssh://smspillaz@git.compiz.org/git/compiz/plugins/scaleaddon
+
+Sam Spilsbury <SmSpillaz@gmail.com>	2010-05-25
+
+    Load after decor plugin to prevent windows moving after plugin load
+
+Danny Baumann <dannybaumann@web.de>	2010-05-02
+
+    Cleanup.
+
+Sam Spilsbury <smspillaz@XPS-FEDORA.(none)>	2010-04-29
+
+    Cleanup commented bits and use C++ bool
+
+Sam Spilsbury <smspillaz@gmail.com>	2010-04-11
+
+    Ensure that we load after composite and opengl
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-10-13
+
+    Remove dummy
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-10-13
+
+    Dummy commit
+
+Sam Spilsbury <smspillaz@gmail.com>	2009-10-13
+
+    Initial C++ port
+
+Danny Baumann <dannybaumann@web.de>	2009-01-11
+
+    Adapt for text plugin interface changes.
+
+Danny Baumann <dannybaumann@web.de>	2008-12-02
+
+    Always use highlighted window for actions (close/zoom/pull).
+
+Danny Baumann <dannybaumann@web.de>	2008-09-01
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2008-06-07
+
+    Properly initialize variable.
+
+Danny Baumann <dannybaumann@web.de>	2008-05-20
+
+    Damage optimizations.
+
+Danny Baumann <dannybaumann@web.de>	2008-05-15
+
+    Improved window pulling.
+    Based on a patch by Douglas Young in bug #592.
+
+Danny Baumann <dannybaumann@web.de>	2008-05-12
+
+    More description fixup.
+
+Danny Baumann <dannybaumann@web.de>	2008-05-12
+
+    Improve descriptions.
+
+Danny Baumann <dannybaumann@web.de>	2008-05-12
+
+    Fixup indention.
+
+Danny Baumann <dannybaumann@web.de>	2008-05-12
+
+    Added bindings for pulling windows to the current viewport.
+
+Danny Baumann <dannybaumann@web.de>	2008-04-27
+
+    Minor cleanup.
+
+Danny Baumann <dannybaumann@web.de>	2008-04-25
+
+    Set internal hint.
+
+Danny Baumann <dannybaumann@web.de>	2008-04-24
+
+    Only clear out last highlighted window on state changes, not on every selection.
+
+Danny Baumann <dannybaumann@web.de>	2008-04-21
+
+    Clear out last highlighted window on select to make sure the highlight is properly damaged if the window selection in scalefilter is changed.
+
+Danny Baumann <dannybaumann@web.de>	2008-04-21
+
+    Use text's background rendering.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-04
+
+    CMake build file.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-04-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-03-14
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2008-03-12
+
+    Makefile update
+
+Danny Baumann <dannybaumann@web.de>	2008-03-01
+
+    Hook into selectWindow proc to make the highlight follow keyboard initiated window selection.
+    Rename lastHovered variable to lastHighlighted variable to reflect that.
+    Fixed handling of scale compiz event to get initialization right.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-25
+
+    Render window titles at start of animation, not the end.
+
+Danny Baumann <dannybaumann@web.de>	2008-02-24
+
+    Only render window title for windows with slot.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Check for header changes
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2008-01-23
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-12-05
+
+    Added option to display window title for all scaled windows.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-25
+
+    passive_ghrab must be set to false, not true.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-21
+
+    Fix in-window calculations.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-07
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-03
+
+    Show viewport number in window title when showing windows from all viewports.
+
+Danny Baumann <dannybaumann@web.de>	2007-09-02
+
+    Track text plugin changes and check for its presence.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-31
+
+    Use correct header file.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-30
+
+    Check core ABI version.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-30
+
+    Track core changes.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-30
+
+    Use core utility functions to retrieve scale's ABI version and displayPrivateIndex.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-25
+
+    Cleanup and indention fixes part 2.
+
+Danny Baumann <dannybaumann@web.de>	2007-08-25
+
+    Cleanups and intendion fixes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-20
+
+    New action system
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-08-06
+
+    Makefile update.
+
+Roland Baer <roland@Vista.(none)>	2007-07-18
+
+    scaleaddon unused var
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-16
+
+    Remove obsolete deps/features from vtable
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-03
+
+    Makefile update.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-07-01
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    xml -> xml.in
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    Only update window title on real title changes, not on every property change.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-30
+
+    Update window title display when window title changes.
+
+Dennis Kasprzyk <onestone@opencompositing.org>	2007-06-28
+
+    Makefile update.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-28
+
+    Remove trailing whitespace.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-28
+
+    Fix possibly uninitialized return value.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-19
+
+    Adjust header.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-12
+
+    Properly adjust maximum size of window title to slot size.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-11
+
+    Updated Makefile and use text plugin package.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-11
+
+    Move to utility section.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-11
+
+    Depend on compiz-scale package.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-10
+
+    Don't wait for animation to finish for doing actions.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-10
+
+    Correctly round window highlight rectangle position.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-10
+
+    Use hovered window instead of selected window.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-09
+
+    Dummy commit.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-09
+
+    Allow closing/zooming windows with a key binding.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-09
+
+    Allow arbitrary button bindings for zooming and closing windows in scale mode.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-08
+
+    Animate movement on zoom.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-08
+
+    Don't do anything on button presses as long as the scaling animation is running.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-08
+
+    Use Compiz event rather than preparePaintScreen function to clean up rescaled values.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-08
+
+    Fix multihead behaviour for window zoom.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-08
+
+    Added option to show window zoomed out in scale mode when clicking it with Button3.
+    TODO: Work out focus fade problems.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-08
+
+    Added option for closing windows with the middle mouse button in scale mode.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-08
+
+    Re-sort options.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-07
+
+    Fix group descriptions.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-07
+
+    Added option for drawing a hovered window highlight in scale mode.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-07
+
+    Use lastHoveredWindow.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-07
+
+    Actually use the 'multiple output mode' option.
+
+Merge: e9e8b0b 9997dea
+Danny Baumann <dannybaumann@web.de>	2007-06-07
+
+    Merge branch 'master' of git+ssh://maniac@git.opencompositing.org/git/compcomm/plugins/scaleaddon
+
+Danny Baumann <dannybaumann@web.de>	2007-06-07
+
+    Adapt for latest scale plugin.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-06
+
+    Only draw window title and its background if the pixmap is valid.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-06
+
+    Added missing header file.
+
+Danny Baumann <dannybaumann@web.de>	2007-06-06
+
+    Initial commit.
+
+compiz <compiz@opencompositing.org>	2007-06-06
+
+    Dummy commit

@@ -1,0 +1,46 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ compiz (1:0.9.8.6-22) quantal; urgency=low
+ .
+   * add expo gsetting key
+Author: Yueqian Zhang <zhangyueqian@linuxdeepin.com>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: http://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- compiz-0.9.8.6.orig/plugins/scale/src/scale.cpp
++++ compiz-0.9.8.6/plugins/scale/src/scale.cpp
+@@ -1613,6 +1613,18 @@ PrivateScaleScreen::handleEvent (XEvent
+ 		    }
+ 		}
+ 	    }
++	    //terminate scale mode when we press button1 down.
++	    //after normal button press handler.
++	    //Yeah, pretty ugly hack. 
++	    if (event->xbutton.button == Button1)
++	    {
++		CompOption::Vector o (0);
++
++		o.push_back (CompOption ("root", CompOption::TypeInt));
++		o[0].value ().set ((int) screen->root ());
++		scaleTerminate (&optionGetInitiateEdge (), 0, o);
++		scaleTerminate (&optionGetInitiateKey (), 0, o);
++	    }
+ 	    break;
+ 	case MotionNotify:
+ 	    if (screen->root () == event->xmotion.root &&
