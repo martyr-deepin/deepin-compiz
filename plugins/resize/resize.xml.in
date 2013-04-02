@@ -28,7 +28,7 @@
 	    <option name="mode" type="int">
 		<_short>Default Resize Mode</_short>
 		<_long>Default mode used for window resizing</_long>
-		<default>2</default>
+		<default>1</default>
 		<min>0</min>
 		<max>3</max>
 		<desc>
@@ -56,17 +56,12 @@
 	    <option name="maximize_vertically" type="bool">
 	        <short>Maximize Vertically if screen edge hit</short>
 	        <long>Maximizes the window vertically if the top or bottom screen edge is hit while resizing</long>
-	        <default>true</default>
+	        <default>false</default>
 	    </option>
 	    <option name="border_color" type="color">
 		<_short>Border Color</_short>
 		<_long>Border color used for outline and rectangle resize modes</_long>
-		<default>
-		    <red>0xfbfb</red>
-		    <green>0x8b8b</green>
-		    <blue>0x0</blue>
-		    <alpha>0x9f9f</alpha>
-		</default>
+		<default>'#8fa7bfd2'</default>
 	    </option>
 	    <option name="fill_color" type="color">
 		<_short>Fill Color</_short>
