@@ -1196,7 +1196,12 @@ CompScreenImpl::_handleEvent (XEvent *event)
     	//set DEEPIN_WINDOW_VIEWPORT
 	if (w)
 	{
-	    screen->viewportForGeometry (w->geometry(), w->deepinWindowViewport);
+	    CompPoint tmp;
+	    screen->viewportForGeometry (w->geometry(), tmp);
+	    //reduce X traffic
+	    if (tmp == w->deepinWindowViewport)
+		break;
+	    w->deepinWindowViewport = tmp;
 	    unsigned long data[3] = {0}; 
 	    data[0] = 1;
 	    data[1] = (unsigned long) w->deepinWindowViewport.x();
