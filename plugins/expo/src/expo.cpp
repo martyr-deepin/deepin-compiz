@@ -700,7 +700,8 @@ ExpoScreen::donePaint ()
 
 		if (w->destroyed ())
 		    continue;
-
+        if (w->type () & CompWindowTypeDockMask || w->type & CompWindowTypeDesktopMask)
+            continue;
 		if (!w->shaded () && !w->isViewable ())
 		    continue;
 
