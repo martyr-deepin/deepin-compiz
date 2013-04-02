@@ -298,6 +298,7 @@ class CompWindow :
     public:
 	~CompWindow ();
 
+	CompPoint	     deepinWindowViewport;
 	/**
 	*  Geometry retrieved from the
 	 * last ConfigureNotify event received

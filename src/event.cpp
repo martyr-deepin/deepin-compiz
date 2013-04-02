@@ -1193,6 +1193,18 @@ CompScreenImpl::_handleEvent (XEvent *event)
 		    privateScreen.configure (&event->xconfigure);
 	    }
 	}
+    	//set DEEPIN_WINDOW_VIEWPORT
+	if (w)
+	{
+	    screen->viewportForGeometry (w->geometry(), w->deepinWindowViewport);
+	    unsigned long data[3] = {0}; 
+	    data[0] = 1;
+	    data[1] = (unsigned long) w->deepinWindowViewport.x();
+	    data[2] = (unsigned long) w->deepinWindowViewport.y();
+	    XChangeProperty (screen->dpy(), w->id(), Atoms::deepinWViewport,
+			     XA_CARDINAL, 32, PropModeReplace,
+			     (unsigned char *) data, 3);
+	}
 	break;
     case CreateNotify:
     {
@@ -1316,7 +1328,18 @@ CompScreenImpl::_handleEvent (XEvent *event)
 
 	    w->map ();
 	}
-
+    	//set DEEPIN_WINDOW_VIEWPORT
+	if (w)
+	{
+	    w->deepinWindowViewport = screen->vp();
+	    unsigned long data[3] = {0}; 
+	    data[0] = 1;
+	    data[1] = w->deepinWindowViewport.x ();
+	    data[2] = w->deepinWindowViewport.y ();
+	    XChangeProperty (screen->dpy(), w->id(), Atoms::deepinWViewport,
+			     XA_CARDINAL, 32, PropModeReplace,
+			     (unsigned char *) data, 3);
+	}
 	break;
     case UnmapNotify:
 	w = findWindow (event->xunmap.window);

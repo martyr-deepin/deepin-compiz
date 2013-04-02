@@ -157,6 +157,9 @@ namespace Atoms {
 
     extern Atom startupId;
 
+    extern Atom deepinWViewport;//window viewport
+    extern Atom deepinSViewport;//screen viewport
+
     void init (Display *dpy);
 };
 
