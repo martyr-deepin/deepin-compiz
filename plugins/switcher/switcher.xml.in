@@ -140,7 +140,7 @@
 	    <option name="zoom" type="float">
 		<_short>Zoom</_short>
 		<_long>Distance desktop should be zoom out while switching windows</_long>
-		<default>1</default>
+		<default>0.0</default>
 		<min>0</min>
 		<max>5</max>
 		<precision>0.1</precision>
