@@ -225,7 +225,7 @@
             <extensible/>
             <sort start="2"/>
             <default>
-              <value>animation:Magic Lamp</value>
+		['animation:Glide 2']
             </default>
           </option>
           <option name="unminimize_durations" type="list">
