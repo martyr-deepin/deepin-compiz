@@ -7,7 +7,9 @@
 		<_short>Active Plugins</_short>
 		<_long>List of currently active plugins</_long>
 		<type>string</type>
-		<default_plugins/>
+		<default_plugins>
+		['core','composite','opengl','compiztoolbox','decor','vpswitch','snap','mousepoll','resize','place','move','wall','grid','regex','imgpng','session','animation','fade','workarounds','scale','expo','ezoom','commands','switcher', 'shift', 'put']
+		</default_plugins>
 	    </option>
 	    <option name="audible_bell" type="bool">
 		<_short>Audible Bell</_short>
@@ -113,7 +115,7 @@
 			<_long>Level of focus stealing prevention</_long>
 			<min>0</min>
 			<max>4</max>
-			<default>1</default>
+			<default>0</default>
 			<desc>
 				<value>0</value>
 				<_name>Off</_name>
