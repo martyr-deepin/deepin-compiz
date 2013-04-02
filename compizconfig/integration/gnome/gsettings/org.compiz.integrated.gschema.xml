@@ -50,7 +50,7 @@
 	    <default>""</default>
 	</key>
 	<key type="s" name="command-11">
-	    <default>""</default>
+	    <default>"launcher --toggle"</default>
 	</key>
 	<key type="s" name="command-10">
 	    <default>""</default>
