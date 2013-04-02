@@ -1876,8 +1876,8 @@ PrivateScreen::setDesktopHints ()
     unsigned long *data;
     int		  dSize, offset, hintSize;
     unsigned int  i;
-
-    dSize = nDesktop * 2 + nDesktop * 2 + nDesktop * 4 + 1;
+    //      for Deepin
+    dSize = nDesktop * 2 + nDesktop * 2 + nDesktop * 2 + nDesktop * 4 + 1;
 
     data = (unsigned long *) malloc (sizeof (unsigned long) * dSize);
     if (!data)
@@ -1886,6 +1886,19 @@ PrivateScreen::setDesktopHints ()
     offset   = 0;
     hintSize = nDesktop * 2;
 
+    for (i = 0; i < nDesktop; i++)
+    {
+	data[offset + i * 2 + 0] = viewPort.vp.x ();
+	data[offset + i * 2 + 1] = viewPort.vp.y ();
+    }
+
+    if (!desktopHintEqual (data, dSize, offset, hintSize))
+	XChangeProperty (dpy, rootWindow(),
+			 Atoms::deepinSViewport,
+			 XA_CARDINAL, 32, PropModeReplace,
+			 (unsigned char *) &data[offset], hintSize);
+
+    offset += hintSize;
     for (i = 0; i < nDesktop; i++)
     {
 	data[offset + i * 2 + 0] = viewPort.vp.x () * screen->width ();
