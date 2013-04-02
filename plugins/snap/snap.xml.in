@@ -83,7 +83,7 @@
 		<option name="resistance_distance" type="int">
 		    <_short>Edge Resistance Distance</_short>
 		    <_long>The distance until edge resistance takes place.</_long>
-		    <default>30</default>
+		    <default>1</default>
 		    <min>1</min>
 		    <max>100</max>
 		</option>
