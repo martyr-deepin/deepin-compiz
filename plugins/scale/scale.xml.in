@@ -123,6 +123,7 @@
 				<_short>Initiate Window Picker</_short>
 				<_long>Layout and start transforming windows</_long>
 				<allowed edgednd="true"/>
+				<default>"TopRight"</default>
 			</option>
 			<option name="initiate_key" type="key">
 				<_short>Initiate Window Picker</_short>
