@@ -540,12 +540,22 @@
 		<option name="outline_color" type="color">
 			<_short>Outline Color</_short>
 			<_long>Color of the resize indicator outline</_long>
-			<default>'#00000000'</default>
+			<default>
+		    	    <red>0x0000</red>
+		            <green>0x0000</green>
+		            <blue>0x0000</blue>
+		            <alpha>0x0000</alpha>
+			</default>
 		</option>
 		<option name="fill_color" type="color">
 			<_short>Fill Color</_short>
 			<_long>Fill color of the resize indicator</_long>
-			<default>'#b3d9ff6e'</default>
+			<default>
+		    	    <red>0xb3b3</red>
+		            <green>0xd9d9</green>
+		            <blue>0xffff</blue>
+		            <alpha>0x6e6e</alpha>
+			</default>
 		</option>
 	    </group>
 	</options>

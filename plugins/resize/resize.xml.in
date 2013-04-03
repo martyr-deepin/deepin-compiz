@@ -61,7 +61,12 @@
 	    <option name="border_color" type="color">
 		<_short>Border Color</_short>
 		<_long>Border color used for outline and rectangle resize modes</_long>
-		<default>'#8fa7bfd2'</default>
+		<default>
+		    <red>0x8f8f</red>
+		    <green>0xa7a7</green>
+		    <blue>0xbfbf</blue>
+		    <alpha>0xd2d2</alpha>
+		</default>
 	    </option>
 	    <option name="fill_color" type="color">
 		<_short>Fill Color</_short>

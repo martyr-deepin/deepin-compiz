@@ -221,7 +221,12 @@
 		    <option name="selected_color" type="color">
 			<_short>Selected Color</_short>
 			<_long>Color to use when highlighting the selected viewport</_long>
-			<default>'#8fa7bfd2'</default>
+			<default>
+		    	    <red>0x8f8f</red>
+		    	    <green>0xa7a7</green>
+		    	    <blue>0xbfbf</blue>
+		    	    <alpha>0xd2d2</alpha>
+			</default>
 		    </option>
 		</subgroup>
 		<subgroup>
