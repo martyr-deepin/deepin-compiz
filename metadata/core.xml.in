@@ -7,9 +7,34 @@
 		<_short>Active Plugins</_short>
 		<_long>List of currently active plugins</_long>
 		<type>string</type>
-		<default_plugins>
-		['core','composite','opengl','compiztoolbox','decor','vpswitch','snap','mousepoll','resize','place','move','wall','grid','regex','imgpng','session','animation','fade','workarounds','scale','expo','ezoom','commands','switcher', 'shift', 'put']
-		</default_plugins>
+		<default>
+		<value>core</value>
+		<value>composite</value>
+		<value>opengl</value>
+		<value>compiztoolbox</value>
+		<value>decor</value>
+		<value>vpswitch</value>
+		<value>snap</value>
+		<value>mousepoll</value>
+		<value>resize</value>
+		<value>place</value>
+		<value>move</value>
+		<value>wall</value>
+		<value>grid</value>
+		<value>regex</value>
+		<value>imgpng</value>
+		<value>session</value>
+		<value>animation</value>
+		<value>fade</value>
+		<value>workarounds</value>
+		<value>scale</value>
+		<value>expo</value>
+		<value>ezoom</value>
+		<value>commands</value>
+		<value>switcher</value>
+		<value>shift</value>
+		<value>put</value>
+		</default>
 	    </option>
 	    <option name="audible_bell" type="bool">
 		<_short>Audible Bell</_short>

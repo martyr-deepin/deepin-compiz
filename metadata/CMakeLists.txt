@@ -10,11 +10,9 @@ if (XSLTPROC_EXECUTABLE)
 
     add_custom_command (
 	OUTPUT ${compiz_BINARY_DIR}/generated/core.xml.in
-	COMMAND ${XSLTPROC_EXECUTABLE}
-		-o ${compiz_BINARY_DIR}/generated/core.xml.in
-		--param default_plugins "\"'${COMPIZ_DEFAULT_PLUGINS}'\""
-		${CMAKE_SOURCE_DIR}/xslt/default_plugins.xslt
+	COMMAND cp
 		${CMAKE_CURRENT_SOURCE_DIR}/core.xml.in
+		${compiz_BINARY_DIR}/generated/core.xml.in
 	DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/core.xml.in
     )
     set (_core_file "${CMAKE_BINARY_DIR}/generated/core.xml.in")
