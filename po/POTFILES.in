@@ -21,7 +21,6 @@ plugins/gnomecompat/gnomecompat.xml.in
 plugins/imgpng/imgpng.xml.in
 plugins/imgsvg/imgsvg.xml.in
 plugins/inotify/inotify.xml.in
-plugins/kde/kde.xml.in
 plugins/move/move.xml.in
 plugins/obs/obs.xml.in
 plugins/opengl/opengl.xml.in
