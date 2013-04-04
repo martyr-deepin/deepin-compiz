@@ -262,6 +262,8 @@ ParticleSystem::drawParticles ()
     }
 
     glEnableClientState (GL_COLOR_ARRAY);
+    glEnableClientState (GL_VERTEX_ARRAY);
+    glEnableClientState (GL_TEXTURE_COORD_ARRAY);
 
     glTexCoordPointer (2, GL_FLOAT, 2 * sizeof (GLfloat), coords_cache.cache);
     glVertexPointer (3, GL_FLOAT, 3 * sizeof (GLfloat), vertices_cache.cache);
@@ -280,7 +282,10 @@ ParticleSystem::drawParticles ()
 
     glColorPointer (4, GL_FLOAT, 4 * sizeof (GLfloat), colors_cache.cache);
     glDrawArrays (GL_QUADS, 0, numActive);
+
     glDisableClientState (GL_COLOR_ARRAY);
+    glDisableClientState (GL_VERTEX_ARRAY);
+    glDisableClientState (GL_TEXTURE_COORD_ARRAY);
 
     glPopMatrix ();
     glColor4usv (defaultColor);
