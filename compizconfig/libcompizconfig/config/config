@@ -1,20 +1,9 @@
-[kde4_session]
-backend = kconfig4
-integration = true
-plugin_list_autosort = true
-
-[kde_session]
-backend = kconfig
-integration = true
-plugin_list_autosort = true
-
 [gnome_session]
-backend = gconf
-integration = true
+backend = gsettings
 plugin_list_autosort = true
 
 [general]
-backend = ini
+backend = gsettings
 plugin_list_autosort = true
 
 
