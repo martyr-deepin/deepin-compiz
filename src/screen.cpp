@@ -2802,6 +2802,13 @@ CompScreenImpl::focusDefaultWindow ()
 	}
     }
 
+    if (!focus) {
+        CompWindow* nextActive = findTopLevelWindow(getNextActiveWindow());
+        if (nextActive && nextActive->type() & CompWindowTypeDesktopMask) {
+                focus = nextActive;
+        }
+    }
+
     if (!focus)
     {
 	/* Traverse down the stack */
