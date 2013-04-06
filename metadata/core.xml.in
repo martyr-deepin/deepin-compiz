@@ -16,6 +16,7 @@
 		<value>vpswitch</value>
 		<value>snap</value>
 		<value>mousepoll</value>
+		<value>startnotify</value>
 		<value>resize</value>
 		<value>place</value>
 		<value>move</value>
