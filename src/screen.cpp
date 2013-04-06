@@ -2180,19 +2180,30 @@ cps::StartupSequenceImpl::updateStartupFeedback ()
 {
     if (priv->initialized)
     {
-        CompPlugin* p = CompPlugin::find("startnotify");
-        CompAction a = CompOption::findOption(p->vTable->getOptions(), "initiate")->value().action();
-        std::vector<CompOption> tmp;
-	if (!emptySequence()) {
-	    XDefineCursor (priv->dpy, priv->rootWindow(), priv->busyCursor);
-        a.initiate()(0, 0, tmp);
-        //a.active();
-    }
-	else {
-	    XDefineCursor (priv->dpy, priv->rootWindow(), priv->normalCursor);
-        a.terminate()(0, 0, tmp);
-        //CompPlugin::unload(CompPlugin::load("startnotify"));
-    }
+	CompPlugin* p = CompPlugin::find("startnotify");
+	if (p)
+	{
+	    CompAction a = CompOption::findOption(p->vTable->getOptions(), "initiate")->value().action();
+	    std::vector<CompOption> tmp;
+	    if (!emptySequence())
+	    {
+		a.initiate()(0, 0, tmp);
+	    } else
+	    {
+		a.terminate()(0, 0, tmp);
+	    }
+	}
+	else
+	{
+	    if (!emptySequence())
+	    {
+		XDefineCursor (priv->dpy, priv->rootWindow(), priv->busyCursor);
+	    }
+	    else
+	    {
+		XDefineCursor (priv->dpy, priv->rootWindow(), priv->normalCursor);
+	    }
+	}
     }
 }
 
