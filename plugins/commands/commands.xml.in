@@ -338,7 +338,9 @@
 		<option name="run_command10_edge" type="edge">
 		    <_short>Run command 10</_short>
 		    <_long>An edge binding that when invoked, will run the shell command identified by command10</_long>
-		    <default>"TopLeft"</default>
+		    <default>
+			<edge name="TopLeft"/>
+		    </default>
 		</option>
 		<option name="run_command11_edge" type="edge">
 		    <_short>Run command 11</_short>
