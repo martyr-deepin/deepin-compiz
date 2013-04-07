@@ -2253,6 +2253,7 @@ cps::StartupSequence::addSequence (SnStartupSequence *sequence, CompPoint const&
     if (!startupSequenceTimer.active ())
 	startupSequenceTimer.start ();
 
+    compLogMessage("Deepin AddSequence", CompLogLevelInfo, sn_startup_sequence_get_application_id(sequence));
     updateStartupFeedback ();
 }
 
@@ -2275,6 +2276,7 @@ cps::StartupSequence::removeSequence (SnStartupSequence *sequence)
     if (!s)
 	return;
 
+    compLogMessage("Deepin Remove Sequence", CompLogLevelInfo, sn_startup_sequence_get_application_id(sequence));
     sn_startup_sequence_unref (sequence);
 
     startupSequences.erase (it);

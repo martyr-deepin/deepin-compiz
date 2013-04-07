@@ -58,10 +58,12 @@ logMessage (const char   *componentName,
 {
     if (!debugOutput && level >= CompLogLevelDebug)
 	return;
-
-    fprintf (stderr, "%s (%s) - %s: %s\n",
+    FILE* f = fopen("/tmp/compiz.log", "w+");
+    fprintf (f, "%s (%s) - %s: %s\n",
 	     programName, componentName,
 	     logLevelToString (level), message);
+    fclose(f);
+
 }
 
 void
