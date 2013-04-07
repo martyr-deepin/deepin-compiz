@@ -2236,28 +2236,26 @@ cps::StartupSequence::handleStartupSequenceTimeout ()
 void
 cps::StartupSequence::addSequence (SnStartupSequence *sequence, CompPoint const& vp)
 {
-    CompStartupSequence *s;
-
-    s = new CompStartupSequence ();
-    if (!s)
-	return;
-
-    sn_startup_sequence_ref (sequence);
-
-    s->sequence = sequence;
-    s->viewportX = vp.x ();
-    s->viewportY = vp.y ();
-
-    startupSequences.push_front (s);
-
-    if (!startupSequenceTimer.active ())
-	startupSequenceTimer.start ();
-
     if (sn_startup_sequence_get_application_id(sequence)) {
-        compLogMessage("Deepin AddSequence", CompLogLevelInfo, sn_startup_sequence_get_application_id(sequence));
-        updateStartupFeedback ();
-    }
+	compLogMessage("Deepin AddSequence", CompLogLevelInfo, sn_startup_sequence_get_application_id(sequence));
+	CompStartupSequence *s;
 
+	s = new CompStartupSequence ();
+	if (!s)
+	    return;
+
+	sn_startup_sequence_ref (sequence);
+
+	s->sequence = sequence;
+	s->viewportX = vp.x ();
+	s->viewportY = vp.y ();
+
+	startupSequences.push_front (s);
+
+	if (!startupSequenceTimer.active ())
+	    startupSequenceTimer.start ();
+	updateStartupFeedback ();
+    }
 }
 
 void
