@@ -2253,8 +2253,11 @@ cps::StartupSequence::addSequence (SnStartupSequence *sequence, CompPoint const&
     if (!startupSequenceTimer.active ())
 	startupSequenceTimer.start ();
 
-    compLogMessage("Deepin AddSequence", CompLogLevelInfo, sn_startup_sequence_get_application_id(sequence));
-    updateStartupFeedback ();
+    if (sn_startup_sequence_get_application_id(sequence)) {
+        compLogMessage("Deepin AddSequence", CompLogLevelInfo, sn_startup_sequence_get_application_id(sequence));
+        updateStartupFeedback ();
+    }
+
 }
 
 void
