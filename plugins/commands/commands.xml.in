@@ -66,7 +66,7 @@
 		<option name="command10" type="string">
 		    <_short>Command line 10</_short>
 		    <_long>Command line to be executed in shell when run_command10 is invoked</_long>
-		    <default></default>
+		    <default>launcher</default>
 		</option>
 		<option name="command11" type="string">
 		    <_short>Command line 11</_short>
