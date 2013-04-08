@@ -1,10 +1,14 @@
-[gnome_session]
-backend = gsettings
-plugin_list_autosort = true
-
 [general]
 backend = gsettings
-plugin_list_autosort = true
+integration = true
+profile = deepin
 
+[general_deepin]
+backend = gsettings
+integration = true
+profile = deepin
 
-
+[gnome_session]
+backend = gsettings
+integration = true
+profile = deepin
