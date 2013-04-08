@@ -8,33 +8,7 @@
 		<_long>List of currently active plugins</_long>
 		<type>string</type>
 		<default>
-		<value>core</value>
-		<value>composite</value>
-		<value>opengl</value>
-		<value>compiztoolbox</value>
-		<value>decor</value>
-		<value>vpswitch</value>
-		<value>snap</value>
-		<value>mousepoll</value>
-		<value>startnotify</value>
-		<value>resize</value>
-		<value>place</value>
-		<value>move</value>
-		<value>wall</value>
-		<value>grid</value>
-		<value>regex</value>
-		<value>imgpng</value>
-		<value>session</value>
-		<value>animation</value>
-		<value>fade</value>
-		<value>workarounds</value>
-		<value>scale</value>
-		<value>expo</value>
-		<value>ezoom</value>
-		<value>commands</value>
-		<value>switcher</value>
-		<value>shift</value>
-		<value>put</value>
+		    <value>ccp</value>
 		</default>
 	    </option>
 	    <option name="audible_bell" type="bool">
