@@ -2236,24 +2236,26 @@ cps::StartupSequence::handleStartupSequenceTimeout ()
 void
 cps::StartupSequence::addSequence (SnStartupSequence *sequence, CompPoint const& vp)
 {
-    CompStartupSequence *s;
+    if (sn_startup_sequence_get_application_id(sequence)) {
+	compLogMessage("Deepin AddSequence", CompLogLevelInfo, sn_startup_sequence_get_application_id(sequence));
+	CompStartupSequence *s;
 
-    s = new CompStartupSequence ();
-    if (!s)
-	return;
+	s = new CompStartupSequence ();
+	if (!s)
+	    return;
 
-    sn_startup_sequence_ref (sequence);
+	sn_startup_sequence_ref (sequence);
 
-    s->sequence = sequence;
-    s->viewportX = vp.x ();
-    s->viewportY = vp.y ();
+	s->sequence = sequence;
+	s->viewportX = vp.x ();
+	s->viewportY = vp.y ();
 
-    startupSequences.push_front (s);
+	startupSequences.push_front (s);
 
-    if (!startupSequenceTimer.active ())
-	startupSequenceTimer.start ();
-
-    updateStartupFeedback ();
+	if (!startupSequenceTimer.active ())
+	    startupSequenceTimer.start ();
+	updateStartupFeedback ();
+    }
 }
 
 void
@@ -2275,6 +2277,7 @@ cps::StartupSequence::removeSequence (SnStartupSequence *sequence)
     if (!s)
 	return;
 
+    compLogMessage("Deepin Remove Sequence", CompLogLevelInfo, sn_startup_sequence_get_application_id(sequence));
     sn_startup_sequence_unref (sequence);
 
     startupSequences.erase (it);
