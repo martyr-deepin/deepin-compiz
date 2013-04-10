@@ -72,7 +72,7 @@ WorkaroundsWindow::clearInputShape (HideInfo *hideInfo)
     XShapeCombineRectangles (screen->dpy (), xid, ShapeInput, 0, 0,
 			     NULL, 0, ShapeSet, 0);
 
-    XShapeSelectInput (screen->dpy (), xid, ShapeNotify);
+    XShapeSelectInput (screen->dpy (), xid, ShapeNotifyMask);
 }
 
 /*
@@ -990,6 +990,35 @@ WorkaroundsScreen::handleEvent (XEvent *event)
 	}
 	break;
     default:
+	if (screen->XShape() && event->type == screen->shapeEvent() + ShapeNotify)
+	{
+	    XShapeEvent* _event = (XShapeEvent*) event;
+	    w = screen->findTopLevelWindow (_event->window);
+	    if (w)
+	    {
+		WORKAROUNDS_WINDOW(w);
+		if (ww->minimized())
+		{
+		    int count = 0, ordering = 0;
+		    XFree(XShapeGetRectangles (screen->dpy (), _event->window, ShapeInput, &count, &ordering));
+		    if (count)
+		    {
+			XShapeSelectInput (screen->dpy (), _event->window, NoEventMask);
+			XShapeCombineRectangles (screen->dpy (), _event->window, ShapeInput, 0, 0, NULL, 0, ShapeSet, 0);
+			XShapeSelectInput (screen->dpy (), _event->window, ShapeNotifyMask);
+		    }
+		}
+		else
+		{
+		    int count = 0, ordering = 0;
+		    XFree(XShapeGetRectangles (screen->dpy (), _event->window, ShapeInput, &count, &ordering));
+		    if (!count)
+		    {
+			XShapeCombineMask (screen->dpy (), _event->window, ShapeInput, 0, 0, None, ShapeSet);
+		    }
+		}
+	    }
+	}
 	break;
     }
 }
