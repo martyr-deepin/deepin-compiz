@@ -43,6 +43,8 @@ COMPIZ_PLUGIN_20090315 (expo, ExpoPluginVTable);
 
 #define interpolate(a, b, val) (((val) * (a)) + ((1 - (val)) * (b)))
 
+
+#define FULL_MAXIMIZE_STATE (CompWindowStateMaximizedHorzMask & CompWindowStateMaximizedVertMask)
 bool
 ExpoScreen::dndInit (CompAction          *action,
 		     CompAction::State   state,
@@ -303,7 +305,7 @@ ExpoScreen::finishWindowMovement ()
 
 	    /* update window attibutes to make sure a moved maximized window
 	   is properly snapped to the work area */
-	    if (dndWindow->state () & MAXIMIZE_STATE)
+        if (dndWindow->state () & FULL_MAXIMIZE_STATE)
 		dndWindow->updateAttributes (CompStackingUpdateModeNone);
 	}
     }
@@ -1742,7 +1744,7 @@ ExpoWindow::glPaint (const GLWindowPaintAttrib& attrib,
 	/* Stretch maximized windows a little so that you don't
 	 * have an awkward gap */
 
-	if (window->state () & MAXIMIZE_STATE &&
+    if (window->state () & FULL_MAXIMIZE_STATE &&
 		!window->border ().top)
 	{
 	    CompOutput *o = &screen->outputDevs ()[screen->outputDeviceForGeometry(window->geometry())];
