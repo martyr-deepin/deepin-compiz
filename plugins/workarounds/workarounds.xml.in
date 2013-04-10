@@ -21,7 +21,7 @@
 	    <option type="bool" name="keep_minimized_windows">
 		<_short>Keep previews of minimized windows</_short>
 		<_long>Don't delete window contents on minimize. This does not work with some applications</_long>
-		<default>false</default>
+		<default>true</default>
 	    </option>
             <option type="bool" name="legacy_fullscreen">
                 <_short>Legacy Fullscreen Support</_short>
@@ -31,7 +31,7 @@
             <option type="bool" name="firefox_menu_fix">
                 <_short>Firefox Menu Fix</_short>
                 <_long>Fix window type of Firefox and Thunderbird menus.</_long>
-                <default>false</default>
+                <default>true</default>
             </option>
             <option type="bool" name="ooo_menu_fix">
                 <_short>OpenOffice.org Menu Fix</_short>

@@ -82,7 +82,7 @@
 			<option name="top_left_corner_action" type="int">
 			    <_short>Upper Left Corner</_short>
 			    <_long>Action to be performed when window is dropped on the top left corner</_long>
-			    <default>4</default>
+			    <default>0</default>
 			    <min>0</min>
 			    <max>10</max>
 			    <desc>
@@ -184,7 +184,7 @@
 			<option name="top_right_corner_action" type="int">
 			    <_short>Upper Right Corner</_short>
 			    <_long>Action to be performed when window is dropped on the top right corner</_long>
-			    <default>6</default>
+			    <default>0</default>
 			    <min>0</min>
 			    <max>10</max>
 			    <desc>
@@ -235,7 +235,7 @@
 			<option name="left_edge_action" type="int">
 			    <_short>Left Edge</_short>
 			    <_long>Action to be performed when window is dropped on the left edge</_long>
-			    <default>4</default>
+			    <default>0</default>
 			    <min>0</min>
 			    <max>10</max>
 			    <desc>
@@ -286,7 +286,7 @@
 			<option name="right_edge_action" type="int">
 			    <_short>Right Edge</_short>
 			    <_long>Action to be performed when window is dropped on the right edge</_long>
-			    <default>6</default>
+			    <default>0</default>
 			    <min>0</min>
 			    <max>10</max>
 			    <desc>
@@ -337,7 +337,7 @@
 			<option name="bottom_left_corner_action" type="int">
 			    <_short>Bottom Left Corner</_short>
 			    <_long>Action to be performed when window is dropped on the bottom left corner</_long>
-			    <default>4</default>
+			    <default>0</default>
 			    <min>0</min>
 			    <max>10</max>
 			    <desc>
@@ -439,7 +439,7 @@
 			<option name="bottom_right_corner_action" type="int">
 			    <_short>Bottom Right Corner</_short>
 			    <_long>Action to be performed when window is dropped on the bottom right corner</_long>
-			    <default>6</default>
+			    <default>0</default>
 			    <min>0</min>
 			    <max>10</max>
 			    <desc>
