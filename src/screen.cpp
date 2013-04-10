@@ -2699,7 +2699,8 @@ CompScreenImpl::_enterShowDesktopMode ()
 	    {
 		w->setShowDesktopMode (true);
 		w->windowNotify (CompWindowNotifyEnterShowDesktopMode);
-		w->priv->hide ();
+		w->minimize();
+		//w->priv->hide ();
 	    }
 	}
 
@@ -2738,7 +2739,8 @@ CompScreenImpl::_leaveShowDesktopMode (CompWindow *window)
 
 	window->setShowDesktopMode (false);
 	window->windowNotify (CompWindowNotifyLeaveShowDesktopMode);
-	window->priv->show ();
+	//window->priv->show ();
+	window->unminimize();
 
 	/* return if some other window is still in show desktop mode */
 	for (cps::WindowManager::iterator i = windowManager.begin(); i != windowManager.end(); ++i)
@@ -2761,7 +2763,8 @@ CompScreenImpl::_leaveShowDesktopMode (CompWindow *window)
 
 	    w->setShowDesktopMode (false);
 	    w->windowNotify (CompWindowNotifyLeaveShowDesktopMode);
-	    w->priv->show ();
+	    //w->priv->show ();
+	    w->unminimize();
 	}
 
 	/* focus default window - most likely this will be the window
