@@ -1196,19 +1196,7 @@ CompScreenImpl::_handleEvent (XEvent *event)
     	//set DEEPIN_WINDOW_VIEWPORT
 	if (w)
 	{
-	    CompPoint tmp;
-	    screen->viewportForGeometry (w->geometry(), tmp);
-	    //reduce X traffic
-	    if (tmp == w->deepinWindowViewport)
-		break;
-	    w->deepinWindowViewport = tmp;
-	    unsigned long data[3] = {0}; 
-	    data[0] = 1;
-	    data[1] = (unsigned long) w->deepinWindowViewport.x();
-	    data[2] = (unsigned long) w->deepinWindowViewport.y();
-	    XChangeProperty (screen->dpy(), w->id(), Atoms::deepinWViewport,
-			     XA_CARDINAL, 32, PropModeReplace,
-			     (unsigned char *) data, 3);
+	    w->setDeepinWindowViewportsProp ();
 	}
 	break;
     case CreateNotify:
@@ -1336,14 +1324,7 @@ CompScreenImpl::_handleEvent (XEvent *event)
     	//set DEEPIN_WINDOW_VIEWPORT
 	if (w)
 	{
-	    w->deepinWindowViewport = screen->vp();
-	    unsigned long data[3] = {0}; 
-	    data[0] = 1;
-	    data[1] = w->deepinWindowViewport.x ();
-	    data[2] = w->deepinWindowViewport.y ();
-	    XChangeProperty (screen->dpy(), w->id(), Atoms::deepinWViewport,
-			     XA_CARDINAL, 32, PropModeReplace,
-			     (unsigned char *) data, 3);
+	    w->setDeepinWindowViewportsProp ();
 	}
 	break;
     case UnmapNotify:

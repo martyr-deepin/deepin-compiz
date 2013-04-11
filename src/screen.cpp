@@ -4259,10 +4259,46 @@ compiz::private_screen::viewports::viewportForGeometry (const CompWindow::Geomet
 }
 
 void
+compiz::private_screen::viewports::viewportsForGeometry (const CompWindow::Geometry &gm,
+							CompPoint::vector          &v_viewports,
+							ViewportRetrievalInterface *viewports,
+							const CompSize &           screenSize)
+{
+    const CompPoint &vp = viewports->getCurrentViewport ();
+
+    CompRect rect (gm);
+    rect.setWidth  (gm.widthIncBorders ());
+    rect.setHeight (gm.heightIncBorders ());
+    
+    //a window can intersects with four viewports at most.
+    v_viewports.clear ();
+    v_viewports.resize (4);
+    //1. topleft
+    v_viewports[0].setX (vp.x () + rect.x () / screenSize.width ());
+    v_viewports[0].setY (vp.y () + rect.y () / screenSize.height ());
+    //2. topright
+    v_viewports[1].setX (vp.x () + (rect.x () + rect.width ()) / screenSize.width ());
+    v_viewports[1].setY (vp.y () + rect.y () / screenSize.height ());
+    //3. bottomleft
+    v_viewports[2].setX (vp.x () + rect.x () / screenSize.width ());
+    v_viewports[2].setY (vp.y () + (rect.y () + rect.height ()) / screenSize.height ());
+    //3. bottomleft
+    v_viewports[3].setX (vp.x () + (rect.x () + rect.width ()) / screenSize.width ());
+    v_viewports[3].setY (vp.y () + (rect.y () + rect.height ()) / screenSize.height ());
+}
+
+void
 CompScreenImpl::viewportForGeometry (const CompWindow::Geometry& gm,
 				     CompPoint&                  viewport)
 {
     compiz::private_screen::viewports::viewportForGeometry (gm, viewport, &privateScreen.viewPort, *this);
+}
+
+void
+CompScreenImpl::viewportsForGeometry (const CompWindow::Geometry& gm,
+				      CompPoint::vector&          v_viewports)
+{
+    compiz::private_screen::viewports::viewportsForGeometry (gm, v_viewports, &privateScreen.viewPort, *this);
 }
 
 int

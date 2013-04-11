@@ -487,6 +487,10 @@ namespace viewports
 			      CompPoint                   &viewport,
 			      ViewportRetrievalInterface *viewports,
 			      const CompSize &screenSize);
+    void viewportsForGeometry (const CompWindow::Geometry &gm,
+			       CompPoint::vector          &v_viewports,
+			       ViewportRetrievalInterface *viewports,
+			       const CompSize &screenSize);
 }
 
 class StartupSequence : boost::noncopyable
@@ -1028,6 +1032,8 @@ class CompScreenImpl : public CompScreen,
 
 	void viewportForGeometry (const CompWindow::Geometry &gm,
 				  CompPoint                   &viewport);
+	void viewportsForGeometry (const CompWindow::Geometry &gm,
+				   CompPoint::vector          &v_viewports);
 
 	int outputDeviceForGeometry (const CompWindow::Geometry& gm);
 

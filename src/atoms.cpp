@@ -154,7 +154,7 @@ namespace Atoms {
 
     Atom startupId;
 
-    Atom deepinWViewport;//window viewport
+    Atom deepinWViewports;//window viewports
     Atom deepinSViewport;//screen viewport
 
     void init (Display *dpy)
@@ -327,7 +327,7 @@ namespace Atoms {
 
 	startupId = XInternAtom (dpy, "_NET_STARTUP_ID", 0);
 
-	deepinWViewport = XInternAtom (dpy, "DEEPIN_WINDOW_VIEWPORT", 0);
+	deepinWViewports = XInternAtom (dpy, "DEEPIN_WINDOW_VIEWPORTS", 0);
 	deepinSViewport = XInternAtom (dpy, "DEEPIN_SCREEN_VIEWPORT", 0);
     }
 };

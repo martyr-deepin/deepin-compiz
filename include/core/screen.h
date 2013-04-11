@@ -319,6 +319,8 @@ public:
     virtual void unhookWindow (CompWindow *w) = 0;
     virtual void viewportForGeometry (const CompWindow::Geometry &gm,
 				  CompPoint                   &viewport) = 0;
+    virtual void viewportsForGeometry (const CompWindow::Geometry &gm,
+				  CompPoint::vector               &v_viewports) = 0;
 
     virtual void addToDestroyedWindows(CompWindow * cw) = 0;
     virtual const CompRect & workArea () const = 0;

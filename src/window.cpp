@@ -1329,6 +1329,38 @@ CompWindow::sendConfigureNotify ()
     XUngrabServer (screen->dpy ());
     XSync (screen->dpy (), false);
 }
+//TODO: a lot of hard coded numbers.
+void
+CompWindow::setDeepinWindowViewportsProp ()
+{
+    CompPoint::vector tmp;
+    screen->viewportsForGeometry (geometry(), tmp);
+    //reduce X traffic
+    int i;
+    if (deepinWindowViewports.size () == 4)
+    {
+	for (i = 0; i < 4; i++)
+    	{
+	    if (tmp[i] != deepinWindowViewports[i])
+	    	break;
+        }
+    	if (i == 4)
+	    return;
+    }
+    //update property
+    deepinWindowViewports = tmp;
+
+    unsigned long data[9] = {0}; 
+    data[0] = 4;
+    for (i = 0; i < 4; i++)
+    {
+	data[2 * i + 1] = (unsigned long) tmp[i].x ();
+	data[2 * i + 2] = (unsigned long) tmp[i].y ();
+    }
+    XChangeProperty (screen->dpy(), id(), Atoms::deepinWViewports,
+		     XA_CARDINAL, 32, PropModeReplace,
+	             (unsigned char *) data, 9);
+}
 
 void
 CompWindow::map ()
