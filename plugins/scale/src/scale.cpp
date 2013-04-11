@@ -70,7 +70,7 @@ PrivateScaleWindow::isScaleWin () const
 
     if (!spScreen->type || spScreen->type == ScaleTypeOutput)
     {
-	if (!window->minimized() && !window->focus ())
+	if (!window->focus())
 	    return false;
     }
 

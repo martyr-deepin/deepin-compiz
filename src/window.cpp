@@ -2230,8 +2230,8 @@ CompWindow::focus ()
     if (priv->destroyed)
 	return false;
 
-    if (!priv->shaded && (priv->state & CompWindowStateHiddenMask))
-	return false;
+    //if (!priv->shaded && (priv->state & CompWindowStateHiddenMask))
+	//return false;
 
     if (priv->serverGeometry.x () + priv->serverGeometry.width ()  <= 0	||
 	priv->serverGeometry.y () + priv->serverGeometry.height () <= 0	||
