@@ -111,7 +111,7 @@ ShiftWindow::isShiftable ()
 	}
 	else
 	{
-	    if (!window->focus ())
+	    if (!window->focus () && !window->minimized())
 		return false;
 	}
     }
