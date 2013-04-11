@@ -4267,8 +4267,8 @@ compiz::private_screen::viewports::viewportsForGeometry (const CompWindow::Geome
     const CompPoint &vp = viewports->getCurrentViewport ();
 
     CompRect rect (gm);
-    rect.setWidth  (gm.widthIncBorders ());
-    rect.setHeight (gm.heightIncBorders ());
+    //rect.setWidth  (gm.widthIncBorders ());
+    //rect.setHeight (gm.heightIncBorders ());
     
     //a window can intersects with four viewports at most.
     v_viewports.clear ();
