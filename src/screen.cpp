@@ -4269,22 +4269,24 @@ compiz::private_screen::viewports::viewportsForGeometry (const CompWindow::Geome
     CompRect rect (gm);
     //rect.setWidth  (gm.widthIncBorders ());
     //rect.setHeight (gm.heightIncBorders ());
-    
+    printf ("geometry: x=%d, y=%d, width=%d, height=%d\n",
+	    rect.x(), rect.y(), rect.width(), rect.height ());
     //a window can intersects with four viewports at most.
     v_viewports.clear ();
     v_viewports.resize (4);
+#define QUOTIENT_FLOOR(p,q) ((p) >= 0 ? (p)/(q) : (p)/(q) - 1)
     //1. topleft
-    v_viewports[0].setX (vp.x () + rect.x () / screenSize.width ());
-    v_viewports[0].setY (vp.y () + rect.y () / screenSize.height ());
+    v_viewports[0].setX (vp.x () + QUOTIENT_FLOOR (rect.x (), screenSize.width ()));
+    v_viewports[0].setY (vp.y () + QUOTIENT_FLOOR (rect.y (), screenSize.height ()));
     //2. topright
-    v_viewports[1].setX (vp.x () + (rect.x () + rect.width ()) / screenSize.width ());
-    v_viewports[1].setY (vp.y () + rect.y () / screenSize.height ());
+    v_viewports[1].setX (vp.x () + QUOTIENT_FLOOR ((rect.x () + rect.width ()), screenSize.width ()));
+    v_viewports[1].setY (vp.y () + QUOTIENT_FLOOR (rect.y (), screenSize.height ()));
     //3. bottomleft
-    v_viewports[2].setX (vp.x () + rect.x () / screenSize.width ());
-    v_viewports[2].setY (vp.y () + (rect.y () + rect.height ()) / screenSize.height ());
+    v_viewports[2].setX (vp.x () + QUOTIENT_FLOOR (rect.x (), screenSize.width ()));
+    v_viewports[2].setY (vp.y () + QUOTIENT_FLOOR ((rect.y () + rect.height ()), screenSize.height ()));
     //3. bottomleft
-    v_viewports[3].setX (vp.x () + (rect.x () + rect.width ()) / screenSize.width ());
-    v_viewports[3].setY (vp.y () + (rect.y () + rect.height ()) / screenSize.height ());
+    v_viewports[3].setX (vp.x () + QUOTIENT_FLOOR ((rect.x () + rect.width ()), screenSize.width ()));
+    v_viewports[3].setY (vp.y () + QUOTIENT_FLOOR ((rect.y () + rect.height ()), screenSize.height ()));
 }
 
 void
