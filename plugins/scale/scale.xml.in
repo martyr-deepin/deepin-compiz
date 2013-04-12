@@ -124,7 +124,7 @@
 				<_long>Layout and start transforming windows</_long>
 				<allowed edgednd="true"/>
 				<default>
-					<edge name="TopRight"/>
+					<edge name="BottomRight"/>
 				</default>
 			</option>
 			<option name="initiate_key" type="key">

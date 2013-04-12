@@ -1333,6 +1333,9 @@ CompWindow::sendConfigureNotify ()
 void
 CompWindow::setDeepinWindowViewportsProp ()
 {
+    //printf ("xid = 0x%x\n", (unsigned int)id());
+    //printf ("window: x=%d, y=%d, width=%d, height=%d\n", 
+    //	     x(), y(), width(), height());
     CompPoint::vector tmp;
     screen->viewportsForGeometry (geometry(), tmp);
     //reduce X traffic
@@ -1356,6 +1359,7 @@ CompWindow::setDeepinWindowViewportsProp ()
     {
 	data[2 * i + 1] = (unsigned long) tmp[i].x ();
 	data[2 * i + 2] = (unsigned long) tmp[i].y ();
+	//printf ("viewport: x=%d, y=%d\n", tmp[i].x(), tmp[i].y());
     }
     XChangeProperty (screen->dpy(), id(), Atoms::deepinWViewports,
 		     XA_CARDINAL, 32, PropModeReplace,

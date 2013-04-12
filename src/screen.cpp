@@ -4258,6 +4258,48 @@ compiz::private_screen::viewports::viewportForGeometry (const CompWindow::Geomet
     viewport.setY (vp.y () + ((rect.centerY () / screenSize.height ()) + offset ) % vpSize.height ());
 }
 
+//
+//@inc_or_dec: can be -1 or  or 0;
+// need to think about the following nine cases.
+// +-----+-----+-----+
+// |     |     |     |
+// +-----+-----+-----+
+// |     | cur |     |
+// +-----+-----+-----+
+// |     |     |     |
+// +-----+-----+-----+
+// #cur is the current workspace. all nine cells and their full screen cases
+// should be considered.
+// how @offset should be set only when is_multiple is true: 
+// (@offset is to assign a side for a window which borders viewports boundaries)
+// topleft	: x : 0,  y: 0
+// topright	: x : -1, y: 0
+// bottomleft	: x : 0,  y: -1
+// bottomright	: x : -1, y: -1
+//
+static int
+calc_vp (int offset, int vp_coord, int win_coord, int screen_range, int vp_range)
+{
+    int ret;
+
+    //round off out-range coord
+    int tmp_coord = (win_coord + vp_coord * screen_range) % (vp_range * screen_range);
+    int abs_coord = tmp_coord >= 0 ? tmp_coord : (tmp_coord + vp_range * screen_range);
+    win_coord = abs_coord - vp_coord * screen_range;
+
+    int is_multiple = (win_coord % screen_range == 0); //is the window on the screen border.
+    int quotient = win_coord / screen_range;
+
+    quotient = (win_coord < 0) ? (quotient - 1) : quotient;
+
+    ret = is_multiple ? (quotient + offset) : quotient;
+
+    ret = (ret + vp_coord) % vp_range;
+    ret = (ret < 0) ? (ret + vp_range) : ret;
+
+    return ret;
+}
+
 void
 compiz::private_screen::viewports::viewportsForGeometry (const CompWindow::Geometry &gm,
 							CompPoint::vector          &v_viewports,
@@ -4265,26 +4307,31 @@ compiz::private_screen::viewports::viewportsForGeometry (const CompWindow::Geome
 							const CompSize &           screenSize)
 {
     const CompPoint &vp = viewports->getCurrentViewport ();
+    const CompSize &vpSize = viewports->viewportDimentions ();
 
     CompRect rect (gm);
-    rect.setWidth  (gm.widthIncBorders ());
-    rect.setHeight (gm.heightIncBorders ());
-    
+    //rect.setWidth  (gm.widthIncBorders ());
+    //rect.setHeight (gm.heightIncBorders ());
+    //printf ("geometry: x=%d, y=%d, width=%d, height=%d\n",
+    //	    rect.x(), rect.y(), rect.width(), rect.height ());
+    //printf ("vp size: w=%d, h=%d\n", vpSize.width(), vpSize.height());
+    //printf ("current vp: x=%d, y=%d\n", vp.x (), vp.y());
     //a window can intersects with four viewports at most.
     v_viewports.clear ();
     v_viewports.resize (4);
+    
     //1. topleft
-    v_viewports[0].setX (vp.x () + rect.x () / screenSize.width ());
-    v_viewports[0].setY (vp.y () + rect.y () / screenSize.height ());
+    v_viewports[0].setX (calc_vp (0, vp.x (), rect.x (), screenSize.width (), vpSize.width ()));
+    v_viewports[0].setY (calc_vp (0, vp.y (), rect.y (), screenSize.height (), vpSize.height ()));
     //2. topright
-    v_viewports[1].setX (vp.x () + (rect.x () + rect.width ()) / screenSize.width ());
-    v_viewports[1].setY (vp.y () + rect.y () / screenSize.height ());
+    v_viewports[1].setX (calc_vp (-1, vp.x (), (rect.x () + rect.width ()), screenSize.width (), vpSize.width ()));
+    v_viewports[1].setY (calc_vp (0, vp.y (), rect.y (), screenSize.height (), vpSize.height ()));
     //3. bottomleft
-    v_viewports[2].setX (vp.x () + rect.x () / screenSize.width ());
-    v_viewports[2].setY (vp.y () + (rect.y () + rect.height ()) / screenSize.height ());
-    //3. bottomleft
-    v_viewports[3].setX (vp.x () + (rect.x () + rect.width ()) / screenSize.width ());
-    v_viewports[3].setY (vp.y () + (rect.y () + rect.height ()) / screenSize.height ());
+    v_viewports[2].setX (calc_vp (0, vp.x (), rect.x (), screenSize.width (), vpSize.width ()));
+    v_viewports[2].setY (calc_vp (-1, vp.y (), (rect.y () + rect.height ()), screenSize.height (), vpSize.height ()));
+    //3. bottomright
+    v_viewports[3].setX (calc_vp (-1, vp.x (), (rect.x () + rect.width ()), screenSize.width (), vpSize.width ()));
+    v_viewports[3].setY (calc_vp (-1, vp.y (), (rect.y () + rect.height ()), screenSize.height (), vpSize.height ()));
 }
 
 void
