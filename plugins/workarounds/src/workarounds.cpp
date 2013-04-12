@@ -1165,6 +1165,7 @@ WorkaroundsWindow::~WorkaroundsWindow ()
      * FIXME: We need a ::fini stage before we do this!
      */
     ws->skipTransients = true;
+    ws->minimizingWindows.remove (window);
 
     if (isMinimized)
     {
