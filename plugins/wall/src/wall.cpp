@@ -602,46 +602,52 @@ WallWindow::activate ()
 
     if (window->placed () && !screen->otherGrabExist ("wall", "switcher", 0))
     {
-	int       dx, dy;
 	CompPoint viewport;
-
 	screen->viewportForGeometry (window->geometry (), viewport);
-	dx       = viewport.x ();
-	dy       = viewport.y ();
 
-	dx -= screen->vp ().x ();
-	dy -= screen->vp ().y ();
+	CompPoint::vector& vps = window->deepinWindowViewports;
 
-	if (dx || dy)
-	{
-	    XWindowChanges xwc;
-	    unsigned int   mask = 0;
+	if (std::find(vps.begin(), vps.end(), screen->vp()) != vps.end()) {
+	    //If this windows apperence on current screen->vp
+	    //then don't change the window's vp, otherwise the workspace will frome there to there to ...
+	} else {
+	    int       dx, dy;
+	    dx       = viewport.x ();
+	    dy       = viewport.y ();
+	    dx -= screen->vp ().x ();
+	    dy -= screen->vp ().y ();
 
-	    /* If changing viewports fails we should not
-	     * move the client window */
-	    if (!ws->moveViewport (-dx, -dy, false))
+	    if (dx || dy)
 	    {
-		window->activate ();
-		return;
+		XWindowChanges xwc;
+		unsigned int   mask = 0;
+
+		/* If changing viewports fails we should not
+		 * move the client window */
+		if (!ws->moveViewport (-dx, -dy, false))
+		{
+		    window->activate ();
+		    return;
+		}
+
+		ws->focusDefault = false;
+
+		CompRegion screenRegion;
+
+		foreach (const CompOutput &o, screen->outputDevs ())
+		    screenRegion += o.workArea ();
+
+		CompPoint d = compiz::wall::movementWindowOnScreen (window->serverBorderRect (),
+			screenRegion);
+
+		mask |= d.x () !=0 ? CWX : 0;
+		mask |= d.y () !=0 ? CWY : 0;
+
+		xwc.x = window->serverGeometry ().x () + dx;
+		xwc.y = window->serverGeometry ().y () + dy;
+
+		window->configureXWindow (mask, &xwc);
 	    }
-
-	    ws->focusDefault = false;
-
-	    CompRegion screenRegion;
-
-	    foreach (const CompOutput &o, screen->outputDevs ())
-		screenRegion += o.workArea ();
-
-	    CompPoint d = compiz::wall::movementWindowOnScreen (window->serverBorderRect (),
-								screenRegion);
-
-	    mask |= d.x () !=0 ? CWX : 0;
-	    mask |= d.y () !=0 ? CWY : 0;
-
-	    xwc.x = window->serverGeometry ().x () + dx;
-	    xwc.y = window->serverGeometry ().y () + dy;
-
-	    window->configureXWindow (mask, &xwc);
 	}
     }
 
