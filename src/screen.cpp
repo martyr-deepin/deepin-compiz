@@ -4283,9 +4283,13 @@ calc_vp (int offset, int vp_coord, int win_coord, int screen_range, int vp_range
     int ret;
 
     //round off out-range coord
-    int tmp_coord = (win_coord + vp_coord * screen_range) % (vp_range * screen_range);
-    int abs_coord = tmp_coord >= 0 ? tmp_coord : (tmp_coord + vp_range * screen_range);
-    win_coord = abs_coord - vp_coord * screen_range;
+    int tmp_coord = win_coord + vp_coord * screen_range;
+    if (tmp_coord < 0)
+	tmp_coord = (tmp_coord + vp_range * screen_range) % (vp_range * screen_range);
+    else if (tmp_coord > vp_range * screen_range)
+	tmp_coord = tmp_coord % (vp_range * screen_range);
+
+    win_coord = tmp_coord - vp_coord * screen_range;
 
     int is_multiple = (win_coord % screen_range == 0); //is the window on the screen border.
     int quotient = win_coord / screen_range;
