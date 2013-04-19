@@ -199,14 +199,14 @@ PlaceScreen::handleScreenSizeChange (int width,
 void
 PlaceScreen::handleEvent (XEvent *event)
 {
+    screen->handleEvent (event);
+
     if (event->type == ConfigureNotify &&
 	event->xconfigure.window == screen->root ())
     {
 	mPrevSize.setWidth (screen->width ());
 	mPrevSize.setHeight (screen->height ());
     }
-
-    screen->handleEvent (event);
 
     switch (event->type)
     {
