@@ -148,6 +148,7 @@
 			<option name="initiate_all_key" type="key">
 				<_short>Initiate Window Picker For All Windows</_short>
 				<_long>Layout and start transforming all windows</_long>
+                                <default>&lt;Super&gt;Shift&gt;w</default>
 			</option>
 			<option name="initiate_group_edge" type="edge">
 				<_short>Initiate Window Picker For Window Group</_short>
