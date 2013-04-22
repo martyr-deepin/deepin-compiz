@@ -22,9 +22,9 @@
 	    <option name="fadetime" type="int">
 		<_short>Fade Time</_short>
 		<_long>Fade time (in ms)</_long>
-		<default>500</default>
+		<default>100</default>
 		<min>1</min>
-		<max>5000</max>
+		<max>500</max>
 	    </option>
 	    <option name="window_match" type="match">
 		<_short>Window Match</_short>
