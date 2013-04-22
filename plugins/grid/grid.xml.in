@@ -235,7 +235,7 @@
 			<option name="left_edge_action" type="int">
 			    <_short>Left Edge</_short>
 			    <_long>Action to be performed when window is dropped on the left edge</_long>
-			    <default>0</default>
+			    <default>4</default>
 			    <min>0</min>
 			    <max>10</max>
 			    <desc>
@@ -286,7 +286,7 @@
 			<option name="right_edge_action" type="int">
 			    <_short>Right Edge</_short>
 			    <_long>Action to be performed when window is dropped on the right edge</_long>
-			    <default>0</default>
+			    <default>6</default>
 			    <min>0</min>
 			    <max>10</max>
 			    <desc>
