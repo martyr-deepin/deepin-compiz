@@ -131,13 +131,16 @@ WorkaroundsWindow::setVisibility (bool visible)
 	clearInputShape (info);
 
 	info->skipState = window->state () & (CompWindowStateSkipPagerMask |
-				              CompWindowStateSkipTaskbarMask);
+						CompWindowStateSkipTaskbarMask);
+	info->savedState = window->state() & ~CompWindowStateHiddenMask;
+	window->changeState(CompWindowStateHiddenMask);
     }
     else if (visible && windowHideInfo)
     {
 	HideInfo *info = windowHideInfo;
 
 	restoreInputShape (info);
+	window->changeState(info->savedState);
 
 	XShapeSelectInput (screen->dpy (), window->id (), info->shapeMask);
 	delete info;

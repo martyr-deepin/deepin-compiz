@@ -136,6 +136,7 @@ class WorkaroundsWindow :
 
 	    unsigned long skipState;
 	    unsigned long shapeMask;
+            unsigned long savedState;
 
 	    XRectangle *inputRects;
 	    int        nInputRects;

@@ -1,2 +1,2 @@
 [org.compiz.core]
-active-plugins=['core','composite','opengl','compiztoolbox','decor','mousepoll','resize','place','move','wall','grid','regex','imgpng','session','animation','fade','workarounds','scale','expo','commands','switcher','shift','put','startnotify', 'fadedesktop']
+active-plugins=['core','composite','opengl','compiztoolbox','decor','mousepoll','resize','place','move','wall','grid','regex','imgpng','session','animation','fade','workarounds','scale','expo','commands','switcher','shift','put','startnotify']
