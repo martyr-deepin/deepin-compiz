@@ -4294,7 +4294,8 @@ calc_vp (int offset, int vp_coord, int win_coord, int screen_range, int vp_range
     int is_multiple = (win_coord % screen_range == 0); //is the window on the screen border.
     int quotient = win_coord / screen_range;
 
-    quotient = (win_coord < 0) ? (quotient - 1) : quotient;
+    if (!is_multiple)
+    	quotient = (win_coord < 0) ? (quotient - 1) : quotient;
 
     ret = is_multiple ? (quotient + offset) : quotient;
 
@@ -4316,9 +4317,9 @@ compiz::private_screen::viewports::viewportsForGeometry (const CompWindow::Geome
     CompRect rect (gm);
     //rect.setWidth  (gm.widthIncBorders ());
     //rect.setHeight (gm.heightIncBorders ());
-    //printf ("geometry: x=%d, y=%d, width=%d, height=%d\n",
-    //	    rect.x(), rect.y(), rect.width(), rect.height ());
-    //printf ("vp size: w=%d, h=%d\n", vpSize.width(), vpSize.height());
+    //printf ("geometry  : x=%d, y=%d, width=%d, height=%d\n",
+    // 	     rect.x(), rect.y(), rect.width(), rect.height ());
+    //printf ("vp size   : w=%d, h=%d\n", vpSize.width(), vpSize.height());
     //printf ("current vp: x=%d, y=%d\n", vp.x (), vp.y());
     //a window can intersects with four viewports at most.
     v_viewports.clear ();
