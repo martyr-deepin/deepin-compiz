@@ -1,12 +1,6 @@
 /*
  *
- * Compiz show mouse pointer plugin
- *
- * showmouse.c
- *
- * Copyright : (C) 2008 by Dennis Kasprzyk
- * E-mail    : onestone@opencompositing.org
- *
+ * Copyright : (C) 2012, Linux Deepin Inc.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -28,82 +22,41 @@
 #include <mousepoll/mousepoll.h>
 
 #include "startnotify_options.h"
-#include "showmouse_tex.h"
 
-/* =====================  Particle engine  ========================= */
+#define	CURSOR_WIDTH	20
+#define	CURSOR_HEIGHT	22
+#define CURSOR_NUM	31
 
-class Particle
+#define CURSOR_HOTSPOT_X 10
+#define CURSOR_HOTSPOT_Y 10
+
+#define CURSOR_FPS  (1.0 * CURSOR_NUM)
+
+#define PLUGIN_NAME	"startnotify"
+
+class AnimCursor
 {
     public:
+	AnimCursor ();
+	~AnimCursor ();
 
-	Particle ();
-    
-	float life;		/* particle life */
-	float fade;		/* fade speed */
-	float width;		/* particle width */
-	float height;		/* particle height */
-	float w_mod;		/* particle size modification during life */
-	float h_mod;		/* particle size modification during life */
-	float r;		/* red value */
-	float g;		/* green value */
-	float b;		/* blue value */
-	float a;		/* alpha value */
-	float x;		/* X position */
-	float y;		/* Y position */
-	float z;		/* Z position */
-	float xi;		/* X direction */
-	float yi;		/* Y direction */
-	float zi;		/* Z direction */
-	float xg;		/* X gravity */
-	float yg;		/* Y gravity */
-	float zg;		/* Z gravity */
-	float xo;		/* orginal X position */
-	float yo;		/* orginal Y position */
-	float zo;		/* orginal Z position */
-};
+	bool	active;
 
-class ParticleCache
-{
-    public:
+	GLuint		animTex;      //
+	GLuint  	animTexIndex; //current index into  animTex. count from 0.
+    GLfloat     x, y;         //top-left of the sprite on the screen
 
-	GLfloat *cache;
-	unsigned int count;
-	unsigned int size;
-};
-
-class ParticleSystem
-{
-    public:
-
-	ParticleSystem (int);
-	ParticleSystem ();
-	~ParticleSystem ();
-
-	std::vector <Particle> particles;
-	float    slowdown;
-	GLuint   tex;
-	bool     active;
-	int      x, y;
-	float    darken;
-	GLuint   blendMode;
-
-	/* Moved from drawParticles to get rid of spurious malloc's */
-	ParticleCache vertices_cache;
-	ParticleCache coords_cache;
-	ParticleCache colors_cache;
-	ParticleCache dcolors_cache;
+    GLfloat     cursor_texcoords[12];
+    GLfloat     cursor_vertices[18];
 
 	void
-	initParticles (int            f_numParticles);
+	initAnimCursor ();	//used in preparePaint and screen initialization
 
 	void
-	drawParticles ();
+	drawAnimCursor (const GLMatrix &transform);	//only used in glPaintOutput
 
 	void
-	updateParticles (float          time);
-
-	void
-	finiParticles ();
+	finiAnimCursor (); 	//only used in donePaint
 };
 
 class StartnotifyScreen :
@@ -114,21 +67,23 @@ class StartnotifyScreen :
 {
     public:
 
+    int  count;//for testing
 	StartnotifyScreen (CompScreen *);
 	~StartnotifyScreen ();
 
 	CompositeScreen *cScreen;
 	GLScreen	*gScreen;
 
-	CompPoint mousePos;
+	bool	       	active;
 
-	bool	       active;
+	//mouse  polling;
+	CompPoint	mousePos;
+	MousePoller    	pollHandle;
+	void
+	positionUpdate (const CompPoint &p);
 
-	ParticleSystem ps;
-
-	float	       rot;
-
-	MousePoller    pollHandle;
+	//rendering
+	AnimCursor	animCursor;
 
 	void
 	preparePaint (int);
@@ -144,23 +99,18 @@ class StartnotifyScreen :
 	donePaint ();
 
 	void
-	genNewParticles (int);
-
-	void
 	doDamageRegion ();
 
-	void
-	positionUpdate (const CompPoint &p);
+	//
+	bool
+	initiate (CompAction         *action,
+		  CompAction::State  state,
+		  CompOption::Vector options);
 
 	bool
 	terminate (CompAction         *action,
 		   CompAction::State  state,
 		   CompOption::Vector options);
-
-	bool
-	initiate (CompAction         *action,
-		  CompAction::State  state,
-		  CompOption::Vector options);
 
 };
 

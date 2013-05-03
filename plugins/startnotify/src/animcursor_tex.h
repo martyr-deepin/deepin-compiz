@@ -1,12 +1,12 @@
 /* GdkPixbuf RGBA C-Source image dump */
 
-#ifdef __SUNPRO_C
-#pragma align 4 (iconbusy)
-#endif
+#define HEADER_SIZE     24  //bytes
+#define TEX_OFFSET      HEADER_SIZE
+
 #ifdef __GNUC__
-static const unsigned char iconbusy[] __attribute__ ((__aligned__ (4))) = 
+static const unsigned char iconbusy[] __attribute__ ((__aligned__ (4))) =
 #else
-static const unsigned char iconbusy[] = 
+static const unsigned char iconbusy[] =
 #endif
 { ""
   /* Pixbuf magic (0x47646b50) */
@@ -1837,5 +1837,3 @@ static const unsigned char iconbusy[] =
   "\0\27\0\0\0\10\0\0\0\2\0\0\0\0\0\0\0\2\0\0\0\6\0\0\0\3\0\0\0\0\0\0\0"
   "\1\0\0\0\5\0\0\0\21\0\0\0#\0\0\0""7\0\0\0_\0\0\0`\0\0\0""9\0\0\0(\0\0"
   "\0\27\0\0\0\10\0\0\0\2\0\0\0\0\0\0\0\0"};
-
-
