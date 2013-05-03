@@ -30,7 +30,7 @@
 #define CURSOR_HOTSPOT_X 10
 #define CURSOR_HOTSPOT_Y 10
 
-#define CURSOR_FPS  (1.0 * CURSOR_NUM)
+#define CURSOR_FPS  (3.0 * CURSOR_NUM)
 
 #define PLUGIN_NAME	"startnotify"
 #define CURSOR_NAME "iconbusy.png"
