@@ -33,6 +33,7 @@
 #define CURSOR_FPS  (1.0 * CURSOR_NUM)
 
 #define PLUGIN_NAME	"startnotify"
+#define CURSOR_NAME "iconbusy.png"
 
 class AnimCursor
 {
@@ -42,10 +43,12 @@ class AnimCursor
 
 	bool	active;
 
-	GLuint		animTex;      //
-	GLuint  	animTexIndex; //current index into  animTex. count from 0.
-    GLfloat     x, y;         //top-left of the sprite on the screen
+	//GLuint		animTex;      //
+    GLTexture::List animTex;
 
+	GLuint  	animTexIndex; //current index into  animTex. count from 0.
+
+    GLfloat     x, y;         //top-left of the sprite on the screen
     GLfloat     cursor_texcoords[12];
     GLfloat     cursor_vertices[18];
 

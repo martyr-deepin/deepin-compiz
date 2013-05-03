@@ -18,7 +18,6 @@
 
 #include <X11/extensions/Xfixes.h>
 
-#include "animcursor_tex.h"
 #include "startnotify.h"
 
 COMPIZ_PLUGIN_20090315 (startnotify, StartnotifyPluginVTable);
@@ -36,13 +35,20 @@ AnimCursor::~AnimCursor()
 void
 AnimCursor::initAnimCursor ()
 {
-    //set to true only we have a binding texture
-    active = false;
-
     animTex = 0;
     animTexIndex = 0;
     x = 0;
     y = 0;
+    //read Texture image file
+    CompSize size;
+    CompString file (CURSOR_NAME);
+    CompString pname (PLUGIN_NAME);
+    animTex = GLTexture::readImageToTexture (file, pname, size);
+    if (animTex.size())
+        printf ("image load success\n");
+
+    //set to true only we have a binding texture
+    active = true;
 }
 
 void
@@ -51,86 +57,91 @@ AnimCursor::drawAnimCursor (const GLMatrix &transform)
     printf ("AnimCursor::drawAnimCursor: x = %lf, y = %lf\n", x, y);
     glEnable (GL_BLEND);
 
-    if (animTex)
-        glBindTexture (GL_TEXTURE_2D, animTex);
-    //calculate cursor gemoetry and texture coordinates
-    //1. cursor vertices
-    //first triangle
-    cursor_vertices[0] = x;
-    cursor_vertices[1] = y;
-    cursor_vertices[2] = 0;
+    if (animTex.size ())
+    {
+    foreach (GLTexture* tex, animTex)
+    {
+        tex->enable (GLTexture::Good);
+        //calculate cursor gemoetry and texture coordinates
+        //1. cursor vertices
+        //first triangle
+        cursor_vertices[0] = x;
+        cursor_vertices[1] = y;
+        cursor_vertices[2] = 0;
 
-    cursor_vertices[3] = x;
-    cursor_vertices[4] = y + CURSOR_HEIGHT;
-    cursor_vertices[5] = 0;
+        cursor_vertices[3] = x;
+        cursor_vertices[4] = y + CURSOR_HEIGHT;
+        cursor_vertices[5] = 0;
 
-    cursor_vertices[6] = x + CURSOR_WIDTH;
-    cursor_vertices[7] = y + CURSOR_HEIGHT;
-    cursor_vertices[8] = 0;
+        cursor_vertices[6] = x + CURSOR_WIDTH;
+        cursor_vertices[7] = y + CURSOR_HEIGHT;
+        cursor_vertices[8] = 0;
 
-    //second triangle
-    cursor_vertices[9] = x + CURSOR_WIDTH;
-    cursor_vertices[10] = y + CURSOR_HEIGHT;
-    cursor_vertices[11] = 0;
+        //second triangle
+        cursor_vertices[9] = x + CURSOR_WIDTH;
+        cursor_vertices[10] = y + CURSOR_HEIGHT;
+        cursor_vertices[11] = 0;
 
-    cursor_vertices[12] = x + CURSOR_WIDTH;
-    cursor_vertices[13] = y;
-    cursor_vertices[14] = 0;
+        cursor_vertices[12] = x + CURSOR_WIDTH;
+        cursor_vertices[13] = y;
+        cursor_vertices[14] = 0;
 
-    cursor_vertices[15] = x;
-    cursor_vertices[16] = y;
-    cursor_vertices[17] = 0;
-    //2. corresponding texture coordinates
-    //FIXME:
-    //first surface
-    GLfloat index = (GLfloat) animTexIndex;
-    GLfloat num = (GLfloat) CURSOR_NUM;
-    cursor_texcoords[0] = 0.0;
-    //cursor_texcoords[1] = 0.0;
-    cursor_texcoords[1] = index / num;
+        cursor_vertices[15] = x;
+        cursor_vertices[16] = y;
+        cursor_vertices[17] = 0;
+        //2. corresponding texture coordinates
+        //FIXME:
+        //first surface
+        //GLfloat index = (GLfloat) animTexIndex;
+        //GLfloat num = (GLfloat) CURSOR_NUM;
+        cursor_texcoords[0] = 0.0;
+        cursor_texcoords[1] = 0.0;
+        //cursor_texcoords[1] = index / num;
 
-    cursor_texcoords[2] = 0.0;
-    //cursor_texcoords[3] = 1.0;
-    cursor_texcoords[3] = (index + 1) / num;
+        cursor_texcoords[2] = 0.0;
+        cursor_texcoords[3] = 1.0;
+        //cursor_texcoords[3] = (index + 1) / num;
 
-    cursor_texcoords[4] = 1.0;
-    //cursor_texcoords[5] = 1.0;
-    cursor_texcoords[5] = (index + 1) / num;
+        cursor_texcoords[4] = 1.0;
+        cursor_texcoords[5] = 1.0;
+        //cursor_texcoords[5] = (index + 1) / num;
 
-    //second surface
-    cursor_texcoords[6] = 1.0;
-    //cursor_texcoords[7] = 1.0;
-    cursor_texcoords[7] = (index + 1) / num;
+        //second surface
+        cursor_texcoords[6] = 1.0;
+        cursor_texcoords[7] = 1.0;
+        //cursor_texcoords[7] = (index + 1) / num;
 
-    cursor_texcoords[8] = 1.0;
-    //cursor_texcoords[9] = 0.0;
-    cursor_texcoords[9] = index / num;
+        cursor_texcoords[8] = 1.0;
+        cursor_texcoords[9] = 0.0;
+        //cursor_texcoords[9] = index / num;
 
-    cursor_texcoords[10] = 0.0;
-    cursor_texcoords[11] = index / num;
+        cursor_texcoords[10] = 0.0;
+        cursor_texcoords[11] = 0.0;
+        //cursor_texcoords[11] = index / num;
 
-    GLVertexBuffer *stream = GLVertexBuffer::streamingBuffer ();
+        GLVertexBuffer *stream = GLVertexBuffer::streamingBuffer ();
 
-    // draw the cursor
-    glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    stream->begin (GL_TRIANGLES);
+        // draw the cursor
+        glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        stream->begin (GL_TRIANGLES);
 
-    stream->addVertices (6, cursor_vertices);
-    stream->addTexCoords (0, 6, cursor_texcoords);
-    //stream->addColors (,);
+        stream->addVertices (6, cursor_vertices);
+        stream->addTexCoords (0, 6, cursor_texcoords);
 
-    if (stream->end ())
-        stream->render (transform);
+        if (stream->end ())
+            stream->render (transform);
 
-    glBlendFunc (GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+        tex->disable ();
+    }
+    }
+
     glDisable (GL_BLEND);
+    glBlendFunc (GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 void
 AnimCursor::finiAnimCursor ()
 {
-    if (animTex)
-        glDeleteTextures (1, &animTex);
 }
 
 static void
@@ -178,16 +189,6 @@ StartnotifyScreen::preparePaint (int f_time)
         printf("load texture\n");
         animCursor.initAnimCursor ();
         animCursor.active = true;
-        //binding texture
-        glGenTextures(1, &animCursor.animTex);
-        glBindTexture(GL_TEXTURE_2D, animCursor.animTex);
-        //set texture parameters
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        //load texture
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 32, 32, 0,
-                     GL_RGBA, GL_UNSIGNED_BYTE, &iconbusy[TEX_OFFSET]);
-        glBindTexture(GL_TEXTURE_2D, 0);
     }
 
     if (animCursor.active)
@@ -252,7 +253,7 @@ StartnotifyScreen::terminate (CompAction         *action,
 			    CompOption::Vector options)
 {
     active = false;
-    animCursor.initAnimCursor();
+    animCursor.active = false;
 
     doDamageRegion ();
 
