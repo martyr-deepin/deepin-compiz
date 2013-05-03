@@ -37,8 +37,6 @@ AnimCursor::initAnimCursor ()
 {
     animTex = 0;
     animTexIndex = 0;
-    x = 0;
-    y = 0;
     //read Texture image file
     CompSize size;
     CompString file (CURSOR_NAME);
@@ -181,6 +179,7 @@ StartnotifyScreen::preparePaint (int f_time)
     if (active && !pollHandle.active ())
     {
         mousePos = MousePoller::getCurrentPosition ();
+        positionUpdate (mousePos);
         pollHandle.start ();
     }
 
@@ -259,6 +258,7 @@ StartnotifyScreen::terminate (CompAction         *action,
 
     gScreen->glPaintOutputSetEnabled (gScreen, false);
 
+    screen->removeGrab (grabIndex, NULL);
     printf("StartnotifyScreen::terminate\n");
     return true;
 }
@@ -273,6 +273,10 @@ StartnotifyScreen::initiate (CompAction         *action,
 
     active = true;
     animCursor.initAnimCursor();
+
+    //XDefineCursor (screen->dpy(), screen->root(), screen->invisibleCursor());
+    //XFixesHideCursor (screen->dpy(), screen->root());
+    grabIndex = screen->pushGrab (screen->invisibleCursor(), PLUGIN_NAME);
 
     toggleFunctions (true);
 

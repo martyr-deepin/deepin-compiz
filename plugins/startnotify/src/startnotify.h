@@ -77,6 +77,8 @@ class StartnotifyScreen :
 	CompositeScreen *cScreen;
 	GLScreen	*gScreen;
 
+    CompScreen::GrabHandle  grabIndex;
+
 	bool	       	active;
 
 	//mouse  polling;
