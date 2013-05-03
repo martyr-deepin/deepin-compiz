@@ -90,32 +90,26 @@ AnimCursor::drawAnimCursor (const GLMatrix &transform)
         //2. corresponding texture coordinates
         //FIXME:
         //first surface
-        //GLfloat index = (GLfloat) animTexIndex;
-        //GLfloat num = (GLfloat) CURSOR_NUM;
+        GLfloat index = (GLfloat) animTexIndex;
+        GLfloat num = (GLfloat) CURSOR_NUM;
         cursor_texcoords[0] = 0.0;
-        cursor_texcoords[1] = 0.0;
-        //cursor_texcoords[1] = index / num;
+        cursor_texcoords[1] = index / num;
 
         cursor_texcoords[2] = 0.0;
-        cursor_texcoords[3] = 1.0;
-        //cursor_texcoords[3] = (index + 1) / num;
+        cursor_texcoords[3] = (index + 1) / num;
 
         cursor_texcoords[4] = 1.0;
-        cursor_texcoords[5] = 1.0;
-        //cursor_texcoords[5] = (index + 1) / num;
+        cursor_texcoords[5] = (index + 1) / num;
 
         //second surface
         cursor_texcoords[6] = 1.0;
-        cursor_texcoords[7] = 1.0;
-        //cursor_texcoords[7] = (index + 1) / num;
+        cursor_texcoords[7] = (index + 1) / num;
 
         cursor_texcoords[8] = 1.0;
-        cursor_texcoords[9] = 0.0;
-        //cursor_texcoords[9] = index / num;
+        cursor_texcoords[9] = index / num;
 
         cursor_texcoords[10] = 0.0;
-        cursor_texcoords[11] = 0.0;
-        //cursor_texcoords[11] = index / num;
+        cursor_texcoords[11] = index / num;
 
         GLVertexBuffer *stream = GLVertexBuffer::streamingBuffer ();
 
@@ -195,6 +189,7 @@ StartnotifyScreen::preparePaint (int f_time)
 
         GLuint n_frames = (GLuint)(CURSOR_FPS * f_time / 1000.0);
         animCursor.animTexIndex = (animCursor.animTexIndex + n_frames) % CURSOR_NUM;
+        printf("animTexIndex: %d\n", animCursor.animTexIndex);
 
         doDamageRegion ();
     }
