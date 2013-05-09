@@ -140,10 +140,6 @@ class SizedButton (gtk.Button):
 
 class PrettyButton (gtk.Button):
 
-    __gsignals__ = {
-        'expose-event'      : 'override',
-    }
-
     _old_toplevel = None
 
     def __init__ (self):
@@ -181,18 +177,6 @@ class PrettyButton (gtk.Button):
             self.set_state (gtk.STATE_PRELIGHT)
         else:
             self.set_state (gtk.STATE_NORMAL)
-
-    def do_expose_event (self, event):
-        has_focus = self.flags () & gtk.HAS_FOCUS
-        if has_focus:
-            self.unset_flags (gtk.HAS_FOCUS)
-
-        ret = super (PrettyButton, self).do_expose_event (self, event)
-
-        if has_focus:
-            self.set_flags (gtk.HAS_FOCUS)
-
-        return ret
 
 class Label(gtk.Label):
     def __init__(self, value = "", wrap = 160):
