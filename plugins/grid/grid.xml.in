@@ -497,6 +497,11 @@
 				<_long>Snaps windows back to their original size if dragged away from their gridded position.</_long>
 				<default>true</default>
 			</option>
+			<option name="cycle_sizes" type="bool">
+				<_short>Cycle Through Multiple Sizes</_short>
+				<_long>Cycle through multiple different sizes by using the same keyboard shortcut multiple times in a row.</_long>
+				<default>false</default>
+			</option>
 		</subgroup>
 		<subgroup>
 			<_short>Thresholds</_short>
@@ -536,6 +541,17 @@
 			<_short>Draw Indicator</_short>
 			<_long>Draw Window Resize Indicator</_long>
 			<default>true</default>
+		</option>
+		<option name="draw_stretched_window" type="bool">
+			<_short>Stretched Live Window Preview</_short>
+			<_long>Draw a stretched live window content animation.</_long>
+			<default>true</default>
+		</option>
+		<option name="animation_duration" type="int">
+			<_short>Preview Animation Duration</_short>
+			<_long>Preview animation duration (in ms).</_long>
+			<default>350</default>
+			<min>0</min>
 		</option>
 		<option name="outline_color" type="color">
 			<_short>Outline Color</_short>
