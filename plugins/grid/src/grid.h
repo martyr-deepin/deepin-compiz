@@ -53,7 +53,12 @@ class GridProps
 {
 public:
 
-    GridProps () {}
+    GridProps ():
+	gravityRight (0),
+	gravityDown (0),
+	numCellsX (0),
+	numCellsY (0)
+    {}
 
     GridProps (int r, int d, int x, int y):
 	gravityRight (r),
@@ -94,6 +99,7 @@ class Animation
 	CompRect currentRect;
 	GLfloat opacity;
 	GLfloat timer;
+	Window window;
 	int duration;
 	bool complete;
 	bool fadingOut;
@@ -164,6 +170,7 @@ class GridScreen :
 
 class GridWindow :
     public WindowInterface,
+    public GLWindowInterface,
     public PluginClassHandler <GridWindow, CompWindow>
 {
     public:
@@ -171,10 +178,12 @@ class GridWindow :
 	GridWindow (CompWindow *);
 	~GridWindow ();
 	CompWindow *window;
+    	GLWindow *gWindow;
 	GridScreen *gScreen;
 
 	bool isGridResized;
-	bool isGridMaximized;
+	bool isGridHorzMaximized;
+	bool isGridVertMaximized;
 	unsigned int grabMask;
 	int pointerBufDx;
 	int pointerBufDy;
@@ -183,6 +192,9 @@ class GridWindow :
 	CompRect originalSize;
 	GridType lastTarget;
 	unsigned int sizeHintsFlags;
+
+	bool glPaint (const GLWindowPaintAttrib&, const GLMatrix&,
+		      const CompRegion&, unsigned int);
 
 	void grabNotify (int, int, unsigned int, unsigned int);
 

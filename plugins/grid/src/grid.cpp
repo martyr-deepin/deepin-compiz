@@ -23,6 +23,8 @@
  */
 
 #include <boost/bind.hpp>
+#include <cmath>
+#include <cassert>
 #include "grid.h"
 #include "grabhandler.h"
 
@@ -31,21 +33,19 @@ namespace cgw = compiz::grid::window;
 
 static std::map <unsigned int, GridProps> gridProps;
 
+static int const CURVE_ANIMATION = 35;
+
 void
 GridScreen::handleCompizEvent(const char*    plugin,
 			      const char*    event,
 			      CompOption::Vector&  o)
 {
     if (strcmp(event, "start_viewport_switch") == 0)
-    {
 	mSwitchingVp = true;
-    }
     else if (strcmp(event, "end_viewport_switch") == 0)
-    {
 	mSwitchingVp = false;
-    }
 
-  screen->handleCompizEvent(plugin, event, o);
+    screen->handleCompizEvent(plugin, event, o);
 }
 
 CompRect
@@ -62,10 +62,8 @@ CompRect
 GridScreen::constrainSize (CompWindow      *w,
 			   const CompRect& slot)
 {
-    CompRect result;
     int      cw, ch;
-
-    result = slotToRect (w, slot);
+    CompRect result = slotToRect (w, slot);
 
     if (w->constrainNewWindowSize (result.width (), result.height (), &cw, &ch))
     {
@@ -97,40 +95,39 @@ GridScreen::getPaintRectangle (CompRect &cRect)
 int
 applyProgress (int a, int b, float progress)
 {
-	return a < b ?
-	 b - (ABS (a - b) * progress) :
-	 b + (ABS (a - b) * progress);
+    return a < b ?
+		b - (ABS (a - b) * progress) :
+		b + (ABS (a - b) * progress);
 }
 
 void
 GridScreen::setCurrentRect (Animation &anim)
 {
-	anim.currentRect.setLeft (applyProgress (anim.targetRect.x1 (),
-													anim.fromRect.x1 (),
-													anim.progress));
-	anim.currentRect.setRight (applyProgress (anim.targetRect.x2 (),
-													anim.fromRect.x2 (),
-													anim.progress));
-	anim.currentRect.setTop (applyProgress (anim.targetRect.y1 (),
-													anim.fromRect.y1 (),
-													anim.progress));
-	anim.currentRect.setBottom (applyProgress (anim.targetRect.y2 (),
-													anim.fromRect.y2 (),
-													anim.progress));
+    anim.currentRect.setLeft (applyProgress (anim.targetRect.x1 (),
+					     anim.fromRect.x1 (),
+					     anim.progress));
+    anim.currentRect.setRight (applyProgress (anim.targetRect.x2 (),
+					      anim.fromRect.x2 (),
+					      anim.progress));
+    anim.currentRect.setTop (applyProgress (anim.targetRect.y1 (),
+					    anim.fromRect.y1 (),
+					    anim.progress));
+    anim.currentRect.setBottom (applyProgress (anim.targetRect.y2 (),
+					       anim.fromRect.y2 (),
+					       anim.progress));
 }
 
 bool
-GridScreen::initiateCommon (CompAction         *action,
-			    CompAction::State  state,
-			    CompOption::Vector &option,
-			    unsigned int                where,
-			    bool               resize,
-			    bool	       key)
+GridScreen::initiateCommon (CompAction		*action,
+			    CompAction::State	state,
+			    CompOption::Vector	&option,
+			    unsigned int	where,
+			    bool		resize,
+			    bool		key)
 {
-    Window     xid;
     CompWindow *cw = 0;
 
-    xid = CompOption::getIntOptionNamed (option, "window");
+    Window xid = CompOption::getIntOptionNamed (option, "window");
     cw  = screen->findWindow (xid);
 
     if (cw)
@@ -139,16 +136,16 @@ GridScreen::initiateCommon (CompAction         *action,
 	bool maximizeH = where & (GridBottom | GridTop | GridMaximize);
 	bool maximizeV = where & (GridLeft | GridRight | GridMaximize);
 
-	if (!(cw->actions () & CompWindowActionResizeMask))
-	    return false;
+	bool horzMaximizedGridPosition = where & (GridTop | GridBottom);
+	bool vertMaximizedGridPosition = where & (GridLeft | GridRight);
+	bool  anyMaximizedGridPosition = horzMaximizedGridPosition ||
+					 vertMaximizedGridPosition ||
+					 where & GridMaximize;
 
-	if (maximizeH && !(cw->actions () & CompWindowActionMaximizeHorzMask))
-	    return false;
-
-	if (maximizeV && !(cw->actions () & CompWindowActionMaximizeVertMask))
-	    return false;
-
-	if (where & GridUnknown)
+	if (!(cw->actions () & CompWindowActionResizeMask) ||
+	    (maximizeH && !(cw->actions () & CompWindowActionMaximizeHorzMask)) ||
+	    (maximizeV && !(cw->actions () & CompWindowActionMaximizeVertMask)) ||
+	    where & GridUnknown)
 	    return false;
 
 	GRID_WINDOW (cw);
@@ -163,7 +160,7 @@ GridScreen::initiateCommon (CompAction         *action,
 	/* get current available area */
 	if (cw == mGrabWindow)
 	    workarea = screen->getWorkareaForOutput
-			    (screen->outputDeviceForPoint (pointerX, pointerY));
+		       (screen->outputDeviceForPoint (pointerX, pointerY));
 	else
 	{
 	    workarea = screen->getWorkareaForOutput (cw->outputDevice ());
@@ -171,23 +168,23 @@ GridScreen::initiateCommon (CompAction         *action,
 	    if (props.numCellsX == 1)
 		centerCheck = true;
 
-	    if (!gw->isGridResized)
+	    /* Do not overwrite the original size if we already have been gridded */
+	    if (!gw->isGridResized && !gw->isGridHorzMaximized && !gw->isGridVertMaximized)
 		/* Store size not including borders when using a keybinding */
 		gw->originalSize = slotToRect(cw, cw->serverBorderRect ());
 	}
 
 	if ((cw->state () & MAXIMIZE_STATE) &&
 	    (resize || optionGetSnapoffMaximized ()))
-	{
 	    /* maximized state interferes with us, clear it */
 	    cw->maximize (0);
-	}
 
 	if ((where & GridMaximize) && resize)
 	{
 	    /* move the window to the correct output */
 	    if (cw == mGrabWindow)
 	    {
+		/* TODO: Remove these magic numbers */
 		xwc.x = workarea.x () + 50;
 		xwc.y = workarea.y () + 50;
 		xwc.width = workarea.width ();
@@ -195,43 +192,71 @@ GridScreen::initiateCommon (CompAction         *action,
 		cw->configureXWindow (CWX | CWY, &xwc);
 	    }
 	    cw->maximize (MAXIMIZE_STATE);
-	    gw->isGridResized = true;
-	    gw->isGridMaximized = true;
-		for (unsigned int i = 0; i < animations.size (); i++)
-			animations.at (i).fadingOut = true;
+	    /* Core can handle fully maximized windows so we don't
+	     * have to worry about them. Don't mark the window as a
+	     * gridded one.
+	     */
+	    gw->isGridResized = false;
+	    gw->isGridHorzMaximized = false;
+	    gw->isGridVertMaximized = false;
+
+	    for (unsigned int i = 0; i < animations.size (); ++i)
+		animations.at (i).fadingOut = true;
 	    return true;
 	}
 
 	/* Convention:
 	 * xxxSlot include decorations (it's the screen area occupied)
 	 * xxxRect are undecorated (it's the constrained position
-	                            of the contents)
+				    of the contents)
 	 */
 
 	/* slice and dice to get desired slot - including decorations */
 	desiredSlot.setY (workarea.y () + props.gravityDown *
 			  (workarea.height () / props.numCellsY));
 	desiredSlot.setHeight (workarea.height () / props.numCellsY);
+
 	desiredSlot.setX (workarea.x () + props.gravityRight *
 			  (workarea.width () / props.numCellsX));
 	desiredSlot.setWidth (workarea.width () / props.numCellsX);
 
-	/* Adjust for constraints and decorations */
-	if (where & ~(GridMaximize | GridLeft | GridRight))
+	if (!optionGetCycleSizes ())
 	{
-	    desiredRect = constrainSize (cw, desiredSlot);
+	    /* Adjust for constraints and decorations */
+	    if (!anyMaximizedGridPosition)
+		desiredRect = constrainSize (cw, desiredSlot);
+	    else
+		desiredRect = slotToRect (cw, desiredSlot);
 	}
-	else
-	    desiredRect = slotToRect (cw, desiredSlot);
+	else /* (optionGetCycleSizes ()) */
+	{
+	    /* Adjust for constraints and decorations */
+	    if (where & ~GridMaximize)
+		desiredRect = constrainSize (cw, desiredSlot);
+	    else
+		desiredRect = slotToRect (cw, desiredSlot);
+	}
 
 	/* Get current rect not including decorations */
 	currentRect.setGeometry (cw->serverX (), cw->serverY (),
 				 cw->serverWidth (),
 				 cw->serverHeight ());
 
-	if (desiredRect.y () == currentRect.y () &&
-	    desiredRect.height () == currentRect.height () &&
-	    where & ~(GridMaximize | GridLeft | GridRight) && gw->lastTarget & where)
+	/* We do not want to allow cycling through sizes,
+	 * unless the user explicitely specified that in CCSM
+	 */
+	if (gw->lastTarget == where &&
+	    gw->isGridResized &&
+	    !optionGetCycleSizes ())
+	    return false;
+
+	/* !(Grid Left/Right/Top/Bottom) are only valid here, if
+	 * cycling through sizes is disabled also
+	 */
+	if ((where & ~(GridMaximize) ||
+	     ((!horzMaximizedGridPosition || !vertMaximizedGridPosition) &&
+	      !optionGetCycleSizes ())) &&
+	    gw->lastTarget & where)
 	{
 	    int slotWidth25  = workarea.width () / 4;
 	    int slotWidth33  = (workarea.width () / 3) + cw->border ().left;
@@ -242,7 +267,7 @@ GridScreen::initiateCommon (CompAction         *action,
 	    if (props.numCellsX == 2) /* keys (1, 4, 7, 3, 6, 9) */
 	    {
 		if ((currentRect.width () == desiredRect.width () &&
-		    currentRect.x () == desiredRect.x ()) ||
+		     currentRect.x () == desiredRect.x ()) ||
 		    (gw->resizeCount < 1) || (gw->resizeCount > 5))
 		    gw->resizeCount = 3;
 
@@ -255,70 +280,80 @@ GridScreen::initiateCommon (CompAction         *action,
 			desiredSlot.setWidth (slotWidth66);
 			desiredSlot.setX (workarea.x () +
 					  props.gravityRight * slotWidth33);
-			gw->resizeCount++;
+			++gw->resizeCount;
 			break;
+
 		    case 2:
-			gw->resizeCount++;
+			++gw->resizeCount;
 			break;
+
 		    case 3:
 			desiredSlot.setWidth (slotWidth33);
 			desiredSlot.setX (workarea.x () +
 					  props.gravityRight * slotWidth66);
-			gw->resizeCount++;
+			++gw->resizeCount;
 			break;
+
 		    case 4:
 			desiredSlot.setWidth (slotWidth25);
 			desiredSlot.setX (workarea.x () +
 					  props.gravityRight * slotWidth75);
-			gw->resizeCount++;
+			++gw->resizeCount;
 			break;
+
 		    case 5:
 			desiredSlot.setWidth (slotWidth75);
 			desiredSlot.setX (workarea.x () +
 					  props.gravityRight * slotWidth25);
-			gw->resizeCount++;
+			++gw->resizeCount;
 			break;
+
 		    default:
 			break;
 		}
 	    }
 	    else /* keys (2, 5, 8) */
 	    {
-
 		if ((currentRect.width () == desiredRect.width () &&
-		    currentRect.x () == desiredRect.x ()) ||
+		     currentRect.x () == desiredRect.x ()) ||
 		    (gw->resizeCount < 1) || (gw->resizeCount > 5))
 		    gw->resizeCount = 1;
-	    
+
 		switch (gw->resizeCount)
 		{
 		    case 1:
 			desiredSlot.setWidth (workarea.width () -
-					     (slotWidth17 * 2));
+					      (slotWidth17 * 2));
 			desiredSlot.setX (workarea.x () + slotWidth17);
-			gw->resizeCount++;
+			++gw->resizeCount;
 			break;
+
 		    case 2:
 			desiredSlot.setWidth ((slotWidth25 * 2) +
 					      (slotWidth17 * 2));
 			desiredSlot.setX (workarea.x () +
-					 (slotWidth25 - slotWidth17));
-			gw->resizeCount++;
+					  (slotWidth25 - slotWidth17));
+			++gw->resizeCount;
 			break;
+
 		    case 3:
 			desiredSlot.setWidth ((slotWidth25 * 2));
 			desiredSlot.setX (workarea.x () + slotWidth25);
-			gw->resizeCount++;
+			++gw->resizeCount;
 			break;
+
 		    case 4:
 			desiredSlot.setWidth (slotWidth33 -
-			    (cw->border ().left + cw->border ().right));
+					      (cw->border ().left +
+					       cw->border ().right));
 			desiredSlot.setX (workarea.x () + slotWidth33);
-			gw->resizeCount++;
+			++gw->resizeCount;
 			break;
+
 		    case 5:
-			gw->resizeCount++;
+			++gw->resizeCount;
 			break;
+
 		    default:
 			break;
 		}
@@ -351,46 +386,72 @@ GridScreen::initiateCommon (CompAction         *action,
 
 	    gw->sizeHintsFlags = 0;
 
-	    /* Special case for left and right, actually vertically maximize
-	     * the window */
-	    if (where & GridLeft || where & GridRight)
+	    if (!optionGetCycleSizes ())
 	    {
-		/* First restore the window to its original size */
-		XWindowChanges rwc;
-
-		rwc.x = gw->originalSize.x ();
-		rwc.y = gw->originalSize.y ();
-		rwc.width = gw->originalSize.width ();
-		rwc.height = gw->originalSize.height ();
-
-		cw->configureXWindow (CWX | CWY | CWWidth | CWHeight, &rwc);
-
-		gw->isGridMaximized = true;
-		gw->isGridResized = false;
-
-		/* Maximize the window */
-		cw->maximize (CompWindowStateMaximizedVertMask);
-
-		/* Be evil */
-		if (cw->sizeHints ().flags & PResizeInc)
+		/* Special cases for left/right and top/bottom gridded windows, where we
+		 * actually vertically respective horizontally semi-maximize the window
+		 */
+		if (horzMaximizedGridPosition || vertMaximizedGridPosition)
 		{
-		    gw->sizeHintsFlags |= PResizeInc;
-		    gw->window->sizeHints ().flags &= ~(PResizeInc);
+		    /* First restore the window to its original size */
+		    XWindowChanges rwc;
+
+		    rwc.x = gw->originalSize.x ();
+		    rwc.y = gw->originalSize.y ();
+		    rwc.width = gw->originalSize.width ();
+		    rwc.height = gw->originalSize.height ();
+
+		    cw->configureXWindow (CWX | CWY | CWWidth | CWHeight, &rwc);
+
+		    /* GridLeft || GridRight */
+		    if (vertMaximizedGridPosition)
+		    {
+			gw->isGridVertMaximized = true;
+			gw->isGridHorzMaximized = false;
+			gw->isGridResized = false;
+
+			/* Semi-maximize the window vertically */
+			cw->maximize (CompWindowStateMaximizedVertMask);
+		    }
+		    /* GridTop || GridBottom */
+		    else /* (horzMaximizedGridPosition) */
+		    {
+			gw->isGridHorzMaximized = true;
+			gw->isGridVertMaximized = false;
+			gw->isGridResized = false;
+
+			/* Semi-maximize the window horizontally */
+			cw->maximize (CompWindowStateMaximizedHorzMask);
+		    }
+
+		    /* Be evil */
+		    if (cw->sizeHints ().flags & PResizeInc)
+		    {
+			gw->sizeHintsFlags |= PResizeInc;
+			gw->window->sizeHints ().flags &= ~(PResizeInc);
+		    }
+		}
+		else /* GridCorners || GridCenter */
+		{
+		    gw->isGridResized = true;
+		    gw->isGridHorzMaximized = false;
+		    gw->isGridVertMaximized = false;
 		}
 	    }
-	    else
+	    else /* if (optionGetCycleSizes ()) */
 	    {
-	        gw->isGridResized = true;
-	        gw->isGridMaximized = false;
+		gw->isGridResized = true;
+		gw->isGridHorzMaximized = false;
+		gw->isGridVertMaximized = false;
 	    }
 
-	    int dw = (lastBorder.left + lastBorder.right) - 
-		      (gw->window->border ().left +
-		       gw->window->border ().right);
-			
-	    int dh = (lastBorder.top + lastBorder.bottom) - 
-			(gw->window->border ().top +
-			 gw->window->border ().bottom);
+	    int dw = (lastBorder.left + lastBorder.right) -
+		     (gw->window->border ().left +
+		      gw->window->border ().right);
+
+	    int dh = (lastBorder.top + lastBorder.bottom) -
+		     (gw->window->border ().top +
+		      gw->window->border ().bottom);
 
 	    xwc.width += dw;
 	    xwc.height += dh;
@@ -398,7 +459,7 @@ GridScreen::initiateCommon (CompAction         *action,
 	    /* Make window the size that we want */
 	    cw->configureXWindow (valueMask, &xwc);
 
-	    for (unsigned int i = 0; i < animations.size (); i++)
+	    for (unsigned int i = 0; i < animations.size (); ++i)
 		animations.at (i).fadingOut = true;
 	}
 
@@ -410,11 +471,11 @@ GridScreen::initiateCommon (CompAction         *action,
 	{
 	    if ((cw->serverBorderRect ().width () >
 		 desiredSlot.width ()) ||
-		 cw->serverBorderRect ().width () <
-		 desiredSlot.width ())
+		cw->serverBorderRect ().width () <
+		desiredSlot.width ())
 	    {
 		wc.x = (workarea.width () >> 1) -
-		      ((cw->serverBorderRect ().width () >> 1) -
+		       ((cw->serverBorderRect ().width () >> 1) -
 			cw->border ().left);
 		cw->configureXWindow (CWX, &wc);
 	    }
@@ -433,33 +494,40 @@ GridScreen::glPaintRectangle (const GLScreenPaintAttrib &sAttrib,
 {
     CompRect rect;
     GLMatrix sTransform (transform);
-	std::vector<Animation>::iterator iter;
+    std::vector<Animation>::iterator iter;
     GLVertexBuffer *streamingBuffer = GLVertexBuffer::streamingBuffer ();
     GLfloat         vertexData[12];
     GLushort        colorData[4];
     GLushort       *color;
     GLboolean       isBlendingEnabled;
 
+    const float MaxUShortFloat = std::numeric_limits <unsigned short>::max ();
+
     getPaintRectangle (rect);
 
-	for (unsigned int i = 0; i < animations.size (); i++)
-		setCurrentRect (animations.at (i));
+    for (unsigned int i = 0; i < animations.size (); ++i)
+	setCurrentRect (animations.at (i));
 
     sTransform.toScreenSpace (output, -DEFAULT_Z_CAMERA);
 
     glGetBooleanv (GL_BLEND, &isBlendingEnabled);
     glEnable (GL_BLEND);
 
-	for (iter = animations.begin (); iter != animations.end () && animating; ++iter)
-	{
-		Animation& anim = *iter;
-		float alpha = ((float) optionGetFillColorAlpha () / 65535.0f) * anim.opacity;
+    for (iter = animations.begin (); iter != animations.end () && animating; ++iter)
+    {
+	Animation& anim = *iter;
+
+	float curve = powf (CURVE_ANIMATION, -anim.progress);
+	float alpha = (optionGetFillColorAlpha () / MaxUShortFloat) * anim.opacity;
 	color = optionGetFillColor ();
 
 	colorData[0] = alpha * color[0];
 	colorData[1] = alpha * color[1];
 	colorData[2] = alpha * color[2];
-	colorData[3] = alpha * 65535.0f;
+	colorData[3] = alpha * MaxUShortFloat;
+
+	if (optionGetDrawStretchedWindow ())
+	    colorData[3] *= (1.0 - curve);
 
 	vertexData[0]  = anim.currentRect.x1 ();
 	vertexData[1]  = anim.currentRect.y1 ();
@@ -481,20 +549,23 @@ GridScreen::glPaintRectangle (const GLScreenPaintAttrib &sAttrib,
 	streamingBuffer->end ();
 	streamingBuffer->render (sTransform);
 
-		/* Set outline rect smaller to avoid damage issues */
-		anim.currentRect.setGeometry (anim.currentRect.x () + 1,
-					      anim.currentRect.y () + 1,
-					      anim.currentRect.width () - 2,
-					      anim.currentRect.height () - 2);
+	/* Set outline rect smaller to avoid damage issues */
+	anim.currentRect.setGeometry (anim.currentRect.x () + 1,
+				      anim.currentRect.y () + 1,
+				      anim.currentRect.width () - 2,
+				      anim.currentRect.height () - 2);
 
-		/* draw outline */
-	alpha = ((float) optionGetOutlineColorAlpha () / 65535.0f) * anim.opacity;
+	/* draw outline */
+	alpha = (optionGetOutlineColorAlpha () / MaxUShortFloat) * anim.opacity;
 	color = optionGetOutlineColor ();
 
 	colorData[0] = alpha * color[0];
 	colorData[1] = alpha * color[1];
 	colorData[2] = alpha * color[2];
-	colorData[3] = alpha * 65535.0f;
+	colorData[3] = alpha * MaxUShortFloat;
+
+	if (optionGetDrawStretchedWindow ())
+	    colorData[3] *= (1.0 - curve);
 
 	vertexData[0]  = anim.currentRect.x1 ();
 	vertexData[1]  = anim.currentRect.y1 ();
@@ -505,7 +576,7 @@ GridScreen::glPaintRectangle (const GLScreenPaintAttrib &sAttrib,
 	vertexData[9]  = anim.currentRect.x2 ();
 	vertexData[10] = anim.currentRect.y1 ();
 
-		glLineWidth (2.0);
+	glLineWidth (2.0);
 
 	streamingBuffer->begin (GL_LINE_LOOP);
 	streamingBuffer->addColors (1, colorData);
@@ -513,18 +584,18 @@ GridScreen::glPaintRectangle (const GLScreenPaintAttrib &sAttrib,
 
 	streamingBuffer->end ();
 	streamingBuffer->render (sTransform);
-	}
+    }
 
-	if (!animating)
-	{
+    if (!animating)
+    {
 	/* draw filled rectangle */
-		float alpha = (float) optionGetFillColorAlpha () / 65535.0f;
+	float alpha = optionGetFillColorAlpha () / MaxUShortFloat;
 	color = optionGetFillColor ();
 
 	colorData[0] = alpha * color[0];
 	colorData[1] = alpha * color[1];
 	colorData[2] = alpha * color[2];
-	colorData[3] = alpha * 65535.0f;
+	colorData[3] = alpha * MaxUShortFloat;
 
 	vertexData[0]  = rect.x1 ();
 	vertexData[1]  = rect.y1 ();
@@ -546,20 +617,20 @@ GridScreen::glPaintRectangle (const GLScreenPaintAttrib &sAttrib,
 	streamingBuffer->end ();
 	streamingBuffer->render (sTransform);
 
-		/* Set outline rect smaller to avoid damage issues */
+	/* Set outline rect smaller to avoid damage issues */
 	rect.setGeometry (rect.x () + 1,
 			  rect.y () + 1,
 			  rect.width () - 2,
 			  rect.height () - 2);
 
-		/* draw outline */
-		alpha = (float) optionGetOutlineColorAlpha () / 65535.0f;
+	/* draw outline */
+	alpha = optionGetOutlineColorAlpha () / MaxUShortFloat;
 	color = optionGetOutlineColor ();
 
 	colorData[0] = alpha * color[0];
 	colorData[1] = alpha * color[1];
 	colorData[2] = alpha * color[2];
-	colorData[3] = alpha * 65535.0f;
+	colorData[3] = alpha * MaxUShortFloat;
 
 	vertexData[0]  = rect.x1 ();
 	vertexData[1]  = rect.y1 ();
@@ -570,7 +641,7 @@ GridScreen::glPaintRectangle (const GLScreenPaintAttrib &sAttrib,
 	vertexData[9]  = rect.x2 ();
 	vertexData[10] = rect.y1 ();
 
-		glLineWidth (2.0);
+	glLineWidth (2.0);
 
 	streamingBuffer->begin (GL_LINE_LOOP);
 	streamingBuffer->addColors (1, colorData);
@@ -578,10 +649,10 @@ GridScreen::glPaintRectangle (const GLScreenPaintAttrib &sAttrib,
 
 	streamingBuffer->end ();
 	streamingBuffer->render (sTransform);
-	}
+    }
 
     if (!isBlendingEnabled)
-    glDisable (GL_BLEND);
+	glDisable (GL_BLEND);
 }
 
 bool
@@ -591,9 +662,7 @@ GridScreen::glPaintOutput (const GLScreenPaintAttrib &attrib,
 			   CompOutput                *output,
 			   unsigned int              mask)
 {
-    bool status;
-
-    status = glScreen->glPaintOutput (attrib, matrix, region, output, mask);
+    bool status = glScreen->glPaintOutput (attrib, matrix, region, output, mask);
 
     glPaintRectangle (attrib, matrix, output);
 
@@ -602,25 +671,24 @@ GridScreen::glPaintOutput (const GLScreenPaintAttrib &attrib,
 
 namespace
 {
-    class GridTypeMask
-    {
-	public:
+class GridTypeMask
+{
+    public:
 
-	    GridTypeMask (unsigned int m, int t):
-		mask (m),
-		type (t)
-	    {
-	    }
+	GridTypeMask (unsigned int m, int t):
+	    mask (m),
+	    type (t)
+	{
+	}
 
 	unsigned int mask;
 	int type;
-    };
+};
 }
 
 unsigned int
 GridScreen::typeToMask (int t)
 {
-
     std::vector <GridTypeMask> type;
     type.push_back (GridTypeMask (GridWindowType::GridUnknown, 0));
     type.push_back (GridTypeMask (GridWindowType::GridBottomLeft, 1));
@@ -635,7 +703,7 @@ GridScreen::typeToMask (int t)
     type.push_back (GridTypeMask (GridWindowType::GridMaximize, 10));
 
 
-    for (unsigned int i = 0; i < type.size (); i++)
+    for (unsigned int i = 0; i < type.size (); ++i)
     {
 	GridTypeMask &tm = type[i];
 	if (tm.type == t)
@@ -650,35 +718,44 @@ GridScreen::edgeToGridType ()
 {
     int ret;
 
-    switch (edge) {
-    case Left:
-	ret = (int) optionGetLeftEdgeAction ();
-	break;
-    case Right:
-	ret = (int) optionGetRightEdgeAction ();
-	break;
-    case Top:
-	ret = (int) optionGetTopEdgeAction ();
-	break;
-    case Bottom:
-	ret = (int) optionGetBottomEdgeAction ();
-	break;
-    case TopLeft:
-	ret = (int) optionGetTopLeftCornerAction ();
-	break;
-    case TopRight:
-	ret = (int) optionGetTopRightCornerAction ();
-	break;
-    case BottomLeft:
-	ret = (int) optionGetBottomLeftCornerAction ();
-	break;
-    case BottomRight:
-	ret = (int) optionGetBottomRightCornerAction ();
-	break;
-    case NoEdge:
-    default:
-	ret = -1;
-	break;
+    switch (edge)
+    {
+	case Left:
+	    ret = (int) optionGetLeftEdgeAction ();
+	    break;
+
+	case Right:
+	    ret = (int) optionGetRightEdgeAction ();
+	    break;
+
+	case Top:
+	    ret = (int) optionGetTopEdgeAction ();
+	    break;
+
+	case Bottom:
+	    ret = (int) optionGetBottomEdgeAction ();
+	    break;
+
+	case TopLeft:
+	    ret = (int) optionGetTopLeftCornerAction ();
+	    break;
+
+	case TopRight:
+	    ret = (int) optionGetTopRightCornerAction ();
+	    break;
+
+	case BottomLeft:
+	    ret = (int) optionGetBottomLeftCornerAction ();
+	    break;
+
+	case BottomRight:
+	    ret = (int) optionGetBottomRightCornerAction ();
+	    break;
+
+	case NoEdge:
+	default:
+	    ret = -1;
+	    break;
     }
 
     return ret;
@@ -687,7 +764,6 @@ GridScreen::edgeToGridType ()
 void
 GridScreen::handleEvent (XEvent *event)
 {
-    CompOutput out;
     CompWindow *w;
 
     screen->handleEvent (event);
@@ -695,46 +771,11 @@ GridScreen::handleEvent (XEvent *event)
     if (event->type != MotionNotify || !mGrabWindow)
 	return;
 
-    out = screen->outputDevs ().at (
-                   screen->outputDeviceForPoint (CompPoint (pointerX, pointerY)));
-
-    /* Detect corners first */
-    /* Bottom Left */
-    if (pointerY > (out.y () + out.height () - optionGetBottomEdgeThreshold()) &&
-        pointerX < out.x () + optionGetLeftEdgeThreshold())
-	edge = BottomLeft;
-    /* Bottom Right */
-    else if (pointerY > (out.y () + out.height () - optionGetBottomEdgeThreshold()) &&
-             pointerX > (out.x () + out.width () - optionGetRightEdgeThreshold()))
-	edge = BottomRight;
-    /* Top Left */
-    else if (pointerY < optionGetTopEdgeThreshold() &&
-	    pointerX < optionGetLeftEdgeThreshold())
-	edge = TopLeft;
-    /* Top Right */
-    else if (pointerY < out.y () + optionGetTopEdgeThreshold() &&
-             pointerX > (out.x () + out.width () - optionGetRightEdgeThreshold()))
-	edge = TopRight;
-    /* Left */
-    else if (pointerX < out.x () + optionGetLeftEdgeThreshold())
-	edge = Left;
-    /* Right */
-    else if (pointerX > (out.x () + out.width () - optionGetRightEdgeThreshold()))
-	edge = Right;
-    /* Top */
-    else if (pointerY < out.y () + optionGetTopEdgeThreshold())
-	edge = Top;
-    /* Bottom */
-    else if (pointerY > (out.y () + out.height () - optionGetBottomEdgeThreshold()))
-	edge = Bottom;
-    /* No Edge */
-    else
-	edge = NoEdge;
-
     /* Detect when cursor enters another output */
 
     currentWorkarea = screen->getWorkareaForOutput
-			    (screen->outputDeviceForPoint (pointerX, pointerY));
+		      (screen->outputDeviceForPoint (pointerX, pointerY));
+
     if (lastWorkarea != currentWorkarea)
     {
 	lastWorkarea = currentWorkarea;
@@ -748,55 +789,103 @@ GridScreen::handleEvent (XEvent *event)
 	    cScreen->damageRegion (desiredSlot);
     }
 
+    CompOutput out = screen->outputDevs ().at (
+	      screen->outputDeviceForPoint (CompPoint (pointerX, pointerY)));
+
+    /* Detect corners first */
+
+    /* Bottom Left */
+    if (pointerY > (out.y () + out.height () - optionGetBottomEdgeThreshold ()) &&
+	pointerX < (out.x () + optionGetLeftEdgeThreshold ()))
+	edge = BottomLeft;
+
+    /* Bottom Right */
+    else if (pointerY > (out.y () + out.height () - optionGetBottomEdgeThreshold ()) &&
+	     pointerX > (out.x () + out.width () - optionGetRightEdgeThreshold ()))
+	edge = BottomRight;
+
+    /* Top Left */
+    else if (pointerY < (out.y () + optionGetTopEdgeThreshold ()) &&
+	     pointerX < (out.x () + optionGetLeftEdgeThreshold ()))
+	edge = TopLeft;
+
+    /* Top Right */
+    else if (pointerY < (out.y () + optionGetTopEdgeThreshold ()) &&
+	     pointerX > (out.x () + out.width () - optionGetRightEdgeThreshold ()))
+	edge = TopRight;
+
+    /* Left */
+    else if (pointerX < (out.x () + optionGetLeftEdgeThreshold ()))
+	edge = Left;
+
+    /* Right */
+    else if (pointerX > (out.x () + out.width () - optionGetRightEdgeThreshold ()))
+	edge = Right;
+
+    /* Top */
+    else if (pointerY < (out.y () + optionGetTopEdgeThreshold ()))
+	edge = Top;
+
+    /* Bottom */
+    else if (pointerY > (out.y () + out.height () - optionGetBottomEdgeThreshold ()))
+	edge = Bottom;
+
+    /* No Edge */
+    else
+	edge = NoEdge;
+
     /* Detect edge region change */
 
     if (lastEdge != edge)
     {
-		bool check = false;
-		lastSlot = desiredSlot;
+	bool check = false;
+	unsigned int target = typeToMask (edgeToGridType ());
+	lastSlot = desiredSlot;
 
-		if (edge == NoEdge)
-			desiredSlot.setGeometry (0, 0, 0, 0);
+	if (edge == NoEdge || target == GridUnknown)
+	    desiredSlot.setGeometry (0, 0, 0, 0);
 
-		if (cScreen)
-			cScreen->damageRegion (desiredSlot);
+	if (cScreen)
+	    cScreen->damageRegion (desiredSlot);
 
-		check = initiateCommon (NULL, 0, o, typeToMask (edgeToGridType ()), false, false);
+	check = initiateCommon (NULL, 0, o, target, false, false);
 
-		if (cScreen)
-			cScreen->damageRegion (desiredSlot);
+	if (cScreen)
+	    cScreen->damageRegion (desiredSlot);
 
-		if (lastSlot != desiredSlot)
+	if (lastSlot != desiredSlot)
+	{
+	    if (!animations.empty ())
+		/* Begin fading previous animation instance */
+		animations.at (animations.size () - 1).fadingOut = true;
+
+	    if (edge != NoEdge && check)
+	    {
+		CompWindow *cw = screen->findWindow (screen->activeWindow ());
+		if (cw)
 		{
-			if (!animations.empty ())
-				/* Begin fading previous animation instance */
-				animations.at (animations.size () - 1).fadingOut = true;
+		    animations.push_back (Animation ());
+		    int current = animations.size () - 1;
+		    animations.at (current).fromRect	= cw->serverBorderRect ();
+		    animations.at (current).currentRect	= cw->serverBorderRect ();
+		    animations.at (current).duration = optionGetAnimationDuration ();
+		    animations.at (current).timer = animations.at (current).duration;
+		    animations.at (current).targetRect = desiredSlot;
+		    animations.at (current).window = cw->id();
 
-			if (edge != NoEdge && check)
-			{
-				CompWindow *cw = screen->findWindow (screen->activeWindow ());
-				if (cw)
-				{
-				    animations.push_back (Animation ());
-				    int current = animations.size () - 1;
-				    animations.at (current).fromRect	= cw->serverBorderRect ();
-				    animations.at (current).currentRect	= cw->serverBorderRect ();
-				    animations.at (current).timer = animations.at (current).duration;
-				    animations.at (current).targetRect = desiredSlot;
-
-				    if (lastEdge == NoEdge || !animating)
-				    {
-					/* Cursor has entered edge region from non-edge region */
-					animating = true;
-					glScreen->glPaintOutputSetEnabled (this, true);
-					cScreen->preparePaintSetEnabled (this, true);
-					cScreen->donePaintSetEnabled (this, true);
-				    }
-				}
-			}
+		    if (lastEdge == NoEdge || !animating)
+		    {
+			/* Cursor has entered edge region from non-edge region */
+			animating = true;
+			glScreen->glPaintOutputSetEnabled (this, true);
+			cScreen->preparePaintSetEnabled (this, true);
+			cScreen->donePaintSetEnabled (this, true);
+		    }
 		}
+	    }
+	}
 
-		lastEdge = edge;
+	lastEdge = edge;
     }
 
     w = screen->findWindow (CompOption::getIntOptionNamed (o, "window"));
@@ -811,7 +900,7 @@ GridScreen::handleEvent (XEvent *event)
 	     gw->pointerBufDy < -SNAPOFF_THRESHOLD) &&
 	     gw->isGridResized &&
 	     optionGetSnapbackWindows ())
-		restoreWindow (0, 0, o);
+	    restoreWindow (0, 0, o);
     }
 }
 
@@ -824,8 +913,8 @@ GridWindow::validateResizeRequest (unsigned int &xwcm,
 
     /* Don't allow non-pagers to change
      * the size of the window, the user
-     * specified this size, thank-you */
-    if (isGridMaximized)
+     * specified this size */
+    if (isGridHorzMaximized || isGridVertMaximized)
 	if (source != ClientTypePager)
 	    xwcm = 0;
 }
@@ -849,10 +938,13 @@ GridWindow::grabNotify (int          x,
 	pointerBufDx = pointerBufDy = 0;
 	grabMask = mask;
 
-	if (!isGridResized && !isGridMaximized && gScreen->optionGetSnapbackWindows ())
+	if (!isGridResized &&
+	    !isGridHorzMaximized &&
+	    !isGridVertMaximized &&
+	    gScreen->optionGetSnapbackWindows ())
 	    /* Store size not including borders when grabbing with cursor */
 	    originalSize = gScreen->slotToRect(window,
-						    window->serverBorderRect ());
+					       window->serverBorderRect ());
     }
     else if (gwHandler.resetResize ())
     {
@@ -869,8 +961,8 @@ GridWindow::ungrabNotify ()
     if (window == gScreen->mGrabWindow)
     {
 	gScreen->initiateCommon
-			(NULL, 0, gScreen->o, gScreen->typeToMask (gScreen->edgeToGridType ()), true,
-			 gScreen->edge != gScreen->lastResizeEdge);
+		(NULL, 0, gScreen->o, gScreen->typeToMask (gScreen->edgeToGridType ()), true,
+		 gScreen->edge != gScreen->lastResizeEdge);
 
 	screen->handleEventSetEnabled (gScreen, false);
 	grabMask = 0;
@@ -890,8 +982,20 @@ GridWindow::moveNotify (int dx, int dy, bool immediate)
 {
     window->moveNotify (dx, dy, immediate);
 
-    if (isGridResized && !isGridMaximized && !GridScreen::get (screen)->mSwitchingVp)
+    if (isGridResized &&
+	!isGridHorzMaximized &&
+	!isGridVertMaximized &&
+	!GridScreen::get (screen)->mSwitchingVp)
     {
+	if (window->grabbed () && screen->grabExist ("expo"))
+	{
+	    /* Window is being dragged in expo.
+	     * Restore the original geometry right
+	     * away to avoid any confusion.
+	     */
+	    gScreen->restoreWindow (0, 0, gScreen->o);
+	    return;
+	}
 	if (window->grabbed () && (grabMask & CompWindowGrabMoveMask))
 	{
 	    pointerBufDx += dx;
@@ -912,17 +1016,28 @@ GridWindow::stateChangeNotify (unsigned int lastState)
 {
     if (lastState & MAXIMIZE_STATE &&
 	!(window->state () & MAXIMIZE_STATE))
+    {
 	lastTarget = GridUnknown;
+
+	if ((isGridHorzMaximized &&
+	     (lastState & MAXIMIZE_STATE) == CompWindowStateMaximizedHorzMask) ||
+	    (isGridVertMaximized &&
+	     (lastState & MAXIMIZE_STATE) == CompWindowStateMaximizedVertMask))
+	    gScreen->restoreWindow(0, 0, gScreen->o);
+    }
     else if (!(lastState & MAXIMIZE_STATE) &&
 	     window->state () & MAXIMIZE_STATE)
     {
+	/* Unset grid resize state */
+	isGridResized = false;
+	resizeCount = 0;
+
 	if ((window->state () & MAXIMIZE_STATE) == MAXIMIZE_STATE)
 	    lastTarget = GridMaximize;
+
 	if (window->grabbed ())
-	{
 	    originalSize = gScreen->slotToRect (window,
-					        window->serverBorderRect ());
-	}
+						window->serverBorderRect ());
     }
 
     window->stateChangeNotify (lastState);
@@ -934,6 +1049,7 @@ GridScreen::restoreWindow (CompAction         *action,
 			   CompOption::Vector &option)
 {
     XWindowChanges xwc;
+    int xwcm = 0;
     CompWindow *cw = screen->findWindow (screen->activeWindow ());
 
     if (!cw)
@@ -941,35 +1057,85 @@ GridScreen::restoreWindow (CompAction         *action,
 
     GRID_WINDOW (cw);
 
-    if (!gw->isGridResized)
+    /* We have nothing to do here */
+    if (!gw->isGridResized &&
+	!gw->isGridVertMaximized &&
+	!gw->isGridHorzMaximized)
 	return false;
 
-    if (gw->isGridMaximized & !(cw->state () & MAXIMIZE_STATE))
+    else if (!gw->isGridResized &&
+	     gw->isGridHorzMaximized &&
+	     !gw->isGridVertMaximized)
     {
-	gw->window->sizeHints ().flags |= gw->sizeHintsFlags;
-	gw->isGridMaximized = false;
+	/* Window has been horizontally maximized by grid. We only need
+	 * to restore Y and height - core handles X and width. */
+	if (gw->sizeHintsFlags)
+	    gw->window->sizeHints ().flags |= gw->sizeHintsFlags;
+	xwcm |=  CWY | CWHeight;
+    }
+    else if (!gw->isGridResized &&
+	     !gw->isGridHorzMaximized &&
+	     gw->isGridVertMaximized)
+    {
+	/* Window has been vertically maximized by grid. We only need
+	 * to restore X and width - core handles Y and height. */
+	if (gw->sizeHintsFlags)
+	    gw->window->sizeHints ().flags |= gw->sizeHintsFlags;
+	xwcm |= CWX | CWWidth;
+    }
+    else if (gw->isGridResized &&
+	     !gw->isGridHorzMaximized &&
+	     !gw->isGridVertMaximized)
+	/* Window is just gridded (center, corners).
+	 * We need to handle everything. */
+	xwcm |= CWX | CWY | CWWidth | CWHeight;
+    else
+    {
+	/* This should never happen. But if it does, just bail out
+	 * gracefully. */
+	assert (gw->isGridResized &&
+		(gw->isGridHorzMaximized || gw->isGridVertMaximized));
+	return false;
+    }
+
+    if (cw == mGrabWindow)
+    {
+	xwc.x = pointerX - (gw->originalSize.width () / 2);
+	xwc.y = pointerY + (cw->border ().top / 2);
+    }
+    else if (cw->grabbed () && screen->grabExist ("expo"))
+    {
+	/* We're restoring a window inside expo by dragging. This is a bit
+	 * tricky. Pointer location is absolute to the screen, not relative
+	 * to expo viewport. So we can't use pointer location to calculate
+	 * the position of the restore window.
+	 *
+	 * The best solution is to resize it in place. */
+	xwcm = CWWidth | CWHeight;
     }
     else
     {
-        if (cw == mGrabWindow)
-	{
-	    xwc.x = pointerX - (gw->originalSize.width () >> 1);
-	    xwc.y = pointerY + (cw->border ().top >> 1);
-	}
-	else
-	{
-	    xwc.x = gw->originalSize.x ();
-	    xwc.y = gw->originalSize.y ();
-	}
-	xwc.width  = gw->originalSize.width ();
-	xwc.height = gw->originalSize.height ();
-	cw->maximize (0);
-	gw->currentSize = CompRect ();
-	cw->configureXWindow (CWX | CWY | CWWidth | CWHeight, &xwc);
-	gw->pointerBufDx = 0;
-	gw->pointerBufDy = 0;
+	xwc.x = gw->originalSize.x ();
+	xwc.y = gw->originalSize.y ();
     }
+
+    xwc.width  = gw->originalSize.width ();
+    xwc.height = gw->originalSize.height ();
+
+    if (cw->mapNum() && xwcm)
+	cw->sendSyncRequest();
+
+    cw->configureXWindow (xwcm, &xwc);
+    gw->currentSize = CompRect ();
+    gw->pointerBufDx = 0;
+    gw->pointerBufDy = 0;
+    gw->isGridHorzMaximized = false;
+    gw->isGridVertMaximized = false;
     gw->isGridResized = false;
+
+    if (cw->state () & MAXIMIZE_STATE)
+	cw->maximize(0);
+
     gw->resizeCount = 0;
     gw->lastTarget = GridUnknown;
 
@@ -978,45 +1144,54 @@ GridScreen::restoreWindow (CompAction         *action,
 
 void
 GridScreen::snapbackOptionChanged (CompOption *option,
-				    Options    num)
+				   Options    num)
 {
     GRID_WINDOW (screen->findWindow
-		    (CompOption::getIntOptionNamed (o, "window")));
+		 (CompOption::getIntOptionNamed (o, "window")));
     gw->isGridResized = false;
-    gw->isGridMaximized = false;
+    gw->isGridHorzMaximized = false;
+    gw->isGridVertMaximized = false;
     gw->resizeCount = 0;
 }
 
 void
 GridScreen::preparePaint (int msSinceLastPaint)
 {
-	std::vector<Animation>::iterator iter;
+    std::vector<Animation>::iterator iter;
 
-	for (iter = animations.begin (); iter != animations.end (); ++iter)
+    for (iter = animations.begin (); iter != animations.end (); ++iter)
+    {
+	Animation& anim = *iter;
+	anim.timer -= msSinceLastPaint;
+
+	if (anim.timer < 0)
+	    anim.timer = 0;
+
+	if (anim.fadingOut)
+	    anim.opacity -= msSinceLastPaint * 0.002;
+	else
+	    if (anim.opacity < 1.0f)
+		anim.opacity = anim.progress * anim.progress;
+	    else
+		anim.opacity = 1.0f;
+
+	if (anim.opacity < 0)
 	{
-		Animation& anim = *iter;
-		anim.timer -= msSinceLastPaint;
-
-		if (anim.timer < 0)
-			anim.timer = 0;
-
-		if (anim.fadingOut)
-			anim.opacity -= msSinceLastPaint * 0.002;
-		else
-			if (anim.opacity < 1.0f)
-				anim.opacity = anim.progress * anim.progress;
-			else
-				anim.opacity = 1.0f;
-
-		if (anim.opacity < 0)
-		{
-			anim.opacity = 0.0f;
-			anim.fadingOut = false;
-			anim.complete = true;
-		}
-
-		anim.progress =	(anim.duration - anim.timer) / anim.duration;
+	    anim.opacity = 0.0f;
+	    anim.fadingOut = false;
+	    anim.complete = true;
 	}
+
+	anim.progress =	(anim.duration - anim.timer) / anim.duration;
+    }
+
+    if (optionGetDrawStretchedWindow ())
+    {
+	CompWindow *cw = screen->findWindow (screen->activeWindow ());
+	GRID_WINDOW (cw);
+
+	gw->gWindow->glPaintSetEnabled (gw, true);
+    }
 
     cScreen->preparePaint (msSinceLastPaint);
 }
@@ -1024,45 +1199,56 @@ GridScreen::preparePaint (int msSinceLastPaint)
 void
 GridScreen::donePaint ()
 {
-	std::vector<Animation>::iterator iter;
+    std::vector<Animation>::iterator iter;
 
-	for (iter = animations.begin (); iter != animations.end (); )
-	{
-		Animation& anim = *iter;
-		if (anim.complete)
-			iter = animations.erase(iter);
-		else
-			++iter;
-	}
+    for (iter = animations.begin (); iter != animations.end ();)
+    {
+	Animation& anim = *iter;
 
-	if (animations.empty ())
-	{
-		cScreen->preparePaintSetEnabled (this, false);
-		cScreen->donePaintSetEnabled (this, false);
-		if (edge == NoEdge)
-			glScreen->glPaintOutputSetEnabled (this, false);
-		animations.clear ();
-		animating = false;
-	}
+	if (anim.complete)
+	    iter = animations.erase(iter);
+	else
+	    ++iter;
+    }
 
-	cScreen->damageScreen ();
+    if (animations.empty ())
+    {
+	cScreen->preparePaintSetEnabled (this, false);
+	cScreen->donePaintSetEnabled (this, false);
+
+	if (edge == NoEdge)
+	    glScreen->glPaintOutputSetEnabled (this, false);
+
+	animations.clear ();
+	animating = false;
+    }
+
+    if (optionGetDrawStretchedWindow ())
+    {
+	CompWindow *cw = screen->findWindow (screen->activeWindow ());
+	GRID_WINDOW (cw);
+
+	gw->gWindow->glPaintSetEnabled (gw, false);
+    }
+
+    cScreen->damageScreen ();
 
     cScreen->donePaint ();
 }
 
 Animation::Animation ()
 {
-	progress = 0.0f;
-	fromRect = CompRect (0, 0, 0, 0);
-	targetRect = CompRect (0, 0, 0, 0);
-	currentRect = CompRect (0, 0, 0, 0);
-	opacity = 0.0f;
-	timer = 0.0f;
-	duration = 250;
-	complete = false;
-	fadingOut = false;
+    progress = 0.0f;
+    fromRect = CompRect (0, 0, 0, 0);
+    targetRect = CompRect (0, 0, 0, 0);
+    currentRect = CompRect (0, 0, 0, 0);
+    opacity = 0.0f;
+    timer = 0.0f;
+    duration = 0;
+    complete = false;
+    fadingOut = false;
+    window = 0;
 }
-
 
 GridScreen::GridScreen (CompScreen *screen) :
     PluginClassHandler<GridScreen, CompScreen> (screen),
@@ -1083,7 +1269,7 @@ GridScreen::GridScreen (CompScreen *screen) :
 
     edge = lastEdge = lastResizeEdge = NoEdge;
     currentWorkarea = lastWorkarea = screen->getWorkareaForOutput
-			    (screen->outputDeviceForPoint (pointerX, pointerY));
+				     (screen->outputDeviceForPoint (pointerX, pointerY));
     gridProps[GridUnknown] = GridProps (0,1, 1,1);
     gridProps[GridBottomLeft]  = GridProps (0,1, 2,2);
     gridProps[GridBottom]  = GridProps (0,1, 1,2);
@@ -1096,11 +1282,11 @@ GridScreen::GridScreen (CompScreen *screen) :
     gridProps[GridTopRight]  = GridProps (1,0, 2,2);
     gridProps[GridMaximize]  = GridProps (0,0, 1,1);
 
-	animations.clear ();
+    animations.clear ();
 
 #define GRIDSET(opt,where,resize,key)					       \
     optionSet##opt##Initiate (boost::bind (&GridScreen::initiateCommon, this,  \
-					   _1, _2, _3, where, resize, key))
+    _1, _2, _3, where, resize, key))
 
     GRIDSET (PutCenterKey, GridWindowType::GridCenter, true, true);
     GRIDSET (PutLeftKey, GridWindowType::GridLeft, true, true);
@@ -1116,26 +1302,29 @@ GridScreen::GridScreen (CompScreen *screen) :
 #undef GRIDSET
 
     optionSetSnapbackWindowsNotify (boost::bind (&GridScreen::
-				    snapbackOptionChanged, this, _1, _2));
+						 snapbackOptionChanged, this, _1, _2));
 
     optionSetPutRestoreKeyInitiate (boost::bind (&GridScreen::
-					    restoreWindow, this, _1, _2, _3));
-
+						 restoreWindow, this, _1, _2, _3));
 }
 
 GridWindow::GridWindow (CompWindow *window) :
     PluginClassHandler <GridWindow, CompWindow> (window),
     window (window),
+    gWindow (GLWindow::get(window)),
     gScreen (GridScreen::get (screen)),
     isGridResized (false),
-    isGridMaximized (false),
+    isGridHorzMaximized (false),
+    isGridVertMaximized (false),
     grabMask (0),
     pointerBufDx (0),
     pointerBufDy (0),
-    resizeCount (0),	
-    lastTarget (GridUnknown)
+    resizeCount (0),
+    lastTarget (GridUnknown),
+    sizeHintsFlags (0)
 {
     WindowInterface::setHandler (window);
+    GLWindowInterface::setHandler (gWindow, false);
 }
 
 GridWindow::~GridWindow ()
@@ -1148,6 +1337,57 @@ GridWindow::~GridWindow ()
 	gScreen->o[0].value ().set (0);
 }
 
+bool
+GridWindow::glPaint (const GLWindowPaintAttrib& attrib, const GLMatrix& matrix,
+		     const CompRegion& region, const unsigned int mask)
+{
+    bool status = gWindow->glPaint (attrib, matrix, region, mask);
+
+    std::vector<Animation>::iterator iter;
+
+    for (iter = gScreen->animations.begin ();
+	 iter != gScreen->animations.end () && gScreen->animating; ++iter)
+    {
+	Animation& anim = *iter;
+
+	if (anim.timer > 0.0f && anim.window == window->id())
+	{
+	    GLWindowPaintAttrib wAttrib(attrib);
+	    GLMatrix wTransform (matrix);
+	    unsigned int wMask(mask);
+
+	    float curve = powf (CURVE_ANIMATION, -anim.progress);
+	    wAttrib.opacity *= curve;
+
+	    wMask |= PAINT_WINDOW_TRANSFORMED_MASK;
+	    wMask |= PAINT_WINDOW_TRANSLUCENT_MASK;
+	    wMask |= PAINT_WINDOW_BLEND_MASK;
+
+	    float scaleX = (anim.currentRect.x2 () - anim.currentRect.x1 ()) /
+			   (float) window->borderRect ().width ();
+
+	    float scaleY = (anim.currentRect.y2 () - anim.currentRect.y1 ()) /
+			   (float) window->borderRect ().height ();
+
+	    float translateX = (anim.currentRect.x1 () - window->x ()) +
+			       window->border ().left * scaleX;
+
+	    float translateY = (anim.currentRect.y1 () - window->y ()) +
+			       window->border ().top * scaleY;
+
+	    wTransform.translate (window->x (), window->y (), 0.0f);
+	    wTransform.scale (scaleX, scaleY, 1.0f);
+	    wTransform.translate (translateX / scaleX - window->x (),
+				  translateY / scaleY - window->y (), 0.0f);
+
+
+	    gWindow->glPaint (wAttrib, wTransform, region, wMask);
+	}
+    }
+
+    return status;
+}
+
 /* Initial plugin init function called. Checks to see if we are ABI
  * compatible with core, otherwise unload */
 
@@ -1155,7 +1395,7 @@ bool
 GridPluginVTable::init ()
 {
     if (!CompPlugin::checkPluginABI ("core", CORE_ABIVERSION))
-        return false;
+	return false;
 
     return true;
 }
