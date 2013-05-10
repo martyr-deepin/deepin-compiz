@@ -5385,7 +5385,8 @@ PrivateScreen::initDisplay (const char *name, cps::History& history, unsigned in
     normalCursor = XCreateFontCursor (dpy, XC_left_ptr);
     busyCursor   = XCreateFontCursor (dpy, XC_watch);
 
-    XDefineCursor (dpy, rootWindow(), normalCursor);
+    XIDefineCursor (dpy, clientPointerDeviceId,
+                    rootWindow(), normalCursor);
 
     /* We should get DestroyNotify events for any windows that were
      * destroyed while initializing windows here now */
