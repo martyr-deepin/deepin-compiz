@@ -783,6 +783,7 @@ public:
 
     Window wmSnSelectionWindow;
 
+    int    clientPointerDeviceId;
     Cursor normalCursor;
     Cursor busyCursor;
     Cursor invisibleCursor;

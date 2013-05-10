@@ -153,6 +153,7 @@ target_link_libraries (
     m 
     pthread 
     dl
+    Xi
     
     -Wl,-whole-archive
     compiz_string

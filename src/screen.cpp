@@ -52,6 +52,7 @@
 #include <X11/extensions/Xrandr.h>
 #include <X11/extensions/shape.h>
 #include <X11/cursorfont.h>
+#include <X11/extensions/XInput2.h>
 
 #include <core/global.h>
 #include <core/screen.h>
@@ -290,7 +291,7 @@ cps::EventManager::addWatchFd (int             fd,
 			FdWatchCallBack callBack)
 {
     Glib::IOCondition gEvents;
-    
+
     memset (&gEvents, 0, sizeof (Glib::IOCondition));
 
     if (events & POLLIN)
@@ -401,9 +402,9 @@ CompWatchFd::internalCallback (Glib::IOCondition events)
 	//screen->priv->watchFds.remove (this);
 	return false;
     }
-    
+
     return true;
-}    
+}
 
 void
 CompScreenImpl::eraseValue (CompString key)
@@ -2180,30 +2181,16 @@ cps::StartupSequenceImpl::updateStartupFeedback ()
 {
     if (priv->initialized)
     {
-	CompPlugin* p = CompPlugin::find("startnotify");
-	if (p)
-	{
-	    CompAction a = CompOption::findOption(p->vTable->getOptions(), "initiate")->value().action();
-	    std::vector<CompOption> tmp;
 	    if (!emptySequence())
 	    {
-		a.initiate()(0, 0, tmp);
-	    } else
-	    {
-		a.terminate()(0, 0, tmp);
-	    }
-	}
-	else
-	{
-	    if (!emptySequence())
-	    {
-		XDefineCursor (priv->dpy, priv->rootWindow(), priv->busyCursor);
+		XIDefineCursor (priv->dpy, priv->clientPointerDeviceId,
+                        priv->rootWindow(), priv->busyCursor);
 	    }
 	    else
 	    {
-		XDefineCursor (priv->dpy, priv->rootWindow(), priv->normalCursor);
+		XIDefineCursor (priv->dpy, priv->clientPointerDeviceId,
+                        priv->rootWindow(), priv->normalCursor);
 	    }
-	}
     }
 }
 
@@ -4270,7 +4257,7 @@ compiz::private_screen::viewports::viewportForGeometry (const CompWindow::Geomet
 // +-----+-----+-----+
 // #cur is the current workspace. all nine cells and their full screen cases
 // should be considered.
-// how @offset should be set only when is_multiple is true: 
+// how @offset should be set only when is_multiple is true:
 // (@offset is to assign a side for a window which borders viewports boundaries)
 // topleft	: x : 0,  y: 0
 // topright	: x : -1, y: 0
@@ -4324,7 +4311,7 @@ compiz::private_screen::viewports::viewportsForGeometry (const CompWindow::Geome
     //a window can intersects with four viewports at most.
     v_viewports.clear ();
     v_viewports.resize (4);
-    
+
     //1. topleft
     v_viewports[0].setX (calc_vp (0, vp.x (), rect.x (), screenSize.width (), vpSize.width ()));
     v_viewports[0].setY (calc_vp (0, vp.y (), rect.y (), screenSize.height (), vpSize.height ()));
@@ -5394,6 +5381,7 @@ PrivateScreen::initDisplay (const char *name, cps::History& history, unsigned in
     eventManager.setSupportingWmCheck (dpy, rootWindow());
     screen->updateSupportedWmHints ();
 
+    XIGetClientPointer (dpy, None, &clientPointerDeviceId);
     normalCursor = XCreateFontCursor (dpy, XC_left_ptr);
     busyCursor   = XCreateFontCursor (dpy, XC_watch);
 
@@ -5547,6 +5535,7 @@ PrivateScreen::PrivateScreen (CompScreen *screen, cps::WindowManager& windowMana
     nDesktop (1),
     currentDesktop (0),
     wmSnSelectionWindow (None),
+    clientPointerDeviceId (None),
     normalCursor (None),
     busyCursor (None),
     invisibleCursor (None),
