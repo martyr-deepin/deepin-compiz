@@ -1934,7 +1934,7 @@ msgstr "视图中的定位窗口"
 
 #: ../metadata/place.xml.in.h:24
 msgid "Window placement workarounds"
-msgstr "窗口放置工作区"
+msgstr "修复窗口放置"
 
 #: ../metadata/place.xml.in.h:25
 msgid "Windows that should be positioned by default"
@@ -1960,7 +1960,7 @@ msgstr "视口固定的窗口"
 
 #: ../metadata/place.xml.in.h:30
 msgid "Workarounds"
-msgstr "工作区"
+msgstr "修复"
 
 #: ../metadata/place.xml.in.h:31
 msgid "X Positions"
