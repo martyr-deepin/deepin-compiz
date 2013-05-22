@@ -222,7 +222,6 @@ moveGetYConstrainRegion (CompScreen *s)
     REGION       r;
     CompRect     workArea;
     BoxRec       extents;
-    unsigned int i;
 
     region = XCreateRegion ();
     if (!region)
@@ -243,7 +242,7 @@ moveGetYConstrainRegion (CompScreen *s)
 
     XUnionRegion (&r, region, region);
 
-    for (i = 0; i < s->outputDevs ().size (); i++)
+    for (unsigned int i = 0; i < s->outputDevs ().size (); i++)
     {
 	XUnionRegion (s->outputDevs ()[i].region (), region, region);
 
@@ -524,9 +523,7 @@ MoveScreen::handleEvent (XEvent *event)
 	    {
 		if (grab)
 		{
-		    unsigned int i;
-
-		    for (i = 0; i < NUM_KEYS; i++)
+		    for (unsigned int i = 0; i < NUM_KEYS; i++)
 		    {
 			if (event->xkey.keycode == key[i])
 			{
@@ -552,7 +549,6 @@ MoveScreen::handleEvent (XEvent *event)
 	case ClientMessage:
 	    if (event->xclient.message_type == Atoms::wmMoveResize)
 	    {
-		CompWindow *w;
 		unsigned   long type = (unsigned long) event->xclient.data.l[2];
 
 		MOVE_SCREEN (screen);
@@ -560,6 +556,7 @@ MoveScreen::handleEvent (XEvent *event)
 		if (type == WmMoveResizeMove ||
 		    type == WmMoveResizeMoveKeyboard)
 		{
+		    CompWindow *w;
 		    w = screen->findWindow (event->xclient.window);
 		    if (w)
 		    {
