@@ -114,6 +114,9 @@ public:
 }
 }
 
+class CompositeScreenInterface;
+extern template class WrapableInterface<CompositeScreen, CompositeScreenInterface>;
+
 /**
  * Wrapable function interface for CompositeScreen
  */
@@ -306,6 +309,9 @@ class CompositeScreen :
  * flag indicate that blending is required.
  */
 #define PAINT_WINDOW_BLEND_MASK			(1 << 19)
+
+class CompositeWindowInterface;
+extern template class WrapableInterface<CompositeWindow, CompositeWindowInterface>;
 
 class CompositeWindowInterface :
     public WrapableInterface<CompositeWindow, CompositeWindowInterface>

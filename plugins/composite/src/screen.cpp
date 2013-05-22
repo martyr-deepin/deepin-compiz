@@ -45,6 +45,8 @@
 
 #include <core/timer.h>
 
+template class WrapableInterface<CompositeScreen, CompositeScreenInterface>;
+
 static const int FALLBACK_REFRESH_RATE = 60;   /* if all else fails */
 
 CompWindow *lastDamagedWindow = 0;
@@ -209,8 +211,6 @@ CompositeScreen::CompositeScreen (CompScreen *s) :
     PluginClassHandler<CompositeScreen, CompScreen, COMPIZ_COMPOSITE_ABI> (s),
     priv (new PrivateCompositeScreen (this))
 {
-    int	compositeMajor, compositeMinor;
-
     if (!XQueryExtension (s->dpy (), COMPOSITE_NAME,
 			  &priv->compositeOpcode,
 			  &priv->compositeEvent,
@@ -221,6 +221,8 @@ CompositeScreen::CompositeScreen (CompScreen *s) :
 	setFailed ();
 	return;
     }
+
+    int	compositeMajor, compositeMinor;
 
     XCompositeQueryVersion (s->dpy (), &compositeMajor, &compositeMinor);
     if (compositeMajor == 0 && compositeMinor < 2)
@@ -277,6 +279,20 @@ CompositeScreen::~CompositeScreen ()
 
 PrivateCompositeScreen::PrivateCompositeScreen (CompositeScreen *cs) :
     cScreen (cs),
+    compositeEvent (0),
+    compositeError (0),
+    compositeOpcode (0),
+    damageEvent (0),
+    damageError (0),
+    fixesEvent (0),
+    fixesError (0),
+    fixesVersion (0),
+    shapeExtension (false),
+    shapeEvent (0),
+    shapeError (0),
+    randrExtension (false),
+    randrEvent (0),
+    randrError (0),
     damageMask (COMPOSITE_SCREEN_DAMAGE_ALL_MASK),
     overlay (None),
     output (None),

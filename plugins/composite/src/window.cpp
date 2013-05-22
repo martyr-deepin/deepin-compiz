@@ -27,6 +27,7 @@
 
 #include "privates.h"
 
+template class WrapableInterface<CompositeWindow, CompositeWindowInterface>;
 template class PluginClassHandler<CompositeWindow, CompWindow, COMPIZ_COMPOSITE_ABI>;
 
 CompositeWindow::CompositeWindow (CompWindow *w) :
@@ -453,10 +454,10 @@ PrivateCompositeWindow::handleDamageRect (CompositeWindow *w,
 					  int             width,
 					  int             height)
 {
-    bool   initial = false;
-
     if (!w->priv->redirected)
 	return;
+
+    bool   initial = false;
 
     if (!w->priv->damaged)
     {
@@ -480,12 +481,10 @@ PrivateCompositeWindow::handleDamageRect (CompositeWindow *w,
 void
 CompositeWindow::updateOpacity ()
 {
-    unsigned short opacity;
-
     if (priv->window->type () & CompWindowTypeDesktopMask)
 	return;
 
-    opacity = screen->getWindowProp32 (priv->window->id (),
+    unsigned short opacity = screen->getWindowProp32 (priv->window->id (),
 					     Atoms::winOpacity, OPAQUE);
 
     if (opacity != priv->opacity)
