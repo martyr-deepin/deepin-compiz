@@ -219,14 +219,11 @@ GridAnim::addGeometry (const GLTexture::MatrixList &matrix,
 		       unsigned int                maxGridWidth,
 		       unsigned int                maxGridHeight)
 {
-   
-    GLfloat *v, *vMax;
-    float winContentsY, winContentsHeight;
-    int vSize;
-    bool notUsing3dCoords = !using3D ();
-
     if (region.isEmpty ()) // nothing to do
 	return;
+
+    GLfloat *v, *vMax;
+    bool notUsing3dCoords = !using3D ();
 
     CompRect outRect (mAWindow->savedRectsValid () ?
 		      mAWindow->savedOutRect () :
@@ -242,12 +239,12 @@ GridAnim::addGeometry (const GLTexture::MatrixList &matrix,
     int oheight = outRect.height ();
 
     // to be used if event is shade/unshade
-    winContentsY = oy + outExtents.top;
-    winContentsHeight = oheight - outExtents.top - outExtents.bottom;
+    float winContentsY = oy + outExtents.top;
+    float winContentsHeight = oheight - outExtents.top - outExtents.bottom;
 
     GLWindow *gWindow = GLWindow::get (mWindow);
     GLVertexBuffer *vertexBuffer = gWindow->vertexBuffer ();
-    vSize = vertexBuffer->getVertexStride ();
+    int vSize = vertexBuffer->getVertexStride ();
 
     // Indentation kept to provide a clean diff with the old code, for now...
     {

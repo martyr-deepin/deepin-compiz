@@ -58,7 +58,9 @@ MagicLampAnim::MagicLampAnim (CompWindow *w,
 			      const AnimEffect info,
 			      const CompRect &icon) :
     Animation::Animation (w, curWindowEvent, duration, info, icon),
-    GridAnim::GridAnim (w, curWindowEvent, duration, info, icon)
+    GridAnim::GridAnim (w, curWindowEvent, duration, info, icon),
+    mTopLeftCornerObject (0),
+    mBottomLeftCornerObject (0)
 {
     CompRect outRect (mAWindow->savedRectsValid () ?
 		      mAWindow->savedOutRect () :

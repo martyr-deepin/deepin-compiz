@@ -33,9 +33,9 @@ public:
 					 unsigned int   nPoints);
      
      inline bool savedRectsValid () { return mSavedRectsValid; }
-     inline CompRect & saveWinRect () { return mSavedWinRect; }
-     inline CompRect & savedInRect () { return mSavedInRect; }
-     inline CompRect & savedOutRect () { return mSavedOutRect; }
+     inline const CompRect & saveWinRect () { return mSavedWinRect; }
+     inline const CompRect & savedInRect () { return mSavedInRect; }
+     inline const CompRect & savedOutRect () { return mSavedOutRect; }
      inline CompWindowExtents & savedOutExtents () { return mSavedOutExtents; }
      
      Animation *curAnimation ();

@@ -45,7 +45,8 @@ GlideAnim::GlideAnim (CompWindow *w,
 		      const CompRect &icon) :
     Animation::Animation (w, curWindowEvent, duration, info, icon),
     TransformAnim::TransformAnim (w, curWindowEvent, duration, info, icon),
-    ZoomAnim::ZoomAnim (w, curWindowEvent, duration, info, icon)
+    ZoomAnim::ZoomAnim (w, curWindowEvent, duration, info, icon),
+    glideModRotAngle (0.0f)
 {
 }
 

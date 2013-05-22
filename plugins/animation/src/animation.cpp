@@ -2523,7 +2523,7 @@ AnimEffectUsedFor AnimEffectUsedFor::none ()
 {
   AnimEffectUsedFor usedFor;  
   usedFor.open = usedFor.close = usedFor.minimize = 
-  usedFor.shade = usedFor.unminimize = usedFor.focus = true;
+  usedFor.shade = usedFor.unminimize = usedFor.focus = false;
   return usedFor;
 }
 
