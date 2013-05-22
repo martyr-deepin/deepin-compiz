@@ -2650,7 +2650,7 @@ CompScreenImpl::_leaveShowDesktopMode (CompWindow *window)
 
 	    w->setShowDesktopMode (false);
 	    w->windowNotify (CompWindowNotifyLeaveShowDesktopMode);
-	    window->unminimize ();
+	    w->unminimize ();
 	    //w->priv->show ();
 	}
 
