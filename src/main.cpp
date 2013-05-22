@@ -103,6 +103,10 @@ CompManager::parseArguments (int argc, char **argv)
 	{
 	    replaceCurrentWm = true;
 	}
+	else if (!strcmp (argv[i], "--send-startup-message"))
+	{
+	    sendStartupMessage = true;
+	}
 	else if (!strcmp (argv[i], "--sm-disable"))
 	{
 	    disableSm = true;
@@ -149,7 +153,7 @@ CompManager::init ()
 
     CompOption::Value::Vector list;
     CompOption::Value         value;
-	CompOption                *o = screen->getOption ("active_plugins");
+    CompOption                *o = screen->getOption ("active_plugins");
 
     if (!initialPlugins.empty ())
     {
@@ -158,10 +162,10 @@ CompManager::init ()
 	    value.set (str);
 	    list.push_back (value);
 	}
-    }
+     }
     else
 	list.push_back ("ccp");
-
+	
 	value.set (CompOption::TypeString, list);
 
 	if (o)

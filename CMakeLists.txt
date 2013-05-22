@@ -97,7 +97,7 @@ set (COMPIZ_REQUIRES
     x11-xcb
     xrandr
     xinerama
-    xext
+    xi
     ice
     sm
     libxml-2.0

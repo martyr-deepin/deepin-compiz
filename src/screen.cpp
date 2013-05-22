@@ -63,6 +63,8 @@
 #include "privateaction.h"
 #include "privatestackdebugger.h"
 
+template class WrapableInterface<CompScreen, ScreenInterface>;
+
 CompOutput *targetOutput;
 
 int lastPointerX = 0;
@@ -90,6 +92,7 @@ typedef struct {
 } MwmHints;
 
 namespace cps = compiz::private_screen;
+namespace ca = compiz::actions;
 
 
 
@@ -291,7 +294,7 @@ cps::EventManager::addWatchFd (int             fd,
 			FdWatchCallBack callBack)
 {
     Glib::IOCondition gEvents;
-
+    
     memset (&gEvents, 0, sizeof (Glib::IOCondition));
 
     if (events & POLLIN)
@@ -402,9 +405,9 @@ CompWatchFd::internalCallback (Glib::IOCondition events)
 	//screen->priv->watchFds.remove (this);
 	return false;
     }
-
+    
     return true;
-}
+}    
 
 void
 CompScreenImpl::eraseValue (CompString key)
@@ -1188,11 +1191,11 @@ static const unsigned short N_TARGETS = 4;
 void
 PrivateScreen::handleSelectionRequest (XEvent *event)
 {
-    XSelectionEvent reply;
-
     if (wmSnSelectionWindow != event->xselectionrequest.owner ||
 	wmSnAtom != event->xselectionrequest.selection)
 	return;
+
+    XSelectionEvent reply;
 
     reply.type	    = SelectionNotify;
     reply.display   = dpy;
@@ -1689,9 +1692,7 @@ cps::XWindowInfo::getProtocols (Window id)
 
     if (XGetWMProtocols (dpy, id, &protocol, &count))
     {
-	int  i;
-
-	for (i = 0; i < count; i++)
+	for (int i = 0; i < count; i++)
 	{
 	    if (protocol[i] == Atoms::wmDeleteWindow)
 		protocols |= CompWindowProtocolDeleteMask;
@@ -1898,7 +1899,7 @@ PrivateScreen::setDesktopHints ()
 			 Atoms::deepinSViewport,
 			 XA_CARDINAL, 32, PropModeReplace,
 			 (unsigned char *) &data[offset], hintSize);
-
+ 
     offset += hintSize;
     for (i = 0; i < nDesktop; i++)
     {
@@ -2041,92 +2042,6 @@ PrivateScreen::setVirtualScreenSize (int newh, int newv)
 }
 
 void
-cps::OutputDevices::setGeometryOnDevice(unsigned int const nOutput,
-    int x, int y,
-    const int width, const int height)
-{
-    if (outputDevs.size() < nOutput + 1)
-	outputDevs.resize(nOutput + 1);
-
-    outputDevs[nOutput].setGeometry(x, y, width, height);
-}
-
-void cps::OutputDevices::adoptDevices(unsigned int nOutput)
-{
-    /* make sure we have at least one output */
-    if (!nOutput)
-    {
-	setGeometryOnDevice(nOutput, 0, 0, screen->width(), screen->height());
-	nOutput++;
-    }
-    if (outputDevs.size() > nOutput)
-	outputDevs.resize(nOutput);
-
-    char str[10];
-    /* set name, width, height and update rect pointers in all regions */
-    for (unsigned int i = 0; i < nOutput; i++)
-    {
-	snprintf(str, 10, "Output %d", i);
-	outputDevs[i].setId(str, i);
-    }
-    overlappingOutputs = false;
-    setCurrentOutput (currentOutputDev);
-    for (unsigned int i = 0; i < nOutput - 1; i++)
-	for (unsigned int j = i + 1; j < nOutput; j++)
-	    if (outputDevs[i].intersects(outputDevs[j]))
-		overlappingOutputs = true;
-}
-
-void
-cps::OutputDevices::updateOutputDevices(CoreOptions& coreOptions, CompScreen* screen)
-{
-    CompOption::Value::Vector& list = coreOptions.optionGetOutputs();
-    unsigned int nOutput = 0;
-    int x, y, bits;
-    unsigned int uWidth, uHeight;
-    int width, height;
-    int x1, y1, x2, y2;
-    foreach(CompOption::Value & value, list)
-    {
-	x = 0;
-	y = 0;
-	uWidth = (unsigned) screen->width();
-	uHeight = (unsigned) screen->height();
-
-	bits = XParseGeometry(value.s().c_str(), &x, &y, &uWidth, &uHeight);
-	width = (int) uWidth;
-	height = (int) uHeight;
-
-	if (bits & XNegative)
-	    x = screen->width() + x - width;
-
-	if (bits & YNegative)
-	    y = screen->height() + y - height;
-
-	x1 = x;
-	y1 = y;
-	x2 = x + width;
-	y2 = y + height;
-
-	if (x1 < 0)
-	    x1 = 0;
-	if (y1 < 0)
-	    y1 = 0;
-	if (x2 > screen->width())
-	    x2 = screen->width();
-	if (y2 > screen->height())
-	    y2 = screen->height();
-
-	if (x1 < x2 && y1 < y2)
-	{
-	    setGeometryOnDevice(nOutput, x1, y1, x2 - x1, y2 - y1);
-	    nOutput++;
-	}
-    }
-    adoptDevices(nOutput);
-}
-
-void
 PrivateScreen::updateOutputDevices (CoreOptions& coreOptions)
 {
     outputDevices.updateOutputDevices(coreOptions, screen);
@@ -2181,16 +2096,14 @@ cps::StartupSequenceImpl::updateStartupFeedback ()
 {
     if (priv->initialized)
     {
-	    if (!emptySequence())
-	    {
-		XIDefineCursor (priv->dpy, priv->clientPointerDeviceId,
-                        priv->rootWindow(), priv->busyCursor);
-	    }
-	    else
-	    {
-		XIDefineCursor (priv->dpy, priv->clientPointerDeviceId,
-                        priv->rootWindow(), priv->normalCursor);
-	    }
+	if (!emptySequence())
+	{
+	    XIDefineCursor (priv->dpy, priv->clientPointerDeviceId, priv->rootWindow(), priv->busyCursor);
+	}
+	else
+	{
+	    XIDefineCursor (priv->dpy, priv->clientPointerDeviceId, priv->rootWindow(), priv->normalCursor);
+	}	
     }
 }
 
@@ -2223,26 +2136,24 @@ cps::StartupSequence::handleStartupSequenceTimeout ()
 void
 cps::StartupSequence::addSequence (SnStartupSequence *sequence, CompPoint const& vp)
 {
-    if (sn_startup_sequence_get_application_id(sequence)) {
-	compLogMessage("Deepin AddSequence", CompLogLevelInfo, sn_startup_sequence_get_application_id(sequence));
-	CompStartupSequence *s;
+    CompStartupSequence *s;
 
-	s = new CompStartupSequence ();
-	if (!s)
-	    return;
+    s = new CompStartupSequence ();
+    if (!s)
+	return;
 
-	sn_startup_sequence_ref (sequence);
+    sn_startup_sequence_ref (sequence);
 
-	s->sequence = sequence;
-	s->viewportX = vp.x ();
-	s->viewportY = vp.y ();
+    s->sequence = sequence;
+    s->viewportX = vp.x ();
+    s->viewportY = vp.y ();
 
-	startupSequences.push_front (s);
+    startupSequences.push_front (s);
 
-	if (!startupSequenceTimer.active ())
-	    startupSequenceTimer.start ();
-	updateStartupFeedback ();
-    }
+    if (!startupSequenceTimer.active ())
+	startupSequenceTimer.start ();
+
+    updateStartupFeedback ();
 }
 
 void
@@ -2264,7 +2175,6 @@ cps::StartupSequence::removeSequence (SnStartupSequence *sequence)
     if (!s)
 	return;
 
-    compLogMessage("Deepin Remove Sequence", CompLogLevelInfo, sn_startup_sequence_get_application_id(sequence));
     sn_startup_sequence_unref (sequence);
 
     startupSequences.erase (it);
@@ -2334,9 +2244,8 @@ PrivateScreen::updateScreenEdges ()
 	{ 0, -1,   1, -1,   0,  2,   0,  2 }, /* bottom-left */
 	{ 1, -1,   1, -1,   0,  2,   0,  2 }  /* bottom-right */
     };
-    int i;
 
-    for (i = 0; i < SCREEN_EDGE_NUM; i++)
+    for (int i = 0; i < SCREEN_EDGE_NUM; i++)
     {
 	if (screenEdge[i].id)
 	    XMoveResizeWindow (dpy, screenEdge[i].id,
@@ -2349,15 +2258,6 @@ PrivateScreen::updateScreenEdges ()
 			       geometry[i].hh * screen->height () +
 			       geometry[i].h0);
     }
-}
-
-void
-cps::OutputDevices::setCurrentOutput (unsigned int outputNum)
-{
-    if (outputNum >= outputDevs.size ())
-	outputNum = 0;
-
-    currentOutputDev = outputNum;
 }
 
 void
@@ -2686,7 +2586,7 @@ CompScreenImpl::_enterShowDesktopMode ()
 	    {
 		w->setShowDesktopMode (true);
 		w->windowNotify (CompWindowNotifyEnterShowDesktopMode);
-		w->minimize();
+		w->minimize ();		
 		//w->priv->hide ();
 	    }
 	}
@@ -2727,7 +2627,7 @@ CompScreenImpl::_leaveShowDesktopMode (CompWindow *window)
 	window->setShowDesktopMode (false);
 	window->windowNotify (CompWindowNotifyLeaveShowDesktopMode);
 	//window->priv->show ();
-	window->unminimize();
+	window->unminimize ();
 
 	/* return if some other window is still in show desktop mode */
 	for (cps::WindowManager::iterator i = windowManager.begin(); i != windowManager.end(); ++i)
@@ -2750,8 +2650,8 @@ CompScreenImpl::_leaveShowDesktopMode (CompWindow *window)
 
 	    w->setShowDesktopMode (false);
 	    w->windowNotify (CompWindowNotifyLeaveShowDesktopMode);
+	    window->unminimize ();
 	    //w->priv->show ();
-	    w->unminimize();
 	}
 
 	/* focus default window - most likely this will be the window
@@ -3382,10 +3282,13 @@ cps::GrabManager::grabUngrabKeys (unsigned int modifiers,
 	     * This is so that we can detect taps on individual modifier
 	     * keys, and know to cancel the tap if <modifier>+k is pressed.
 	     */
-	    int minCode, maxCode;
-	    XDisplayKeycodes (screen->dpy(), &minCode, &maxCode);
-	    for (k = minCode; k <= maxCode; k++)
-	        grabUngrabOneKey (modifiers | ignore, k, grab);
+	    if (!(currentState & CompAction::StateIgnoreTap))
+            {
+ 		int minCode, maxCode;
+ 		XDisplayKeycodes (screen->dpy(), &minCode, &maxCode);
+ 		for (k = minCode; k <= maxCode; k++)
+ 		    grabUngrabOneKey (modifiers | ignore, k, grab);
+            }
 	}
 
 	if (CompScreen::checkForError (screen->dpy()))
@@ -3562,6 +3465,12 @@ cps::GrabManager::removePassiveButtonGrab (CompAction::ButtonBinding &button)
     }
 }
 
+void
+cps::GrabManager::setCurrentState (CompAction::State state)
+{
+    currentState = state;
+}
+
 bool
 CompScreenImpl::addAction (CompAction *action)
 {
@@ -3571,6 +3480,8 @@ CompScreenImpl::addAction (CompAction *action)
 
     if (action->active ())
 	return false;
+
+    grabManager.setCurrentState(action->state());
 
     if (action->type () & CompAction::BindingTypeKey)
     {
@@ -3591,14 +3502,12 @@ CompScreenImpl::addAction (CompAction *action)
 
     if (action->edgeMask ())
     {
-	int i;
-
-	for (i = 0; i < SCREEN_EDGE_NUM; i++)
+	for (int i = 0; i < SCREEN_EDGE_NUM; i++)
 	    if (action->edgeMask () & (1 << i))
 		privateScreen.enableEdge (i);
     }
 
-    action->priv->active = true;
+    ca::setActionActiveState (*action, true);
 
     return true;
 }
@@ -3606,11 +3515,10 @@ CompScreenImpl::addAction (CompAction *action)
 void
 CompScreenImpl::removeAction (CompAction *action)
 {
-    if (!privateScreen.initialized)
+    if (!(privateScreen.initialized || action->active ()))
 	return;
 
-    if (!action->active ())
-	return;
+    grabManager.setCurrentState(action->state());
 
     if (action->type () & CompAction::BindingTypeKey)
 	grabManager.removePassiveKeyGrab (action->key ());
@@ -3620,90 +3528,12 @@ CompScreenImpl::removeAction (CompAction *action)
 
     if (action->edgeMask ())
     {
-	int i;
-
-	for (i = 0; i < SCREEN_EDGE_NUM; i++)
+	for (int i = 0; i < SCREEN_EDGE_NUM; i++)
 	    if (action->edgeMask () & (1 << i))
 		privateScreen.disableEdge (i);
     }
 
-    action->priv->active = false;
-}
-
-CompRect
-cps::OutputDevices::computeWorkareaForBox (const CompRect& box, CompWindowList const& windows)
-{
-    CompRegion region;
-    int        x1, y1, x2, y2;
-
-    region += box;
-
-    foreach (CompWindow *w, windows)
-    {
-	if (!w->isMapped ())
-	    continue;
-
-	if (w->struts ())
-	{
-	    x1 = w->struts ()->left.x;
-	    y1 = w->struts ()->left.y;
-	    x2 = x1 + w->struts ()->left.width;
-	    y2 = y1 + w->struts ()->left.height;
-
-	    if (y1 < box.y2 () && y2 > box.y1 ())
-		region -= CompRect (x1, box.y1 (), x2 - x1, box.height ());
-
-	    x1 = w->struts ()->right.x;
-	    y1 = w->struts ()->right.y;
-	    x2 = x1 + w->struts ()->right.width;
-	    y2 = y1 + w->struts ()->right.height;
-
-	    if (y1 < box.y2 () && y2 > box.y1 ())
-		region -= CompRect (x1, box.y1 (), x2 - x1, box.height ());
-
-	    x1 = w->struts ()->top.x;
-	    y1 = w->struts ()->top.y;
-	    x2 = x1 + w->struts ()->top.width;
-	    y2 = y1 + w->struts ()->top.height;
-
-	    if (x1 < box.x2 () && x2 > box.x1 ())
-		region -= CompRect (box.x1 (), y1, box.width (), y2 - y1);
-
-	    x1 = w->struts ()->bottom.x;
-	    y1 = w->struts ()->bottom.y;
-	    x2 = x1 + w->struts ()->bottom.width;
-	    y2 = y1 + w->struts ()->bottom.height;
-
-	    if (x1 < box.x2 () && x2 > box.x1 ())
-		region -= CompRect (box.x1 (), y1, box.width (), y2 - y1);
-	}
-    }
-
-    if (region.isEmpty ())
-    {
-	compLogMessage ("core", CompLogLevelWarn,
-			"Empty box after applying struts, ignoring struts");
-	return box;
-    }
-
-    return region.boundingRect ();
-}
-
-void
-cps::OutputDevices::computeWorkAreas(CompRect& workArea, bool& workAreaChanged,
-	CompRegion& allWorkArea, CompWindowList const& windows)
-{
-    for (unsigned int i = 0; i < outputDevs.size(); i++)
-    {
-	CompRect oldWorkArea = outputDevs[i].workArea();
-	workArea = computeWorkareaForBox(outputDevs[i], windows);
-	if (workArea != oldWorkArea)
-	{
-	    workAreaChanged = true;
-	    outputDevs[i].setWorkArea(workArea);
-	}
-	allWorkArea += workArea;
-    }
+    ca::setActionActiveState (*action, false);
 }
 
 void
@@ -4159,10 +3989,7 @@ CompScreenImpl::getCurrentOutputExtents ()
 void
 PrivateScreen::setNumberOfDesktops (unsigned int nDesktop)
 {
-    if (nDesktop < 1 || nDesktop >= 0xffffffff)
-	return;
-
-    if (nDesktop == this->nDesktop)
+    if (nDesktop < 1 || nDesktop >= 0xffffffff || nDesktop == this->nDesktop)
 	return;
 
     if (currentDesktop >= nDesktop)
@@ -4178,10 +4005,7 @@ PrivateScreen::setNumberOfDesktops (unsigned int nDesktop)
 void
 PrivateScreen::setCurrentDesktop (unsigned int desktop)
 {
-    if (desktop >= nDesktop)
-	return;
-
-    if (desktop == currentDesktop)
+    if (desktop >= nDesktop || desktop == currentDesktop)
 	return;
 
     currentDesktop = desktop;
@@ -4233,7 +4057,7 @@ compiz::private_screen::viewports::viewportForGeometry (const CompWindow::Geomet
     int      offset;
 
     const CompPoint &vp = viewports->getCurrentViewport ();
-    const CompSize &vpSize = viewports->viewportDimentions ();
+    const CompSize &vpSize = viewports->viewportDimensions ();
 
     rect.setWidth  (gm.widthIncBorders ());
     rect.setHeight (gm.heightIncBorders ());
@@ -4244,7 +4068,7 @@ compiz::private_screen::viewports::viewportForGeometry (const CompWindow::Geomet
     offset = rect.centerY () < 0 ? -1 : 0;
     viewport.setY (vp.y () + ((rect.centerY () / screenSize.height ()) + offset ) % vpSize.height ());
 }
-
+ 
 //
 //@inc_or_dec: can be -1 or  or 0;
 // need to think about the following nine cases.
@@ -4299,7 +4123,7 @@ compiz::private_screen::viewports::viewportsForGeometry (const CompWindow::Geome
 							const CompSize &           screenSize)
 {
     const CompPoint &vp = viewports->getCurrentViewport ();
-    const CompSize &vpSize = viewports->viewportDimentions ();
+    const CompSize &vpSize = viewports->viewportDimensions ();
 
     CompRect rect (gm);
     //rect.setWidth  (gm.widthIncBorders ());
@@ -4344,122 +4168,6 @@ int
 CompScreenImpl::outputDeviceForGeometry (const CompWindow::Geometry& gm)
 {
     return privateScreen.outputDevices.outputDeviceForGeometry (gm, privateScreen.optionGetOverlappingOutputs (), this);
-}
-
-int
-cps::OutputDevices::outputDeviceForGeometry (
-	const CompWindow::Geometry& gm,
-	int strategy,
-	CompScreen* screen) const
-{
-    int          overlapAreas[outputDevs.size ()];
-    int          highest, seen, highestScore;
-    int          x, y;
-    unsigned int i;
-    CompRect     geomRect;
-
-    if (outputDevs.size () == 1)
-	return 0;
-
-
-    if (strategy == CoreOptions::OverlappingOutputsSmartMode)
-    {
-	int centerX, centerY;
-
-	/* for smart mode, calculate the overlap of the whole rectangle
-	   with the output device rectangle */
-	geomRect.setWidth (gm.width () + 2 * gm.border ());
-	geomRect.setHeight (gm.height () + 2 * gm.border ());
-
-	x = gm.x () % screen->width ();
-	centerX = (x + (geomRect.width () / 2));
-	if (centerX < 0)
-	    x += screen->width ();
-	else if (centerX > screen->width ())
-	    x -= screen->width ();
-	geomRect.setX (x);
-
-	y = gm.y () % screen->height ();
-	centerY = (y + (geomRect.height () / 2));
-	if (centerY < 0)
-	    y += screen->height ();
-	else if (centerY > screen->height ())
-	    y -= screen->height ();
-	geomRect.setY (y);
-    }
-    else
-    {
-	/* for biggest/smallest modes, only use the window center to determine
-	   the correct output device */
-	x = (gm.x () + (gm.width () / 2) + gm.border ()) % screen->width ();
-	if (x < 0)
-	    x += screen->width ();
-	y = (gm.y () + (gm.height () / 2) + gm.border ()) % screen->height ();
-	if (y < 0)
-	    y += screen->height ();
-
-	geomRect.setGeometry (x, y, 1, 1);
-    }
-
-    /* get amount of overlap on all output devices */
-    for (i = 0; i < outputDevs.size (); i++)
-    {
-	CompRect overlap = outputDevs[i] & geomRect;
-	overlapAreas[i] = overlap.area ();
-    }
-
-    /* find output with largest overlap */
-    for (i = 0, highest = 0, highestScore = 0;
-	 i < outputDevs.size (); i++)
-    {
-	if (overlapAreas[i] > highestScore)
-	{
-	    highest = i;
-	    highestScore = overlapAreas[i];
-	}
-    }
-
-    /* look if the highest score is unique */
-    for (i = 0, seen = 0; i < outputDevs.size (); i++)
-	if (overlapAreas[i] == highestScore)
-	    seen++;
-
-    if (seen > 1)
-    {
-	/* it's not unique, select one output of the matching ones and use the
-	   user preferred strategy for that */
-	unsigned int currentSize, bestOutputSize;
-	bool         searchLargest;
-
-	searchLargest =
-	    (strategy != CoreOptions::OverlappingOutputsPreferSmallerOutput);
-
-	if (searchLargest)
-	    bestOutputSize = 0;
-	else
-	    bestOutputSize = UINT_MAX;
-
-	for (i = 0, highest = 0; i < outputDevs.size (); i++)
-	    if (overlapAreas[i] == highestScore)
-	    {
-		bool bestFit;
-
-		currentSize = outputDevs[i].area ();
-
-		if (searchLargest)
-		    bestFit = (currentSize > bestOutputSize);
-		else
-		    bestFit = (currentSize < bestOutputSize);
-
-		if (bestFit)
-		{
-		    highest = i;
-		    bestOutputSize = currentSize;
-		}
-	    }
-    }
-
-    return highest;
 }
 
 CompIcon *
@@ -4527,10 +4235,9 @@ cps::History::addToCurrentActiveWindowHistory (Window id)
 {
     CompActiveWindowHistory *history = &this->history[currentHistory_];
     Window		    tmp, next = id;
-    int			    i;
 
     /* walk and move history */
-    for (i = 0; i < ACTIVE_WINDOW_HISTORY_SIZE; i++)
+    for (int i = 0; i < ACTIVE_WINDOW_HISTORY_SIZE; i++)
     {
 	tmp = history->id[i];
 	history->id[i] = next;
@@ -5067,6 +4774,40 @@ CompScreenImpl::getNextActiveWindow() const
     return privateScreen.orphanData.nextActiveWindow;
 }
 
+namespace
+{
+void sendStartupMessageToClients (Display *dpy, bool success)
+{
+    /* Send a client message indicating that our startup is complete if
+     * we were asked to do so */
+    if (sendStartupMessage)
+    {
+	Atom   startupMessageAtom = XInternAtom (dpy,
+						 "_COMPIZ_TESTING_STARTUP",
+						 FALSE);
+	XEvent startupMessageEvent;
+	Window root = DefaultRootWindow (dpy);
+
+	startupMessageEvent.xclient.type         = ClientMessage;
+	startupMessageEvent.xclient.window       = root;
+	startupMessageEvent.xclient.message_type = startupMessageAtom;
+	startupMessageEvent.xclient.format       = 32;
+	startupMessageEvent.xclient.data.l[0]    = success ? 1 : 0;
+	startupMessageEvent.xclient.data.l[1]    = 0;
+	startupMessageEvent.xclient.data.l[2]    = 0;
+	startupMessageEvent.xclient.data.l[3]    = 0;
+	startupMessageEvent.xclient.data.l[4]    = 0;
+
+	XSendEvent (dpy,
+		    root,
+		    FALSE,
+		    StructureNotifyMask,
+		    &startupMessageEvent);
+	XFlush (dpy);
+    }
+}
+}
+
 
 bool
 PrivateScreen::initDisplay (const char *name, cps::History& history, unsigned int showingDesktopMask)
@@ -5098,6 +4839,7 @@ PrivateScreen::initDisplay (const char *name, cps::History& history, unsigned in
     {
 	compLogMessage ("core", CompLogLevelFatal,
 		       "No sync extension");
+	sendStartupMessageToClients (dpy, false);
 	return false;
     }
 
@@ -5128,91 +4870,10 @@ PrivateScreen::initDisplay (const char *name, cps::History& history, unsigned in
     escapeKeyCode = XKeysymToKeycode (dpy, XStringToKeysym ("Escape"));
     returnKeyCode = XKeysymToKeycode (dpy, XStringToKeysym ("Return"));
 
-    char                 buf[128];
-    sprintf (buf, "WM_S%d", DefaultScreen (dpy));
-    wmSnAtom = XInternAtom (dpy, buf, 0);
-
-    Window currentWmSnOwner = XGetSelectionOwner (dpy, wmSnAtom);
-
-    if (currentWmSnOwner != None)
-    {
-	if (!replaceCurrentWm)
-	{
-	    compLogMessage ("core", CompLogLevelError,
-			    "Screen %d on display \"%s\" already "
-			    "has a window manager; try using the "
-			    "--replace option to replace the current "
-			    "window manager.",
-			    DefaultScreen (dpy), DisplayString (dpy));
-
-	    return false;
-	}
-
-	XSelectInput (dpy, currentWmSnOwner, StructureNotifyMask);
-    }
+    modHandler->updateModifierMappings ();
 
     Window root_tmp = XRootWindow (dpy, DefaultScreen (dpy));
 
-    XSetWindowAttributes attr;
-    attr.override_redirect = true;
-    attr.event_mask        = PropertyChangeMask;
-
-    Window newWmSnOwner =
-	XCreateWindow (dpy, root_tmp, -100, -100, 1, 1, 0,
-		       CopyFromParent, CopyFromParent,
-		       CopyFromParent,
-		       CWOverrideRedirect | CWEventMask,
-		       &attr);
-
-    XChangeProperty (dpy, newWmSnOwner, Atoms::wmName, Atoms::utf8String, 8,
-		     PropModeReplace, (unsigned char *) PACKAGE,
-		     strlen (PACKAGE));
-
-    XEvent event;
-    XWindowEvent (dpy, newWmSnOwner, PropertyChangeMask, &event);
-
-    Time wmSnTimestamp = event.xproperty.time;
-
-    XSetSelectionOwner (dpy, wmSnAtom, newWmSnOwner, wmSnTimestamp);
-
-    if (XGetSelectionOwner (dpy, wmSnAtom) != newWmSnOwner)
-    {
-	compLogMessage ("core", CompLogLevelError,
-			"Could not acquire window manager "
-			"selection on screen %d display \"%s\"",
-			DefaultScreen (dpy), DisplayString (dpy));
-
-	XDestroyWindow (dpy, newWmSnOwner);
-
-	return false;
-    }
-
-    /* Send client message indicating that we are now the window manager */
-    event.xclient.type         = ClientMessage;
-    event.xclient.window       = root_tmp;
-    event.xclient.message_type = Atoms::manager;
-    event.xclient.format       = 32;
-    event.xclient.data.l[0]    = wmSnTimestamp;
-    event.xclient.data.l[1]    = wmSnAtom;
-    event.xclient.data.l[2]    = 0;
-    event.xclient.data.l[3]    = 0;
-    event.xclient.data.l[4]    = 0;
-
-    XSendEvent (dpy, root_tmp, FALSE, StructureNotifyMask, &event);
-
-    /* Wait for old window manager to go away */
-    if (currentWmSnOwner != None)
-    {
-	do {
-	    XWindowEvent (dpy, currentWmSnOwner, StructureNotifyMask, &event);
-	} while (event.type != DestroyNotify);
-    }
-
-    modHandler->updateModifierMappings ();
-
-    CompScreenImpl::checkForError (dpy);
-
-    XGrabServer (dpy);
 
     /* Don't select for SubstructureRedirectMask or
      * SubstructureNotifyMask yet since we need to
@@ -5251,17 +4912,6 @@ PrivateScreen::initDisplay (const char *name, cps::History& history, unsigned in
 		      SubstructureNotifyMask);
     }
 
-    if (CompScreenImpl::checkForError (dpy))
-    {
-	compLogMessage ("core", CompLogLevelError,
-			"Another window manager is "
-			"already running on screen: %d", DefaultScreen (dpy));
-
-	XUngrabServer (dpy);
-	XSync (dpy, false);
-	return false;
-    }
-
     for (int i = 0; i < SCREEN_EDGE_NUM; i++)
     {
 	screenEdge[i].id    = None;
@@ -5274,9 +4924,6 @@ PrivateScreen::initDisplay (const char *name, cps::History& history, unsigned in
 
     snContext = sn_monitor_context_new (snDisplay, screenNum,
 					      compScreenSnEvent, this, NULL);
-
-    wmSnSelectionWindow = newWmSnOwner;
-    this->wmSnTimestamp       = wmSnTimestamp;
 
     if (!XGetWindowAttributes (dpy, rootWindow(), &attrib))
 	return false;
@@ -5293,6 +4940,7 @@ PrivateScreen::initDisplay (const char *name, cps::History& history, unsigned in
     {
 	compLogMessage ("core", CompLogLevelFatal,
 			"Couldn't get visual info for default visual");
+	sendStartupMessageToClients (dpy, false);
 	return false;
     }
 
@@ -5303,6 +4951,7 @@ PrivateScreen::initDisplay (const char *name, cps::History& history, unsigned in
     {
 	compLogMessage ("core", CompLogLevelFatal,
 			"Couldn't allocate color");
+	sendStartupMessageToClients (dpy, false);
 	XFree (visinfo);
 	return false;
     }
@@ -5313,6 +4962,7 @@ PrivateScreen::initDisplay (const char *name, cps::History& history, unsigned in
     {
 	compLogMessage ("core", CompLogLevelFatal,
 			"Couldn't create bitmap");
+	sendStartupMessageToClients (dpy, false);
 	XFree (visinfo);
 	return false;
     }
@@ -5323,6 +4973,7 @@ PrivateScreen::initDisplay (const char *name, cps::History& history, unsigned in
     {
 	compLogMessage ("core", CompLogLevelFatal,
 			"Couldn't create invisible cursor");
+	sendStartupMessageToClients (dpy, false);
 	XFree (visinfo);
 	return false;
     }
@@ -5340,6 +4991,93 @@ PrivateScreen::initDisplay (const char *name, cps::History& history, unsigned in
     updateOutputDevices (*this);
 
     getDesktopHints (showingDesktopMask);
+
+    /* Check for other window managers */
+
+    char                 buf[128];
+    sprintf (buf, "WM_S%d", DefaultScreen (dpy));
+    wmSnAtom = XInternAtom (dpy, buf, 0);
+
+    Window currentWmSnOwner = XGetSelectionOwner (dpy, wmSnAtom);
+
+    if (currentWmSnOwner != None)
+    {
+	if (!replaceCurrentWm)
+	{
+	    compLogMessage ("core", CompLogLevelError,
+			    "Screen %d on display \"%s\" already "
+			    "has a window manager; try using the "
+			    "--replace option to replace the current "
+			    "window manager.",
+			    DefaultScreen (dpy), DisplayString (dpy));
+	    sendStartupMessageToClients (dpy, false);
+
+	    return false;
+	}
+
+	XSelectInput (dpy, currentWmSnOwner, StructureNotifyMask);
+    }
+
+    XSetWindowAttributes attr;
+    attr.override_redirect = true;
+    attr.event_mask        = PropertyChangeMask;
+
+    Window newWmSnOwner =
+	XCreateWindow (dpy, root_tmp, -100, -100, 1, 1, 0,
+		       CopyFromParent, CopyFromParent,
+		       CopyFromParent,
+		       CWOverrideRedirect | CWEventMask,
+		       &attr);
+
+    XChangeProperty (dpy, newWmSnOwner, Atoms::wmName, Atoms::utf8String, 8,
+		     PropModeReplace, (unsigned char *) PACKAGE,
+		     strlen (PACKAGE));
+
+    XEvent event;
+    XWindowEvent (dpy, newWmSnOwner, PropertyChangeMask, &event);
+
+    Time wmSnTimestamp = event.xproperty.time;
+
+    XSetSelectionOwner (dpy, wmSnAtom, newWmSnOwner, wmSnTimestamp);
+
+    if (XGetSelectionOwner (dpy, wmSnAtom) != newWmSnOwner)
+    {
+	compLogMessage ("core", CompLogLevelError,
+			"Could not acquire window manager "
+			"selection on screen %d display \"%s\"",
+			DefaultScreen (dpy), DisplayString (dpy));
+
+	XDestroyWindow (dpy, newWmSnOwner);
+	sendStartupMessageToClients (dpy, false);
+
+	return false;
+    }
+
+    /* Send client message indicating that we are now the window manager */
+    event.xclient.type         = ClientMessage;
+    event.xclient.window       = root_tmp;
+    event.xclient.message_type = Atoms::manager;
+    event.xclient.format       = 32;
+    event.xclient.data.l[0]    = wmSnTimestamp;
+    event.xclient.data.l[1]    = wmSnAtom;
+    event.xclient.data.l[2]    = 0;
+    event.xclient.data.l[3]    = 0;
+    event.xclient.data.l[4]    = 0;
+
+    XSendEvent (dpy, root_tmp, FALSE, StructureNotifyMask, &event);
+
+    /* Wait for old window manager to go away */
+    if (currentWmSnOwner != None)
+    {
+	do {
+	    XWindowEvent (dpy, currentWmSnOwner, StructureNotifyMask, &event);
+	} while (event.type != DestroyNotify);
+    }
+
+
+    /* Server grab from here, we are creating windows */
+
+    XGrabServer (dpy);
 
     {
 	XSetWindowAttributes attrib;
@@ -5382,16 +5120,35 @@ PrivateScreen::initDisplay (const char *name, cps::History& history, unsigned in
     screen->updateSupportedWmHints ();
 
     XIGetClientPointer (dpy, None, &clientPointerDeviceId);
+
     normalCursor = XCreateFontCursor (dpy, XC_left_ptr);
     busyCursor   = XCreateFontCursor (dpy, XC_watch);
 
-    XIDefineCursor (dpy, clientPointerDeviceId,
-                    rootWindow(), normalCursor);
+    XIDefineCursor (dpy, clientPointerDeviceId, rootWindow(), normalCursor);
+
+    /* Attempt to gain SubstructureRedirectMask */
+    CompScreenImpl::checkForError (dpy);
 
     /* We should get DestroyNotify events for any windows that were
      * destroyed while initializing windows here now */
     XSelectInput (dpy, rootWindow(), attrib.your_event_mask |
 		  SubstructureRedirectMask | SubstructureNotifyMask);
+
+    if (CompScreenImpl::checkForError (dpy))
+    {
+	compLogMessage ("core", CompLogLevelError,
+			"Another window manager is "
+			"already running on screen: %d", DefaultScreen (dpy));
+
+	XUngrabServer (dpy);
+	XSync (dpy, FALSE);
+
+	sendStartupMessageToClients (dpy, false);
+	return false;
+    }
+
+    wmSnSelectionWindow = newWmSnOwner;
+    this->wmSnTimestamp       = wmSnTimestamp;
 
     Window rootReturn, parentReturn;
     Window               *children;
@@ -5471,13 +5228,16 @@ PrivateScreen::initDisplay (const char *name, cps::History& history, unsigned in
      * plugins loaded on the command line screen's and then
      * we need to call updatePlugins () to init the remaining
      * screens from option changes */
-    assert (CompPlugin::screenInitPlugins (screen));
+    bool init_succeeded = CompPlugin::screenInitPlugins (screen);
+    assert (init_succeeded);
+    if (!init_succeeded)
+      return false;
 
-    /* The active plugins list might have been changed - load any
-     * new plugins */
-
+    /* The viewport geometry depends on the new new plugins loaded
+     * especially those that modify option values */
     viewPort.vpSize.setWidth (optionGetHsize ());
     viewPort.vpSize.setHeight (optionGetVsize ());
+    setDesktopHints ();
 
     setAudibleBell (optionGetAudibleBell ());
 
@@ -5486,6 +5246,8 @@ PrivateScreen::initDisplay (const char *name, cps::History& history, unsigned in
 			      optionGetPingDelay () + 500);
 
     pingTimer.start ();
+
+    sendStartupMessageToClients (dpy, true);
 
     return true;
 }
@@ -5508,6 +5270,7 @@ CompScreenImpl::~CompScreenImpl ()
 
 cps::GrabManager::GrabManager (CompScreen *screen) :
     screen(screen),
+    currentState(0),
     buttonGrabs (),
     keyGrabs ()
 {
@@ -5580,13 +5343,6 @@ cps::WindowManager::WindowManager() :
 {
 }
 
-cps::OutputDevices::OutputDevices() :
-    outputDevs (),
-    overlappingOutputs (false),
-    currentOutputDev (0)
-{
-}
-
 cps::PluginManager::PluginManager() :
     plugin (),
     dirtyPluginList (true)
@@ -5622,14 +5378,27 @@ cps::OrphanData::~OrphanData()
 
 cps::EventManager::~EventManager ()
 {
-    delete timeout;
+    /* Not guaranteed to be created by EventManager's constructor */
+    if (timeout)
+    {
+	/* This will implicitly call ~CompTimeoutSource
+	 * See LP: #1085590 */
+	g_source_destroy (timeout->gobj ());
+    }
     delete sigintSource;
     delete sigtermSource;
     delete sighupSource;
-    delete source;
 
+    /* Not guaranteed to be created by EventManager's constructor */
+    if (source)
+    {
+	/* This will implicitly call ~CompEventSource */
+	g_source_destroy (source->gobj ());
+    }
+
+    /* This will implicitly call ~CompWatchFd */
     foreach (CompWatchFd *fd, watchFds)
-	delete fd;
+	g_source_destroy (fd->gobj ());
 
     watchFds.clear ();
 }
@@ -5663,8 +5432,23 @@ PrivateScreen::~PrivateScreen ()
 	if (invisibleCursor != None)
 	    XFreeCursor (dpy, invisibleCursor);
 
-	if (wmSnSelectionWindow != None)
-	    XDestroyWindow (dpy, wmSnSelectionWindow);
+	/* Do not destroy wmSnSelectionWindow here.
+	 *
+	 * Because we haven't changed our active event mask
+	 * to remove SubstructureRedirectMask, other ICCCM
+	 * compliant window managers may receive a DestroyNotify
+	 * (eg, because we're blocked on XSync) before we get
+	 * a chance to close our display connection and remove
+	 * our SubstructureRedirectMask. That will cause them
+	 * to fail to start.
+	 *
+	 * The selection window is destroyed anyways when we
+	 * close our connection, and that is a very accurate
+	 * indicator to other WM's that we are well and truly
+	 * gone because the protocol requires the implementation
+	 * to remove all client event masks before destroying
+	 * windows
+	 */
 
 	XSync (dpy, False);  // Redundant?
 	XCloseDisplay (dpy);

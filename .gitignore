@@ -1,1 +1,8 @@
 po/compiz.pot
+*~
+*.swp
+*.o
+*.lo
+*.a
+*.la
+*.so
