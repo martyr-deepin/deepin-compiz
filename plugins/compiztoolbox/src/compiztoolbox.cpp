@@ -212,7 +212,7 @@ BaseSwitchWindow::isSwitchWin (bool removing)
     {
 	if (!window->mapNum () || !window->isViewable ())
 	{
-	    CompWindow::Geometry &sg = window->serverGeometry ();
+	    const CompWindow::Geometry &sg = window->serverGeometry ();
 	    if (sg.x () + sg.width ()  <= 0    ||
 		sg.y () + sg.height () <= 0    ||
 		sg.x () >= (int) ::screen->width () ||
@@ -221,7 +221,7 @@ BaseSwitchWindow::isSwitchWin (bool removing)
 	}
 	else
 	{
-	    if (!window->focus () && !window->minimized())
+	    if (!window->focus () && !window->minimized ())
 		return false;
 	}
     }
@@ -414,7 +414,7 @@ BaseSwitchWindow::paintThumb (const GLWindowPaintAttrib &attrib,
     int                  wx, wy;
     float                width, height;
     GLTexture            *icon = NULL;
-    CompWindow::Geometry &g = window->geometry ();
+    const CompWindow::Geometry &g = window->geometry ();
 
     mask |= PAINT_WINDOW_TRANSFORMED_MASK;
 
