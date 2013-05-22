@@ -48,7 +48,7 @@ class CompMatch {
 	class Expression {
 	    public:
 		virtual ~Expression () {};
-		virtual bool evaluate (CompWindow *window) = 0;
+		virtual bool evaluate (const CompWindow *window) const = 0;
 	};
 
     public:
@@ -65,7 +65,7 @@ class CompMatch {
 	 * Returns true if the specified CompWindow has the properties
 	 * specified in the match object
 	 */
-	bool evaluate (CompWindow *window);
+	bool evaluate (const CompWindow *window) const;
 
 	CompString toString () const;
 	bool isEmpty () const;

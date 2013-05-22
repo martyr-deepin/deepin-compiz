@@ -52,6 +52,7 @@ typedef std::vector<CompWindow *> CompWindowVector;
 
 extern bool       replaceCurrentWm;
 extern bool       debugOutput;
+extern bool       sendStartupMessage;
 
 extern CompScreen   *screen;
 
@@ -108,6 +109,9 @@ struct CompActiveWindowHistory {
     int    y;
     int    activeNum;
 };
+
+class ScreenInterface;
+extern template class WrapableInterface<CompScreen, ScreenInterface>;
 
 /**
  * Interface to an abstract screen.
@@ -318,10 +322,9 @@ public:
     virtual void unhookServerWindow (CompWindow *w) = 0;
     virtual void unhookWindow (CompWindow *w) = 0;
     virtual void viewportForGeometry (const CompWindow::Geometry &gm,
-				  CompPoint                   &viewport) = 0;
+				      CompPoint                  &viewport) = 0;
     virtual void viewportsForGeometry (const CompWindow::Geometry &gm,
-				  CompPoint::vector               &v_viewports) = 0;
-
+				       CompPoint::vector          &v_viewports) = 0;
     virtual void addToDestroyedWindows(CompWindow * cw) = 0;
     virtual const CompRect & workArea () const = 0;
     virtual void removeAction (CompAction *action) = 0;

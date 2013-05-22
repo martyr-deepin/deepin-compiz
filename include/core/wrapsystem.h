@@ -36,13 +36,19 @@
     return mHandler-> func (__VA_ARGS__);	 \
 }
 
-#define WRAPABLE_HND(num,itype,rtype, func, ...)	\
-   rtype func (__VA_ARGS__);				\
-   void  func ## SetEnabled (itype *obj, bool enabled)	\
+#define WRAPABLE_HND(num, itype, rtype, func, ...) \
+    WRAPABLE_HND_ANY(num, itype, rtype, func,, __VA_ARGS__)
+
+#define WRAPABLE_HND_CONST(num, itype, rtype, func, ...) \
+    WRAPABLE_HND_ANY(num, itype, rtype, func, const, __VA_ARGS__)
+
+#define WRAPABLE_HND_ANY(num, itype, rtype, func, cons, ...)	\
+   rtype func (__VA_ARGS__) cons;				\
+   void  func ## SetEnabled (cons itype *obj, bool enabled)	\
    {							\
-       functionSetEnabled (obj, num, enabled);		\
+       functionSetEnabled ((itype*)obj, num, enabled);		\
    }							\
-   unsigned int func ## GetCurrentIndex ()		\
+   unsigned int func ## GetCurrentIndex () const	\
    {							\
        return mCurrFunction[num];			\
    }							\
@@ -149,7 +155,7 @@ class WrapableHandler : public T
 
 	void functionSetEnabled (T *, unsigned int, bool);
 
-        unsigned int mCurrFunction[N];
+        mutable unsigned int mCurrFunction[N];
         std::vector<Interface> mInterface;
 };
 

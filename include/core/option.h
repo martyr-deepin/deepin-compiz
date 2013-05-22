@@ -28,6 +28,7 @@
 #ifndef _COMPOPTION_H
 #define _COMPOPTION_H
 
+#include <core/templates.h>
 #include <core/string.h>
 
 #include <boost/variant.hpp>
@@ -242,14 +243,15 @@ class CompOption
 
 	void reset ();
 
-	CompString name ();
+	const CompString & name () const;
 
-	Type type ();
+	Type type () const;
 	Value & value ();
+	const Value & value () const;
 	Restriction & rest ();
 
 	bool set (Value &val);
-	bool isAction ();
+	bool isAction () const;
 
 	CompOption & operator= (const CompOption &option);
 
@@ -300,6 +302,10 @@ class CompOption
     private:
 	PrivateOption *priv;
 };
+
+COMPIZ_EXTERN_STD(vector<unsigned short>)
+COMPIZ_EXTERN_STD(vector<CompOption::Value>)
+COMPIZ_EXTERN_STD(vector<CompOption>)
 
 namespace compiz {
 namespace detail {

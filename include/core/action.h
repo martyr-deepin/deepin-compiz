@@ -34,6 +34,14 @@
 
 #include <X11/Xlib-xcb.h>
 
+namespace compiz
+{
+namespace actions
+{
+void setActionActiveState (const CompAction  &action,
+			   bool              active);
+}
+}
 
 class PrivateAction;
 
@@ -75,7 +83,8 @@ class CompAction {
 	    StateCancel      = 1 << 10,
 	    StateAutoGrab    = 1 << 11,
 	    StateNoEdgeDelay = 1 << 12,
-	    StateTermTapped  = 1 << 13
+	    StateTermTapped  = 1 << 13,
+	    StateIgnoreTap   = 1 << 14
 	} StateEnum;
 
 	/**
@@ -171,7 +180,12 @@ class CompAction {
 
 	bool active ();
 
-	friend class CompScreenImpl;
+	/* CompAction should be a pure virtual class so
+	 * that we can pass the interface required to for setActionActiveState
+	 * directly rather than using friends
+	 */
+	friend void compiz::actions::setActionActiveState (const CompAction  &action,
+							   bool              active);
 
     private:
 	PrivateAction *priv;

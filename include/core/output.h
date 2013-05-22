@@ -59,7 +59,6 @@ class CompOutput : public CompRect {
 	void setId (CompString, unsigned int);
 
 	typedef std::vector<CompOutput> vector;
-	typedef std::vector<CompOutput *> ptrVector;
 	typedef std::list<CompOutput *> ptrList;
 
     private:

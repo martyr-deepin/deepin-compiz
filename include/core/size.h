@@ -26,9 +26,6 @@
 #ifndef _COMPSIZE_H
 #define _COMPSIZE_H
 
-#include <vector>
-#include <list>
-
 /**
  * A 2D size (likely in screen space) that can only be mutated with set() methods,
  * since it'd data members are private.
@@ -44,11 +41,6 @@ class CompSize {
 
 	void setWidth (int);
 	void setHeight (int);
-
-	typedef std::vector<CompSize> vector;
-	typedef std::vector<CompSize *> ptrVector;
-	typedef std::list<CompSize> list;
-	typedef std::list<CompSize *> ptrList;
 
 	bool operator== (const CompSize &other) const
 	{

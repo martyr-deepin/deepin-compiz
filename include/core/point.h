@@ -26,9 +26,6 @@
 #ifndef _COMPPOINT_H
 #define _COMPPOINT_H
 
-#include <vector>
-#include <list>
-
 /**
  * A 2D coordinate (likely in screen space) that can only be mutated
  * through set() methods, since it's data members are private.
@@ -84,11 +81,6 @@ class CompPoint {
 	 * Returns a subtracted point
 	 */
 	CompPoint operator- (const CompPoint &) const;
-
-	typedef std::vector<CompPoint> vector;
-	typedef std::vector<CompPoint *> ptrVector;
-	typedef std::list<CompPoint> list;
-	typedef std::list<CompPoint *> ptrList;
 
     private:
 	int mX, mY;

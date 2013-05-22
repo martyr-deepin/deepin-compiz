@@ -16,6 +16,7 @@ set (_headers
     session.h
     size.h
     string.h
+    templates.h
     window.h
     wrapsystem.h
     abiversion.h
