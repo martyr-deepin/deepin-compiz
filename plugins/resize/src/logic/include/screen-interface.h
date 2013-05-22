@@ -46,6 +46,7 @@ class CompScreenInterface
 
 	virtual Window root () = 0;
 	virtual CompWindowInterface * findWindow (Window id) = 0;
+	virtual void freeWindowInterface (CompWindowInterface *) {}
 	virtual int xkbEvent () = 0;
 	virtual void handleEvent (XEvent *event) = 0;
 	virtual int syncEvent () = 0;

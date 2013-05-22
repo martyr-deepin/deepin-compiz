@@ -50,9 +50,9 @@ class CompWindowInterface
 	virtual CompRect outputRect () const = 0;
 	virtual XSyncAlarm syncAlarm () = 0;
 	virtual XSizeHints & sizeHints () const = 0;
-	virtual CompWindow::Geometry & serverGeometry () const = 0;
-	virtual CompWindowExtents & border () const = 0;
-	virtual CompWindowExtents & output () const = 0;
+	virtual const CompWindow::Geometry & serverGeometry () const = 0;
+	virtual const CompWindowExtents & border () const = 0;
+	virtual const CompWindowExtents & output () const = 0;
 	virtual bool constrainNewWindowSize (int width,
 					     int height,
 					     int *newWidth,

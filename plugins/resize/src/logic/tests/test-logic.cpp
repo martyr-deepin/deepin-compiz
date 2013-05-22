@@ -90,6 +90,10 @@ public:
 	EXPECT_CALL (mockWindow, state ())
 	    .WillRepeatedly (ReturnPointee (&mockWindowState));
 
+	mockWindowBorder.left = 1;
+	mockWindowBorder.right = 2;
+	mockWindowBorder.top = 3;
+	mockWindowBorder.bottom = 4;
 	EXPECT_CALL (mockWindow, border ())
 	    .WillRepeatedly (ReturnRef (mockWindowBorder));
 
@@ -144,8 +148,6 @@ public:
 	EXPECT_CALL (mockScreen, compositingActive ())
 	    .WillRepeatedly (Return (true));
 
-	EXPECT_CALL (mockScreen, damageRegion (_));
-
 	EXPECT_CALL (mockScreen, syncEvent ())
 	    .WillRepeatedly (Return (-XSyncAlarmNotify));
 
@@ -178,7 +180,7 @@ public:
     {
 	logic.resizeInformationAtom = &fakePropWriter;
 	logic.mScreen = &mockScreen;
-	logic.cScreen = &mockScreen;
+	logic.cScreen = NULL;   // avoid entering CompositeScreen during tests
 	logic.gScreen = &mockScreen;
 	logic.options = &resizeOptions;
     }

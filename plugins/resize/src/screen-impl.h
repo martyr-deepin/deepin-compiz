@@ -52,6 +52,11 @@ class CompScreenImpl : public CompScreenInterface
 	    return CompWindowImpl::wrap (mImpl->findWindow (id));
 	}
 
+	virtual void freeWindowInterface (CompWindowInterface *i)
+	{
+	    CompWindowImpl::unwrap (i);
+	}
+
 	virtual int xkbEvent ()
 	{
 	    return mImpl->xkbEvent ();
