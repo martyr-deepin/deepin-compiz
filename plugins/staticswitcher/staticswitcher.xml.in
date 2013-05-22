@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <compiz>
     <plugin name="staticswitcher" useBcop="true">
 	<_short>Static Application Switcher</_short>
@@ -10,6 +11,7 @@
 	    <relation type="after">
 		<plugin>composite</plugin>
 		<plugin>opengl</plugin>
+		<plugin>fade</plugin>
 		<plugin>compiztoolbox</plugin>
 		<plugin>decor</plugin>
 	    </relation>
@@ -138,12 +140,12 @@
 		<option name="auto_change_vp" type="bool">
 		    <_short>Auto Change Viewport</_short>
 		    <_long>Change to the viewport of the selected window while switching</_long>
-		    <default>true</default>
+		    <default>false</default>
 		</option>
 		<option name="popup_delay" type="float">
 		    <_short>Popup Window Delay</_short>
 		    <_long>Time (in s) the popup window should be delayed before appearing</_long>
-		    <default>0.2</default>
+		    <default>0.0</default>
 		    <min>0.0</min>
 		    <max>2.0</max>
 		    <precision>0.05</precision>
@@ -151,7 +153,7 @@
 		<option name="mouse_select" type="bool">
 		    <_short>Allow Mouse Selection</_short>
 		    <_long>Allow selection of windows from the switcher window with the mouse</_long>
-		    <default>true</default>
+		    <default>false</default>
 		</option>
 	    </group>
 	    <group>
@@ -159,14 +161,14 @@
 		<option name="saturation" type="int">
 		    <_short>Saturation</_short>
 		    <_long>Amount of saturation in percent</_long>
-		    <default>100</default>
+		    <default>50</default>
 		    <min>0</min>
 		    <max>100</max>
 		</option>
 		<option name="brightness" type="int">
 		    <_short>Brightness</_short>
 		    <_long>Amount of brightness in percent</_long>
-		    <default>100</default>
+		    <default>50</default>
 		    <min>0</min>
 		    <max>100</max>
 		</option>
@@ -190,7 +192,7 @@
 		<option name="mipmap" type="bool">
 		    <_short>Mipmap</_short>
 		    <_long>Generate mipmaps when possible for higher quality scaling</_long>
-		    <default>false</default>
+		    <default>true</default>
 		</option>
 		<option name="row_align" type="int">
 		    <_short>Row Alignment</_short>
@@ -219,7 +221,7 @@
 		    <option name="bring_to_front" type="bool">
 			<_short>Bring To Front</_short>
 			<_long>Bring selected window to front</_long>
-			<default>false</default>
+			<default>true</default>
 		    </option>
 		    <_short>Selected Window Highlight</_short>
 		    <option name="highlight_mode" type="int">
@@ -227,7 +229,7 @@
 			<_long>Mode for highlighting the currently selected window</_long>
 			<min>0</min>
 			<max>2</max>
-			<default>0</default>
+			<default>1</default>
 			<desc>
 			    <value>0</value>
 			    <_name>None</_name>
