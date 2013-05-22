@@ -108,7 +108,7 @@ class SwitchWindow :
     public:
 	SwitchWindow (CompWindow *window);
 
-	bool managed ();
+	bool managed () const;
 
 	bool damageRect (bool initial, const CompRect &rect);
 
