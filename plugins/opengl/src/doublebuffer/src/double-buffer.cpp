@@ -30,15 +30,24 @@
 
 using namespace compiz::opengl;
 
-char programName[] = "compiz_test_opengl_double_buffer";
-bool debugOutput = false;
+namespace
+{
+const unsigned int UNTHROTTLED_FRAMES_MAX = 5;
+}
 
 namespace compiz
 {
 namespace opengl
 {
 
-DoubleBuffer::DoubleBuffer ()
+DoubleBuffer::DoubleBuffer (const impl::GLXSwapIntervalEXTFunc  &swapIntervalFunc,
+			    const impl::GLXWaitVideoSyncSGIFunc &waitVideoSyncFunc) :
+    syncType (NoSync),
+    bufferFrameThrottleState (FrameThrottledInternally),
+    blockingVSyncUnthrottledFrames (0),
+    swapIntervalFunc (swapIntervalFunc),
+    waitVideoSyncFunc (waitVideoSyncFunc),
+    lastVSyncCounter (0)
 {
     setting[VSYNC] = true;
     setting[HAVE_PERSISTENT_BACK_BUFFER] = false;
@@ -61,23 +70,128 @@ DoubleBuffer::render (const CompRegion &region,
 {
     if (fullscreen)
     {
+	if (setting[VSYNC])
+	    vsync (Swap);
+
 	swap ();
+
 	if (setting[NEED_PERSISTENT_BACK_BUFFER] &&
 	    !setting[HAVE_PERSISTENT_BACK_BUFFER])
 	{
 	    copyFrontToBack ();
 	}
     }
-    else if (blitAvailable ())
-	blit (region);
-    else if (fallbackBlitAvailable ())
-	fallbackBlit (region);
     else
     {
-	// This will never happen unless you make a porting mistake...
-	assert (false);
-	abort ();
+	if (setting[VSYNC])
+	    vsync (Blit);
+
+	if (blitAvailable ())
+	    blit (region);
+	else if (fallbackBlitAvailable ())
+	    fallbackBlit (region);
+	else
+	{
+	    // This will never happen unless you make a porting mistake...
+	    assert (false);
+	    abort ();
+	}
     }
+}
+
+void
+DoubleBuffer::vsync (FrontbufferRedrawType redrawType)
+{
+    FrameThrottleState throttleState;
+    SyncType           lastSyncType = syncType;
+
+    if (enableAsyncVideoSync (redrawType, throttleState))
+    {
+	syncType = Async;
+
+	if (lastSyncType == Blocking)
+	    disableBlockingVideoSync ();
+
+	/* Apply throttle */
+	bufferFrameThrottleState = throttleState;
+	blockingVSyncUnthrottledFrames = 0;
+    }
+    else if (enableBlockingVideoSync (redrawType, throttleState))
+    {
+	syncType = Blocking;
+	if (lastSyncType == Async)
+	    disableAsyncVideoSync ();
+
+	/* Accumulate throttle */
+	if (throttleState == ExternalFrameThrottlingRequired)
+	    blockingVSyncUnthrottledFrames++;
+	else
+	    blockingVSyncUnthrottledFrames = 0;
+
+	if (blockingVSyncUnthrottledFrames >= UNTHROTTLED_FRAMES_MAX)
+	    bufferFrameThrottleState = ExternalFrameThrottlingRequired;
+	else
+	    bufferFrameThrottleState = FrameThrottledInternally;
+    }
+    else
+    {
+	syncType = NoSync;
+	/* Throttle all rendering */
+	bufferFrameThrottleState = ExternalFrameThrottlingRequired;
+	blockingVSyncUnthrottledFrames = 0;
+    }
+}
+
+bool
+DoubleBuffer::hardwareVSyncFunctional ()
+{
+    return bufferFrameThrottleState == FrameThrottledInternally;
+}
+
+bool
+DoubleBuffer::enableAsyncVideoSync (FrontbufferRedrawType swapType, FrameThrottleState &throttleState)
+{
+    /* Always consider these frames as un-throttled as the buffer
+     * swaps are done asynchronously */
+    throttleState = ExternalFrameThrottlingRequired;
+
+    /* Can't use swapInterval unless using SwapBuffers */
+    if (swapType != Swap)
+	return false;
+
+    /* Enable if not enabled */
+    if (syncType != Async)
+	swapIntervalFunc (1);
+
+    return true;
+}
+
+void
+DoubleBuffer::disableAsyncVideoSync ()
+{
+    /* Disable if enabled */
+    swapIntervalFunc (0);
+}
+
+bool
+DoubleBuffer::enableBlockingVideoSync (FrontbufferRedrawType swapType, FrameThrottleState &throttleState)
+{
+    unsigned int oldVideoSyncCounter = lastVSyncCounter;
+    waitVideoSyncFunc (1, 0, &lastVSyncCounter);
+
+    /* Check if this frame was actually throttled */
+    if (lastVSyncCounter == oldVideoSyncCounter)
+	throttleState = ExternalFrameThrottlingRequired;
+    else
+	throttleState = FrameThrottledInternally;
+
+    return true;
+}
+
+void
+DoubleBuffer::disableBlockingVideoSync ()
+{
+    blockingVSyncUnthrottledFrames = 0;
 }
 
 } // namespace opengl

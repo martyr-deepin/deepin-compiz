@@ -83,6 +83,7 @@ class GLShaderCache
 {
 public:
     GLShaderCache ();
+    ~GLShaderCache ();
 
     /**
      * Gets the GLShaderData associated with the specified parameters.

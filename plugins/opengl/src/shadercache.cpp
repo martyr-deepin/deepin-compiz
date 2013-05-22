@@ -100,6 +100,11 @@ GLShaderCache::GLShaderCache () :
 {
 }
 
+GLShaderCache::~GLShaderCache ()
+{
+    delete priv;
+}
+
 const GLShaderData &
 GLShaderCache::getShaderData (const GLShaderParameters &params)
 {

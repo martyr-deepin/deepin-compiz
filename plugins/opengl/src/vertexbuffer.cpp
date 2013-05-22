@@ -387,7 +387,8 @@ PrivateVertexBuffer::PrivateVertexBuffer () :
     nTextures (0),
     vertexOffset (0),
     maxVertices (-1),
-    program (NULL)
+    program (NULL),
+    autoProgram (0)
 {
     if (!GL::genBuffers)
 	return;

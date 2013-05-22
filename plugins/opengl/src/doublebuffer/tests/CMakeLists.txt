@@ -21,4 +21,4 @@ target_link_libraries (compiz_test_opengl_double_buffer
 		       ${CMAKE_THREAD_LIBS_INIT} # Link in pthread.
                        )
 
-compiz_discover_tests (compiz_test_opengl_double_buffer)
+compiz_discover_tests (compiz_test_opengl_double_buffer COVERAGE compiz_opengl_double_buffer)

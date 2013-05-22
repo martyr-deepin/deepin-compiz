@@ -39,12 +39,12 @@ void printShaderInfoLog (GLuint shader)
 {
     GLint   length = 0;
     GLint   chars  = 0;
-    GLchar *infoLog;
 
     (*GL::getShaderiv) (shader, GL::INFO_LOG_LENGTH, &length);
 
     if (length > 0)
     {
+	GLchar *infoLog;
 	infoLog = new GLchar[length];
 	(*GL::getShaderInfoLog) (shader, length, &chars, infoLog);
 	std::cout << infoLog << std::endl;
@@ -56,12 +56,12 @@ void printProgramInfoLog(GLuint program)
 {
     GLint   length = 0;
     GLint   chars  = 0;
-    GLchar *infoLog;
 
     (*GL::getProgramiv) (program, GL::INFO_LOG_LENGTH, &length);
 
     if (length > 0)
     {
+	GLchar *infoLog;
 	infoLog = new GLchar[length];
 	(*GL::getProgramInfoLog) (program, length, &chars, infoLog);
 	std::cout << infoLog << std::endl;

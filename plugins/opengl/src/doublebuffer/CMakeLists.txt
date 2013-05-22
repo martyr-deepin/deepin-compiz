@@ -1,6 +1,7 @@
 INCLUDE_DIRECTORIES (  
   ${compiz_SOURCE_DIR}/src/logmessage/include
   ${CMAKE_CURRENT_SOURCE_DIR}/../../include
+  ${CMAKE_CURRENT_SOURCE_DIR}/../../src
   ${CMAKE_CURRENT_SOURCE_DIR}/src
     
   ${Boost_INCLUDE_DIRS}

@@ -95,9 +95,7 @@ GLVector::operator[] (VectorCoordsEnum coord) const
 GLVector&
 GLVector::operator+= (const GLVector& rhs)
 {
-    int i;
-
-    for (i = 0; i < 4; i++)
+    for (int i = 0; i < 4; i++)
 	v[i] += rhs[i];
 
     return *this;
@@ -108,9 +106,8 @@ operator+ (const GLVector& lhs,
 	   const GLVector& rhs)
 {
     GLVector result;
-    int        i;
 
-    for (i = 0; i < 4; i++)
+    for (int i = 0; i < 4; i++)
 	result[i] = lhs[i] + rhs[i];
 
     return result;
@@ -119,9 +116,7 @@ operator+ (const GLVector& lhs,
 GLVector&
 GLVector::operator-= (const GLVector& rhs)
 {
-    int i;
-
-    for (i = 0; i < 4; i++)
+    for (int i = 0; i < 4; i++)
 	v[i] -= rhs[i];
 
     return *this;
@@ -132,9 +127,8 @@ operator- (const GLVector& lhs,
 	   const GLVector& rhs)
 {
     GLVector result;
-    int        i;
 
-    for (i = 0; i < 4; i++)
+    for (int i = 0; i < 4; i++)
 	result[i] = lhs[i] - rhs[i];
 
     return result;
@@ -144,9 +138,8 @@ GLVector
 operator- (const GLVector& vector)
 {
     GLVector result;
-    int        i;
 
-    for (i = 0; i < 4; i++)
+    for (int i = 0; i < 4; i++)
 	result[i] = -vector[i];
 
     return result;
@@ -155,9 +148,7 @@ operator- (const GLVector& vector)
 GLVector&
 GLVector::operator*= (const float k)
 {
-    int i;
-
-    for (i = 0; i < 4; i++)
+    for (int i = 0; i < 4; i++)
 	v[i] *= k;
 
     return *this;
@@ -168,9 +159,8 @@ operator* (const GLVector& lhs,
 	   const GLVector& rhs)
 {
     float result = 0;
-    int   i;
 
-    for (i = 0; i < 4; i++)
+    for (int i = 0; i < 4; i++)
 	result += lhs[i] * rhs[i];
 
     return result;
@@ -181,9 +171,8 @@ operator* (const float       k,
 	   const GLVector& vector)
 {
     GLVector result;
-    int        i;
 
-    for (i = 0; i < 4; i++)
+    for (int i = 0; i < 4; i++)
 	result[i] = k * vector[i];
 
     return result;
@@ -199,9 +188,7 @@ operator* (const GLVector& vector,
 GLVector&
 GLVector::operator/= (const float k)
 {
-    int i;
-
-    for (i = 0; i < 4; i++)
+    for (int i = 0; i < 4; i++)
 	v[i] /= k;
 
     return *this;
@@ -212,9 +199,8 @@ operator/ (const GLVector& vector,
 	   const float       k)
 {
     GLVector result;
-    int        i;
 
-    for (i = 0; i < 4; i++)
+    for (int i = 0; i < 4; i++)
 	result[i] = vector[i] / k;
 
     return result;

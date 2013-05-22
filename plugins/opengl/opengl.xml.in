@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <compiz>
     <plugin name="opengl" useBcop="true">
 	<_short>OpenGL</_short>
@@ -57,6 +58,11 @@
 		<_short>Always use buffer swapping</_short>
 		<_long>Use glXSwapBuffers to display every frame. This eliminates visible tearing with most drivers and dramatically improves visual smoothness. Automatically enabled when framebuffer_object is on.</_long>
 		<default>true</default>
+	    </option>
+	    <option name="unredirect_driver_blacklist" type="string">
+		<_short>Unredirect Driver Blacklist</_short>
+		<_long>If non-empty, specifies a POSIX (extended) regular expression to match against the OpenGL driver strings (newline separated): "GL_VENDOR\nGL_RENDERER\nGL_VERSION". If the regular expression matches a substring of that concatenation then no windows will ever be unredirected while using that particular graphics driver.</_long>
+		<default>(nouveau|Intel).*Mesa 8.0</default>
 	    </option>
 	</options>
     </plugin>

@@ -258,9 +258,13 @@ PrivateGLScreen::paintOutputRegion (const GLMatrix   &transform,
     unredirectFS = CompositeScreen::get (screen)->
 	getOption ("unredirect_fullscreen_windows")->value ().b ();
 
-    // This should be const but CompMatch is not const-friendly.
-    CompMatch &unredirectable = CompositeScreen::get (screen)->
+    const CompMatch &unredirectable = CompositeScreen::get (screen)->
 	getOption ("unredirect_match")->value ().match ();
+
+    const CompString &blacklist =
+	getOption ("unredirect_driver_blacklist")->value ().s ();
+
+    bool blacklisted = driverIsBlacklisted (blacklist.c_str ());
 
     if (mask & PAINT_SCREEN_TRANSFORMED_MASK)
     {
@@ -350,21 +354,31 @@ PrivateGLScreen::paintOutputRegion (const GLMatrix   &transform,
 	    if (w->alpha ())
 		flags |= FullscreenRegion::Alpha;
 	    
+	    CompositeWindow *cw = CompositeWindow::get (w);
+
 	    /*
 	     * Windows with alpha channels can partially occlude windows
 	     * beneath them and so neither should be unredirected in that case.
+	     *
+	     * Performance note:  unredirectable.evaluate is SLOW because it
+	     * involves regex matching. Too slow to do on every window for
+	     * every frame. So we only call it if a window is redirected AND
+	     * potentially needs unredirecting. This means changes to
+	     * unredirect_match while a window is unredirected already may not
+	     * take effect until it is un-fullscreened again. But that's better
+	     * than the high price of regex matching on every frame.
 	     */
 	    if (unredirectFS &&
-		unredirectable.evaluate (w) &&
+		!blacklisted &&
 		!(mask & PAINT_SCREEN_TRANSFORMED_MASK) &&
 		!(mask & PAINT_SCREEN_WITH_TRANSFORMED_WINDOWS_MASK) &&
-		fs.isCoveredBy (w->region (), flags))
+		fs.isCoveredBy (w->region (), flags) &&
+		(!cw->redirected () || unredirectable.evaluate (w)))
 	    {
 		unredirected.insert (w);
 	    }
 	    else
 	    {
-		CompositeWindow *cw = CompositeWindow::get (w);
 		if (!cw->redirected ())
 		{
 		    if (fs.allowRedirection (w->region ()))
@@ -662,8 +676,6 @@ GLScreen::glPaintCompositedOutput (const CompRegion    &region,
     WRAPABLE_HND_FUNCTN (glPaintCompositedOutput, region, fbo, mask)
 
     GLMatrix sTransform;
-    std::vector<GLfloat> vertexData;
-    std::vector<GLfloat> textureData;
     const GLTexture::Matrix & texmatrix = fbo->tex ()->matrix ();
     GLVertexBuffer *streamingBuffer = GLVertexBuffer::streamingBuffer ();
 
@@ -676,7 +688,7 @@ GLScreen::glPaintCompositedOutput (const CompRegion    &region,
 	GLfloat ty1 = 1.0 - COMP_TEX_COORD_Y (texmatrix, 0.0f);
 	GLfloat ty2 = 1.0 - COMP_TEX_COORD_Y (texmatrix, screen->height ());
 
-	vertexData = {
+	const GLfloat vertexData[] = {
 	    0.0f,                    0.0f,                     0.0f,
 	    0.0f,                    (float)screen->height (), 0.0f,
 	    (float)screen->width (), 0.0f,                     0.0f,
@@ -686,7 +698,7 @@ GLScreen::glPaintCompositedOutput (const CompRegion    &region,
 	    (float)screen->width (), 0.0f,                     0.0f,
 	};
 
-	textureData = {
+	const GLfloat textureData[] = {
 	    tx1, ty1,
 	    tx1, ty2,
 	    tx2, ty1,
@@ -710,7 +722,7 @@ GLScreen::glPaintCompositedOutput (const CompRegion    &region,
 	    GLfloat ty1 = 1.0 - COMP_TEX_COORD_Y (texmatrix, pBox->y1);
 	    GLfloat ty2 = 1.0 - COMP_TEX_COORD_Y (texmatrix, pBox->y2);
 
-	    vertexData = {
+	    const GLfloat vertexData[] = {
 		(float)pBox->x1, (float)pBox->y1, 0.0f,
 		(float)pBox->x1, (float)pBox->y2, 0.0f,
 		(float)pBox->x2, (float)pBox->y1, 0.0f,
@@ -720,7 +732,7 @@ GLScreen::glPaintCompositedOutput (const CompRegion    &region,
 		(float)pBox->x2, (float)pBox->y1, 0.0f,
 	    };
 
-	    textureData = {
+	    const GLfloat textureData[] = {
 		tx1, ty1,
 		tx1, ty2,
 		tx2, ty1,

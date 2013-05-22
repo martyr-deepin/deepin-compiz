@@ -580,6 +580,8 @@ extern GLScreenPaintAttrib defaultScreenPaintAttrib;
 
 class GLScreen;
 class GLFramebufferObject;
+class GLScreenInterface;
+extern template class WrapableInterface<GLScreen, GLScreenInterface>;
 
 class GLScreenInterface :
     public WrapableInterface<GLScreen, GLScreenInterface>
@@ -808,6 +810,8 @@ struct GLWindowPaintAttrib {
 };
 
 class GLWindow;
+class GLWindowInterface;
+extern template class WrapableInterface<GLWindow, GLWindowInterface>;
 
 class GLWindowInterface :
     public WrapableInterface<GLWindow, GLWindowInterface>

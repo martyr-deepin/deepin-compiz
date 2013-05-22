@@ -88,9 +88,7 @@ matmul4 (float       *product,
 	 const float *a,
 	 const float *b)
 {
-    int i;
-
-    for (i = 0; i < 4; i++)
+    for (int i = 0; i < 4; i++)
     {
 	const float ai0 = A(i,0), ai1 = A(i,1), ai2 = A(i,2), ai3 = A(i,3);
 
@@ -148,9 +146,8 @@ operator* (const GLMatrix& lhs,
 {
     GLVector  result;
     const float *a = lhs.m;
-    int         i;
 
-    for (i = 0; i < 4; i++)
+    for (int i = 0; i < 4; i++)
     {
 	result[i] = A(i,0) * rhs[0] + A(i,1) * rhs[1] +
 	            A(i,2) * rhs[2] + A(i,3) * rhs[3];
@@ -170,7 +167,6 @@ operator* (const GLMatrix& lhs,
 bool GLMatrix::invert ()
 {
     float inv[16], det;
-    int i;
 
     inv[0] =   m[5]*m[10]*m[15] - m[5]*m[11]*m[14] - m[9]*m[6]*m[15]
              + m[9]*m[7]*m[14] + m[13]*m[6]*m[11] - m[13]*m[7]*m[10];
@@ -211,7 +207,7 @@ bool GLMatrix::invert ()
 
     det = 1.0f / det;
 
-    for (i = 0; i < 16; i++)
+    for (int i = 0; i < 16; i++)
         m[i] = inv[i] * det;
 
     return true;

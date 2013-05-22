@@ -23,11 +23,12 @@
  * Authors: Travis Watkins <travis.watkins@linaro.org>
  */
 
+#include <boost/shared_ptr.hpp>
 #include <opengl/programcache.h>
 #include "privates.h"
 
 typedef std::list<std::string> access_history_t;
-typedef std::pair<GLProgram*, access_history_t::iterator> value;
+typedef std::pair<boost::shared_ptr<GLProgram>, access_history_t::iterator> value;
 
 static GLProgram *
 compileProgram (std::string name, std::list<const GLShaderData*> shaders)
@@ -139,7 +140,7 @@ GLProgram* GLProgramCache::operator () (std::list<const GLShaderData*> shaders)
 	                             (*it).second.second);
 	(*it).second.second = priv->access_history.rbegin ().base ();
 
-	return (*it).second.first;
+	return (*it).second.first.get ();
     }
 }
 

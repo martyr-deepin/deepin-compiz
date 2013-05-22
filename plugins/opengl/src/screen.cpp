@@ -32,15 +32,28 @@
 #endif
 #include <errno.h>
 
+#include <boost/bind.hpp>
+#include <boost/make_shared.hpp>
+
 #include "privates.h"
+#include "blacklist/blacklist.h"
 
 #include <dlfcn.h>
 #include <math.h>
 
+template class WrapableInterface<GLScreen, GLScreenInterface>;
+
+#ifndef USE_GLES
+/*
+ * Historically most versions of fglrx have contained a nasty hack that checks
+ * if argv[0] == "compiz", and downgrades OpenGL features including dropping
+ * GLSL support (hides GL_ARB_shading_language_100). (LP #1026920)
+ * This hack in fglrx is misguided and I'm told AMD have or will remove
+ * it soon. In the mean time, modify argv[0] so it's not triggered...
+ */
 class DetectionWorkaround
 {
     public:
-
         DetectionWorkaround ()
         {
             program_invocation_short_name[0] = 'C';
@@ -50,6 +63,7 @@ class DetectionWorkaround
             program_invocation_short_name[0] = 'c';
         }
 };
+#endif
 
 
 using namespace compiz::opengl;
@@ -177,7 +191,6 @@ namespace GL {
     bool canDoSlightlySaturated = false;
 
     unsigned int vsyncCount = 0;
-    unsigned int unthrottledFrames = 0;
 
     bool stencilBuffer = false;
 #ifndef USE_GLES
@@ -286,10 +299,71 @@ public:
     GLScreen *gScreen;
 };
 
+#ifndef USE_GLES
+
+namespace compiz
+{
+namespace opengl
+{
+void swapIntervalGLX (Display *d, int interval)
+{
+    // Docs: http://www.opengl.org/registry/specs/SGI/swap_control.txt
+    if (GL::swapInterval)
+	GL::swapInterval (interval);
+}
+
+int waitVSyncGLX (int          wait,
+		  int          remainder,
+		  unsigned int *count)
+{
+    /*
+     * While glXSwapBuffers/glXCopySubBufferMESA are meant to do a
+     * flush before they blit, it is best to not let that happen.
+     * Because that flush would occur after GL::waitVideoSync, causing
+     * a delay and the final blit to be slightly out of sync resulting
+     * in tearing. So we need to do a glFinish before we wait for
+     * vsync, to absolutely minimize tearing.
+     */
+    glFinish ();
+
+    // Docs: http://www.opengl.org/registry/specs/SGI/video_sync.txt
+    if (GL::waitVideoSync)
+	return GL::waitVideoSync (wait, remainder, count);
+
+    return 0;
+}
+}
+}
+
+#else
+
+namespace compiz
+{
+namespace opengl
+{
+void swapIntervalEGL (Display *display, int interval)
+{
+    eglSwapInterval (eglGetDisplay (display), interval);
+}
+
+int waitVSyncEGL (int wait,
+		  int remainder,
+		  unsigned int *count)
+{
+    /* not supported */
+    return 0;
+}
+}
+}
+
+#endif
+
 bool
 GLScreen::glInitContext (XVisualInfo *visinfo)
 {
+#ifndef USE_GLES
     DetectionWorkaround workaround;
+#endif
 
     #ifdef USE_GLES
     Display             *xdpy;
@@ -470,7 +544,7 @@ GLScreen::glInitContext (XVisualInfo *visinfo)
     GL::getProgramiv = glGetProgramiv;
     GL::getProgramInfoLog = glGetProgramInfoLog;
     GL::createShader = glCreateShader;
-    GL::shaderSource = glShaderSource;
+    GL::shaderSource = (GL::GLShaderSourceProc) glShaderSource;
     GL::compileShader = glCompileShader;
     GL::createProgram = glCreateProgram;
     GL::attachShader = glAttachShader;
@@ -527,8 +601,6 @@ GLScreen::glInitContext (XVisualInfo *visinfo)
     GLfloat		 ambientLight[]   = { 0.0f, 0.0f,  0.0f, 0.0f };
     GLfloat		 diffuseLight[]   = { 0.9f, 0.9f,  0.9f, 0.9f };
     GLfloat		 light0Position[] = { -0.5f, 0.5f, -9.0f, 1.0f };
-    const char           *glRenderer;
-    const char           *glVendor;
     CompOption::Vector o (0);
 
     priv->ctx = glXCreateContext (dpy, visinfo, NULL, True);
@@ -567,8 +639,14 @@ GLScreen::glInitContext (XVisualInfo *visinfo)
 	return false;
     }
 
-    glRenderer = (const char *) glGetString (GL_RENDERER);
-    glVendor = (const char *) glGetString (GL_VENDOR);
+    const char *glVendor = (const char *) glGetString (GL_VENDOR);
+    const char *glRenderer = (const char *) glGetString (GL_RENDERER);
+    const char *glVersion = (const char *) glGetString (GL_VERSION);
+
+    priv->glVendor = glVendor;
+    priv->glRenderer = glRenderer;
+    priv->glVersion = glVersion;
+
     if (glRenderer != NULL &&
 	(strcmp (glRenderer, "Software Rasterizer") == 0 ||
 	 strcmp (glRenderer, "Mesa X11") == 0))
@@ -727,15 +805,6 @@ GLScreen::glInitContext (XVisualInfo *visinfo)
 
     priv->updateRenderMode ();
 
-    /*
-     * !!! WARNING for users of the ATI/AMD fglrx driver !!!
-     *
-     * fglrx contains a hack which hides GL_ARB_shading_language_100 if
-     * your argv[0]=="compiz" for stupid historical reasons, so you won't
-     * get shader support by default when using fglrx.
-     *
-     * Workaround: Rename or link your "compiz" binary to "Compiz".
-     */
     if (strstr (glExtensions, "GL_ARB_fragment_shader") &&
         strstr (glExtensions, "GL_ARB_vertex_shader") &&
 	strstr (glExtensions, "GL_ARB_shader_objects") &&
@@ -846,7 +915,9 @@ GLScreen::GLScreen (CompScreen *s) :
     PluginClassHandler<GLScreen, CompScreen, COMPIZ_OPENGL_ABI> (s),
     priv (new PrivateGLScreen (this))
 {
+#ifndef USE_GLES
     DetectionWorkaround workaround;
+#endif
 
     XVisualInfo		 *visinfo = NULL;
 #ifndef USE_GLES
@@ -1164,21 +1235,29 @@ PrivateGLScreen::PrivateGLScreen (GLScreen   *gs) :
     #endif
     scratchFbo (NULL),
     outputRegion (),
+    refreshSubBuffer (false),
     lastMask (0),
     bindPixmap (),
     hasCompositing (false),
     commonFrontbuffer (true),
+    incorrectRefreshRate (false),
     programCache (new GLProgramCache (30)),
     shaderCache (),
     autoProgram (new GLScreenAutoProgram(gs)),
     rootPixmapCopy (None),
-    rootPixmapSize ()
+    rootPixmapSize (),
+    glVendor (NULL),
+    glRenderer (NULL),
+    glVersion (NULL),
+    prevRegex (),
+    prevBlacklisted (false)
 {
     ScreenInterface::setHandler (screen);
 }
 
 PrivateGLScreen::~PrivateGLScreen ()
 {
+    delete projection;
     delete programCache;
     delete autoProgram;
     if (rootPixmapCopy)
@@ -1708,81 +1787,11 @@ GLScreen::getShaderData (GLShaderParameters &params)
     return &priv->shaderCache.getShaderData(params);
 }
 
-namespace GL
-{
-
-void
-fastSwapInterval (Display *dpy, int interval)
-{
-    static int prev = -1;
-#ifndef USE_GLES
-    bool       hasSwapInterval = GL::swapInterval ? true : false;
-#else
-    bool       hasSwapInterval = true;
-#endif
-
-    if (hasSwapInterval && interval != prev)
-    {
-#ifndef USE_GLES
-	(*GL::swapInterval) (interval);
-#else
-	eglSwapInterval (eglGetDisplay (dpy), interval);
-#endif
-	prev = interval;
-    }
-}
-
-void
-waitForVideoSync ()
-{
-#ifndef USE_GLES
-    GL::unthrottledFrames++;
-    if (GL::waitVideoSync)
-    {
-	// Don't wait twice. Just in case.
-	fastSwapInterval (screen->dpy (), 0);
-
-	/*
-	 * While glXSwapBuffers/glXCopySubBufferMESA are meant to do a
-	 * flush before they blit, it is best to not let that happen.
-	 * Because that flush would occur after GL::waitVideoSync, causing
-	 * a delay and the final blit to be slightly out of sync resulting
-	 * in tearing. So we need to do a glFinish before we wait for
-	 * vsync, to absolutely minimize tearing.
-	 */
-	glFinish ();
-
-	// Docs: http://www.opengl.org/registry/specs/SGI/video_sync.txt
-	unsigned int oldCount = GL::vsyncCount;
-	(*GL::waitVideoSync) (1, 0, &GL::vsyncCount);
-
-	if (GL::vsyncCount != oldCount)
-	    GL::unthrottledFrames = 0;
-    }
-#endif
-}
-
-void
-controlSwapVideoSync (bool sync)
-{
-#ifndef USE_GLES
-    // Docs: http://www.opengl.org/registry/specs/SGI/swap_control.txt
-    if (GL::swapInterval)
-    {
-	fastSwapInterval (screen->dpy (), sync ? 1 : 0);
-	GL::unthrottledFrames++;
-    }
-    else if (sync)
-	waitForVideoSync ();
-#else
-    fastSwapInterval (screen->dpy (), sync ? 1 : 0);
-    GL::unthrottledFrames++;
-#endif
-}
-
-} // namespace GL
-
-GLDoubleBuffer::GLDoubleBuffer (Display *d, const CompSize &s) :
+GLDoubleBuffer::GLDoubleBuffer (Display                                             *d,
+				const CompSize                                      &s,
+				const compiz::opengl::impl::GLXSwapIntervalEXTFunc  &swapIntervalFunc,
+				const compiz::opengl::impl::GLXWaitVideoSyncSGIFunc &waitVideoSyncFunc) :
+    compiz::opengl::DoubleBuffer (swapIntervalFunc, waitVideoSyncFunc),
     mDpy (d),
     mSize (s)
 {
@@ -1815,10 +1824,12 @@ GLXDoubleBuffer::copyFrontToBack() const
     glMatrixMode (GL_MODELVIEW);
 }
 
-GLXDoubleBuffer::GLXDoubleBuffer (Display *d,
-			      const CompSize &s,
-			      Window output) :
-    GLDoubleBuffer (d, s),
+GLXDoubleBuffer::GLXDoubleBuffer (Display        *d,
+				  const CompSize &s,
+				  Window         output) :
+    GLDoubleBuffer (d, s,
+		    boost::bind (compiz::opengl::swapIntervalGLX, d, _1),
+		    boost::bind (compiz::opengl::waitVSyncGLX, _1, _2, _3)),
     mOutput (output)
 {
 }
@@ -1826,8 +1837,6 @@ GLXDoubleBuffer::GLXDoubleBuffer (Display *d,
 void
 GLXDoubleBuffer::swap () const
 {
-    GL::controlSwapVideoSync (setting[VSYNC]);
-
     glXSwapBuffers (mDpy, mOutput);
 }
 
@@ -1841,9 +1850,6 @@ void
 GLXDoubleBuffer::blit (const CompRegion &region) const
 {
     const CompRect::vector &blitRects (region.rects ());
-
-    if (setting[VSYNC])
-        GL::waitForVideoSync ();
 
     foreach (const CompRect &r, blitRects)
     {
@@ -1865,9 +1871,6 @@ GLXDoubleBuffer::fallbackBlit (const CompRegion &region) const
     const CompRect::vector &blitRects (region.rects ());
     int w = screen->width ();
     int h = screen->height ();
-
-    if (setting[VSYNC])
-	GL::waitForVideoSync ();
 
     glMatrixMode (GL_PROJECTION);
     glPushMatrix ();
@@ -1898,10 +1901,12 @@ GLXDoubleBuffer::fallbackBlit (const CompRegion &region) const
 
 #else
 
-EGLDoubleBuffer::EGLDoubleBuffer (Display *d,
-			      const CompSize &s,
-			      EGLSurface const & surface) :
-    GLDoubleBuffer (d, s),
+EGLDoubleBuffer::EGLDoubleBuffer (Display          *d,
+				  const CompSize   &s,
+				  EGLSurface const &surface) :
+    GLDoubleBuffer (d, s,
+		    boost::bind (compiz::opengl::swapIntervalEGL, d, _1),
+		    boost::bind (compiz::opengl::waitVSyncEGL, _1, _2, _3)),
     mSurface (surface)
 {
 }
@@ -1909,11 +1914,7 @@ EGLDoubleBuffer::EGLDoubleBuffer (Display *d,
 void
 EGLDoubleBuffer::swap () const
 {
-    GL::controlSwapVideoSync (setting[VSYNC]);
-
     eglSwapBuffers (eglGetDisplay (mDpy), mSurface);
-    eglWaitGL ();
-    XFlush (mDpy);
 }
 
 bool
@@ -1928,8 +1929,6 @@ EGLDoubleBuffer::blit (const CompRegion &region) const
     CompRect::vector blitRects (region.rects ());
     int		     y = 0;
 
-    GL::controlSwapVideoSync (setting[VSYNC]);
-
     foreach (const CompRect &r, blitRects)
     {
 	y = mSize.height () - r.y2 ();
@@ -1940,9 +1939,6 @@ EGLDoubleBuffer::blit (const CompRegion &region) const
 			      r.width (),
 			      r.height ());
     }
-
-    eglWaitGL ();
-    XFlush (screen->dpy ());
 }
 
 bool
@@ -2121,12 +2117,12 @@ PrivateGLScreen::paintOutputs (CompOutput::ptrList &outputs,
 bool
 PrivateGLScreen::hasVSync ()
 {
-   #ifdef USE_GLES
-   return false;
-   #else
+    #ifdef USE_GLES
+    return false;
+    #else
     return GL::waitVideoSync && optionGetSyncToVblank () && 
-           GL::unthrottledFrames < 5;
-   #endif
+	   doubleBuffer.hardwareVSyncFunctional ();
+    #endif
 }
 
 bool
@@ -2157,6 +2153,21 @@ PrivateGLScreen::prepareDrawing ()
     updateRenderMode ();
     if (wasFboEnabled != GL::fboEnabled)
 	CompositeScreen::get (screen)->damageScreen ();
+}
+
+bool
+PrivateGLScreen::driverIsBlacklisted (const char *regex) const
+{
+    /*
+     * regex matching is VERY expensive, so only do it when the result might
+     * be different to last time. The gl* variables never change value...
+     */
+    if (prevRegex != regex)
+    {
+	prevBlacklisted = blacklisted (regex, glVendor, glRenderer, glVersion);
+	prevRegex = regex;
+    }
+    return prevBlacklisted;
 }
 
 GLTexture::BindPixmapHandle

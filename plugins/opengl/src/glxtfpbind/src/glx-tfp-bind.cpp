@@ -52,6 +52,12 @@ cgl::bindTexImageGLX (ServerGrabInterface                *serverGrabInterface,
 #endif
 	if (!checkPixmapValidity (x11Pixmap))
 	    return false;
+
+#ifdef LP_1030891_NOT_FIXED
+	// We need to bind before the above ServerLock is lost
+	bindTexImageEXT (glxPixmap);
+	return true;
+#endif
     }
 
     bindTexImageEXT (glxPixmap);

@@ -27,6 +27,7 @@
 
 #include "privates.h"
 
+template class WrapableInterface<GLWindow, GLWindowInterface>;
 
 template class PluginClassHandler<GLWindow, CompWindow, COMPIZ_OPENGL_ABI>;
 
