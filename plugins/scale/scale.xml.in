@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <compiz>
     <plugin name="scale" useBcop="true">
 	<_short>Scale</_short>
