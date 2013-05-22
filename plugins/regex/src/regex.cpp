@@ -45,7 +45,7 @@ class RegexExp : public CompMatch::Expression
 	RegexExp (const CompString& str, int item);
 	virtual ~RegexExp ();
 
-	bool evaluate (CompWindow *w);
+	bool evaluate (const CompWindow *w) const;
 	static int matches (const CompString& str);
 
     private:
@@ -114,10 +114,10 @@ RegexExp::~RegexExp ()
 }
 
 bool
-RegexExp::evaluate (CompWindow *w)
+RegexExp::evaluate (const CompWindow *w) const
 {
-    CompString  *string = NULL;
-    RegexWindow *rw = RegexWindow::get (w);
+    const CompString *string = NULL;
+    const RegexWindow *rw = RegexWindow::get (w);
 
     switch (mType)
     {
@@ -147,9 +147,7 @@ RegexExp::evaluate (CompWindow *w)
 int
 RegexExp::matches (const CompString& str)
 {
-    unsigned int i;
-
-    for (i = 0; i < sizeof (prefix) / sizeof (prefix[0]); i++)
+    for (unsigned int i = 0; i < sizeof (prefix) / sizeof (prefix[0]); i++)
 	if (str.compare (0, prefix[i].length, prefix[i].name) == 0)
 	    return (int) i;
 
