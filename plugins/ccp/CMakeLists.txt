@@ -1,4 +1,5 @@
 find_package (Compiz REQUIRED)
+include (CompizPlugin)
 
 compiz_plugin (ccp LIBRARIES compizconfig CFLAGSADD -I${CMAKE_SOURCE_DIR}/compizconfig/libcompizconfig/include)
 

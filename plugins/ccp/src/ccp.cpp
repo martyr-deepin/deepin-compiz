@@ -266,6 +266,7 @@ ccpInitValue (CCSSettingValue   *value,
 		value->value.asKey.keysym = 0;
 		value->value.asKey.keyModMask = 0;
 	    }
+	    break;
 	case TypeButton:
 	    if (from->action ().type () & CompAction::BindingTypeButton)
 	    {
