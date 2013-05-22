@@ -104,8 +104,8 @@ class WinrulesWindow :
 
 	bool applyRules ();
 
-	bool alpha ();
-	bool isFocussable ();
+	bool alpha () const;
+	bool isFocussable () const;
 	bool focus ();
 
 	unsigned int allowedActions;

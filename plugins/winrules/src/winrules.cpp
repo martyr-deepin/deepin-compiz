@@ -55,7 +55,7 @@ WinrulesWindow::is ()
 }
 
 bool
-WinrulesWindow::isFocussable ()
+WinrulesWindow::isFocussable () const
 {
     window->isFocussable ();
 
@@ -71,7 +71,7 @@ WinrulesWindow::focus ()
 }
 
 bool
-WinrulesWindow::alpha ()
+WinrulesWindow::alpha () const
 {
     window->alpha ();
 
