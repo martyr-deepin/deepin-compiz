@@ -56,9 +56,7 @@ premultiplyData (png_structp   png,
 		 png_row_infop row_info,
 		 png_bytep     data)
 {
-    unsigned int i;
-
-    for (i = 0; i < row_info->rowbytes; i += 4)
+    for (unsigned int i = 0; i < row_info->rowbytes; i += 4)
     {
 	unsigned char *base = &data[i];
 	unsigned char blue  = base[0];
@@ -84,7 +82,7 @@ PngScreen::readPngData (png_struct *png,
 {
     png_uint_32	 pngWidth, pngHeight;
     int		 depth, colorType, interlace;
-    unsigned int pixelSize, i;
+    unsigned int pixelSize;
     png_byte	 **rowPointers;
     char	 *d;
 
@@ -144,7 +142,7 @@ PngScreen::readPngData (png_struct *png,
 	return false;
     }
 
-    for (i = 0; i < pngHeight; i++)
+    for (unsigned int i = 0; i < pngHeight; i++)
 	rowPointers[i] = (png_byte *) (d + i * pngWidth * pixelSize);
 
     png_read_image (png, rowPointers);

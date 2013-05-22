@@ -236,7 +236,6 @@ SvgWindow::glDraw (const GLMatrix     &transform,
     if (context && reg.numRects ())
     {
 	GLTexture::MatrixList matrix (1);
-	unsigned int          i, j;
 	int		      x1, y1, x2, y2;
 	CompRect              rect = context->box.boundingRect ();
 
@@ -247,7 +246,7 @@ SvgWindow::glDraw (const GLMatrix     &transform,
 
 	rect.setGeometry (x1, y1, x2 - x1, y2 - y1);
 
-	for (i = 0; i < context->texture[0].textures.size (); i++)
+	for (unsigned int i = 0; i < context->texture[0].textures.size (); i++)
 	{
 	    matrix[0] = context->texture[0].matrices[i];
 
@@ -313,7 +312,7 @@ SvgWindow::glDraw (const GLMatrix     &transform,
 		    }
 		}
 
-		for (j = 0; j < context->texture[1].textures.size (); j++)
+		for (unsigned int j = 0; j < context->texture[1].textures.size (); j++)
 		{
 		    GLTexture::Filter saveFilter;
 		    CompRegion        r (rect);
@@ -515,7 +514,6 @@ SvgWindow::initTexture (SvgSource  *source,
 			SvgTexture &texture,
 			CompSize   size)
 {
-    cairo_surface_t *surface;
     Display         *dpy = screen->dpy ();
 
     texture.size    = size;
@@ -524,6 +522,7 @@ SvgWindow::initTexture (SvgSource  *source,
 
     if (size.width () && size.height ())
     {
+	cairo_surface_t *surface;
 	XWindowAttributes attr;
 	XGetWindowAttributes (dpy, window->id (), &attr);
 

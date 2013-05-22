@@ -252,12 +252,12 @@ JpegScreen::imageToFile (CompString &path,
 			 void	   *data)
 {
     bool       status = false;
-    FILE       *file;
     CompString fileName = fileNameWithExtension (path);
 
     if (format == "jpeg" || format == "jpg" ||
     	!(status = screen->imageToFile (path, format, size, stride, data)))
     {
+	FILE *file;
     	file = fopen (fileName.c_str (), "wb");
     	if (file)
 	{
