@@ -36,6 +36,8 @@
 #include <boost/foreach.hpp>
 #define foreach BOOST_FOREACH
 
+template class std::vector<CompRegion>;
+
 const CompRegion infiniteRegion (CompRect (MINSHORT, MINSHORT,
 				           MAXSHORT * 2, MAXSHORT * 2));
 const CompRegion emptyRegion;

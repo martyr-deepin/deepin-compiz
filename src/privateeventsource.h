@@ -50,7 +50,7 @@ class CompEventSource:
 	bool dispatch (sigc::slot_base *slot);
 	bool callback ();
 
-	CompEventSource ();
+	CompEventSource (Display *dpy, int fd);
 
     private:
 

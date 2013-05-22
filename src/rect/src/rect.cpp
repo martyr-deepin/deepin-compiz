@@ -29,6 +29,7 @@
 #include <math.h>
 #include <stdlib.h>
 
+template class std::vector<CompRect>;
 
 CompRect::CompRect ()
 {

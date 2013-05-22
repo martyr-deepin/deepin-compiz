@@ -206,3 +206,34 @@ TEST(CompOption, Const)
 	ASSERT_EQ(expectTwo, as_const.f());
     }
 }
+
+TEST (CompOption, AssignDefaultActionValueToUnsetTypeClearsOldStateKeepsInfo)
+{
+    /* Value is unset at this point */
+    CompOption        option ("testing", CompOption::TypeKey);
+    CompAction        action;
+
+    /* We need to set up the state here as
+     * the CompOption::Value constructor makes
+     * a copy of the action */
+    action.setState (CompAction::StateInitKey);
+    action.setButton (CompAction::ButtonBinding (1,
+						 1 << 1));
+
+    CompOption::Value value (action);
+
+    ASSERT_EQ (value.action ().state (), CompAction::StateInitKey);
+
+    /* Actually set the action value, this will
+     * overwrite the internal value */
+    option.set (value);
+
+    /* We don't care about the old action's state, so get
+     * rid of it */
+    ASSERT_EQ (option.value ().action ().state (), 0);
+
+    /* We do want to keep the non-stateful data which is
+     * pure info */
+    ASSERT_EQ (option.value ().action ().button ().button (), 1);
+    ASSERT_EQ (option.value ().action ().button ().modifiers (), 1 << 1);
+}

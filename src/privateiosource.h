@@ -26,6 +26,19 @@
 #ifndef _COMPIZ_PRIVATEIOSOURCE_H
 #define _COMPIZ_PRIVATEIOSOURCE_H
 
+#include <glibmm/main.h>
+
+typedef boost::function<void (short int)> FdWatchCallBack;
+typedef int CompWatchFdHandle;
+
+namespace compiz
+{
+    namespace private_screen
+    {
+	class EventManager;
+    }
+}
+
 class CompWatchFd :
     public Glib::IOSource
 {

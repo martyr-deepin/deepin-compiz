@@ -38,6 +38,10 @@
 #include <boost/variant/static_visitor.hpp>
 #include <boost/type_traits/remove_const.hpp>
 
+template class std::vector<unsigned short>;
+template class std::vector<CompOption::Value>;
+template class std::vector<CompOption>;
+
 namespace
 {
     CompOption::Value::Vector & emptyList ()
@@ -377,9 +381,7 @@ CompOption::findOption (CompOption::Vector &options,
 			CompString         name,
 			unsigned int       *index)
 {
-    unsigned int i;
-
-    for (i = 0; i < options.size (); i++)
+    for (unsigned int i = 0; i < options.size (); i++)
     {
 	if (options[i].priv->name == name)
 	{
@@ -450,20 +452,26 @@ CompOption::setName (const char *name, CompOption::Type type)
     priv->type = type;
 }
 
-CompString
-CompOption::name ()
+const CompString &
+CompOption::name () const
 {
     return priv->name;
 }
 
 CompOption::Type
-CompOption::type ()
+CompOption::type () const
 {
     return priv->type;
 }
 
 CompOption::Value &
 CompOption::value ()
+{
+    return priv->value;
+}
+
+const CompOption::Value &
+CompOption::value () const
 {
     return priv->value;
 }
@@ -477,6 +485,12 @@ CompOption::rest ()
 bool
 CompOption::set (CompOption::Value &val)
 {
+    /* XXX: It is uncertain as to why this is done. The only
+     * logical reason would be that actions are stateful and
+     * we don't want to care about the old state from the
+     * action that we're setting this value to, so we're just
+     * clearing that state and starting over, however copyState
+     * does a lot more than that */
     if (isAction () && priv->type != CompOption::TypeAction)
 	val.action ().copyState (priv->value.action ());
 
@@ -550,7 +564,7 @@ CompOption::set (CompOption::Value &val)
 }
 
 bool
-CompOption::isAction ()
+CompOption::isAction () const
 {
     return checkIsAction (priv->type);
 }

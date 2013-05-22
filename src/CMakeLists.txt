@@ -1,5 +1,7 @@
-include (CompizBcop)
+set (COMPIZ_MAIN_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+set (COMPIZ_MAIN_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR})
 
+include (CompizBcop)
 
 add_subdirectory( string )
 add_subdirectory( logmessage )
@@ -16,6 +18,7 @@ add_subdirectory( privatescreen/tests )
 add_subdirectory( wrapsystem/tests )
 add_subdirectory( plugin )
 add_subdirectory( option/tests )
+add_subdirectory( tests )
 ENDIF (COMPIZ_BUILD_TESTING)
 
 compiz_add_bcop_targets (
@@ -106,8 +109,6 @@ add_library (compiz_core SHARED
     ${CMAKE_CURRENT_SOURCE_DIR}/event.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/plugin.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/session.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/output.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/size.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/windowgeometry.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/icon.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/modifierhandler.cpp
@@ -138,6 +139,27 @@ add_executable (compiz
     ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
 )
 
+add_library (compiz_size STATIC
+    size.cpp
+)
+add_library (compiz_output STATIC
+    output.cpp
+)
+
+add_library (compiz_outputdevices STATIC
+    outputdevices.cpp
+    outputdevices_x11.cpp
+)
+
+add_dependencies (compiz_outputdevices
+    core-options
+    compiz_size
+    compiz_output
+    compiz_rect
+    compiz_region
+    compiz_window_geometry
+)
+
 # workaround for build race
 add_dependencies (compiz core-xml-file)
 
@@ -153,9 +175,9 @@ target_link_libraries (
     m 
     pthread 
     dl
-    Xi
     
     -Wl,-whole-archive
+    compiz_size
     compiz_string
     compiz_timer
     compiz_logmessage
@@ -168,6 +190,8 @@ target_link_libraries (
     compiz_window_extents
     compiz_window_constrainment
     compiz_servergrab
+    compiz_output
+    compiz_outputdevices
     -Wl,-no-whole-archive
 #    ${CORE_MOD_LIBRARIES}
 )

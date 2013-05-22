@@ -23,6 +23,7 @@
  * Authored by: Sam Spilsbury <sam.spilsbury@canonical.com>
  */
 
+#include <glibmm/main.h>
 #include <core/timer.h>
 #include <core/timeouthandler.h>
 

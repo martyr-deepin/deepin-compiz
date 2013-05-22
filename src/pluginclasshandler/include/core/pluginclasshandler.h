@@ -69,6 +69,7 @@ class PluginClassHandler {
 	 */
 	Tb * get () { return mBase; };
 	static Tp * get (Tb *);
+	static const Tp * get (const Tb *);
 
     private:
 	/**
@@ -239,6 +240,13 @@ PluginClassHandler<Tp,Tb,ABI>::getInstance (Tb *base)
 
 	return static_cast<Tp *> (base->pluginClasses[mIndex.index]);
     }
+}
+
+template<class Tp, class Tb, int ABI>
+const Tp *
+PluginClassHandler<Tp,Tb,ABI>::get (const Tb *base)
+{
+    return get (const_cast<Tb *> (base));
 }
 
 template<class Tp, class Tb, int ABI>

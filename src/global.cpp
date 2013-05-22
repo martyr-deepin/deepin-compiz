@@ -36,6 +36,7 @@ int  programArgc;
 bool restartSignal = false;
 
 bool replaceCurrentWm = false;
+bool sendStartupMessage = false;
 bool useDesktopHints = false;
 bool debugOutput = false;
 bool synchronousX = false;

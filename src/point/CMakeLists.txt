@@ -5,16 +5,8 @@ pkg_check_modules (
 )
 
 INCLUDE_DIRECTORIES (  
-  ${CMAKE_CURRENT_SOURCE_DIR}/include
-  ${CMAKE_CURRENT_SOURCE_DIR}/src
-
-  ${CMAKE_CURRENT_SOURCE_DIR}/point/include
-  ${CMAKE_CURRENT_SOURCE_DIR}/point/src
-
   ${compiz_SOURCE_DIR}/include
-    
   ${Boost_INCLUDE_DIRS}
-  
   ${GLIBMM_INCLUDE_DIRS}
 )
 
@@ -22,7 +14,7 @@ LINK_DIRECTORIES (${GLIBMM_LIBRARY_DIRS})
 
 SET ( 
   PUBLIC_HEADERS 
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/core/point.h
+  ${compiz_SOURCE_DIR}/include/core/point.h
 )
 
 SET ( 

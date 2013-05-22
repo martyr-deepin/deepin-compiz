@@ -60,7 +60,6 @@ setStringListProperty (SmcConn	  connection,
 		       int	  nValues)
 {
     SmProp prop, *pProp;
-    int	   i;
 
     prop.name = (char *) name;
     prop.type = const_cast<char *> (SmLISTofARRAY8);
@@ -69,7 +68,7 @@ setStringListProperty (SmcConn	  connection,
     if (!prop.vals)
 	return;
 
-    for (i = 0; i < nValues; i++)
+    for (int i = 0; i < nValues; i++)
     {
 	prop.vals[i].value = (char *) values[i];
 	prop.vals[i].length = strlen (values[i]);
@@ -88,13 +87,14 @@ static void
 setCloneRestartCommands (SmcConn connection)
 {
     const char **args;
-    int        i, count = 0;
 
     /* at maximum, we pass our old arguments + our new client id
        to the SM, so allocate for that case */
     args = (const char **) malloc ((programArgc + 2) * sizeof (char *));
     if (!args)
 	return;
+
+    int i, count = 0;
 
     for (i = 0; i < programArgc; i++)
     {
@@ -324,9 +324,11 @@ CompSession::getClientId (CompSession::ClientIdType type)
 	case CompSession::ClientId:
 	    if (smClientId)
 		return smClientId;
+	    break;
 	case CompSession::PrevClientId:
 	    if (smPrevClientId)
 		return smPrevClientId;
+	    break;
     }
 
     return "";

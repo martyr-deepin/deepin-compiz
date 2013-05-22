@@ -27,13 +27,13 @@
 #include "core/window.h"
 
 
-CompWindow::Geometry &
+const CompWindow::Geometry &
 CompWindow::serverGeometry () const
 {
     return priv->attrib.override_redirect ? priv->geometry : priv->serverGeometry;
 }
 
-CompWindow::Geometry &
+const CompWindow::Geometry &
 CompWindow::geometry () const
 {
     return priv->attrib.override_redirect ? priv->geometry : priv->serverGeometry;

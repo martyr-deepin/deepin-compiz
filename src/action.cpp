@@ -33,6 +33,8 @@
 #include <core/screen.h>
 #include "privateaction.h"
 
+namespace ca = compiz::actions;
+
 struct _Modifier {
     const char *name;
     int        modifier;
@@ -111,9 +113,8 @@ static CompString
 edgeMaskToBindingString (unsigned int edgeMask)
 {
     CompString binding;
-    int        i;
 
-    for (i = 0; i < SCREEN_EDGE_NUM; i++)
+    for (int i = 0; i < SCREEN_EDGE_NUM; i++)
 	if (edgeMask & (1 << i))
 	    binding += edges[i].modifierName;
 
@@ -624,6 +625,19 @@ bool
 CompAction::active ()
 {
     return priv->active;
+}
+
+void
+PrivateAction::setActive (bool a)
+{
+    active = a;
+}
+
+void
+ca::setActionActiveState (const CompAction &action,
+			  bool                  active)
+{
+    action.priv->setActive (active);
 }
 
 PrivateAction::PrivateAction () :

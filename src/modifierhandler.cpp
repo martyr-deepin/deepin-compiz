@@ -156,9 +156,7 @@ ModifierHandler::updateModifierMappings ()
 unsigned int
 ModifierHandler::virtualToRealModMask (unsigned int modMask)
 {
-    int i;
-
-    for (i = 0; i < CompModNum; i++)
+    for (int i = 0; i < CompModNum; i++)
     {
 	if (modMask & virtualModMask[i])
 	{

@@ -55,7 +55,8 @@ StackDebugger::StackDebugger (Display *dpy, Window root, FetchXEventInterface *f
     mServerWindowsChanged (false),
     mRoot (root),
     mDpy (dpy),
-    mFetchXEvent (fetchXEvent)
+    mFetchXEvent (fetchXEvent),
+    mTimeoutRequired (false)
 {
 }
 

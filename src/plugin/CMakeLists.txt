@@ -42,6 +42,11 @@ ADD_LIBRARY(
   ${PRIVATE_HEADERS}
 )
 
+TARGET_LINK_LIBRARIES(
+  compiz_plugin
+  dl
+)
+
 add_dependencies (compiz_plugin core-options)
 
 ADD_SUBDIRECTORY( ${CMAKE_CURRENT_SOURCE_DIR}/tests )

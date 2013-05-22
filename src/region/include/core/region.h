@@ -29,8 +29,12 @@
 #include <X11/Xutil.h>
 #include <X11/Xregion.h>
 
+#include <core/templates.h>
 #include <core/rect.h>
 #include <core/point.h>
+
+class CompRegion;
+COMPIZ_EXTERN_STD(vector<CompRegion>)
 
 /**
  * A 2D region with an (x,y) position and arbitrary dimensions similar to
@@ -39,10 +43,7 @@
  */
 class CompRegion {
     public:
-	typedef std::vector<CompRegion> List;
-	typedef std::vector<CompRegion *> PtrList;
 	typedef std::vector<CompRegion> Vector;
-	typedef std::vector<CompRegion *> PtrVector;
 
     public:
 	CompRegion ();

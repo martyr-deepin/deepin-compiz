@@ -28,10 +28,32 @@
 #ifndef _PRIVATEACTION_H
 #define _PRIVATEACTION_H
 
-class PrivateAction {
+namespace compiz
+{
+namespace actions
+{
+class BoundAction
+{
+    public:
+
+	virtual ~BoundAction () {}
+
+	virtual void setActive (bool) = 0;
+};
+
+void setActionActiveState (const CompAction  &action,
+			   bool              active);
+}
+}
+
+class PrivateAction :
+    public compiz::actions::BoundAction
+{
     public:
 	PrivateAction ();
 	PrivateAction (const PrivateAction&);
+
+	void setActive (bool);
 
 	CompAction::CallBack initiate;
 	CompAction::CallBack terminate;

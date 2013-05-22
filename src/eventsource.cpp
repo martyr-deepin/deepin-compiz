@@ -30,7 +30,8 @@
 CompEventSource *
 CompEventSource::create ()
 {
-    return new CompEventSource ();
+    return new CompEventSource (screen->dpy (),
+				ConnectionNumber (screen->dpy ()));
 }
 
 sigc::connection
@@ -39,10 +40,10 @@ CompEventSource::connect (const sigc::slot <bool> &slot)
     return connect_generic (slot);
 }
 
-CompEventSource::CompEventSource () :
+CompEventSource::CompEventSource (Display *dpy, int fd) :
     Glib::Source (),
-    mDpy (screen->dpy ()),
-    mConnectionFD (ConnectionNumber (screen->dpy ()))
+    mDpy (dpy),
+    mConnectionFD (fd)
 {
     mPollFD.set_fd (mConnectionFD);
     mPollFD.set_events (Glib::IO_IN);

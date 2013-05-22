@@ -360,6 +360,7 @@ class PrivateWindow {
 	typedef std::pair <XWindowChanges, unsigned int> XWCValueMask;
 
 	compiz::X11::PendingEventQueue pendingConfigures;
+	bool receivedMapRequestAndAwaitingMap;
 
 	char *startupId;
 	char *resName;

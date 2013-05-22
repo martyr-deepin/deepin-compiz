@@ -65,6 +65,7 @@ CompSignalSource::destroyed (gpointer user_data)
 
 CompSignalSource::~CompSignalSource ()
 {
+    /* Do not remove, see LP: #1085590 */
     if (mSource)
 	g_source_remove (mSource);
 }
