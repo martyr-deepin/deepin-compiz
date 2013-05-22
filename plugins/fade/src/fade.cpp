@@ -62,13 +62,12 @@ FadeScreen::bell (CompAction         *action,
 void
 FadeScreen::handleEvent (XEvent *event)
 {
-    CompWindow *w;
-
     screen->handleEvent (event);
 
     if (event->type == PropertyNotify &&
 	event->xproperty.atom == Atoms::winState)
     {
+	CompWindow *w;
 	w = screen->findWindow (event->xproperty.window);
 	if (w && w->isViewable ())
 	{
