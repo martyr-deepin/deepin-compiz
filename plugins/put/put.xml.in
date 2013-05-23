@@ -32,22 +32,22 @@
 		    <option name="put_viewport_1_key" type="key">
 			<_short>Put On Viewport 1</_short>
 			<_long>Move window to viewport 1</_long>
-			<default>&lt;Control&gt;&lt;Alt&gt;1</default>
+			<default>&lt;Control&gt;1</default>
 		    </option>
 		    <option name="put_viewport_2_key" type="key">
 			<_short>Put On Viewport 2</_short>
 			<_long>Move window to viewport 2</_long>
-			<default>&lt;Control&gt;&lt;Alt&gt;2</default>
+			<default>&lt;Control&gt;2</default>
 		    </option>
 		    <option name="put_viewport_3_key" type="key">
 			<_short>Put On Viewport 3</_short>
 			<_long>Move window to viewport 3</_long>
-			<default>&lt;Control&gt;&lt;Alt&gt;3</default>
+			<default>&lt;Control&gt;3</default>
 		    </option>
 		    <option name="put_viewport_4_key" type="key">
 			<_short>Put On Viewport 4</_short>
 			<_long>Move window to viewport 4</_long>
-			<default>&lt;Control&gt;&lt;Alt&gt;4</default>
+			<default>&lt;Control&gt;4</default>
 		    </option>
 		    <option name="put_viewport_5_key" type="key">
 			<_short>Put On Viewport 5</_short>
