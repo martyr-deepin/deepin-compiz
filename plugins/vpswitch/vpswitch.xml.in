@@ -99,13 +99,11 @@
 				<option name="next_button" type="button">
 					<_short>Move Next</_short>
 					<_long>Move to the next viewport</_long>
-					<default>Button5</default>
 					<internal/>
 				</option>
 				<option name="prev_button" type="button">
 					<_short>Move Prev</_short>
 					<_long>Move to the previous viewport</_long>
-					<default>Button4</default>
 					<internal/>
 				</option>
 				<option name="initiate_button" type="button">
