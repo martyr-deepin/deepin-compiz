@@ -1408,6 +1408,7 @@ CompScreenImpl::_handleEvent (XEvent *event)
 	if (w)
 	{
 	    w->setDeepinWindowViewportsProp ();
+	    w->checkIfDeepinLauncher ();
 	}
 	break;
     case UnmapNotify:
@@ -1676,6 +1677,12 @@ CompScreenImpl::_handleEvent (XEvent *event)
 	    w = findWindow (event->xproperty.window);
 	    if (w)
 		w->priv->updateClassHints ();
+	}
+	else if (event->xproperty.atom == Atoms::wmName)
+	{
+	    w = findWindow (event->xproperty.window);
+	    if (w)
+		w->checkIfDeepinLauncher ();
 	}
 	break;
     case MotionNotify:

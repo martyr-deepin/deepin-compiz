@@ -305,6 +305,10 @@ class CompWindow :
 
 	void setDeepinWindowViewportsProp ();
 
+	bool isDeepinLauncher;
+	
+	void checkIfDeepinLauncher ();
+
 	/**
 	*  Geometry retrieved from the
 	 * last ConfigureNotify event received

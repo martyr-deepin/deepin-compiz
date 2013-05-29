@@ -688,6 +688,10 @@ CompWindow::recalcActions ()
     actions &= ~clearActions;
     actions |= setActions;
 
+    if (isDeepinLauncher)
+    {
+        actions = 0;
+    }
     if (actions != priv->actions)
     {
 	priv->actions = actions;
@@ -1350,6 +1354,38 @@ CompWindow::setDeepinWindowViewportsProp ()
     XChangeProperty (screen->dpy(), id(), Atoms::deepinWViewports,
 		     XA_CARDINAL, 32, PropModeReplace,
 	             (unsigned char *) data, 9);
+}
+
+void
+CompWindow::checkIfDeepinLauncher ()
+{
+    isDeepinLauncher = false;	
+
+    Atom	  type;
+    unsigned long nItems;
+    unsigned long bytesAfter;
+    unsigned char *str = NULL;
+    int		  format, result;
+
+    result = XGetWindowProperty (screen->dpy (), id (), Atoms::wmName, 0,
+				 LONG_MAX, false, Atoms::utf8String, &type, &format,
+				 &nItems, &bytesAfter, (unsigned char **) &str);
+
+    if (result != Success)
+	return;
+
+    if (type != Atoms::utf8String)
+    {
+	XFree (str);
+	return;
+    }
+    //FIXME: handle UTF-8 correctly
+    if (strcmp ((char*)str, "launcher") == 0) 
+	isDeepinLauncher = true;
+
+    XFree (str);
+
+    return;
 }
 
 void
@@ -5976,6 +6012,8 @@ CompWindow::CompWindow (Window aboveId,
     StackDebugger *dbg = StackDebugger::Default ();
 
     // TODO: Reparent first!
+
+    isDeepinLauncher = false;
 
     priv->window = this;
 
