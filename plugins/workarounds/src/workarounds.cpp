@@ -221,6 +221,7 @@ WorkaroundsWindow::minimize ()
 
 
 	isMinimized = true;
+	window->moveInputFocusToOtherWindow();
     }
 }
 
