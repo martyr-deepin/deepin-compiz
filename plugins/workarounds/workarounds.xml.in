@@ -91,7 +91,7 @@
 	    <option type="bool" name="force_swap_buffers">
 		<_short>Force full screen redraws (buffer swap) on repaint</_short>
 		<_long>Forces the entire screen to redraw every repaint. Use with care, this will cause a massive increase in GPU and CPU usage</_long>
-		<default>false</default>
+		<default>true</default>
 	    </option>
             <subgroup>
                 <_short>Window stickyness</_short>
