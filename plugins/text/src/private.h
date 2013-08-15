@@ -100,7 +100,7 @@ class TextSurface
     PrivateTextScreen *ts = PrivateTextScreen::get (screen);
 
 class TextPluginVTable :
-    public CompPlugin::VTableForScreen <PrivateTextScreen, COMPIZ_TEXT_ABI>
+    public CompPlugin::VTableForScreen <PrivateTextScreen>
 {
     public:
 
