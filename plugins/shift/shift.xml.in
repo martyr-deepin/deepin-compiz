@@ -50,7 +50,7 @@
 				<option name="next_key" type="key">
 					<_short>Next Window</_short>
 					<_long>Show switcher if not visible and select next window.</_long>
-					<default>&lt;Super&gt;Tab</default>
+					<default>&lt;Super&gt;&lt;Shift&gt;Tab</default>
 				</option>
 				<option name="next_button" type="button">
 					<_short>Next Window</_short>
@@ -59,7 +59,7 @@
 				<option name="prev_key" type="key">
 					<_short>Previous Window</_short>
 					<_long>Show switcher if not visible and select previous window.</_long>
-					<default>&lt;Super&gt;&lt;Shift&gt;Tab</default>
+					<default>&lt;Super&gt;Tab</default>
 				</option>
 				<option name="prev_button" type="button">
 					<_short>Previous Window</_short>
