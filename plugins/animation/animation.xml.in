@@ -35,6 +35,7 @@
 	    <extensible/>
 	    <sort start="2"/>
 	    <default>
+	      <value>animation:Fade</value>
 	      <value>animation:Glide 2</value>
 	      <value>animation:Fade</value>
 	      <value>animation:Fade</value>
@@ -47,6 +48,7 @@
 	    <min>50</min>
 	    <max>4000</max>
 	    <default>
+	      <value>150</value>
 	      <value>120</value>
 	      <value>80</value>
 	      <value>80</value>
@@ -57,6 +59,7 @@
 	    <_long>The windows that will be animated.</_long>
 	    <type>match</type>
 	    <default>
+                <value>class=DDELauncher</value>
  	      <value>((type=Normal | Unknown) | name=sun-awt-X11-XFramePeer | name=sun-awt-X11-XDialogPeer) &amp; !(role=toolTipTip | role=qtooltip_label) &amp; !(type=Normal &amp; override_redirect=1) &amp; !(name=gnome-screensaver)</value>
  	      <value>(type=Menu | PopupMenu | DropdownMenu | Combo | Dialog | ModalDialog | Normal)</value>
 	      <value>(type=Tooltip | Notification | Utility) &amp; !(name=compiz) &amp; !(title=notify-osd)</value>
@@ -101,6 +104,7 @@
 	    <extensible/>
 	    <sort start="2"/>
 	    <default>
+	      <value>animation:Fade</value>
 	      <value>animation:Glide 2</value>
 	      <value>animation:Fade</value>
 	      <value>animation:Fade</value>
@@ -113,6 +117,7 @@
 	    <min>50</min>
 	    <max>4000</max>
 	    <default>
+	      <value>150</value>
 	      <value>120</value>
 	      <value>80</value>
 	      <value>50</value>
@@ -123,6 +128,7 @@
 	    <_long>The windows that will be animated.</_long>
 	    <type>match</type>
 	    <default>
+                <value>class=DDELauncher</value>
  	      <value>((type=Normal | Unknown) | name=sun-awt-X11-XFramePeer | name=sun-awt-X11-XDialogPeer) &amp; !(role=toolTipTip | role=qtooltip_label) &amp; !(type=Normal &amp; override_redirect=1) &amp; !(name=gnome-screensaver) &amp; !(name=gnome-screenshot)</value>
  	      <value>(type=Menu | PopupMenu | DropdownMenu | Combo | Dialog | ModalDialog | Normal)</value>
 	      <value>(type=Tooltip | Notification | Utility) &amp; !(name=compiz) &amp; !(title=notify-osd)</value>
