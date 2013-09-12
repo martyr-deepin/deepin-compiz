@@ -88,6 +88,7 @@ target_link_libraries (
     compizconfig
     ${LIBCOMPIZCONFIG_LIBRARIES}
     m
+    stdc++
     dl
     ccs_settings_upgrade_internal
     ccs_text_file

@@ -172,6 +172,7 @@ target_link_libraries (
     
     ${COMPIZ_LIBRARIES} 
     
+    stdc++
     m 
     pthread 
     dl
@@ -207,6 +208,7 @@ set_target_properties (compiz_core PROPERTIES
 target_link_libraries (
     compiz
     compiz_core
+    stdc++
 )
 
 install (

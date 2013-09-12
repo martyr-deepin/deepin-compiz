@@ -92,7 +92,7 @@ set (COMPIZ_REQUIRES
 )
 
 compiz_pkg_check_modules (COMPIZ REQUIRED ${COMPIZ_REQUIRES})
-list (APPEND COMPIZ_LIBRARIES ${Boost_LIBRARIES})
+list (APPEND COMPIZ_LIBRARIES ${Boost_LIBRARIES} stdc++ m)
 
 # determinate installation directories
 macro (_prepare_directories)
