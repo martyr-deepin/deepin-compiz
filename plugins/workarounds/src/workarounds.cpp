@@ -139,8 +139,12 @@ WorkaroundsWindow::setVisibility (bool visible)
     {
 	HideInfo *info = windowHideInfo;
 
-	restoreInputShape (info);
+	if (info->savedState & CompWindowStateFullscreenMask) {
+	    //Doesn't know why emacs can't ok. So workaround it by maximize and then fullscreen
+	    window->changeState(CompWindowStateMaximizedVertMask | CompWindowStateMaximizedHorzMask);
+	}
 	window->changeState(info->savedState);
+	restoreInputShape (info);
 
 	XShapeSelectInput (screen->dpy (), window->id (), info->shapeMask);
 	delete info;
