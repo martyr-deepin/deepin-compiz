@@ -348,7 +348,7 @@
 		<option name="speed" type="float">
 		    <_short>Speed</_short>
 		    <_long>Animation speed</_long>
-		    <default>2.5</default>
+		    <default>8</default>
 		    <min>0.1</min>
 		    <max>50.0</max>
 		    <precision>0.1</precision>
