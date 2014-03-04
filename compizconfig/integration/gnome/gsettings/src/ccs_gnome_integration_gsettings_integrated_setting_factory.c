@@ -223,12 +223,6 @@ initializeGSettingsWrappers (CCSGNOMEIntegrationGSettingsWrapperFactory *factory
 											gnomeGSettingsValueChanged,
 											data,
 											factory->object.object_allocation));
-    g_hash_table_insert (quarksToGSettingsWrappers, GINT_TO_POINTER (quarks->ORG_GNOME_SETTINGS_DAEMON_PLUGINS_MEDIA_KEYS),
-			 ccsGNOMEIntegrationGSettingsWrapperFactoryNewGSettingsWrapper (factory,
-											g_quark_to_string (quarks->ORG_GNOME_SETTINGS_DAEMON_PLUGINS_MEDIA_KEYS),
-											gnomeGSettingsValueChanged,
-											data,
-											factory->object.object_allocation));
 
     return quarksToGSettingsWrappers;
 }
