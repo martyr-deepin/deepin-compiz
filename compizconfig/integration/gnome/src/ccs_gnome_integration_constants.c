@@ -431,13 +431,11 @@ ccsGNOMEGSettingsIntegrationInitializeIntegratedSchemasQuarks (gpointer data)
     static const char *org_compiz_integrated = "org.compiz.integrated";
     static const char *org_gnome_desktop_wm_keybindings = "org.gnome.desktop.wm.keybindings";
     static const char *org_gnome_desktop_wm_preferences = "org.gnome.desktop.wm.preferences";
-    static const char *org_gnome_settings_daemon_plugins_media_keys = "org.gnome.settings-daemon.plugins.media-keys";
     static const char *org_gnome_desktop_default_applications_terminal = "org.gnome.desktop.default-applications.terminal";
 
     quarks->ORG_COMPIZ_INTEGRATED = g_quark_from_string (org_compiz_integrated);
     quarks->ORG_GNOME_DESKTOP_WM_KEYBINDINGS = g_quark_from_string (org_gnome_desktop_wm_keybindings);
     quarks->ORG_GNOME_DESKTOP_WM_PREFERENCES = g_quark_from_string (org_gnome_desktop_wm_preferences);
-    quarks->ORG_GNOME_SETTINGS_DAEMON_PLUGINS_MEDIA_KEYS = g_quark_from_string (org_gnome_settings_daemon_plugins_media_keys);
     quarks->ORG_GNOME_DESKTOP_DEFAULT_APPLICATIONS_TERMINAL = g_quark_from_string (org_gnome_desktop_default_applications_terminal);
 
     return NULL;
@@ -613,9 +611,6 @@ ccsGNOMEGSettingsIntegrationPopulateSettingNameToIntegratedSchemasQuarksHashTabl
     g_hash_table_insert (coreHashTable, (gpointer) names->CORE_MAXIMIZE_WINDOW_KEY.compizName, GINT_TO_POINTER (quarks->ORG_GNOME_DESKTOP_WM_KEYBINDINGS));
     g_hash_table_insert (coreHashTable, (gpointer) names->CORE_MINIMIZE_WINDOW_KEY.compizName, GINT_TO_POINTER (quarks->ORG_GNOME_DESKTOP_WM_KEYBINDINGS));
     g_hash_table_insert (coreHashTable, (gpointer) names->CORE_TOGGLE_WINDOW_MAXIMIZED_KEY.compizName, GINT_TO_POINTER (quarks->ORG_GNOME_DESKTOP_WM_KEYBINDINGS));
-    g_hash_table_insert (gnomecompatHashTable, (gpointer) names->GNOMECOMPAT_RUN_COMMAND_TERMINAL_KEY.compizName, GINT_TO_POINTER (quarks->ORG_GNOME_SETTINGS_DAEMON_PLUGINS_MEDIA_KEYS));
-    g_hash_table_insert (gnomecompatHashTable, (gpointer) names->GNOMECOMPAT_RUN_COMMAND_WINDOW_SCREENSHOT_KEY.compizName, GINT_TO_POINTER (quarks->ORG_GNOME_SETTINGS_DAEMON_PLUGINS_MEDIA_KEYS));
-    g_hash_table_insert (gnomecompatHashTable, (gpointer) names->GNOMECOMPAT_RUN_COMMAND_SCREENSHOT_KEY.compizName, GINT_TO_POINTER (quarks->ORG_GNOME_SETTINGS_DAEMON_PLUGINS_MEDIA_KEYS));
     g_hash_table_insert (gnomecompatHashTable, (gpointer) names->GNOMECOMPAT_MAIN_MENU_KEY.compizName, GINT_TO_POINTER (quarks->ORG_GNOME_DESKTOP_WM_KEYBINDINGS));
     g_hash_table_insert (gnomecompatHashTable, (gpointer) names->GNOMECOMPAT_RUN_KEY.compizName, GINT_TO_POINTER (quarks->ORG_GNOME_DESKTOP_WM_KEYBINDINGS));
     g_hash_table_insert (unityshellHashTable, (gpointer) names->UNITYSHELL_SHOW_HUD.compizName, GINT_TO_POINTER (quarks->ORG_COMPIZ_INTEGRATED));
