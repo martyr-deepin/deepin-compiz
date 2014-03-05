@@ -8,8 +8,6 @@
 #include "ccs_gsettings_backend_interface.h"
 #include "ccs_gsettings_interface.h"
 #include "ccs_gsettings_interface_wrapper.h"
-#include "ccs_gnome_integration.h"
-#include "ccs_gnome_integration_gsettings_integrated_setting_factory.h"
 #include "gsettings_shared.h"
 
 struct _CCSGSettingsBackendPrivate
@@ -20,23 +18,7 @@ struct _CCSGSettingsBackendPrivate
 
     char	    *currentProfile;
     CCSContext	    *context;
-
-    CCSIntegration *integration;
-
-    CCSGNOMEValueChangeData valueChangeData;
 };
-
-void
-ccsGSettingsSetIntegration (CCSBackend *backend, CCSIntegration *integration)
-{
-    CCSGSettingsBackendPrivate *priv = (CCSGSettingsBackendPrivate *) ccsObjectGetPrivate (backend);
-
-    if (priv->integration)
-	ccsIntegrationUnref (priv->integration);
-
-    priv->integration = integration;
-    ccsIntegrationRef (integration);
-}
 
 CCSStringList
 ccsGSettingsGetExistingProfiles (CCSBackend *backend, CCSContext *context)
@@ -300,39 +282,6 @@ ccsGSettingsBackendClearPluginsWithSetKeysDefault (CCSBackend *backend)
     ccsGSettingsWrapperResetKey (priv->currentProfileSettings, "plugins-with-set-keys");
 }
 
-CCSIntegratedSetting *
-ccsGSettingsBackendGetIntegratedOptionIndexDefault (CCSBackend *backend, CCSSetting *setting)
-{
-    CCSPlugin  *plugin      = ccsSettingGetParent (setting);
-    const char *pluginName  = ccsPluginGetName (plugin);
-    const char *settingName = ccsSettingGetName (setting);
-    CCSGSettingsBackendPrivate *priv = (CCSGSettingsBackendPrivate *) ccsObjectGetPrivate (backend);
-
-    return ccsIntegrationGetIntegratedSetting (priv->integration, pluginName, settingName);
-}
-
-Bool
-ccsGSettingsBackendReadIntegratedOptionDefault (CCSBackend *backend, CCSSetting *setting, CCSIntegratedSetting *integrated)
-{
-    CCSGSettingsBackendPrivate *priv = (CCSGSettingsBackendPrivate *) ccsObjectGetPrivate (backend);
-
-    return ccsIntegrationReadOptionIntoSetting (priv->integration,
-						priv->context,
-						setting,
-						integrated);
-}
-
-void
-ccsGSettingsBackendWriteIntegratedOptionDefault (CCSBackend *backend, CCSSetting *setting, CCSIntegratedSetting *integrated)
-{
-    CCSGSettingsBackendPrivate *priv = (CCSGSettingsBackendPrivate *) ccsObjectGetPrivate (backend);
-
-    ccsIntegrationWriteSettingIntoOption (priv->integration,
-					  priv->context,
-					  setting,
-					  integrated);
-}
-
 static CCSGSettingsBackendInterface gsettingsAdditionalDefaultInterface = {
     ccsGSettingsBackendGetContextDefault,
     ccsGSettingsBackendConnectToValueChangedSignalDefault,
@@ -347,9 +296,6 @@ static CCSGSettingsBackendInterface gsettingsAdditionalDefaultInterface = {
     ccsGSettingsBackendUpdateProfileDefault,
     ccsGSettingsBackendUpdateCurrentProfileNameDefault,
     ccsGSettingsBackendAddProfileDefault,
-    ccsGSettingsBackendGetIntegratedOptionIndexDefault,
-    ccsGSettingsBackendReadIntegratedOptionDefault,
-    ccsGSettingsBackendWriteIntegratedOptionDefault
 };
 
 static CCSGSettingsBackendPrivate *
@@ -417,8 +363,6 @@ ccsGSettingsBackendDetachFromBackend (CCSBackend *backend)
 
     priv->compizconfigSettings = NULL;
 
-    ccsIntegrationUnref (priv->integration);
-
     free (priv);
     ccsObjectSetPrivate (backend, NULL);
 
@@ -441,24 +385,6 @@ ccsGSettingsBackendAttachNewToBackend (CCSBackend *backend, CCSContext *context)
 									    currentProfilePath,
 									    backend->object.object_allocation);
     priv->context = context;
-
-    CCSGNOMEIntegrationGSettingsWrapperFactory *wrapperFactory = ccsGNOMEIntegrationGSettingsWrapperDefaultImplNew (&ccsDefaultObjectAllocator);
-    CCSIntegratedSettingsStorage *storage = ccsIntegratedSettingsStorageDefaultImplNew (&ccsDefaultObjectAllocator);
-
-    priv->valueChangeData.storage = storage;
-    priv->valueChangeData.context = priv->context;
-
-    CCSIntegratedSettingFactory *factory = ccsGSettingsIntegratedSettingFactoryNew (wrapperFactory,
-										    &priv->valueChangeData,
-										    &ccsDefaultObjectAllocator);
-
-    priv->valueChangeData.factory = factory;
-
-    priv->integration = ccsGNOMEIntegrationBackendNew (backend, context, factory, storage, backend->object.object_allocation);
-
-
-
-    priv->valueChangeData.integration = priv->integration;
 
     g_free (currentProfilePath);
     return TRUE;

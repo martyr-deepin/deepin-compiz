@@ -55,14 +55,6 @@ getVariantForCCSSetting (CCSBackend *backend, CCSSetting *setting)
     return gsettingsValue;
 }
 
-static Bool
-readIntegratedOption (CCSBackend *backend,
-		      CCSSetting *setting,
-		      CCSIntegratedSetting *integrated)
-{
-    return ccsGSettingsBackendReadIntegratedOption (backend, setting, integrated);
-}
-
 Bool
 readOption (CCSBackend *backend, CCSSetting * setting)
 {
@@ -213,14 +205,6 @@ readOption (CCSBackend *backend, CCSSetting * setting)
     return ret;
 }
 
-static void
-writeIntegratedOption (CCSBackend *backend,
-		       CCSSetting *setting,
-		       CCSIntegratedSetting *integrated)
-{
-    ccsGSettingsBackendWriteIntegratedOption (backend, setting, integrated);
-}
-
 void
 writeOption (CCSBackend *backend,
 	     CCSSetting *setting)
@@ -367,15 +351,7 @@ readSetting (CCSBackend *backend,
 	     CCSSetting *setting)
 {
     Bool status;
-    CCSIntegratedSetting *integrated = ccsGSettingsBackendGetIntegratedSetting (backend, setting);
-
-    if (ccsGetIntegrationEnabled (context) &&
-	integrated)
-    {
-	status = readIntegratedOption (backend, setting, integrated);
-    }
-    else
-	status = readOption (backend, setting);
+    status = readOption (backend, setting);
 
     if (!status)
 	ccsResetToDefault (setting, TRUE);
@@ -392,14 +368,7 @@ writeSetting (CCSBackend *backend,
 	      CCSContext *context,
 	      CCSSetting *setting)
 {
-    CCSIntegratedSetting *integrated = ccsGSettingsBackendGetIntegratedSetting (backend, setting);
-
-    if (ccsGetIntegrationEnabled (context) &&
-	integrated)
-    {
-	writeIntegratedOption (backend, setting, integrated);
-    }
-    else if (ccsSettingGetIsDefault (setting))
+    if (ccsSettingGetIsDefault (setting))
     {
 	resetOptionToDefault (backend, setting);
     }
@@ -411,19 +380,10 @@ writeSetting (CCSBackend *backend,
 static void
 updateSetting (CCSBackend *backend, CCSContext *context, CCSPlugin *plugin, CCSSetting *setting)
 {
-    CCSIntegratedSetting *integrated = ccsGSettingsBackendGetIntegratedSetting (backend, setting);
-
     ccsBackendReadInit (backend, context);
     if (!readOption (backend, setting))
     {
 	ccsResetToDefault (setting, TRUE);
-    }
-
-    if (ccsGetIntegrationEnabled (context) &&
-	integrated)
-    {
-	ccsBackendWriteInit (backend, context);
-	ccsGSettingsBackendWriteIntegratedOption (backend, setting, integrated);
     }
 }
 
@@ -449,18 +409,6 @@ static Bool
 finiBackend (CCSBackend *backend)
 {
     ccsGSettingsBackendDetachFromBackend (backend);
-
-    return TRUE;
-}
-
-static Bool
-getSettingIsIntegrated (CCSBackend *backend, CCSSetting * setting)
-{
-    if (!ccsGetIntegrationEnabled (ccsPluginGetContext (ccsSettingGetParent (setting))))
-	return FALSE;
-
-    if (!ccsGSettingsBackendGetIntegratedSetting (backend, setting))
-	return FALSE;
 
     return TRUE;
 }
@@ -498,11 +446,10 @@ static CCSBackendInterface gsettingsVTable = {
     writeSetting,
     0,
     updateSetting,
-    getSettingIsIntegrated,
+    0,
     getSettingIsReadOnly,
     ccsGSettingsGetExistingProfiles,
     ccsGSettingsWrapDeleteProfile,
-    ccsGSettingsSetIntegration
 };
 
 CCSBackendInterface *
