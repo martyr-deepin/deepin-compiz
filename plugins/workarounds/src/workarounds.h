@@ -184,6 +184,7 @@ class WorkaroundsWindow :
 	void setVisibility (bool);
 	void restoreInputShape (HideInfo *);
 	void clearInputShape (HideInfo *);
+	void updateHideInfo();
 
 	void
 	removeSticky ();

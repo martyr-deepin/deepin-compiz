@@ -30,6 +30,14 @@ bool haveOpenGL;
 
 COMPIZ_PLUGIN_20090315 (workarounds, WorkaroundsPluginVTable);
 
+
+void WorkaroundsWindow::updateHideInfo()
+{
+    if (windowHideInfo) {
+	clearInputShape(windowHideInfo);
+    }
+}
+
 /*
  * WorkaroundsWindow::clearInputShape
  *
@@ -1005,26 +1013,8 @@ WorkaroundsScreen::handleEvent (XEvent *event)
 	    if (w)
 	    {
 		WORKAROUNDS_WINDOW(w);
-		if (ww->minimized())
-		{
-		    int count = 0, ordering = 0;
-		    XFree(XShapeGetRectangles (screen->dpy (), _event->window, ShapeInput, &count, &ordering));
-		    if (count)
-		    {
-			XShapeSelectInput (screen->dpy (), _event->window, NoEventMask);
-			XShapeCombineRectangles (screen->dpy (), _event->window, ShapeInput, 0, 0, NULL, 0, ShapeSet, 0);
-			XShapeSelectInput (screen->dpy (), _event->window, ShapeNotifyMask);
-		    }
-		}
-		else
-		{
-		    int count = 0, ordering = 0;
-		    XFree(XShapeGetRectangles (screen->dpy (), _event->window, ShapeInput, &count, &ordering));
-		    if (!count)
-		    {
-			XShapeCombineMask (screen->dpy (), _event->window, ShapeInput, 0, 0, None, ShapeSet);
-		    }
-		}
+		ww->updateHideInfo();
+		return;
 	    }
 	}
 	break;
