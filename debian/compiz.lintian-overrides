@@ -1,0 +1,5 @@
+compiz: no-debconf-templates
+compiz: postinst-does-not-load-confmodule
+compiz: package-name-doesnt-match-sonames libcompiz-coreABI-20120603
+compiz: binary-without-manpage usr/bin/compiz-decorator
+compiz: binary-or-shlib-defines-rpath

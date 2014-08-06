@@ -1,0 +1,14 @@
+[general]
+backend = gsettings
+integration = true 
+profile = deepin
+
+[general_deepin]
+backend = gsettings
+integration = true
+profile = deepin
+
+[gnome_session]
+backend = gsettings
+integration = true
+profile = deepin

@@ -1,0 +1,8 @@
+usr/include
+usr/lib/libcompiz_core.so
+usr/lib/pkgconfig/compiz.pc
+usr/lib/pkgconfig/compiz-*.pc
+usr/lib/pkgconfig/lib*.pc
+usr/share/cmake*
+usr/share/compiz/cmake
+usr/share/compiz/xslt

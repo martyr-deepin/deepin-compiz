@@ -1,0 +1,20 @@
+debian/65compiz_profile-on-session /etc/X11/Xsession.d
+usr/bin
+usr/lib/*/*/compizconfig.so
+usr/lib/*/dist-packages
+usr/lib/compiz
+usr/lib/compizconfig
+usr/lib/libcompiz_core.so.*
+usr/lib/libcompizconfig*
+usr/lib/libdecoration.*
+usr/lib/pkgconfig/compizconfig-python.pc
+usr/share/applications
+usr/share/ccsm
+usr/share/compiz/*.png
+usr/share/compiz/*.xml
+#usr/share/compiz/startnotify
+usr/share/gconf
+usr/share/glib-2.0
+usr/share/icons
+usr/share/locale
+etc
