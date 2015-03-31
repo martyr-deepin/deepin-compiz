@@ -394,7 +394,7 @@ DecorScreen::getTexture (Pixmap pixmap)
     X11PixmapDeletor::Ptr dl = boost::make_shared <X11PixmapDeletor> (screen->dpy ());
     DecorPixmap::Ptr pm = boost::make_shared <DecorPixmap> (pixmap, dl);
 
-    DecorTexture *texture = new DecorTexture (boost::shared_static_cast <DecorPixmapInterface> (pm));
+    DecorTexture *texture = new DecorTexture (boost::static_pointer_cast <DecorPixmapInterface> (pm));
 
     if (!texture->status)
     {
@@ -1292,7 +1292,7 @@ DecorationList::findMatchingDecoration (unsigned int frameType,
 	if (d->frameType == frameType &&
 	    d->frameState == frameState &&
 	    d->frameActions == frameActions)
-	    return boost::shared_static_cast <DecorationInterface> (d);
+	    return boost::static_pointer_cast <DecorationInterface> (d);
     }
 
     return DecorationInterface::Ptr ();
@@ -2998,7 +2998,7 @@ DecorScreen::DecorScreen (CompScreen *s) :
 				   0,
 				   0,
 				   None,
-				   boost::shared_array <decor_quad_t> (NULL),
+				   boost::shared_array <decor_quad_t> (),
 				   0,
 				   screen->root (),
 				   NULL)),

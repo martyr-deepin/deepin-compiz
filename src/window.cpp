@@ -3023,14 +3023,14 @@ PrivateWindow::restoreGeometry (XWindowChanges *xwc,
 
 static bool isPendingRestack (compiz::X11::PendingEvent::Ptr p)
 {
-    compiz::X11::PendingConfigureEvent::Ptr pc = boost::shared_static_cast <compiz::X11::PendingConfigureEvent> (p);
+    compiz::X11::PendingConfigureEvent::Ptr pc = boost::static_pointer_cast <compiz::X11::PendingConfigureEvent> (p);
 
     return pc->matchVM (CWStackMode | CWSibling);
 }
 
 static bool isExistingRequest (compiz::X11::PendingEvent::Ptr p, XWindowChanges &xwc, unsigned int valueMask)
 {
-    compiz::X11::PendingConfigureEvent::Ptr pc = boost::shared_static_cast <compiz::X11::PendingConfigureEvent> (p);
+    compiz::X11::PendingConfigureEvent::Ptr pc = boost::static_pointer_cast <compiz::X11::PendingConfigureEvent> (p);
 
     return pc->matchRequest (xwc, valueMask);
 }
@@ -3256,7 +3256,7 @@ PrivateWindow::reconfigureXWindow (unsigned int   valueMask,
 	    wc.height = serverFrameGeometry.height ();
 
 	    compiz::X11::PendingEvent::Ptr pc =
-		    boost::shared_static_cast<compiz::X11::PendingEvent> (compiz::X11::PendingConfigureEvent::Ptr (
+		    boost::static_pointer_cast<compiz::X11::PendingEvent> (compiz::X11::PendingConfigureEvent::Ptr (
 									      new compiz::X11::PendingConfigureEvent (
 										  screen->dpy (), priv->serverFrame, frameValueMask, &wc)));
 
@@ -4047,7 +4047,7 @@ PrivateWindow::addWindowStackChanges (XWindowChanges *xwc,
 		if (serverFrame)
 		{
 		    compiz::X11::PendingEvent::Ptr pc =
-			    boost::shared_static_cast<compiz::X11::PendingEvent> (compiz::X11::PendingConfigureEvent::Ptr (
+			    boost::static_pointer_cast<compiz::X11::PendingEvent> (compiz::X11::PendingConfigureEvent::Ptr (
 										      new compiz::X11::PendingConfigureEvent (
 											  screen->dpy (), serverFrame, valueMask, &lxwc)));
 

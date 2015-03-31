@@ -94,17 +94,17 @@ CompString get_format (const CompString &fmt, Value::Ptr v)
 {
     if (fmt == "%i" || fmt == "%d")
 	return compPrintf(fmt.c_str(),
-		(boost::shared_static_cast<TValue<int> >(v))->value());
+		(boost::static_pointer_cast<TValue<int> >(v))->value());
     if (fmt == "%f")
 	return compPrintf(fmt.c_str(),
-		(boost::shared_static_cast<TValue<float> >(v))->value());
+		(boost::static_pointer_cast<TValue<float> >(v))->value());
     if (fmt == "%s")
 	return compPrintf(
 		fmt.c_str(),
-		(boost::shared_static_cast<TValue<std::string> >(v))->value().c_str());
+		(boost::static_pointer_cast<TValue<std::string> >(v))->value().c_str());
     if (fmt == "%x")
 	return compPrintf(fmt.c_str(),
-		(boost::shared_static_cast<TValue<int> >(v))->value());
+		(boost::static_pointer_cast<TValue<int> >(v))->value());
 
     return "not_reached";
 }
@@ -142,13 +142,13 @@ TEST(CompizString,PrintfTest)
 
     ASSERT_EQ(s1, s2);
 
-    formatValues["%i"] = boost::shared_static_cast <compiz::string::printf_test::Value> (compiz::string::printf_test::Value::Ptr (new compiz::string::printf_test::TValue<int> (6)));
+    formatValues["%i"] = boost::static_pointer_cast <compiz::string::printf_test::Value> (compiz::string::printf_test::Value::Ptr (new compiz::string::printf_test::TValue<int> (6)));
     formatStrings["%i"] = CompString ("6");
-    formatValues["%f"] = boost::shared_static_cast <compiz::string::printf_test::Value> (compiz::string::printf_test::Value::Ptr (new compiz::string::printf_test::TValue<float> (6.532)));
+    formatValues["%f"] = boost::static_pointer_cast <compiz::string::printf_test::Value> (compiz::string::printf_test::Value::Ptr (new compiz::string::printf_test::TValue<float> (6.532)));
     formatStrings["%f"] = CompString ("6.532000");
-    formatValues["%x"] = boost::shared_static_cast <compiz::string::printf_test::Value> (compiz::string::printf_test::Value::Ptr (new compiz::string::printf_test::TValue<int> (0x34fe5aa)));
+    formatValues["%x"] = boost::static_pointer_cast <compiz::string::printf_test::Value> (compiz::string::printf_test::Value::Ptr (new compiz::string::printf_test::TValue<int> (0x34fe5aa)));
     formatStrings["%x"] = CompString ("34fe5aa");
-    formatValues["%d"] = boost::shared_static_cast <compiz::string::printf_test::Value> (compiz::string::printf_test::Value::Ptr (new compiz::string::printf_test::TValue<int> (2)));
+    formatValues["%d"] = boost::static_pointer_cast <compiz::string::printf_test::Value> (compiz::string::printf_test::Value::Ptr (new compiz::string::printf_test::TValue<int> (2)));
     formatStrings["%d"] = CompString ("2");
 
     for (std::map <CompString, CompString>::iterator it = formatStrings.begin ();

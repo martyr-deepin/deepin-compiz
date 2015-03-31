@@ -167,7 +167,7 @@ TEST(CompositePixmapBinderTest, TestInitialBindSuccess)
     EXPECT_CALL (msg, grabServer ());
     EXPECT_CALL (msg, syncServer ()).Times (2);
     EXPECT_CALL (mwag, getAttributes (_)).WillOnce (Invoke (&fwag, &FakeWindowAttributesGet::getAttributes));
-    EXPECT_CALL (mwpg, getPixmap ()).WillOnce (Return (boost::shared_static_cast <WindowPixmapInterface> (wp)));
+    EXPECT_CALL (mwpg, getPixmap ()).WillOnce (Return (boost::static_pointer_cast <WindowPixmapInterface> (wp)));
 
     EXPECT_CALL (*wp, pixmap ()).WillOnce (Return (1));
 
@@ -214,7 +214,7 @@ TEST(CompositePixmapBinderTest, TestInitialBindSuccessNoRebind)
     EXPECT_CALL (msg, grabServer ());
     EXPECT_CALL (msg, syncServer ()).Times (2);
     EXPECT_CALL (mwag, getAttributes (_)).WillOnce (Invoke (&fwag, &FakeWindowAttributesGet::getAttributes));
-    EXPECT_CALL (mwpg, getPixmap ()).WillOnce (Return (boost::shared_static_cast <WindowPixmapInterface> (wp)));
+    EXPECT_CALL (mwpg, getPixmap ()).WillOnce (Return (boost::static_pointer_cast <WindowPixmapInterface> (wp)));
 
     EXPECT_CALL (*wp, pixmap ()).WillOnce (Return (1));
 
@@ -262,7 +262,7 @@ TEST(CompositePixmapBinderTest, TestRebindAfterRelease)
     EXPECT_CALL (msg, grabServer ());
     EXPECT_CALL (msg, syncServer ()).Times (2);
     EXPECT_CALL (mwag, getAttributes (_)).WillOnce (Invoke (&fwag, &FakeWindowAttributesGet::getAttributes));
-    EXPECT_CALL (mwpg, getPixmap ()).WillOnce (Return (boost::shared_static_cast <WindowPixmapInterface> (wp)));
+    EXPECT_CALL (mwpg, getPixmap ()).WillOnce (Return (boost::static_pointer_cast <WindowPixmapInterface> (wp)));
 
     EXPECT_CALL (*wp, pixmap ()).WillOnce (Return (1));
 
@@ -284,7 +284,7 @@ TEST(CompositePixmapBinderTest, TestRebindAfterRelease)
     EXPECT_CALL (msg, grabServer ());
     EXPECT_CALL (msg, syncServer ()).Times (2);
     EXPECT_CALL (mwag, getAttributes (_)).WillOnce (Invoke (&fwag, &FakeWindowAttributesGet::getAttributes));
-    EXPECT_CALL (mwpg, getPixmap ()).WillOnce (Return (boost::shared_static_cast <WindowPixmapInterface> (wp)));
+    EXPECT_CALL (mwpg, getPixmap ()).WillOnce (Return (boost::static_pointer_cast <WindowPixmapInterface> (wp)));
 
     EXPECT_CALL (*wp, pixmap ()).WillOnce (Return (1));
 
@@ -331,7 +331,7 @@ TEST(CompositePixmapBinderTest, TestNoRebindAfterReleaseWhenFrozen)
     EXPECT_CALL (msg, grabServer ());
     EXPECT_CALL (msg, syncServer ()).Times (2);
     EXPECT_CALL (mwag, getAttributes (_)).WillOnce (Invoke (&fwag, &FakeWindowAttributesGet::getAttributes));
-    EXPECT_CALL (mwpg, getPixmap ()).WillOnce (Return (boost::shared_static_cast <WindowPixmapInterface> (wp)));
+    EXPECT_CALL (mwpg, getPixmap ()).WillOnce (Return (boost::static_pointer_cast <WindowPixmapInterface> (wp)));
 
     EXPECT_CALL (*wp, pixmap ()).WillOnce (Return (1));
 
@@ -450,7 +450,7 @@ TEST(CompositePixmapBinderTest, TestInitialBindFailureNilPixmapReturned)
     EXPECT_CALL (msg, grabServer ());
     EXPECT_CALL (msg, syncServer ()).Times (2);
     EXPECT_CALL (mwag, getAttributes (_)).WillOnce (Invoke (&fwag, &FakeWindowAttributesGet::getAttributes));
-    EXPECT_CALL (mwpg, getPixmap ()).WillOnce (Return (boost::shared_static_cast <WindowPixmapInterface> (wp)));
+    EXPECT_CALL (mwpg, getPixmap ()).WillOnce (Return (boost::static_pointer_cast <WindowPixmapInterface> (wp)));
 
     EXPECT_CALL (*wp, pixmap ()).WillOnce (Return (0));
 
@@ -510,7 +510,7 @@ TEST(CompositePixmapBinderTest, TestInitialBindFailureWindowUnmappedSuccessOnRem
     EXPECT_CALL (msg, grabServer ());
     EXPECT_CALL (msg, syncServer ()).Times (2);
     EXPECT_CALL (mwag, getAttributes (_)).WillOnce (Invoke (&fwag2, &FakeWindowAttributesGet::getAttributes));
-    EXPECT_CALL (mwpg, getPixmap ()).WillOnce (Return (boost::shared_static_cast <WindowPixmapInterface> (wp)));
+    EXPECT_CALL (mwpg, getPixmap ()).WillOnce (Return (boost::static_pointer_cast <WindowPixmapInterface> (wp)));
 
     EXPECT_CALL (msg, ungrabServer ());
 
