@@ -128,11 +128,8 @@ if (USE_GTK)
 
     add_dependencies (gtk-window-decorator decoration)
 
-    if (USE_METACITY)
-	set (metacitylibs ${METACITY_LIBRARIES})
-    endif (USE_METACITY)
 
-
+    find_library(metacitylibs "libmetacity-private.a")
     target_link_libraries (
 	gtk-window-decorator
 	decoration
